@@ -41,9 +41,9 @@
                             <td><?php echo $val->cus_email;?></td>
                             <td align="center">
 
-                              <button type="button" class="btn btn-primary" onclick="callDetails('<?php echo $val->cus_id;?>');">ดูข้อมูล
+                            <!--   <button type="button" class="btn btn-primary" onclick="callDetails('<?php echo $val->cus_id;?>');">ดูข้อมูล
                                 <span class="glyphicon glyphicon-list-alt"></span>
-                              </button>
+                              </button> -->
                               
                               <button type="button" class="btn btn-warning" onclick="callDetails('<?php echo $val->cus_id;?>');">แก้ไข
                                 <span class="glyphicon glyphicon-list-alt"></span>
