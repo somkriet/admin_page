@@ -15,20 +15,20 @@ class Customer extends CI_Controller {
 	{
 		header("Access-Control-Allow-Origin: *");
 
-		$config = array();
-        $config["base_url"] = base_url() . "customer/index";
-        $config["total_rows"] = $this->customer_model->record_count();
-        $config["per_page"] = 10;
-        $config["uri_segment"] = 3;
+		// $config = array();
+  //       $config["base_url"] = base_url() . "customer/index";
+  //       $config["total_rows"] = $this->customer_model->record_count();
+  //       $config["per_page"] = 10;
+  //       $config["uri_segment"] = 3;
  
-        $this->pagination->initialize($config);
+  //       $this->pagination->initialize($config);
  
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $data["results"] = $this->customer_model->
-            fetch_customer($config["per_page"], $page);
-        $data["links"] = $this->pagination->create_links();
+        // $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        // $data["results"] = $this->customer_model->
+        //     fetch_customer($config["per_page"], $page);
+        // $data["links"] = $this->pagination->create_links();
  
-		$sql = "SELECT * FROM tb_customer";
+		$sql = "SELECT * FROM tb_customer WHERE delete_flag = 1;";
 		$data['customer_data'] = $this->customer_model->show_all_customer($sql);
 
 		$this->template->set('title', 'Show customer');
@@ -45,7 +45,7 @@ class Customer extends CI_Controller {
 
 	public function show_all_customer(){
 
-		$sql = "SELECT * FROM tb_customer";
+		$sql = "SELECT * FROM tb_customer WHERE delete_flag = 1;";
 
 		$data['customer_data'] = $this->customer_model->show_all_customer($sql);
 
@@ -175,4 +175,29 @@ class Customer extends CI_Controller {
 	}
 
 
-   }
+	public function callDetails(){
+
+
+	}
+
+
+	public function delcustomer(){
+
+		$id = $this->input->post('id');
+
+		// $userdata = $this->session->userdata('login');
+		// $user = $userdata['name_en'];
+
+		$sql = "UPDATE
+					tb_customer
+				SET
+					tb_customer.delete_flag = 0
+				WHERE
+					tb_customer.cus_id = '$id'";
+		$this->customer_model->delete_customer($sql);
+
+		echo json_encode('success');
+	}
+
+
+}?>

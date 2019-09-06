@@ -34,7 +34,7 @@
                   <?php if(!empty($customer_data)): 
                           foreach($customer_data as $idx => $val):?>
                           <tr>
-                            <td align="center"><?php echo  $val->cus_id;?></td>
+                            <td align="center"><?php echo  $idx+1;?></td>
                             <td align="center"><?php echo $val->cus_name;?></td>
                             <td><?php echo $val->cus_name_social;?></td>
                             <td><?php echo $val->cus_phone;?></td>
@@ -126,7 +126,7 @@ $('#btn_add').on('click', function(){
     $.ajax({
       type: "POST",
       dataType: "JSON",
-      url: "<?php echo base_url('index.php/company/callDetails');?>",
+      url: "<?php echo base_url('index.php/customer/callDetails');?>",
       data: { 'id': id },
       success: function(res){
         // console.log(res);
@@ -141,32 +141,117 @@ $('#btn_add').on('click', function(){
 
           $('#myModal').modal('show');
         }else{
-          alertify.alert('Error!');
+          Swal.fire('Error!');
           return false;
         }
       },
       error: function(err){
         console.log(err);
-        alertify.alert('Error!');
+        Swal.fire('Error!');
         return false;
       }
     });
   }
 
-  function delRow(id){
-   Swal.fire('Delete?', function(e){
-      if(e){
+  // function delRow(id){
+  //  Swal.fire('Delete?', function(e){
+  //     if(e){
+  //       $.ajax({
+  //         type: "POST",
+  //         dataType: "JSON",
+  //         url: "<?php echo base_url('index.php/company/delCompany');?>",
+  //         data: { 'id': id },
+  //         success: function(res){
+  //           Swal.fire('Delete Success');
+
+  //           setTimeout(function(){
+  //             location.reload();
+  //           }, 1000);
+  //         },
+  //         error: function(err){
+  //           console.log(err);
+  //           Swal.fire('Error!');
+  //           return false;
+  //         }
+  //       });
+  //     }
+  //   });
+
+  //   return false;
+  // }
+
+
+
+// function delRow(id){
+//   swal({
+//     title: "Are you sure?",
+//     text: "Your will delete customer!",
+//     type: "warning",
+//     showCancelButton: true,
+//     confirmButtonClass: "btn-danger",
+//     confirmButtonText: "Yes, delete it!",
+//     closeOnConfirm: false
+//   },
+//     function(){
+//       if(e){
+//         $.ajax({
+//           type: "POST",
+//           dataType: "JSON",
+//           url: "<?php echo base_url('index.php/customer/delcustomer');?>",
+//           data: { 'id': id },
+//           success: function(res){
+//             // Swal.fire('Delete Success');
+//             swal("Deleted!", "Your imaginary file has been deleted.", "success");
+
+//             setTimeout(function(){
+//               location.reload();
+//             }, 1000);
+
+//           },
+//           error: function(err){
+//             console.log(err);
+//             Swal.fire('Error!');
+//             return false;
+//           }
+//         });
+//       }
+  
+//     });
+//   return false;
+// }
+
+
+function delRow(id){
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
         $.ajax({
           type: "POST",
           dataType: "JSON",
-          url: "<?php echo base_url('index.php/company/delCompany');?>",
+          url: "<?php echo base_url('index.php/customer/delcustomer');?>",
           data: { 'id': id },
           success: function(res){
-            Swal.fire('Delete Success');
+            // Swal.fire('Delete Success');
+            if (res == 'success') {
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+            }
+            // swal("Deleted!", "Your imaginary file has been deleted.", "success");
 
             setTimeout(function(){
               location.reload();
             }, 1000);
+
           },
           error: function(err){
             console.log(err);
@@ -174,9 +259,12 @@ $('#btn_add').on('click', function(){
             return false;
           }
         });
-      }
+    }
+      
+
+
+
     });
 
-    return false;
-  }
+}
       </script> 

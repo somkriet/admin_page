@@ -21,23 +21,11 @@ Class customer_model extends CI_Model
        $q = $this->db->query($query);
     }
 
-    public function record_count(){
-        return $this->db->count_all("tb_customer");
+    public function delete_customer($query)
+    {
+       $q = $this->db->query($query);
     }
- 
-    public function fetch_customer($limit, $start) {
-        $this->db->limit($limit, $start);
-        $query = $this->db->get("tb_customer");
- 
-        if ($query->num_rows() > 0) {
-            foreach ($query->result() as $row) {
-                $data[] = $row;
-            }
-            return $data;
-        }
-        return false;
-    }
-
+   
 
 
 
