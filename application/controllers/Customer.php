@@ -176,8 +176,87 @@ class Customer extends CI_Controller {
 
 
 	public function callDetails(){
+		$id = $this->input->post('id');
+
+		$sql = "SELECT * 
+				FROM tb_customer 
+				WHERE cus_id = '$id' 
+				AND delete_flag = 1;";
+		$data['customer_data'] = $this->customer_model->show_all_customer($sql);
+		$data['status'] = 'success';
+		echo json_encode($data);
+	}
+
+	public function save_edit_customer(){
 
 
+		$id = $this->input->post('id');
+		// $customerID = $this->input->post('customerID');
+		$customername = $this->input->post('name');
+		$customername_socail = $this->input->post('name_socail');
+		$customerphone = $this->input->post('phone');
+		$customeremail = $this->input->post('email');
+		$customerid_card = $this->input->post('id_card');
+		$customeraddress = $this->input->post('address');
+		$customerpostal = $this->input->post('postal');
+		// $customerchanel = $this->input->post('chanel');
+		$customerchanel = 1;
+
+		$sql = "UPDATE
+					tb_customer
+				SET
+					tb_customer.cus_name = '$customername',
+					tb_customer.cus_name_social = '$customername_socail',
+					tb_customer.cus_phone = '$customerphone',
+					tb_customer.cus_email = '$customeremail',
+					tb_customer.cus_id_card_number = '$customerid_card',
+					tb_customer.cus_address = '$customeraddress',
+					tb_customer.cus_postal = '$customerpostal',
+					tb_customer.cus_sales_channel = '$customerchanel'
+				WHERE
+					tb_customer.cus_id = '$id'";
+		$this->customer_model->edit_customer($sql);
+
+		// $sql = "SELECT * 
+		// 		FROM tb_customer 
+		// 		WHERE cus_id = '$id' 
+		// 		AND delete_flag = 1;";
+		// $data['customer_data'] = $this->customer_model->show_all_customer($sql);
+		$data['status'] = 'success';
+		echo json_encode($data);
+	}
+
+
+	public function checked_cust()
+	{
+		$supplier = $this->input->post('supplier');
+		$custID = $this->input->post('custID');
+		$id = $this->input->post('id');
+
+		if(!empty($supplier) and !empty($custID)){
+			$sql = "SELECT
+						*
+					FROM
+						customer
+					WHERE
+						deleteFlag = 0
+						AND supplierID = '$supplier'
+						AND custID = '$custID'";
+			if(!empty($id)){
+				$sql .= " AND id != '$id'";
+			}
+			$result = $this->all_model->call_all($sql);
+
+			if(!empty($result)){
+				$res['status'] = 'data';
+			}else{
+				$res['status'] = 'nodata';
+			}
+		}else{
+			$res['status'] = 'error';
+		}
+
+		echo json_encode($res);
 	}
 
 

@@ -21,6 +21,11 @@ Class customer_model extends CI_Model
        $q = $this->db->query($query);
     }
 
+    public function edit_customer($query)
+    {
+       $q = $this->db->query($query);
+    }
+
     public function delete_customer($query)
     {
        $q = $this->db->query($query);
