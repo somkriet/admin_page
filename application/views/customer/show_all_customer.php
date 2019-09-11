@@ -148,7 +148,7 @@ $(function(){
       url: "<?php echo base_url('index.php/customer/callDetails');?>",
       data: { 'id': id },
       success: function(res){
-        console.log(res);
+        // console.log(res);
         $('#edit_customer').find('input').val("");
 
         if(res['status'] == 'success'){
@@ -169,7 +169,7 @@ $(function(){
         }
       },
       error: function(err){
-        console.log(err);
+        // console.log(err);
         Swal.fire('Error!');
         return false;
       }
