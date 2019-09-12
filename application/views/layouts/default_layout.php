@@ -82,47 +82,13 @@
         </a>
         <div id="menuproduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="<?php echo base_url();?>product">จัดการสินค้า</a>
-            <a class="collapse-item" href="cards.html">เพิ่มสินค้า</a>
+            <h6 class="collapse-header">รายการ:</h6>
+            <a class="collapse-item" href="<?php echo base_url();?>product">รายการสินค้า</a>
+            <a class="collapse-item" href="<?php echo base_url();?>product/add_product">เพิ่มสินค้า</a>
             <a class="collapse-item" href="cards.html">สมุดราคา</a>
             <a class="collapse-item" href="cards.html">ซัพพลายเออร์</a>
           </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menustock" aria-expanded="true" aria-controls="menustock">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>จัดการสต็อค</span>
-        </a>
-        <div id="menustock" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="<?php echo base_url();?>product">จัดการสินค้า</a>
-            <a class="collapse-item" href="cards.html">เพิ่มสินค้า</a>
-            <a class="collapse-item" href="cards.html">สมุดราคา</a>
-            <a class="collapse-item" href="cards.html">ซัพพลายเออร์</a>
-          </div>
-        </div>
-      </li>
-
-       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menupomotion" aria-expanded="true" aria-controls="menupomotion">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>โปรโมชัน</span>
-        </a>
-        <div id="menupomotion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="<?php echo base_url();?>product">จัดการโปรโมชัน</a>
-         <!--    <a class="collapse-item" href="cards.html">เพิ่มสินค้า</a>
-            <a class="collapse-item" href="cards.html">สมุดราคา</a>
-            <a class="collapse-item" href="cards.html">ซัพพลายเออร์</a> -->
-          </div>
-        </div>
+        </div> 
       </li>
 
 
@@ -137,6 +103,24 @@
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="<?php echo base_url();?>customer">ข้อมูลลูกค้า</a>
             <a class="collapse-item" href="<?php echo base_url();?>customer/new_customer">เพิ่มลูกค้า</a>
+         <!--    <a class="collapse-item" href="cards.html">เพิ่มสินค้า</a>
+            <a class="collapse-item" href="cards.html">สมุดราคา</a>
+            <a class="collapse-item" href="cards.html">ซัพพลายเออร์</a> -->
+          </div>
+        </div>
+      </li>
+
+
+       <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menupomotion" aria-expanded="true" aria-controls="menupomotion">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>โปรโมชัน</span>
+        </a>
+        <div id="menupomotion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Components:</h6>
+            <a class="collapse-item" href="<?php echo base_url();?>product">จัดการโปรโมชัน</a>
          <!--    <a class="collapse-item" href="cards.html">เพิ่มสินค้า</a>
             <a class="collapse-item" href="cards.html">สมุดราคา</a>
             <a class="collapse-item" href="cards.html">ซัพพลายเออร์</a> -->
