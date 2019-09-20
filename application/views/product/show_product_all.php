@@ -31,25 +31,25 @@
                   </tr>
                 </tfoot>
                 <tbody>
-                  <?php if(!empty($customer_data)): 
-                          foreach($customer_data as $idx => $val):?>
+                  <?php if(!empty($product_data)): 
+                          foreach($product_data as $idx => $val):?>
                           <tr>
                             <td align="center"><?php echo  $idx+1;?></td>
-                            <td align="center"><?php echo $val->cus_name;?></td>
-                            <td><?php echo $val->cus_name_social;?></td>
-                            <td><?php echo $val->cus_phone;?></td>
-                            <td><?php echo $val->cus_email;?></td>
+                            <td align="center"><?php echo $val->pro_name;?></td>
+                            <td><?php echo $val->pro_detail;?></td>
+                            <td><?php echo $val->pro_qty;?></td>
+                            <td><?php echo $val->pro_price;?></td>
                             <td align="center">
 
                             <!--   <button type="button" class="btn btn-primary" onclick="callDetails('<?php echo $val->cus_id;?>');">ดูข้อมูล
                                 <span class="glyphicon glyphicon-list-alt"></span>
                               </button> -->
 
-                              <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->cus_id;?>');">แก้ไข
+                              <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->pro_id;?>');">แก้ไข
                                 <span class="glyphicon glyphicon-list-alt"></span>
                               </button>
 
-                              <button type="button" class="btn-md btn-danger btn-sm btn-danger" onclick="delRow('<?php echo $val->cus_id;?>');">ลบ
+                              <button type="button" class="btn-md btn-danger btn-sm btn-danger" onclick="delRow('<?php echo $val->pro_id;?>');">ลบ
                                 <span class="glyphicon glyphicon-trash"></span>
                               </button>
 

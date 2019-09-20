@@ -23,7 +23,7 @@
                       <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>รายละเอียดสินค้า</b></label>
                         <div class="col-sm-8">
-                           <textarea  id="customer_address" name="product_detail" rows="4" class="form-control" placeholder="รายละเอียดสินค้า ..." style="overflow: hidden; resize: none;"></textarea>
+                           <textarea  id="product_detail" name="product_detail" rows="4" class="form-control" placeholder="รายละเอียดสินค้า ..." style="overflow: hidden; resize: none;"></textarea>
                         </div>
                       </div>
 
@@ -81,8 +81,8 @@
                         </div>
                     </div>
 
-                <center><button type="button" id="add_customer" class="btn btn-primary">เพิ่มข้อมูล</button>  
-                <button type="button" id="cancal_customer" class="btn btn-danger">ยกเลิก</button></center>
+                <center><button type="button" id="add_product" class="btn btn-primary">เพิ่มข้อมูล</button>  
+                <button type="button" id="cancal_product" class="btn btn-danger">ยกเลิก</button></center>
                 <br><br>
         </div>
 
@@ -96,99 +96,99 @@
         <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
         <script type="text/javascript">
           
-          $('#add_customer').on('click', function(){
-
-          product_name
-          product_detail
-          product_price
-          product_qty
-          product_unit
-          product_category
-          product_location
-          product_img
+          $('#add_product').on('click', function(){
         
-            var name = $('#customer_name').val();
-            var name_socail = $('#customer_name_socail').val();
-            var phone = $('#customer_phone').val();
-            var email = $('#customer_email').val();
-            var id_card = $('#customer_id_card').val();
-            var address = $('#customer_address').val();
-            var postal = $('#customer_postal').val();
-            var chanel = $('#customer_chanel').val();
+            var name = $('#product_name').val();
+            var detail = $('#product_detail').val();
+            var price = $('#product_price').val();
+            var qty = $('#product_qty').val();
+            var unit = $('#product_unit').val();
+            var category = $('#product_category').val();
+            var location = $('#product_location').val();
+            var img = $('#product_img').val();
 
             if (name == "") {
-              Swal.fire('กรอกข้อมูลขื่อ-สกุล');
+              Swal.fire('กรอกข้อมูลชื่อสินค้า');
 
-               $( "#customer_name" ).focus();
+               $( "#product_name" ).focus();
 
-            }else if(name_socail == ""){
+            }else if(detail == ""){
               
-              Swal.fire('กรอกข้อมูลname_socail');
+              Swal.fire('กรอกข้อมูล รายละเอียดสินค้า');
 
-              $( "#customer_name_socail" ).focus();
+              $( "#product_detail" ).focus();
 
-            }else if(phone == ""){
+            }else if(price == ""){
               
-              Swal.fire('กรอกข้อมูลphone');
+              Swal.fire('กรอกข้อมูลราคา');
 
-              $( "#customer_phone" ).focus();  
+              $( "#product_price" ).focus();  
 
-            }else if(email == ""){
+            }else if(qty == ""){
               
-              Swal.fire('กรอกข้อมูลemail');
+              Swal.fire('กรอกข้อมูลจำนวนสินค้า');
 
-              $( "#customer_email" ).focus();
+              $( "#product_qty" ).focus();
 
-            }else if(id_card == ""){
+            }else if(unit == ""){
               
-              Swal.fire('กรอกข้อมูลid_card');
+              Swal.fire('กรอกข้อมูลหน่วยนับ');
 
-              $( "#customer_id_card" ).focus();
+              $( "#product_unit" ).focus();
 
-            }else if(address == ""){
+            }else if(category == ""){
               
-              Swal.fire('กรอกข้อมูลaddress');
+              Swal.fire('กรอกข้อมูลประเภทสินค้า');
 
-              $( "#customer_address" ).focus();
+              $( "#product_category" ).focus();
 
-            }else if(postal == ""){
+            }else if(location == ""){
               
-              Swal.fire('กรอกข้อมูลpostal');
+              Swal.fire('กรอกข้อมูลที่เก็บสินค้า');
 
-              $( "#customer_postal" ).focus();
+              $( "#product_location" ).focus();
 
-            }else if(chanel == ""){
+            }else if(img == ""){
               
-              Swal.fire('กรอกข้อมูลchanel');
+              Swal.fire('กรุณาอัพโหลดรูปสินค้า');
 
-              $( "#customer_chanel" ).focus();
+              $( "#product_img" ).focus();
 
             }else{
+
+
+              // var img1 = new FormData();
+              // if($(this).prop('files').length > 0)
+              // {
+              //     var file = $(this).prop('files')[0];
+              //     img1.append("image/jpeg","image/png","image/jpg", file);
+              // }
 
               $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: "<?php echo base_url('customer/add_new_customer');?>",
+                url: "<?php echo base_url('product/add_product');?>",
                 data: { 'name': name,
-                        'name_socail': name_socail,
-                        'phone': phone,
-                        'email': email,
-                        'id_card': id_card,
-                        'address': address,
-                        'postal': postal,
-                        'chanel': chanel
+                        'detail': detail,
+                        'price': price,
+                        'qty': qty,
+                        'unit': unit,
+                        'category': category,
+                        'location': location,
+                        'img': img
                       },
+
                 success: function(res){
 
                   if(res['status'] == 'success'){
 
-                    Swal.fire('Success!!!');
+                    Swal.fire('เพิ่มข้อมูลสินค้าเรียบร้อย!!!');
                     
                     return false;
 
                   }else{
 
-                    Swal.fire('Not Success!!!')
+                    Swal.fire('ไม่สามารถเพิ่มข้อมูลสินค้า!!!')
                     
                     return false;
                   }
@@ -205,4 +205,18 @@
           });  
 
 
-        </script> 
+
+           $('#cancal_product').on('click', function(){
+
+              $('#product_name').val('');
+              $('#product_detail').val('');
+              $('#product_price').val('');
+              $('#product_qty').val('');
+              $('#product_unit').val('');
+              $('#product_category').val('');
+              $('#product_location').val('');
+              $('#product_img').val('');
+
+           });
+
+        </script>  
