@@ -87,6 +87,7 @@ class Product extends CI_Controller {
 //     move_uploaded_file( $file, "uploads/" . $file);
 // }
 
+
 		if($product_name != ""){
 
 			$sql = "INSERT INTO tb_product (
@@ -129,17 +130,65 @@ class Product extends CI_Controller {
 	public function show_product_update()
 	{
 
+		$sql = "SELECT * FROM tb_product WHERE delete_flag = 1;";
+
+		$data['show_product'] = $this->product_model->add_new_product($sql);
+
+		echo json_encode($data);
 	}
 
 
 	public function update_product()
 	{
 
+		$product_name = $this->input->post('name');
+		$product_detail = $this->input->post('detail');
+		$product_price = $this->input->post('price');
+		$product_qty = $this->input->post('qty');
+		$product_unit = $this->input->post('unit');
+		$product_category = $this->input->post('category');
+		$product_location = $this->input->post('location');
+		$product_img = $this->input->post('img');
+
+		// $data['update_product'] = $this->product_model->update_product($sql);
+
+		// $id = $this->input->post('id');
+		// // $customerID = $this->input->post('customerID');
+		// $customername = $this->input->post('name');
+		// $customername_socail = $this->input->post('name_socail');
+		// $customerphone = $this->input->post('phone');
+		// $customeremail = $this->input->post('email');
+		// $customerid_card = $this->input->post('id_card');
+		// $customeraddress = $this->input->post('address');
+		// $customerpostal = $this->input->post('postal');
+		// // $customerchanel = $this->input->post('chanel');
+		// $customerchanel = 1;
+
+		$sql = "UPDATE
+					tb_customer
+				SET
+					tb_customer.cus_name = '$customername',
+					tb_customer.cus_name_social = '$customername_socail',
+					tb_customer.cus_phone = '$customerphone',
+					tb_customer.cus_email = '$customeremail',
+					tb_customer.cus_id_card_number = '$customerid_card',
+					tb_customer.cus_address = '$customeraddress',
+					tb_customer.cus_postal = '$customerpostal',
+					tb_customer.cus_sales_channel = '$customerchanel'
+				WHERE
+					tb_customer.cus_id = '$id'";
+		$this->customer_model->edit_customer($sql);
+
+		$data['status'] = 'success';
+		echo json_encode($data);
+
 	}
 
 
 	public function delete_product()
 	{
+
+		$product_id = $this->input->post('id');
 
 	}
 
