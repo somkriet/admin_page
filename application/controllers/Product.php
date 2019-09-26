@@ -38,6 +38,8 @@ class Product extends CI_Controller {
 
 	}
 
+	
+
 	public function add_product()
 	{
 	
@@ -50,15 +52,30 @@ class Product extends CI_Controller {
 		$product_location = $this->input->post('location');
 		$product_img = $this->input->post('img');
 
-		$product_id = '2';
-		$check_product = "SELECT pro_id FROM product WHERE delete_flag = 1;";
+		// $product_id = '2';
+		$check_product_data = "SELECT pro_id FROM tb_product WHERE delete_flag = 1;";
+		$get_check_product_data = $this->product_model->show_all_product($check_product_data);
 
-		if ($check_product != "") {
-			$product_id = "";
+		$product_date = date('Ymd');
+
+		if ($get_check_product_data == "") {
+
+			$product_id = "PD".$product_date."0001";
+
 		}else{
-			$product_id = "";
-		}
 
+			$check_product = "SELECT SUBSTR(pro_id,11,13) AS mypro_id 
+							  FROM tb_product 
+							  WHERE SUBSTR(pro_id,3,8) = $product_date  
+							  AND delete_flag = 1";
+			$data['get_check_product'] = $this->product_model->show_all_product($check_product);
+
+			$product_id = "PD".$product_date.$this->add_index($data['get_check_product']);
+			// print_r($get_check_product);
+
+		}
+			
+			// exit();
 // pinteres
 		// if ($this->upload->do_upload('product_img')) {
   //           $upload_data = $this->upload->data();
@@ -76,7 +93,6 @@ class Product extends CI_Controller {
   //       }else{
   //           $product_img = 'nodata'; 
   //       }
-
 
 
 //         if ($_FILES["music"]["error"] == UPLOAD_ERR_OK)
@@ -110,7 +126,7 @@ class Product extends CI_Controller {
 						'$product_unit',
 						'$product_category',
 						'$product_location',
-						'NOW()',
+						'$product_date',
 						'$product_img'
 					)";
 
@@ -118,13 +134,33 @@ class Product extends CI_Controller {
 
 				$data['status'] = 'success';
 
-			}else{
+			}else{ 
 
 			 	$data['status'] = 'notsave';
 
 			}
 
 			echo json_encode($data);
+	}
+
+	function add_index($data){
+
+		$run_max = max($data);
+		$num = $run_max->mypro_id+1;
+		$max = strlen($num);
+
+		if ($max == 1) {
+			$a = '000'.$num;
+		}elseif ($max == 2) {
+			$a = '00'.$num;
+		}elseif ($max == 3) {
+			$a = '0'.$num;
+		}else{
+			$a = $num;
+		}
+
+		return $a;
+
 	}
 
 	public function show_product_update()
@@ -189,6 +225,9 @@ class Product extends CI_Controller {
 	{
 
 		$product_id = $this->input->post('id');
+
+		$sql="";
+		$delete="";
 
 	}
 

@@ -1,3 +1,5 @@
+
+
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
@@ -99,6 +101,12 @@
 
                 <center><button type="button" id="add_customer" class="btn btn-primary">เพิ่มข้อมูล</button>  
                 <button type="button" id="cancal_customer" class="btn btn-danger">ยกเลิก</button></center>
+
+
+
+
+                
+
 
         </div>
         <!-- /.container-fluid -->
@@ -205,6 +213,12 @@
             }
 
           });  
+
+
+
+
+
+
 
 
         </script> 
