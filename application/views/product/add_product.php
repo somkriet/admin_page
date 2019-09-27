@@ -166,11 +166,13 @@ font-size:25px;
                           <!-- <input type="file" class="form-control-file" id="product_img"> -->
 
                           <div id="image_preview">
-                            <img id="product_img" src="noimage.png" />
+                            <img id="product_img" src="" />
                           </div>
                           <div id="selectImage">
                           <!-- <label>Select Your Image</label><br/> -->
                           <input type="file" name="file" id="file" required />
+
+                          <input type="gu" name="" id="" required>
                           <!-- <input type="submit" value="Upload" class="submit" /> -->
                           </div> 
 
@@ -234,7 +236,7 @@ font-size:25px;
             var file_data = $('.file').prop('files')[0];
             
           
-            // var name = img.files[0].name;
+            // var name = img.files[0].name; 
             // var form_data = new FormData();
             // var ext = name.split('.').pop().toLowerCase();
             // if(jQuery.inArray(ext, ['gif','png','jpg','jpeg']) == -1) 
