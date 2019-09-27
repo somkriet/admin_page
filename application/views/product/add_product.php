@@ -228,7 +228,31 @@ font-size:25px;
             var unit = $('#product_unit').val();
             var category = $('#product_category').val();
             var location = $('#product_location').val();
-            var img = $('#product_img').val();
+            // var img = $('#file').val();
+
+
+            var file_data = $('.file').prop('files')[0];
+            
+          
+            // var name = img.files[0].name;
+            // var form_data = new FormData();
+            // var ext = name.split('.').pop().toLowerCase();
+            // if(jQuery.inArray(ext, ['gif','png','jpg','jpeg']) == -1) 
+            // {
+            //  alert("Invalid Image File");
+            // }
+            // var oFReader = new FileReader();
+              
+            // oFReader.readAsDataURL($('#file').val().files[0]);
+            // var f = img.files[0];
+            // var fsize = f.size||f.fileSize;
+            // if(fsize > 2000000)
+            // {
+            //   alert("Image File Size is very big");
+            // }else{
+            //   form_data.append("file", img.files[0]);
+            // }
+
 
             if (name == "") {
               Swal.fire('กรอกข้อมูลชื่อสินค้า');
@@ -271,15 +295,16 @@ font-size:25px;
 
               $( "#product_location" ).focus();
 
-            }else if(img == ""){
-              
+            }else if(file_data == undefined){
+                
               Swal.fire('กรุณาอัพโหลดรูปสินค้า');
 
-              $( "#product_img" ).focus();
+              // $( "#product_img" ).focus();
 
             }else{
 
-
+              var form_data = new FormData();                  
+                form_data.append('file', file_data);
               // var img1 = new FormData();
               // if($(this).prop('files').length > 0)
               // {
@@ -298,7 +323,7 @@ font-size:25px;
                         'unit': unit,
                         'category': category,
                         'location': location,
-                        'img': img
+                        form_data
                       },
 
                 success: function(res){

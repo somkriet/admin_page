@@ -52,6 +52,17 @@ class Product extends CI_Controller {
 		$product_location = $this->input->post('location');
 		$product_img = $this->input->post('img');
 
+
+		if($_FILES["file"]["name"] != '')
+		{
+		 $test = explode('.', $_FILES["file"]["name"]);
+		 $ext = end($test);
+		 $name = rand(100, 999) . '.' . $ext;
+		 $location = './uploads/' . $name;  
+		 move_uploaded_file($_FILES["file"]["tmp_name"], $location);
+		 // echo '<img src="'.$location.'" height="150" width="225" class="img-thumbnail" />';
+		}
+
 		// $product_id = '2';
 		$check_product_data = "SELECT pro_id FROM tb_product WHERE delete_flag = 1;";
 		$get_check_product_data = $this->product_model->show_all_product($check_product_data);
@@ -76,8 +87,7 @@ class Product extends CI_Controller {
 		}
 			
 			// exit();
-// pinteres
-		// if ($this->upload->do_upload('product_img')) {
+		// if ($this->upload->do_upload('img')) {
   //           $upload_data = $this->upload->data();
   //           $params['attach'] = $upload_data['full_path'];
   //           // for insert into db
@@ -93,6 +103,9 @@ class Product extends CI_Controller {
   //       }else{
   //           $product_img = 'nodata'; 
   //       }
+
+        print_r($product_img);
+        exit();
 
 
 //         if ($_FILES["music"]["error"] == UPLOAD_ERR_OK)
@@ -145,7 +158,9 @@ class Product extends CI_Controller {
 
 	function add_index($data){
 
-		$run_max = max($data);
+		$data_num = $data;
+	
+		$run_max = max($data_num);
 		$num = $run_max->mypro_id+1;
 		$max = strlen($num);
 
@@ -159,6 +174,8 @@ class Product extends CI_Controller {
 			$a = $num;
 		}
 
+		// print_r($a);
+		// exit();
 		return $a;
 
 	}
