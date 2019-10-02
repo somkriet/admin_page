@@ -23,6 +23,7 @@
                 <tfoot>
                   <tr>
                       <th>No</th>
+                      <th>รหัสสินค้า</th>
                       <th>ชื่อสินค้า</th>
                       <th>ประเภทสินค้า</th>
                       <th>จำนวน</th>
@@ -35,6 +36,7 @@
                           foreach($product_data as $idx => $val):?>
                           <tr>
                             <td align="center"><?php echo  $idx+1;?></td>
+                            <td align="center"><?php echo $val->pro_id;?></td>
                             <td align="center"><?php echo $val->pro_name;?></td>
                             <td><?php echo $val->pro_detail;?></td>
                             <td><?php echo $val->pro_qty;?></td>
@@ -70,7 +72,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">EDIT CUSTOMER</h5>
+              <h5 class="modal-title" id="exampleModalLabel">EDIT PRODUCT</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -84,35 +86,35 @@
 
                     <div class="form-group">
                       <label for="exampleFormControlInput1"><b>รหัสลูกค้า</b></label>
-                      <input type="text" class="form-control" id="customer_id" placeholder="รหัสลูกค้า ..." disabled>
+                      <input type="text" class="form-control" id="product_id" placeholder="รหัสสินค้า ..." disabled>
                     </div>
 
                     <div class="form-group">
-                      <label for="exampleFormControlInput1"><b>ชื่อ-สกุล ลูกค้า</b></label>
-                      <input type="text" class="form-control" id="customer_name" placeholder="ชื่อ-สกุลลูกค้า ...">
+                      <label for="exampleFormControlInput1"><b>ชื่อสินค้า</b></label>
+                      <input type="text" class="form-control" id="product_name" placeholder="ชื่อสินค้า ...">
                     </div>
 
                     <div class="form-group">
-                      <label for="exampleFormControlInput1"><b>ชื่อโซเชียล</b></label>
-                      <input type="text" class="form-control" id="customer_name_socail" placeholder="ชื่อโซเชียลลูกค้า ที่มาจากช่องทาง Faceook หรือ Line ...">
+                      <label for="exampleFormControlInput1"><b>รายละเอียดสินค้า</b></label>
+                      <input type="text" class="form-control" id="product_detail" placeholder="รายละเอียดสินค้า ...">
                     </div>
 
                     <div class="form-group">
-                      <label for="exampleFormControlInput1"><b>เบอร์โทรศัพท์</b></label>
-                      <input type="text" class="form-control" id="customer_phone" placeholder="เบอร์โทรลูกค้า ...">
+                      <label for="exampleFormControlInput1"><b>ราคาขาย</b></label>
+                      <input type="text" class="form-control" id="product_price" placeholder="ราคาขาย ...">
                      
-                      <i class="fa fa-info-circle"></i> หมายเลขโทรศัพท์ที่ถูกต้อง ตัวอย่าง 0614207877 หรือ 0246255934                    
+                      <i class="fa fa-info-circle"></i>
                     </div>
 
                     <div class="form-group">
-                      <label for="exampleFormControlInput1"><b>อีเมล</b></label>
-                      <input type="email" class="form-control" id="customer_email" placeholder="อีเมลล์ลูกค้า ...">
-                       <i class="fa fa-info-circle"></i> รูปแบบอีเมลล์ที่ถูกต้อง เช่น info@xcommerce.co.th    
+                      <label for="exampleFormControlInput1"><b>จำนวน</b></label> 
+                      <input type="email" class="form-control" id="product_qty" placeholder="อีเมลล์ลูกค้า ...">
+                       <i class="fa fa-info-circle"></i>
                     </div>
 
                     <div class="form-group">
-                      <label for="exampleFormControlInput1"><b>เลขประจำตัวประชาชน</b></label>
-                      <input type="text" class="form-control" id="customer_id_card" placeholder="เลขประจำตัวประชาชน">
+                      <label for="exampleFormControlInput1"><b>หน่วยนับ</b></label>
+                      <input type="text" class="form-control" id="product_unit" placeholder="หน่วยนับ">
                     </div>
 
                   </div>
@@ -122,7 +124,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id="save_edit_customer">Save changes</button>
+              <button type="button" class="btn btn-primary" id="save_edit_product">Save changes</button>
             </div>
           </div>
         </div>
@@ -145,14 +147,14 @@ $(function(){
     $.ajax({
       type: "POST",
       dataType: "JSON",
-      url: "<?php echo base_url('index.php/customer/callDetails');?>",
+      url: "<?php echo base_url('index.php/product/callDetails');?>",
       data: { 'id': id },
       success: function(res){
         // console.log(res);
         $('#edit_customer').find('input').val("");
 
         if(res['status'] == 'success'){
-          $('#customer_id').val(res['customer_data'][0]['cus_id']);
+          $('#pro_id').val(res['customer_data'][0]['cus_id']);
           $('#customer_name').val(res['customer_data'][0]['cus_name']);
           $('#customer_name_socail').val(res['customer_data'][0]['cus_name_social']);
           $('#customer_phone').val(res['customer_data'][0]['cus_phone']);
@@ -179,7 +181,7 @@ $(function(){
 
   
 //function edit
-  $('#save_edit_customer').on('click', function(){
+  $('#save_edit_product').on('click', function(){
             
             var id = $('#customer_id').val();
             var name = $('#customer_name').val();
@@ -195,7 +197,7 @@ $(function(){
               Swal.fire('กรอกข้อมูลขื่อ-สกุล');
 
                $( "#customer_name" ).focus();
-
+ 
             }else if(name_socail == ""){
               
               Swal.fire('กรอกข้อมูลname_socail');
@@ -243,16 +245,16 @@ $(function(){
               $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: "<?php echo base_url('customer/save_edit_customer');?>",
+                url: "<?php echo base_url('product/save_edit_product');?>",
                 data: { 'id' : id,
                         'name': name,
-                        'name_socail': name_socail,
-                        'phone': phone,
-                        'email': email,
-                        'id_card': id_card,
-                        'address': address,
-                        'postal': postal,
-                        'chanel': chanel
+                        'detail': detail,
+                        'price': price,
+                        'qty': qty,
+                        'unit': unit,
+                        'category': category,
+                        'location': location,
+                        'img': img
                       },
                 success: function(res){
 

@@ -53,15 +53,46 @@ class Product extends CI_Controller {
 		$product_img = $this->input->post('img');
 
 
-		if($_FILES["file"]["name"] != '')
-		{
-		 $test = explode('.', $_FILES["file"]["name"]);
-		 $ext = end($test);
-		 $name = rand(100, 999) . '.' . $ext;
-		 $location = './uploads/' . $name;  
-		 move_uploaded_file($_FILES["file"]["tmp_name"], $location);
-		 // echo '<img src="'.$location.'" height="150" width="225" class="img-thumbnail" />';
-		}
+		// if($_FILES["file"]["name"] != '')
+		// {
+		//  $test = explode('.', $_FILES["file"]["name"]);
+		//  $ext = end($test);
+		//  $name = rand(100, 999) . '.' . $ext;
+		//  $location = './uploads/' . $name;  
+		//  move_uploaded_file($_FILES["file"]["tmp_name"], $location);
+		//  // echo '<img src="'.$location.'" height="150" width="225" class="img-thumbnail" />';
+		// } 
+
+
+
+
+		if ($this->upload->do_upload('file_attach')) {
+                        $upload_data = $this->upload->data();
+                        $params['attach'] = $upload_data['full_path'];
+                        // for insert into db
+                    
+                        if ($upload_data['file_name'] != "") {
+                            $data['attach_file'] = $upload_data['file_name'];
+
+                            // $img_url = 'uploads/'.$data['attach_file'];
+                        }else{
+                            $data['attach_file'] = 'nodata';    
+                        }
+                       
+                    }else{
+                        $data['attach_file'] = 'nodata';
+                    }
+
+
+                    if ($data['attach_file'] == 'nodata') {
+                        
+                        $img_url = 'uploads/-';
+                    }else{
+                        $img_url = 'uploads/'.$data['attach_file'];
+                    }
+
+
+
 
 		// $product_id = '2';
 		$check_product_data = "SELECT pro_id FROM tb_product WHERE delete_flag = 1;";
@@ -180,6 +211,37 @@ class Product extends CI_Controller {
 
 	}
 
+	public function save_edit_product(){
+
+		$product_name = $this->input->post('name');
+		$product_detail = $this->input->post('detail');
+		$product_price = $this->input->post('price');
+		$product_qty = $this->input->post('qty');
+		$product_unit = $this->input->post('unit');
+		$product_category = $this->input->post('category');
+		$product_location = $this->input->post('location');
+		$product_img = $this->input->post('img');
+
+		$sql = "UPDATE
+					tb_product
+				SET
+					tb_product.pro_name = '$product_name',
+					tb_product.pro_detail = '$product_detail',
+					tb_product.product_price = '$product_price',
+					tb_product.pro_qty = '$product_qty',
+					tb_product.pro_unit = '$product_unit',
+					tb_product.pro_category = '$product_category',
+					tb_product.pro_location = '$product_location',
+					tb_product.pro_img = '$product_img'
+				WHERE
+					tb_product.pro_id = '$id'";
+		$this->customer_model->edit_product($sql);
+
+		$data['status'] = 'success';
+		echo json_encode($data);
+
+	}
+
 	public function show_product_update()
 	{
 
@@ -204,7 +266,6 @@ class Product extends CI_Controller {
 		$product_img = $this->input->post('img');
 
 		// $data['update_product'] = $this->product_model->update_product($sql);
-
 		// $id = $this->input->post('id');
 		// // $customerID = $this->input->post('customerID');
 		// $customername = $this->input->post('name');
@@ -216,7 +277,7 @@ class Product extends CI_Controller {
 		// $customerpostal = $this->input->post('postal');
 		// // $customerchanel = $this->input->post('chanel');
 		// $customerchanel = 1;
-
+		
 		$sql = "UPDATE
 					tb_customer
 				SET
