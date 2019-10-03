@@ -211,6 +211,26 @@ class Product extends CI_Controller {
 
 	}
 
+
+	public function callDetails(){
+
+		$product_id = $this->input->post('id');
+
+		$sql = "SELECT * FROM tb_product WHERE pro_id = '$product_id' AND delete_flag = 1;";
+
+		$product = $this->product_model->show_all_product($sql);
+
+		if ($product != "") {
+			$data['status'] = 'success';
+			$data['show_product'] = $product;
+		}else{
+			$data['status'] = 'notsuccess';
+			$data['show_product'] = 'nodata';
+		}
+
+		echo json_encode($data);
+	}
+
 	public function save_edit_product(){
 
 		$product_name = $this->input->post('name');

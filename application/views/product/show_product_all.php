@@ -68,7 +68,7 @@
         <!-- /.container-fluid -->
 
       <!-- Modal edit-->
-      <div class="modal fade" id="edit_customer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="edit_product" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -85,7 +85,7 @@
                   <div class="col-sm-6 col-md-12">
 
                     <div class="form-group">
-                      <label for="exampleFormControlInput1"><b>รหัสลูกค้า</b></label>
+                      <label for="exampleFormControlInput1"><b>รหัสสินค้า</b></label>
                       <input type="text" class="form-control" id="product_id" placeholder="รหัสสินค้า ..." disabled>
                     </div>
 
@@ -151,20 +151,20 @@ $(function(){
       data: { 'id': id },
       success: function(res){
         // console.log(res);
-        $('#edit_customer').find('input').val("");
+        $('#edit_product').find('input').val("");
 
         if(res['status'] == 'success'){
-          $('#pro_id').val(res['customer_data'][0]['cus_id']);
-          $('#customer_name').val(res['customer_data'][0]['cus_name']);
-          $('#customer_name_socail').val(res['customer_data'][0]['cus_name_social']);
-          $('#customer_phone').val(res['customer_data'][0]['cus_phone']);
-          $('#customer_email').val(res['customer_data'][0]['cus_email']);
-          $('#customer_id_card').val(res['customer_data'][0]['cus_id_card_number']);
+          $('#product_id').val(res['show_product'][0]['pro_id']);
+          $('#product_name').val(res['show_product'][0]['pro_name']);
+          $('#product_detail').val(res['show_product'][0]['pro_detail']);
+          $('#product_price').val(res['show_product'][0]['pro_price']);
+          $('#product_qty').val(res['show_product'][0]['pro_qty']);
+          $('#product_unit').val(res['show_product'][0]['pro_unit']);
           // $('#contactTel').val(res['result'][0]['cus_address']);
           // $('#contactTel').val(res['result'][0]['cus_postal']);
           // $('#contactTel').val(res['result'][0]['cus_sales_channel']);
 
-          $('#edit_customer').modal('show');
+          $('#edit_product').modal('show');
         }else{
           Swal.fire('Error!');
           return false;
@@ -196,7 +196,7 @@ $(function(){
             if (name == "") {
               Swal.fire('กรอกข้อมูลขื่อ-สกุล');
 
-               $( "#customer_name" ).focus();
+               $( "#customer_name" ).focus(); 
  
             }else if(name_socail == ""){
               
@@ -217,7 +217,7 @@ $(function(){
               $( "#customer_email" ).focus();
 
             }else if(id_card == ""){
-              
+               
               Swal.fire('กรอกข้อมูลid_card');
 
               $( "#customer_id_card" ).focus();
