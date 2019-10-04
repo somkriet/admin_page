@@ -85,6 +85,13 @@
                 <div class="row">
                   <div class="col-sm-6 col-md-12">
 
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>รหัสสินค้า</b></label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="product_id" placeholder="รหัสสินค้า ...">
+                        </div>
+                      </div>
+
                      <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ชื่อสินค้า</b></label>
                         <div class="col-sm-8">
@@ -160,7 +167,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id="save_edit_product">Save changes</button>
+              <button type="button" class="btn btn-primary" id="edit_product_save">Save changes</button>
             </div>
           </div>
         </div>
@@ -214,7 +221,7 @@ $(function(){
 
   
 //function edit
-  $('#save_edit_product').on('click', function(){
+  $('#edit_product_save').on('click', function(){
             
             var id = $('#product_id').val();
             var name = $('#product_name').val();
@@ -225,7 +232,6 @@ $(function(){
             var category = $('#product_category').val();
             var location = $('#product_location').val();
     
-
             if (name == "") {
               Swal.fire('กรอกข้อมูลขื่อ');
 
@@ -271,8 +277,8 @@ $(function(){
                     Swal.fire('Save Success!!!');
                     
                     setTimeout(function(){
-                      // window.reload();
-                      location.href = '<?php echo base_url('product');?>';
+                     window.location.reload();
+                      // location.href = '<?php echo base_url('product');?>';
                     }, 1000);
                     return false;
 

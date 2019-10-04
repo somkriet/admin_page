@@ -243,6 +243,8 @@ class Product extends CI_Controller {
 		$product_location = $this->input->post('location');
 		// $product_img = $this->input->post('img');
 		 // tb_product.pro_img = '$product_img'
+
+
 		$sql = "UPDATE
 					tb_product
 				SET
@@ -255,7 +257,8 @@ class Product extends CI_Controller {
 					tb_product.pro_location = '$product_location'
 					
 				WHERE
-					tb_product.pro_id = '$product_id'";
+					tb_product.pro_id = '$product_id'
+				AND tb_product.delete_flag = 1;";
 		$this->product_model->edit_product($sql);
 
 		$data['status'] = 'success';
