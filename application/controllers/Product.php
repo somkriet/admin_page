@@ -324,8 +324,15 @@ class Product extends CI_Controller {
 
 		$product_id = $this->input->post('id');
 
-		$sql="";
-		$delete="";
+		$sql = "UPDATE
+					tb_product
+				SET
+					tb_product.delete_flag = 0
+				WHERE
+					tb_product.pro_id = '$product_id'";
+		$this->customer_model->delete_customer($sql);
+
+		echo json_encode('success');
 
 	}
 

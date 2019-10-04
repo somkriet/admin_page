@@ -168,7 +168,7 @@ $(function(){
         }else{
           Swal.fire('Error!');
           return false;
-        }
+        } 
       },
       error: function(err){
         // console.log(err);
@@ -289,18 +289,18 @@ $(function(){
 function delRow(id){
     Swal.fire({
       title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      text: "คุณกำลังจะลบสินค้าชิ้นนี้ใช่หรือไม่!",
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
-      if (result.value) {
+      if (result.value) { 
         $.ajax({
           type: "POST",
           dataType: "JSON",
-          url: "<?php echo base_url('index.php/customer/delcustomer');?>",
+          url: "<?php echo base_url('index.php/product/delete_product');?>",
           data: { 'id': id },
           success: function(res){
             // Swal.fire('Delete Success');
