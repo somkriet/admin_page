@@ -233,6 +233,7 @@ class Product extends CI_Controller {
 
 	public function save_edit_product(){
 
+		$product_id = $this->input->post('id');
 		$product_name = $this->input->post('name');
 		$product_detail = $this->input->post('detail');
 		$product_price = $this->input->post('price');
@@ -240,22 +241,22 @@ class Product extends CI_Controller {
 		$product_unit = $this->input->post('unit');
 		$product_category = $this->input->post('category');
 		$product_location = $this->input->post('location');
-		$product_img = $this->input->post('img');
-
+		// $product_img = $this->input->post('img');
+		 // tb_product.pro_img = '$product_img'
 		$sql = "UPDATE
 					tb_product
 				SET
 					tb_product.pro_name = '$product_name',
 					tb_product.pro_detail = '$product_detail',
-					tb_product.product_price = '$product_price',
+					tb_product.pro_price = '$product_price',
 					tb_product.pro_qty = '$product_qty',
 					tb_product.pro_unit = '$product_unit',
 					tb_product.pro_category = '$product_category',
-					tb_product.pro_location = '$product_location',
-					tb_product.pro_img = '$product_img'
+					tb_product.pro_location = '$product_location'
+					
 				WHERE
-					tb_product.pro_id = '$id'";
-		$this->customer_model->edit_product($sql);
+					tb_product.pro_id = '$product_id'";
+		$this->product_model->edit_product($sql);
 
 		$data['status'] = 'success';
 		echo json_encode($data);

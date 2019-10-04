@@ -12,7 +12,8 @@
               <table id="myTable" class="display table-responsive-sm" style="width:100%">
                 <thead>
                   <tr>
-                      <th>No</th>
+                     <th>No</th>
+                      <th>รหัสสินค้า</th>
                       <th>ชื่อสินค้า</th>
                       <th>ประเภทสินค้า</th>
                       <th>จำนวน</th>
@@ -84,38 +85,73 @@
                 <div class="row">
                   <div class="col-sm-6 col-md-12">
 
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1"><b>รหัสสินค้า</b></label>
-                      <input type="text" class="form-control" id="product_id" placeholder="รหัสสินค้า ..." disabled>
-                    </div>
+                     <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ชื่อสินค้า</b></label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="product_name" placeholder="ชื่อสินค้า ...">
+                        </div>
+                      </div>
 
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1"><b>ชื่อสินค้า</b></label>
-                      <input type="text" class="form-control" id="product_name" placeholder="ชื่อสินค้า ...">
-                    </div>
+                      <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>รายละเอียดสินค้า</b></label>
+                        <div class="col-sm-8">
+                           <textarea  id="product_detail" name="product_detail" rows="4" class="form-control" placeholder="รายละเอียดสินค้า ..." style="overflow: hidden; resize: none;"></textarea>
+                        </div>
+                      </div>
 
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1"><b>รายละเอียดสินค้า</b></label>
-                      <input type="text" class="form-control" id="product_detail" placeholder="รายละเอียดสินค้า ...">
-                    </div>
+                      <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ราคาขาย</b></label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="product_price" placeholder="ราคาขาย ...">
+                        </div>
+                      </div>
 
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1"><b>ราคาขาย</b></label>
-                      <input type="text" class="form-control" id="product_price" placeholder="ราคาขาย ...">
-                     
-                      <i class="fa fa-info-circle"></i>
-                    </div>
+                      <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>จำนวน</b></label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="product_qty" placeholder="จำนวน ...">
+                        </div>
+                      </div>
 
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1"><b>จำนวน</b></label> 
-                      <input type="email" class="form-control" id="product_qty" placeholder="อีเมลล์ลูกค้า ...">
-                       <i class="fa fa-info-circle"></i>
-                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>หน่วยนับ</b></label>
+                        <div class="col-sm-8">
+                          <select class="form-control" id="product_unit">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                        </div>
+                      </div>
 
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1"><b>หน่วยนับ</b></label>
-                      <input type="text" class="form-control" id="product_unit" placeholder="หน่วยนับ">
-                    </div>
+
+                     <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ประเภทสินค้า</b></label>
+                        <div class="col-sm-8">
+                          <select class="form-control" id="product_category">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                        </div>
+                      </div>
+
+                       <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ที่เก็บสินค้า</b></label>
+                        <div class="col-sm-8">
+                          <select class="form-control" id="product_location">
+                             <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                        </div>
+                      </div>
 
                   </div>
                 </div>
@@ -160,9 +196,6 @@ $(function(){
           $('#product_price').val(res['show_product'][0]['pro_price']);
           $('#product_qty').val(res['show_product'][0]['pro_qty']);
           $('#product_unit').val(res['show_product'][0]['pro_unit']);
-          // $('#contactTel').val(res['result'][0]['cus_address']);
-          // $('#contactTel').val(res['result'][0]['cus_postal']);
-          // $('#contactTel').val(res['result'][0]['cus_sales_channel']);
 
           $('#edit_product').modal('show');
         }else{
@@ -183,62 +216,38 @@ $(function(){
 //function edit
   $('#save_edit_product').on('click', function(){
             
-            var id = $('#customer_id').val();
-            var name = $('#customer_name').val();
-            var name_socail = $('#customer_name_socail').val();
-            var phone = $('#customer_phone').val();
-            var email = $('#customer_email').val();
-            var id_card = $('#customer_id_card').val();
-            var address = $('#customer_address').val();
-            var postal = $('#customer_postal').val();
-            var chanel = $('#customer_chanel').val();
+            var id = $('#product_id').val();
+            var name = $('#product_name').val();
+            var detail = $('#product_detail').val();
+            var price = $('#product_price').val();
+            var qty = $('#product_qty').val();
+            var unit = $('#product_unit').val();
+            var category = $('#product_category').val();
+            var location = $('#product_location').val();
+    
 
             if (name == "") {
-              Swal.fire('กรอกข้อมูลขื่อ-สกุล');
+              Swal.fire('กรอกข้อมูลขื่อ');
 
-               $( "#customer_name" ).focus(); 
- 
-            }else if(name_socail == ""){
+               $("#product_name").focus(); 
+
+            }else if(detail == ""){
               
-              Swal.fire('กรอกข้อมูลname_socail');
+              Swal.fire('กรอกข้อมูล detail');
 
-              $( "#customer_name_socail" ).focus();
+              $("#product_detail").focus();  
 
-            }else if(phone == ""){
+            }else if(price == ""){
               
-              Swal.fire('กรอกข้อมูลphone');
+              Swal.fire('กรอกข้อมูล price');
 
-              $( "#customer_phone" ).focus();  
+              $("#product_price").focus();
 
-            }else if(email == ""){
-              
-              Swal.fire('กรอกข้อมูลemail');
-
-              $( "#customer_email" ).focus();
-
-            }else if(id_card == ""){
+            }else if(qty == ""){
                
-              Swal.fire('กรอกข้อมูลid_card');
+              Swal.fire('กรอกข้อมูล qty');
 
-              $( "#customer_id_card" ).focus();
-
-            }else if(address == ""){
-              
-              Swal.fire('กรอกข้อมูลaddress');
-
-              $( "#customer_address" ).focus();
-
-            }else if(postal == ""){
-              
-              Swal.fire('กรอกข้อมูลpostal');
-
-              $( "#customer_postal" ).focus();
-
-            }else if(chanel == ""){
-              
-              Swal.fire('กรอกข้อมูลchanel');
-
-              $( "#customer_chanel" ).focus();
+              $("#product_qty").focus();
 
             }else{
 
@@ -253,8 +262,7 @@ $(function(){
                         'qty': qty,
                         'unit': unit,
                         'category': category,
-                        'location': location,
-                        'img': img
+                        'location': location
                       },
                 success: function(res){
 
@@ -263,7 +271,8 @@ $(function(){
                     Swal.fire('Save Success!!!');
                     
                     setTimeout(function(){
-                      location.reload();
+                      // window.reload();
+                      location.href = '<?php echo base_url('product');?>';
                     }, 1000);
                     return false;
 
@@ -307,7 +316,7 @@ function delRow(id){
             if (res == 'success') {
               Swal.fire(
                 'Deleted!',
-                'Your file has been deleted.',
+                'ได้ทำการลบสินค้าชิ้นนี้เรียบร้อย.',
                 'success'
               )
             }

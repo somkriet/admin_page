@@ -127,10 +127,16 @@ font-size:25px;
                         </div>
                       </div>
 
-                       <div class="form-group row">
+                      <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>หน่วยนับ</b></label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" id="product_unit" placeholder="หน่วยนับ ...">
+                          <select class="form-control" id="product_unit">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
                         </div>
                       </div>
 
