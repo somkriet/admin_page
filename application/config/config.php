@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // $config['base_url'] = 'http://ci_test/';
 $config['base_url'] = 'http://localhost/admin_system/';
 
-$config['index_page'] = '';
+$config['index_page'] = ''; 
 //$config['uri_protocol'] = 'AUTO';
 /*
 |--------------------------------------------------------------------------

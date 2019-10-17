@@ -88,7 +88,7 @@
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>รหัสสินค้า</b></label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" id="product_id" placeholder="รหัสสินค้า ...">
+                          <input type="text" class="form-control" id="product_id" placeholder="รหัส สินค้า ..." disabled>
                         </div>
                       </div>
 
@@ -180,7 +180,7 @@
 $(function(){
   $('#myTable').dataTable({
     ordering: true,
-    searching: true,
+    searching: true, 
     lengthChange: true
   });
 });
@@ -204,7 +204,7 @@ $(function(){
           $('#product_qty').val(res['show_product'][0]['pro_qty']);
           $('#product_unit').val(res['show_product'][0]['pro_unit']);
 
-          $('#edit_product').modal('show');
+          $('#edit_product').modal('show'); 
         }else{
           Swal.fire('Error!');
           return false;
@@ -212,7 +212,7 @@ $(function(){
       },
       error: function(err){
         // console.log(err);
-        Swal.fire('Error!');
+        Swal.fire('Error!'); 
         return false;
       }
     });
@@ -274,7 +274,8 @@ $(function(){
 
                   if(res['status'] == 'success'){
 
-                    Swal.fire('Save Success!!!');
+                    // Swal.fire('บันทึกข้อมูลสำเร็จ!');
+                    Swal.fire("Save success!", "บันทึกข้อมูลสำเร็จ", "success")
                     
                     setTimeout(function(){
                      window.location.reload();
@@ -284,7 +285,9 @@ $(function(){
 
                   }else{
 
-                    Swal.fire('Not Success!!!')
+                    // Swal.fire('บันทึกข้อมูลไม่สำเร็จ')
+                    // swal("Deleted!", "บันทึกข้อมูลไม่สำเร็จ!.", "success");
+                    Swal.fire("Cancelled", "บันทึกข้อมูลไม่สำเร็จ!", "error");
                     
                     return false;
                   }
