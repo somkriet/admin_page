@@ -36,12 +36,19 @@ class Order extends CI_Controller {
 		$this->template->load('default_layout', 'contents' , 'order/show_all_order', $data);
 	}
 
-	public function new_order()
+	public function new_order() 
 	{
 		$data = array();
-		$this->template->set('title', 'about');
+		$this->template->set('title', 'about'); 
 		$this->template->load('default_layout', 'contents' , 'order/add_new_order', $data);
 	}
+
+
+    public function new_quotation(){
+        $data = array();
+        $this->template->set('title', 'about'); 
+        $this->template->load('default_layout', 'contents' , 'order/add_new_quotation', $data);
+    }
 
 
 	 public function change($type)
