@@ -65,9 +65,9 @@
         <div id="menuorder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
-
+            <a class="collapse-item" href="<?php echo base_url();?>order/new_order">สร้างรายการสั่งซื้อใหม่</a>
+            <a class="collapse-item" href="<?php echo base_url();?>order/new_quotation">สร้างใบเสนอราคา</a>
             <a class="collapse-item" href="<?php echo base_url();?>order">ข้อมูลการสั่งซื้อ</a>
-            <a class="collapse-item" href="<?php echo base_url();?>order/new_order">รายการสั่งซื้อใหม่</a>
             <a class="collapse-item" href="cards.html">สมุดราคา</a>
             <a class="collapse-item" href="cards.html">ซัพพลายเออร์</a>
           </div>
