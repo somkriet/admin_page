@@ -6,7 +6,7 @@ class Order extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-       $this->load->library('session');
+        $this->load->library('session');
 		$this->load->library('langlib');
 		$this->load->helper(array('form', 'url'));
 
@@ -49,6 +49,48 @@ class Order extends CI_Controller {
         $this->template->set('title', 'about'); 
         $this->template->load('default_layout', 'contents' , 'order/add_new_quotation', $data);
     }
+
+    public function check_ip(){
+
+        // $ip = $_SERVER['REMOTE_ADDR']; // อ่าน ip จาก เพจที่เรียก
+        // $ip = '222.123.92.135';
+        $ip = '184.82.225.104'; //thai
+        // $ip = '110.33.122.75';
+        // if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+        //     $ip=$_SERVER['HTTP_CLIENT_IP'];
+        // }else{
+        //     $ip=$_SERVER['REMOTE_ADDR'];
+        // }
+        // print_r($ip);
+        $ip_number = sprintf("%u", ip2long($ip)); // แปลง ip เป็นตัวเลข
+         print_r($ip_number);
+        $sql = "SELECT country_3 
+                FROM iptocountry 
+                WHERE $ip_number >= ip_from 
+                AND $ip_number <= ip_to;";
+
+        $show_ip= $this->customer_model->show_all_customer($sql);
+
+        return $show_ip;
+    }
+
+    public function get_id_country(){//ดึงข้อมูลประเทศของลูกค้า
+
+          // $country_name = $this->input->post('country_name');
+        $country = $this->check_ip();//ประเทศของลูกค้า
+
+        foreach($country as $value){
+            $name_country = $value->country_3;
+        }
+
+        $sql = 'SELECT country_id FROM application_country WHERE  UCASE(country_name) = "'.$name_country.'"';
+        $show_country = $this->customer_model->show_all_customer($sql);
+
+          // print_r($show_country);
+          echo json_encode($show_country);
+    }
+
+
 
 
 	 public function change($type)

@@ -15,6 +15,18 @@ class Product extends CI_Controller {
         $config['allowed_types'] = 'jpg|png|jpeg';
         $this->load->library('upload', $config);
 
+        if ($this->session->userdata('lang') == 'english') {
+            $lang = 'english';
+            $this->session->set_userdata('lang', $lang);
+        }else{
+        	$lang = 'thailand';
+            $this->session->set_userdata('lang', $lang);
+        }
+
+        $data_user = $this->session->userdata('lang');
+
+        $this->lang->load($data_user,$data_user);
+
     }
     
 	public function index()
@@ -339,6 +351,12 @@ class Product extends CI_Controller {
 		echo json_encode('success');
 
 	}
+
+	 public function change($type)
+    {
+        $this->langlib->chooseLang($type);// ใช้สำหรับเปลี่ยนภาษาในทุก ๆ controller
+
+    }
 
 
 	

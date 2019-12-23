@@ -43,7 +43,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Admin Page<sup>1</sup></div>
+        <div class="sidebar-brand-text mx-3">Admin Page<?= $this->lang->line('admin_page '); ?><sup>1</sup></div>
       </a>
 
       <!-- Divider -->
@@ -60,7 +60,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuorder" aria-expanded="true" aria-controls="menuorder">
           <i class="fas fa-fw fa-cog"></i>
-          <span>สั่งซื้อ</span>
+          <span><?= $this->lang->line('head_order'); ?><!-- สั่งซื้อ --></span>
         </a>
         <div id="menuorder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -88,7 +88,7 @@
             <a class="collapse-item" href="cards.html">สมุดราคา</a>
             <a class="collapse-item" href="cards.html">ซัพพลายเออร์</a>
           </div>
-        </div> 
+        </div>  
       </li>
 
 
@@ -120,7 +120,7 @@
         <div id="menupomotion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="<?php echo base_url();?>product">จัดการโปรโมชัน</a>
+            <a class="collapse-item" href="<?php echo base_url();?>product">จัดการโปรโมชัน/ส่วนลด</a>
          <!--    <a class="collapse-item" href="cards.html">เพิ่มสินค้า</a>
             <a class="collapse-item" href="cards.html">สมุดราคา</a>
             <a class="collapse-item" href="cards.html">ซัพพลายเออร์</a> -->
@@ -182,14 +182,14 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
+          <span>ตั้งค่าระบบ</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"> 
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">C ards</a>
-          </div>
+            <a class="collapse-item" href="buttons.html">เปลี่ยนภาพปกเว็บไซต์</a>
+            <a class="collapse-item" href="cards.html">ตั้งค่าการจัดส่ง</a>
+          </div> 
         </div>
       </li>
 
@@ -207,7 +207,7 @@
             <a class="collapse-item" href="utilities-animation.html">Animations</a>
             <a class="collapse-item" href="utilities-other.html">Other</a>
           </div>
-        </div>
+        </div> 
       </li>
 
       <!-- Divider -->
@@ -231,7 +231,7 @@
             <a class="collapse-item" href="register.html">Register</a>
             <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
             <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
+            <h6 class="collapse-header">Other Pages:</h6> 
             <a class="collapse-item" href="404.html">404 Page</a>
             <a class="collapse-item" href="blank.html">Blank Page</a>
           </div>
@@ -574,3 +574,4 @@
 </body>
 
 </html>
+  

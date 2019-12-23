@@ -3,21 +3,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Setting extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+	public function __construct()
+    {
+        parent::__construct();
+        $this->load->library('session');
+		$this->load->library('langlib');
+		$this->load->helper(array('form', 'url'));
+
+        $this->CI = get_instance();
+        $this->load->model('customer_model');
+        // $this->load->library("pagination");
+
+        if ($this->session->userdata('lang') == 'english') {
+            $lang = 'english';
+            $this->session->set_userdata('lang', $lang);
+        }else{
+        	$lang = 'thailand';
+            $this->session->set_userdata('lang', $lang);
+        }
+
+        $data_user = $this->session->userdata('lang');
+
+        $this->lang->load($data_user,$data_user);
+ 
+    }
+    
 	public function index()
 	{
 		header("Access-Control-Allow-Origin: *");
@@ -31,4 +41,11 @@ class Setting extends CI_Controller {
 	// 	$this->template->set('title', 'about');
 	// 	$this->template->load('default_layout', 'contents' , 'about', $data);
 	// }
+
+
+	 public function change($type)
+    {
+        $this->langlib->chooseLang($type);// ใช้สำหรับเปลี่ยนภาษาในทุก ๆ controller
+
+    }
 }

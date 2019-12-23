@@ -71,6 +71,12 @@ class Login extends CI_Controller {
 
 	}
 
+	 public function change($type)
+    {
+        $this->langlib->chooseLang($type);// ใช้สำหรับเปลี่ยนภาษาในทุก ๆ controller
+
+    }
+
 
 
 }

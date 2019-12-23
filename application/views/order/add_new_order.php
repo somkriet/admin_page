@@ -24,6 +24,10 @@
               </div>
             </div>
           </form>
+
+          <form name='check' action="<?php echo base_url();?>order/check_ip">
+            <button type="submit" id="ip_adress">check ip</button>
+          </form>
  
 
  
