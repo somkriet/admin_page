@@ -12,6 +12,8 @@ $lang['head_promotion'] = 'Promotion';
 
 $lang['head_report'] = 'Report';
 
+$lang['head_sell'] = 'Sell';
+
 
 
 

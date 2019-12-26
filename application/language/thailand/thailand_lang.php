@@ -11,4 +11,6 @@ $lang['head_customer'] = 'ลูกค้า';
 $lang['head_promotion'] = 'โปรโมชั่น';
 
 $lang['head_report'] = 'รายงาน';
+
+$lang['head_sell'] = 'รายการขาย';
 ?>

@@ -56,6 +56,22 @@
           <span>หน้าหลัก</span></a>
       </li>
 
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menusell" aria-expanded="true" aria-controls="menusell">
+          <i class="fas fa-fw fa-cog"></i>
+          <span><?= $this->lang->line('head_sell'); ?></span>
+        </a>
+        <div id="menusell" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+            <a class="collapse-item" href="<?php echo base_url();?>sell/sell_add">สร้างรายการขาย</a>
+            <a class="collapse-item" href="<?php echo base_url();?>sell/sell_list">ดูรายการขาย</a>
+          </div>
+        </div>
+      </li>
+
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuorder" aria-expanded="true" aria-controls="menuorder">
