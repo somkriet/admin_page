@@ -57,7 +57,8 @@ class Product extends CI_Controller {
 	
 		$product_name = $this->input->post('name');
 		$product_detail = $this->input->post('detail');
-		$product_price = $this->input->post('price');
+		$product_purchase_price = $this->input->post('purchase_price');
+		$product_sale_price = $this->input->post('sale_price');
 		$product_qty = $this->input->post('qty');
 		$product_unit = $this->input->post('unit');
 		$product_category = $this->input->post('category');
