@@ -45,7 +45,7 @@
                             <td align="center"><?php echo $val->pro_name;?></td>
                             <td><?php echo $val->pro_detail;?></td>
                             <td><?php echo $val->pro_qty;?></td>
-                            <td><?php echo $val->pro_price;?></td>
+                            <td><?php echo $val->product_sale_price;?></td>
                             <td align="center">
 
                             <!--   <button type="button" class="btn btn-primary" onclick="callDetails('<?php echo $val->cus_id;?>');">ดูข้อมูล

@@ -61,7 +61,7 @@ class Product extends CI_Controller {
 		$product_sale_price = $this->input->post('sale_price');
 		$product_qty = $this->input->post('qty');
 		$product_unit = $this->input->post('unit');
-		$product_category = $this->input->post('category');
+		$product_category = $this->input->post('category'); 
 		$product_location = $this->input->post('location');
 		$product_img = $this->input->post('img');
 
@@ -167,7 +167,7 @@ class Product extends CI_Controller {
 						tb_product.pro_id,
 						tb_product.pro_name,
 						tb_product.pro_detail,
-						tb_product.pro_price,
+						tb_product.pro_sale_price,
 						tb_product.pro_qty,
 						tb_product.pro_unit,
 						tb_product.pro_category,
@@ -178,7 +178,7 @@ class Product extends CI_Controller {
 						'$product_id',
 						'$product_name',
 						'$product_detail',
-						'$product_price',
+						'$product_sale_price',
 						'$product_qty',
 						'$product_unit',
 						'$product_category',
@@ -263,7 +263,7 @@ class Product extends CI_Controller {
 				SET
 					tb_product.pro_name = '$product_name',
 					tb_product.pro_detail = '$product_detail',
-					tb_product.pro_price = '$product_price',
+					tb_product.pro_sale_price = '$product_price',
 					tb_product.pro_qty = '$product_qty',
 					tb_product.pro_unit = '$product_unit',
 					tb_product.pro_category = '$product_category',
