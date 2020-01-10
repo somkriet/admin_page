@@ -5,13 +5,26 @@
           <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
            <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">ตารางรายการสินค้า</h6>
+
+               <div class="row">
+              <!-- <div class="col-sm-6 col-md-12"> -->
+                <div class="col-sm-6">
+                  <h6 class="font-weight-bold text-primary">ตารางรายการสินค้า</h6>
+                </div>
+
+                <div class="col-sm-6" align="right">
+                   <button  type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="call_add_product();">เพิ่มสินค้า<span class="glyphicon glyphicon-list-alt"></span>
+                  </button>
+                </div>
+              <!-- </div> -->
+            </div>
+            
+             
+
+
+              
             </div>
             <div class="card-body">
-
-               <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="call_add_product();">เพิ่มสินค้า
-                                <span class="glyphicon glyphicon-list-alt"></span>
-               </button>
 
               <table id="myTable" class="display table-responsive-sm" style="width:100%">
                 <thead>
