@@ -29,12 +29,13 @@
               <table id="myTable" class="display table-responsive-sm" style="width:100%">
                 <thead>
                   <tr>
-                     <th>No</th>
+                      <th>No</th>
                       <th>รหัสสินค้า</th>
                       <th>ชื่อสินค้า</th>
-                      <th>ประเภทสินค้า</th>
-                      <th>จำนวน</th>
+                      <th>ราคาซื้อ</th>
                       <th>ราคาขาย</th>
+                      <th>คงเหลือ</th>
+                      <th>พร้อมขาย</th>
                       <th>Action</th>
                   </tr>
                 </thead>
@@ -43,9 +44,10 @@
                       <th>No</th>
                       <th>รหัสสินค้า</th>
                       <th>ชื่อสินค้า</th>
-                      <th>ประเภทสินค้า</th>
-                      <th>จำนวน</th>
+                      <th>ราคาซื้อ</th>
                       <th>ราคาขาย</th>
+                      <th>คงเหลือ</th>
+                      <th>พร้อมขาย</th>
                       <th>Action</th>
                   </tr>
                 </tfoot>
@@ -56,9 +58,10 @@
                             <td align="center"><?php echo  $idx+1;?></td>
                             <td align="center"><?php echo $val->pro_id;?></td>
                             <td align="center"><?php echo $val->pro_name;?></td>
-                            <td><?php echo $val->pro_detail;?></td>
-                            <td><?php echo $val->pro_qty;?></td>
+                            <td><?php echo $val->pro_purchase_price;?></td>
                             <td><?php echo $val->pro_sale_price;?></td>
+                            <td><?php echo $val->pro_qty;?></td>
+                            <td><?php echo $val->pro_qty;?></td>
                             <td align="center">
 
                             <!--   <button type="button" class="btn btn-primary" onclick="callDetails('<?php echo $val->cus_id;?>');">ดูข้อมูล
@@ -193,6 +196,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="add_product_save">Add</button>
               <button type="button" class="btn btn-primary" id="edit_product_save">Save changes</button>
             </div>
           </div>
@@ -219,11 +223,15 @@ $(function(){
 
           $('#exampleModalLabel2').hide();
           $('#exampleModalLabel1').show();
+
+          $('#edit_product_save').hide();
+          $('#add_product_save').show();
           
 
           $('#product_name').val('');
           $('#product_detail').val('');
-          $('#product_price').val('');
+          $('#product_purchase_price').val('');
+          $('#product_sale_price').val('');
           $('#product_qty').val('');
           $('#product_unit').val('');
           $('#product_category').val('');
@@ -233,11 +241,12 @@ $(function(){
           $('#edit_product').modal('show'); 
         };
 
-        $('#add_product').on('click', function(){
+        $('#add_product_save').on('click', function(){
             
             var name = $('#product_name').val();
             var detail = $('#product_detail').val();
-            var price = $('#product_price').val();
+            var purchase_price = $('#product_purchase_price').val();
+            var sale_price =$('#product_sale_price').val();
             var qty = $('#product_qty').val();
             var unit = $('#product_unit').val();
             var category = $('#product_category').val();
@@ -257,11 +266,17 @@ $(function(){
 
               $( "#product_detail" ).focus();
 
-            }else if(price == ""){
+            }else if(purchase_price == ""){
               
-              Swal.fire('กรอกข้อมูลราคา');
+              Swal.fire('กรอกข้อมูลราคาซื้อ');
 
-              $( "#product_price" ).focus();  
+              $( "#product_sale_price" ).focus();  
+
+            }else if(sale_price == ""){
+              
+              Swal.fire('กรอกข้อมูลราคาขาย');
+
+              $( "#product_sale_price" ).focus();  
 
             }else if(qty == ""){
               
@@ -287,9 +302,9 @@ $(function(){
 
               $( "#product_location" ).focus();
 
-            }else if(file_data == undefined){
+            // }else if(file_data == undefined){
                 
-              Swal.fire('กรุณาอัพโหลดรูปสินค้า');
+            //   Swal.fire('กรุณาอัพโหลดรูปสินค้า');
 
               // $( "#product_img" ).focus();
 
@@ -309,10 +324,11 @@ $(function(){
               $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: "<?php echo base_url('product/add_product');?>",
+                url: "<?php echo base_url('index.php/product/add_product');?>",
                 data: { 'name': name,
                         'detail': detail,
-                        'price': price,
+                        'purchase_price': purchase_price,
+                        'sale_price':sale_price,
                         'qty': qty,
                         'unit': unit,
                         'category': category,
@@ -326,6 +342,10 @@ $(function(){
 
                     Swal.fire('เพิ่มข้อมูลสินค้าเรียบร้อย!!!');
                     
+                    setTimeout(function(){
+                     window.location.reload();
+                      // location.href = '<?php echo base_url('product');?>';
+                    }, 1000);
                     return false;
 
                   }else{
@@ -351,11 +371,12 @@ $(function(){
            $('#cancal_product').on('click', function(){
               $('#product_name').val('');
               $('#product_detail').val('');
-              $('#product_price').val('');
+              $('#product_purchase_price').val('');
+              $('#product_sale_price').val('');
               $('#product_qty').val('');
               $('#product_unit').val('');
               $('#product_category').val('');
-              $('#product_location').val('');
+              $('#product_location').val(''); 
               $('#product_img').val('');
 
            });
@@ -416,6 +437,9 @@ $(function(){
 
 //function show for edit
   function callDetails(id){
+
+    
+
     $.ajax({
       type: "POST",
       dataType: "JSON",
@@ -436,6 +460,9 @@ $(function(){
           $('#exampleModalLabel1').hide();
           $('#exampleModalLabel2').show();
           $('#product_id_add').show();
+          
+          $('#add_product_save').hide();
+          $('#edit_product_save').show();
 
           $('#edit_product').modal('show'); 
         }else{

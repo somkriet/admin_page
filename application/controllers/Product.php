@@ -66,19 +66,6 @@ class Product extends CI_Controller {
 		$product_img = $this->input->post('img');
 
 
-		// if($_FILES["file"]["name"] != '')
-		// {
-		//  $test = explode('.', $_FILES["file"]["name"]);
-		//  $ext = end($test);
-		//  $name = rand(100, 999) . '.' . $ext;
-		//  $location = './uploads/' . $name;  
-		//  move_uploaded_file($_FILES["file"]["tmp_name"], $location);
-		//  // echo '<img src="'.$location.'" height="150" width="225" class="img-thumbnail" />';
-		// } 
-
-
-
-
 		if ($this->upload->do_upload('file_attach')) {
                         $upload_data = $this->upload->data();
                         $params['attach'] = $upload_data['full_path'];
@@ -130,43 +117,13 @@ class Product extends CI_Controller {
 
 		}
 			
-			// exit();
-		// if ($this->upload->do_upload('img')) {
-  //           $upload_data = $this->upload->data();
-  //           $params['attach'] = $upload_data['full_path'];
-  //           // for insert into db
-                    
-  //           if ($upload_data['file_name'] != "") {
-  //               	$product_img = $upload_data['file_name'];
-
-  //               // $img_url = 'uploads/'.$data['attach_file'];
-  //           }else{
-  //                   $product_img = 'nodata';    
-  //           }
-                       
-  //       }else{
-  //           $product_img = 'nodata'; 
-  //       }
-
-        print_r($product_img);
-        exit();
-
-
-//         if ($_FILES["music"]["error"] == UPLOAD_ERR_OK)
-// {
-//     $file = $_FILES["music"]["tmp_name"];
-//     // now you have access to the file being uploaded
-//     //perform the upload operation.
-//     move_uploaded_file( $file, "uploads/" . $file);
-// }
-
-
 		if($product_name != ""){
 
 			$sql = "INSERT INTO tb_product (
 						tb_product.pro_id,
 						tb_product.pro_name,
 						tb_product.pro_detail,
+						tb_product.pro_purchase_price,
 						tb_product.pro_sale_price,
 						tb_product.pro_qty,
 						tb_product.pro_unit,
@@ -178,6 +135,7 @@ class Product extends CI_Controller {
 						'$product_id',
 						'$product_name',
 						'$product_detail',
+						'$product_purchase_price',
 						'$product_sale_price',
 						'$product_qty',
 						'$product_unit',
