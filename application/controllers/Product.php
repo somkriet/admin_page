@@ -10,9 +10,15 @@ class Product extends CI_Controller {
         $this->load->model('customer_model');
         $this->load->model('product_model');
         $this->load->library("pagination");
+        $this->load->helper(array('form', 'url'));
+        // $this->load->library('upload');
 
-        $config['upload_path'] = 'uploads';
-        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size'] = '100';
+		$config['max_width'] = '1024';
+		$config['max_height'] = '768';
+
         $this->load->library('upload', $config);
 
         if ($this->session->userdata('lang') == 'english') {
@@ -50,7 +56,6 @@ class Product extends CI_Controller {
 
 	}
 
-	
 
 	public function add_product()
 	{
@@ -181,6 +186,94 @@ class Product extends CI_Controller {
 		return $a;
 
 	}
+
+
+	public function uploads_img(){
+
+	}
+
+	public function custom_view(){
+		// $this->load->view('custom_view', array('error' => ' ' ));
+
+		$sql = "SELECT * FROM tb_product WHERE delete_flag = 1;";
+		$data['product_data'] = $this->product_model->show_all_product($sql);
+
+		$this->template->set('title', 'product');
+		$this->template->load('default_layout', 'contents' , 'product/show_product_all', $data);
+	}
+
+	public function load_img(){
+		if(is_array($_FILES)) {
+			if(is_uploaded_file($_FILES['userImage']['tmp_name'])) {
+				$sourcePath = $_FILES['userImage']['tmp_name'];
+				$targetPath = "images/".$_FILES['userImage']['name'];
+				if(move_uploaded_file($sourcePath,$targetPath)) {
+				
+				 // <img class="image-preview" src="<?php echo $targetPath;" class="upload-preview" />
+				
+				}
+			}
+		}
+	}
+// Congragulation You Have Successfuly Uploaded
+// file_name: 78952308_2536811219771671_5999549174792585216_n.jpg
+// file_type: image/jpeg
+// file_path: C:/xampp/htdocs/admin_system/uploads/
+// full_path: C:/xampp/htdocs/admin_system/uploads/78952308_2536811219771671_5999549174792585216_n.jpg
+// raw_name: 78952308_2536811219771671_5999549174792585216_n
+// orig_name: 78952308_2536811219771671_5999549174792585216_n.jpg
+// client_name: 78952308_2536811219771671_5999549174792585216_n.jpg
+// file_ext: .jpg
+// file_size: 60.98
+// is_image: 1
+// image_width: 720
+// image_height: 450
+// image_type: jpeg
+// image_size_str: width="720" height="450"
+
+
+	public function do_upload(){
+			$config = array(
+				'upload_path' => "./uploads/",
+				'allowed_types' => "gif|jpg|png|jpeg|pdf",
+				'overwrite' => TRUE,
+				'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+				'max_height' => "1768",
+				'max_width' => "1024"
+			);
+			$this->load->library('upload', $config);
+
+			$img_url = $this->input->post('fd');
+
+			print_r($img_url);
+
+			if($this->upload->do_upload())
+			{
+				$data = array('upload_data' => $this->upload->data());
+				$this->load->view('product/upload_success',$data);
+
+				 foreach ($upload_data as $item => $value):
+    				// echo $item; 
+    				$data = $item['$file_name'];
+    				// echo $value;
+    			endforeach;
+
+    			// $data = $item['$file_name'];
+
+				// $this->template->set('title', 'product');
+				// $this->template->load('default_layout', 'contents' , 'product/show_product_all', $data);
+			}
+			else
+			{
+				// $error = array('error' => $this->upload->display_errors());
+				// $this->load->view('custom_view', $error);
+				$data = 'error';
+
+
+			}
+
+		echo json_encode($data);	
+    }
 
 
 	public function callDetails(){

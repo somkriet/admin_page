@@ -18,11 +18,7 @@
                 </div>
               <!-- </div> -->
             </div>
-            
-             
-
-
-              
+                          
             </div>
             <div class="card-body">
 
@@ -84,6 +80,17 @@
               </table>
             </div>
           </div>
+
+
+
+
+
+          <?php echo $error;?> 
+          <?php echo form_open_multipart('product/do_upload');?>
+          <?php echo "<input type='file' name='userfile' size='20' />"; ?>
+          <?php echo "<input type='submit' name='submit' value='upload' /> ";?>
+          <?php echo "</form>"?>
+
 
         </div>
         <!-- /.container-fluid -->
@@ -189,6 +196,27 @@
                         </div>
                       </div>
 
+                      <div class="form-group row">
+                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>รูปสินค้า</b></label>
+                         <div class="col-sm-8">
+                           <input type='file' name='userfile' size='20' />
+                           <input type='button' name='submit_img' id="submit_img" value='upload' />
+                           <div id="targetLayer">No Image</div>
+
+                         </div>
+                      </div>  
+
+                      <form id="uploadimage" action="" method="post" enctype="multipart/form-data">
+                        <div id="image_preview"><img id="previewing" src="noimage.png"  width="250" height="230"/></div>
+                            <hr id="line">
+                            <div id="selectImage">
+                            <label>Select Your Image</label><br/>
+                            <input type="file" name="file" id="file" required />
+                            <input type="submit" value="Upload" class="submit" />
+                        </div>
+                      </form>
+                     
+
                   </div>
                 </div>
               </div>
@@ -207,6 +235,53 @@
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
 <script type="text/javascript">
 
+
+$('#submit_img').on('click', function(){
+  // console.log("aaa");
+    var fd = new FormData();
+    var files = $('#file')[0].files[0];
+    fd.append('file',files);
+
+   $.ajax({
+      url: "<?php echo base_url('index.php/product/do_upload');?>",
+      type: "POST",
+      data:  fd,
+      contentType: false,
+          cache: false,
+      processData:false,
+      success: function(data)
+        {
+      $("#targetLayer").html(data);
+        },
+        error: function() 
+        {
+        }           
+     });
+
+});
+
+
+$(document).ready(function (e) {
+  $("#uploadForm").on('submit',(function(e) {
+    e.preventDefault();
+    $.ajax({
+          url: "upload.php",
+      type: "POST",
+      data:  new FormData(this),
+      contentType: false,
+          cache: false,
+      processData:false,
+      success: function(data)
+        {
+      $("#targetLayer").html(data);
+        },
+        error: function() 
+        {
+        }           
+     });
+  }));
+});
+
 $(function(){
   $('#myTable').dataTable({
     ordering: true,
@@ -214,6 +289,7 @@ $(function(){
     lengthChange: true
   });
 });
+
 
 //function add product
         // $('#add_product').on('click', function(){
