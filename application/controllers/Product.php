@@ -71,30 +71,30 @@ class Product extends CI_Controller {
 		$product_img = $this->input->post('img');
 
 
-		if ($this->upload->do_upload('file_attach')) {
-                        $upload_data = $this->upload->data();
-                        $params['attach'] = $upload_data['full_path'];
-                        // for insert into db
+		// if ($this->upload->do_upload('file_attach')) {
+  //                       $upload_data = $this->upload->data();
+  //                       $params['attach'] = $upload_data['full_path'];
+  //                       // for insert into db
                     
-                        if ($upload_data['file_name'] != "") {
-                            $data['attach_file'] = $upload_data['file_name'];
+  //                       if ($upload_data['file_name'] != "") {
+  //                           $data['attach_file'] = $upload_data['file_name'];
 
-                            // $img_url = 'uploads/'.$data['attach_file'];
-                        }else{
-                            $data['attach_file'] = 'nodata';    
-                        }
+  //                           // $img_url = 'uploads/'.$data['attach_file'];
+  //                       }else{
+  //                           $data['attach_file'] = 'nodata';    
+  //                       }
                        
-                    }else{
-                        $data['attach_file'] = 'nodata';
-                    }
+  //                   }else{
+  //                       $data['attach_file'] = 'nodata';
+  //                   }
 
 
-                    if ($data['attach_file'] == 'nodata') {
+  //                   if ($data['attach_file'] == 'nodata') {
                         
-                        $img_url = 'uploads/-';
-                    }else{
-                        $img_url = 'uploads/'.$data['attach_file'];
-                    }
+  //                       $img_url = 'uploads/-';
+  //                   }else{
+  //                       $img_url = 'uploads/'.$data['attach_file'];
+  //                   }
 
 
 
@@ -187,34 +187,6 @@ class Product extends CI_Controller {
 
 	}
 
-
-	public function uploads_img(){
-
-	}
-
-	public function custom_view(){
-		// $this->load->view('custom_view', array('error' => ' ' ));
-
-		$sql = "SELECT * FROM tb_product WHERE delete_flag = 1;";
-		$data['product_data'] = $this->product_model->show_all_product($sql);
-
-		$this->template->set('title', 'product');
-		$this->template->load('default_layout', 'contents' , 'product/show_product_all', $data);
-	}
-
-	public function load_img(){
-		if(is_array($_FILES)) {
-			if(is_uploaded_file($_FILES['userImage']['tmp_name'])) {
-				$sourcePath = $_FILES['userImage']['tmp_name'];
-				$targetPath = "images/".$_FILES['userImage']['name'];
-				if(move_uploaded_file($sourcePath,$targetPath)) {
-				
-				 // <img class="image-preview" src="<?php echo $targetPath;" class="upload-preview" />
-				
-				}
-			}
-		}
-	}
 // Congragulation You Have Successfuly Uploaded
 // file_name: 78952308_2536811219771671_5999549174792585216_n.jpg
 // file_type: image/jpeg

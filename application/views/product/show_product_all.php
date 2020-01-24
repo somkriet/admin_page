@@ -21,7 +21,6 @@
                           
             </div>
             <div class="card-body">
-
               <table id="myTable" class="display table-responsive-sm" style="width:100%">
                 <thead>
                   <tr>
@@ -59,11 +58,6 @@
                             <td><?php echo $val->pro_qty;?></td>
                             <td><?php echo $val->pro_qty;?></td>
                             <td align="center">
-
-                            <!--   <button type="button" class="btn btn-primary" onclick="callDetails('<?php echo $val->cus_id;?>');">ดูข้อมูล
-                                <span class="glyphicon glyphicon-list-alt"></span>
-                              </button> -->
-
                               <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->pro_id;?>');">แก้ไข
                                 <span class="glyphicon glyphicon-list-alt"></span>
                               </button>
@@ -80,18 +74,6 @@
               </table>
             </div>
           </div>
-
-
-
-
-
-          <!-- <?php echo $error;?> 
-          <?php echo form_open_multipart('product/do_upload');?>
-          <?php echo "<input type='file' name='userfile' size='20' />"; ?>
-          <?php echo "<input type='submit' name='submit' value='upload' /> ";?>
-          <?php echo "</form>"?>
- -->
-
         </div>
         <!-- /.container-fluid -->
 
