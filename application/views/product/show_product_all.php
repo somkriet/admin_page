@@ -183,8 +183,9 @@
                          <div class="col-sm-8">
                            
                               <form id="form">
-                                  <b>Upload file example</b>
+                                  <b>อัปโหลดรูปสินค้า</b>
                                   <br>
+                                  <div id="img1"></div>
                                   <br>
                                   <input type="file" id="inputFile" name="inputFile"/>
                                   <br>
@@ -446,6 +447,7 @@ $(function(){
           $('#product_price').val(res['show_product'][0]['pro_price']);
           $('#product_qty').val(res['show_product'][0]['pro_qty']);
           $('#product_unit').val(res['show_product'][0]['pro_unit']);
+          // $('#product_unit').val(res['show_product'][0]['pro_img']);
 
           $('#exampleModalLabel1').hide();
           $('#exampleModalLabel2').show();
