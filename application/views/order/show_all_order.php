@@ -1,40 +1,10 @@
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div class="container-fluid" id="page-sumary">
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800"><?= $this->lang->line('list_order'); ?></h1>
          <!--  <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
 
-
-          <!-- <div class="container"> -->
-  
-
-<!--   <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-    <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
-  </ul> -->
-<!-- 
-  <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-      <h3>HOME</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-    <div id="menu1" class="tab-pane fade">
-      <h3>Menu 1</h3>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    <div id="menu2" class="tab-pane fade">
-      <h3>Menu 2</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-    </div>
-    <div id="menu3" class="tab-pane fade">
-      <h3>Menu 3</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    </div>
-  </div> -->
-<!-- </div> -->
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -104,17 +74,164 @@
             </div>
           </div>
 
+
+          <!-- Modal edit-->
+      <div class="modal fade bd-example-modal-lg" id="order_product" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel1">ADD PRODUCT</h5>
+              <h5 class="modal-title" id="exampleModalLabel2">รายการสั่งซื้อ</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- ... -->
+
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-6 col-md-12">
+
+                      <div class="form-group row" id="product_id_add">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>หมายเลขออเดอร์</b></label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="order_id" placeholder="รหัส สินค้า ..." disabled>
+                        </div>
+                      </div>
+
+                     <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ผู้สั่งซื้อ</b></label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="customer_name" placeholder="ชื่อสินค้า ...">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ช่องทางการขาย</b></label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="sale_channel" placeholder="ชื่อสินค้า ...">
+                        </div>
+                      </div>
+
+
+                      <!-- <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>รายละเอียดสินค้า</b></label>
+                        <div class="col-sm-8">
+                           <textarea  id="product_detail" name="product_detail" rows="4" class="form-control" placeholder="รายละเอียดสินค้า ..." style="overflow: hidden; resize: none;"></textarea>
+                        </div>
+                      </div> -->
+
+
+                      <!--  <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ราคาซื้อ</b></label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="product_purchase_price" placeholder="ราคาขาย ...">
+                        </div>
+                      </div> -->
+
+                      <!-- <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ราคาขาย</b></label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="product_sale_price" placeholder="ราคาขาย ...">
+                        </div>
+                      </div> -->
+
+                      <!-- <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>จำนวน</b></label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="product_qty" placeholder="จำนวน ...">
+                        </div>
+                      </div>
+ -->
+                   <!--  <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>หน่วยนับ</b></label>
+                        <div class="col-sm-8">
+                          <select class="form-control" id="product_unit">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                        </div>
+                      </div> -->
+
+
+                   <!--   <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ประเภทสินค้า</b></label>
+                        <div class="col-sm-8">
+                          <select class="form-control" id="product_category">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                        </div>
+                      </div> -->
+
+                      <!--  <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ที่เก็บสินค้า</b></label>
+                        <div class="col-sm-8">
+                          <select class="form-control" id="product_location">
+                             <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                        </div>
+                      </div> -->
+
+                     <!--  <div class="form-group row">
+                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>รูปสินค้า</b></label>
+                         <div class="col-sm-8">
+                           
+                              <form id="form">
+                                  <b>อัปโหลดรูปสินค้า</b>
+                                  <br>
+                                  <div id="img1"></div>
+                                  <br>
+                                  <input type="file" id="inputFile" name="inputFile"/>
+                                  <br>
+                                  <button type="submit" id="upload" name="upload">Upload</button>
+                                  <div id="targetLayer"></div>
+                              </form>
+                         </div>
+                      </div>   -->
+
+                    <!--   <form id="uploadimage" action="" method="post" enctype="multipart/form-data">
+                        <div id="image_preview"><img id="previewing" src="noimage.png"  width="250" height="230"/></div>
+                            <hr id="line">
+                            <div id="selectImage">
+                            <label>Select Your Image</label><br/>
+                            <input type="file" name="file" id="file" required />
+                            <input type="submit" value="Upload" class="submit" />
+                        </div>
+                      </form> -->
+                     
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="add_product_save">Add</button>
+              <button type="button" class="btn btn-primary" id="edit_product_save">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal edit-->
+
         </div>
         <!-- /.container-fluid -->
 
-<script>
-  $(document).ready(function(){
-    $("p").click(function(){
-      alert("The paragraph was clicked.");
-      });
-  });
-
-
+<script type="text/javascript">
+     
   //function show for edit
   function callDetails(id){
     // alert("The paragraph was clicked.");
@@ -126,27 +243,26 @@
       data: { 'id': id },
       success: function(res){
         console.log(res);
-        // $('#edit_product').find('input').val("");
+
+         $('#order_product').find('input').val("");
 
         if(res['status'] == 'success'){
+          $('#order_id').val(res['order_detail'][0]['order_id']);
+          $('#customer_name').val(res['order_detail'][0]['customer_name']);
+          $('#sale_channel').val(res['order_detail'][0]['sales_channels']);
+          // $('#product_price').val(res['order_detail'][0]['pro_price']);
+          // $('#product_qty').val(res['order_detail'][0]['pro_qty']);
+          // $('#product_unit').val(res['order_detail'][0]['pro_unit']);
+          // $('#product_unit').val(res['order_detail'][0]['pro_img']);
 
-           alert("order.");
-          // $('#product_id').val(res['show_product'][0]['pro_id']);
-          // $('#product_name').val(res['show_product'][0]['pro_name']);
-          // $('#product_detail').val(res['show_product'][0]['pro_detail']);
-          // $('#product_price').val(res['show_product'][0]['pro_price']);
-          // $('#product_qty').val(res['show_product'][0]['pro_qty']);
-          // $('#product_unit').val(res['show_product'][0]['pro_unit']);
-          // $('#product_unit').val(res['show_product'][0]['pro_img']);
-
-          // $('#exampleModalLabel1').hide();
-          // $('#exampleModalLabel2').show();
-          // $('#product_id_add').show();
+          $('#exampleModalLabel1').hide();
+          $('#exampleModalLabel2').show();
+          $('#product_id_add').show();
           
-          // $('#add_product_save').hide();
-          // $('#edit_product_save').show();
+          $('#add_product_save').hide();
+          $('#edit_product_save').show();
 
-          // $('#edit_product').modal('show'); 
+          $('#order_product').modal('show'); 
         }else{
           Swal.fire('Error!');
           return false;
@@ -159,5 +275,7 @@
       }
     });
   }
-//function show for edit
+
+
+
 </script>

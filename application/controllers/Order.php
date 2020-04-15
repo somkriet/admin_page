@@ -58,15 +58,54 @@ class Order extends CI_Controller {
             $sql = "SELECT * FROM tb_order WHERE order_id = $orderid AND delete_flag = 1;";
             $data['order_detail'] = $this->order_model->show_all_order($sql);
             $data['status'] = 'success';
+
+            // $this->template->set('title', 'order');
+            // $this->template->load('default_layout', 'contents' , 'order/show_all_order', $data);
+
         }else{
             $data['status'] = 'error';
         }
         // $data['status'] = 'success';
 
-        // $this->template->set('title', 'order');
-        // $this->template->load('default_layout', 'contents' , 'order/show_all_order', $data);
+        // json_encode($data);
 
+        // $this->template->set('title', 'order');
+        // $this->template->load('default_layout', 'contents' , 'order/show_order_detail', $data);
+
+        // $this->PAGE['order_code'] = $omise_order_code;
+        // $this->template->load('default_layout', 'contents' , 'order/show_order_detail', $data);
+        // $this->load->view('order/show_order_detail', $data);
         echo json_encode($data);
+
+    }
+
+
+    public function order_detail(){
+
+        $orderid = $this->input->post('id');
+
+        // if($orderid != ""){
+            $sql = "SELECT * FROM tb_order WHERE order_id = $orderid AND delete_flag = 1;";
+            $data['detail'] = $this->order_model->show_all_order($sql);
+            // $data['status'] = 'success';
+
+            // $this->template->set('title', 'order');
+            // $this->template->load('default_layout', 'contents' , 'order/show_all_order', $data);
+
+        // }else{
+        //     $data['status'] = 'error';
+        // }
+        // $data['status'] = 'success';
+
+        // json_encode($data);
+
+        $this->template->set('title', 'order');
+        $this->template->load('default_layout', 'contents' , 'order/show_order_detail', $data);
+        
+        // $this->PAGE['order_code'] = $omise_order_code;
+        // $this->template->load('default_layout', 'contents' , 'order/show_order_detail', $data);
+        // $this->load->view('order/show_order_detail', $data);
+        // echo json_encode($data);
 
     }
 
