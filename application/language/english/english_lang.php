@@ -14,7 +14,10 @@ $lang['head_report'] = 'Report';
 
 $lang['head_sell'] = 'Sell';
 
+$lang['today_sales'] = 'Today sales';
 
+//order
 
+$lang['list_order'] = 'List Order';
 
 ?>

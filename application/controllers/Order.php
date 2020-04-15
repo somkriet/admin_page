@@ -11,7 +11,7 @@ class Order extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 
         $this->CI = get_instance();
-        $this->load->model('customer_model');
+        $this->load->model('order_model');
         // $this->load->library("pagination");
 
         if ($this->session->userdata('lang') == 'english') {
@@ -31,7 +31,11 @@ class Order extends CI_Controller {
 	public function index()
 	{
 		header("Access-Control-Allow-Origin: *");
-		$data = array();
+		// $data = array();
+
+        $sql = "SELECT * FROM tb_order WHERE delete_flag = 1;";
+        $data['order_data'] = $this->order_model->show_all_order($sql);
+
 		$this->template->set('title', 'order');
 		$this->template->load('default_layout', 'contents' , 'order/show_all_order', $data);
 	}
@@ -42,6 +46,29 @@ class Order extends CI_Controller {
 		$this->template->set('title', 'about'); 
 		$this->template->load('default_layout', 'contents' , 'order/add_new_order', $data);
 	}
+
+
+    public function call_order_detail(){
+
+        $orderid = $this->input->post('id');
+
+       
+
+        if($orderid != ""){
+            $sql = "SELECT * FROM tb_order WHERE order_id = $orderid AND delete_flag = 1;";
+            $data['order_detail'] = $this->order_model->show_all_order($sql);
+            $data['status'] = 'success';
+        }else{
+            $data['status'] = 'error';
+        }
+        // $data['status'] = 'success';
+
+        // $this->template->set('title', 'order');
+        // $this->template->load('default_layout', 'contents' , 'order/show_all_order', $data);
+
+        echo json_encode($data);
+
+    }
 
 
     public function new_quotation(){

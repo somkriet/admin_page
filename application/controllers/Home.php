@@ -30,6 +30,7 @@ class Home extends CI_Controller {
     
 	public function index()
 	{
+        
 		header("Access-Control-Allow-Origin: *");
 		$data = array();
 		$this->template->set('title', 'Home');
@@ -42,6 +43,7 @@ class Home extends CI_Controller {
 		$this->template->set('title', 'about');
 		$this->template->load('default_layout', 'contents' , 'about', $data);
 	}
+
 	
 	 public function change($type)
     {
