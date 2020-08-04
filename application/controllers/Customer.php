@@ -53,11 +53,57 @@ class Customer extends CI_Controller {
 	}
 	public function new_customer()
 	{
-		$data = array();
+		// $data = array();
+
+		$sql = "SELECT * FROM provinces order by name_th asc;";
+		$data['provinces_data'] = $this->customer_model->show_all_customer($sql);
+
 		$this->template->set('title', 'New customer');
 		$this->template->load('default_layout', 'contents' , 'customer/add_new_customer', $data);
   
 	}
+
+
+	public function get_amphures()
+	{
+		
+		$province_id = $this->input->post('provinceId');
+
+		$sql = "SELECT * FROM amphures WHERE province_id='".$province_id."'";
+		// $query = mysqli_query($conn, $sql);
+
+		$data['amphures_data'] = $this->customer_model->show_all_customer($sql);
+		 
+		// $json = array();
+		// while($result = mysqli_fetch_assoc($query)) {    
+		//     array_push($json, $result);
+		// }
+		echo json_encode($data);
+ 		// print_r($data);
+  
+	}
+
+
+	public function get_districts(){
+
+		$amphure_id = $this->input->post('amphureId');
+
+		$sql = "SELECT * FROM districts WHERE amphure_id='".$amphure_id."'";
+
+		$data['districts_data'] = $this->customer_model->show_all_customer($sql);
+
+		// $query = mysqli_query($conn, $sql);
+		 
+		// $json = array();
+		// while($result = mysqli_fetch_assoc($query)) {    
+		//     array_push($json, $result);
+		// }
+		echo json_encode($data);
+
+	}
+
+
+	
 
 	public function show_all_customer(){
 
@@ -102,12 +148,27 @@ class Customer extends CI_Controller {
 		// $customerchanel = $this->input->post('chanel');
 		$customerchanel = 1;
 
-		// print_r($customername);
-		// exit();
+		$check_customer_data = "SELECT pro_id FROM customer WHERE delete_flag = 1;";
+		$get_check_customer_data = $this->customer_model->show_all_customer($check_customer_data);
 
-			 // if ($customername == "") {
-			 // 	$data['status'] = 'success';
-			 // }
+		$customer_date = date('Ymd');
+
+		if ($get_check_product_data == "") {
+
+			$product_id = "CU".$customer_date."0001";
+
+		}else{
+
+			$check_product = "SELECT SUBSTR(pro_id,11,13) AS mypro_id 
+							  FROM tb_product 
+							  WHERE SUBSTR(pro_id,3,8) = $product_date  
+							  AND delete_flag = 1";
+			$data['get_check_product'] = $this->product_model->show_all_product($check_product);
+
+			$product_id = "PD".$product_date.$this->add_index($data['get_check_product']);
+			// print_r($get_check_product);
+
+		}
 
 
 			 if($customername != ""){
@@ -280,6 +341,30 @@ class Customer extends CI_Controller {
 		$this->customer_model->delete_customer($sql);
 
 		echo json_encode('success');
+	}
+
+	function add_index($data){
+
+		$data_num = $data;
+	
+		$run_max = max($data_num);
+		$num = $run_max->mypro_id+1;
+		$max = strlen($num);
+
+		if ($max == 1) {
+			$a = '000'.$num;
+		}elseif ($max == 2) {
+			$a = '00'.$num;
+		}elseif ($max == 3) {
+			$a = '0'.$num;
+		}else{
+			$a = $num;
+		}
+
+		// print_r($a);
+		// exit();
+		return $a;
+
 	}
 
 

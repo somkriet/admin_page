@@ -12,22 +12,26 @@
               <table id="myTable" class="display table-responsive-sm" style="width:100%">
                 <thead>
                   <tr>
-                      <th>No</th>
-                      <th>cus_name</th>
-                      <th>cus_name_social</th>
-                      <th>cus_phone</th>
-                      <th>cus_email</th>
-                      <th>Action</th>
+                      <th><?= $this->lang->line('no'); ?></th>
+                      <th><?= $this->lang->line('cus_sales_chanels'); ?></th>
+                      <th><?= $this->lang->line('cus_name_social'); ?></th>
+                      <th><?= $this->lang->line('cus_name'); ?></th>
+                      <th><?= $this->lang->line('cus_phone'); ?></th>
+                      <th><?= $this->lang->line('cus_email'); ?></th>
+                      <th><?= $this->lang->line('cus_create_date'); ?></th>
+                      <th><?= $this->lang->line('action'); ?></th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
-                      <th>No</th>
-                      <th>cus_name</th>
-                      <th>cus_name_social</th>
-                      <th>cus_phone</th>
-                      <th>cus_email</th>
-                      <th>Action</th>
+                      <th><?= $this->lang->line('no'); ?></th>
+                      <th><?= $this->lang->line('cus_sales_chanels'); ?></th>
+                      <th><?= $this->lang->line('cus_name_social'); ?></th>
+                      <th><?= $this->lang->line('cus_name'); ?></th>
+                      <th><?= $this->lang->line('cus_phone'); ?></th>
+                      <th><?= $this->lang->line('cus_email'); ?></th>
+                      <th><?= $this->lang->line('cus_create_date'); ?></th>
+                      <th><?= $this->lang->line('action'); ?></th>
                   </tr>
                 </tfoot>
                 <tbody>
@@ -35,16 +39,20 @@
                           foreach($customer_data as $idx => $val):?>
                           <tr>
                             <td align="center"><?php echo  $idx+1;?></td>
+                            <td align="center"><?php echo $val->sales_channels;?></td>
+                            <td align="center"><?php echo $val->cus_name_social;?></td>
                             <td align="center"><?php echo $val->cus_name;?></td>
-                            <td><?php echo $val->cus_name_social;?></td>
-                            <td><?php echo $val->phone_number;?></td>
-                            <td><?php echo $val->email;?></td>
+                            <td align="center"><?php echo $val->phone_number;?></td>
+                            <td align="center"><?php echo $val->email;?></td>
+                            <td align="center"><?php echo $val->date_create;?></td>
                             <td align="center">
 
                             <!--   <button type="button" class="btn btn-primary" onclick="callDetails('<?php echo $val->cus_id;?>');">ดูข้อมูล
                                 <span class="glyphicon glyphicon-list-alt"></span>
                               </button> -->
-
+                             <!--  <button type="button" class="btn-md btn-info  btn-sm btn-info" onclick="callDetails('<?php echo $val->cus_id;?>');">ดู
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                              </button> -->
                               <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->cus_id;?>');">แก้ไข
                                 <span class="glyphicon glyphicon-list-alt"></span>
                               </button>

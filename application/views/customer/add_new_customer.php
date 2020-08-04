@@ -37,10 +37,10 @@
                        <i class="fa fa-info-circle"></i> รูปแบบอีเมลล์ที่ถูกต้อง เช่น info@xcommerce.co.th    
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label for="exampleFormControlInput1"><b>เลขประจำตัวประชาชน</b></label>
                       <input type="text" class="form-control" id="customer_id_card" placeholder="เลขประจำตัวประชาชน">
-                    </div>
+                    </div> -->
 
                   </div>
                 </div>
@@ -62,10 +62,35 @@
                       <textarea  id="customer_address" name="customer_address" rows="4" class="form-control" placeholder="ที่อยู่จัดส่ง ..." style="overflow: hidden; resize: none;"></textarea>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="province">จังหวัด</label>
+                        <select name="province_id" id="province" class="form-control">
+                            <option value="">เลือกจังหวัด</option>
+    
+                              <?php foreach($provinces_data as $idx => $val):?>
+                                <option value="<?php echo $val->id;?>"><?php echo $val->name_th;?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="amphure">อำเภอ</label>
+                        <select name="amphure_id" id="amphure" class="form-control">
+                            <option value="">เลือกอำเภอ</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="district">ตำบล</label>
+                        <select name="district_id" id="district" class="form-control">
+                            <option value="">เลือกตำบล</option>
+                        </select>
+                    </div>
+                </div>           
+<!-- 
+                    <div class="form-group col-md-4">
                       <label for="exampleFormControlInput1"><b>รหัสไปรษณีย์</b></label>
                       <input type="text" class="form-control" id="customer_postal" placeholder="รหัสไปรษณีย์ ...">
-                    </div>
+                    </div> -->
 
                   </div>
                 </div>
@@ -84,10 +109,11 @@
                   <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                       <label for="exampleFormControlInput1"><b>ช่องทางขาย</b></label>
-                        <select id="customer_chanel " class="form-control" name="customer_chanel"   style="display:none" tabindex="-1" aria-hidden="true">
-                          <option value="">เลือกช่องทางขาย ...</option>
-                          <option value="10783">Facebook</option>
-                          <option value="10784">Line@</option>
+                        <select id="customer_chanel " class="form-control" name="customer_chanel">
+                          <!-- style="display:none" tabindex="-1" aria-hidden="true" -->
+                          <option value="">เลือกช่องทางขาย</option>
+                          <option value="1">Facebook</option>
+                          <option value="2">shopee</option>
                         </select>
                     </div>
 
@@ -114,6 +140,91 @@
        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
         <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
         <script type="text/javascript">
+
+
+  $(function(){
+    var provinceObject = $('#province');
+    var amphureObject = $('#amphure');
+    var districtObject = $('#district');
+    var zip_code = $('#customer_postal');
+    
+ 
+    // on change province
+    provinceObject.on('change', function(){
+        var provinceId = $(this).val();
+        // amphureObject.html('<option value="">เลือกอำเภอ</option>');
+        // districtObject.html('<option value="">เลือกตำบล</option>');
+        $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "<?php echo base_url('customer/get_amphures');?>",
+                data: { 'provinceId': provinceId },
+                success: function(data){
+                console.log('data'+data);
+                $('#amphure').empty();
+                $('#amphure').append('<option value="">เลือกอำเภอ</option>');
+                  $.each(data['amphures_data'], function(i, val){
+                    $('#amphure').append('<option value="' + val['id'] + '">' + val['name_th'] + '</option>');
+                  });
+                },
+                error: function(err){
+                  Swal.fire('Error!')
+                  return false;
+                }
+              });
+    });
+ 
+    // on change amphure
+    amphureObject.on('change', function(){
+        var amphureId = $(this).val();
+        $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "<?php echo base_url('customer/get_districts');?>",
+                data: { 'amphureId': amphureId },
+                success: function(data){
+                console.log('data'+data);
+                $('#district').empty();
+                $('#district').append('<option value="">เลือกตำบล</option>');
+                $.each(data['districts_data'], function(i, val){
+                    $('#district').append('<option value="' + val['id'] + '">' + val['name_th'] + '</option>');
+                    // $('#customer_postal').append('<input value="'+val['zip_code']+'">');
+                    // $('#customer_postal').val(data['districts_data'][0]['zip_code']);
+                });
+
+                },
+                error: function(err){
+                  Swal.fire('Error!')
+                  return false;
+                }
+              });
+    });
+    // // get zip code
+    // districtObject.on('change', function(){
+    //     var zip_code = $(this).val();
+    //     $.ajax({
+    //             type: "POST",
+    //             dataType: "JSON",
+    //             url: "<?php echo base_url('customer/get_districts');?>",
+    //             data: { 'amphureId': zip_code },
+    //             success: function(data){
+    //             console.log('data'+data);
+    //             $('#district').empty();
+    //             $('#district').append('<option value="">เลือกตำบล</option>');
+    //             $.each(data['districts_data'], function(i, val){
+    //                 $('#district').append('<option value="' + val['id'] + '">' + val['name_th'] + '</option>');
+    //                 $('#customer_postal').append('val');
+    //             });
+
+    //             $('#customer_postal').val(data['districts_data'][val['id']]['zip_code']);
+    //             },
+    //             error: function(err){
+    //               Swal.fire('Error!')
+    //               return false;
+    //             }
+    //           });
+    // });
+});
           
           $('#add_customer').on('click', function(){
         
