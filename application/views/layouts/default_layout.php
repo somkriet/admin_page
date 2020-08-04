@@ -63,6 +63,18 @@
           <span>รายการสั่งซื้อ</span></a>
       </li>
 
+       <li class="nav-item active">
+        <a class="nav-link" href="<?php echo base_url();?>payment">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>ติดตามการชำระเงิน</span></a>
+      </li>
+
+       <li class="nav-item active">
+        <a class="nav-link" href="<?php echo base_url();?>logistics">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>จัดการการจัดส่ง</span></a>
+      </li>
+
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">

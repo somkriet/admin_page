@@ -37,8 +37,8 @@
                             <td align="center"><?php echo  $idx+1;?></td>
                             <td align="center"><?php echo $val->cus_name;?></td>
                             <td><?php echo $val->cus_name_social;?></td>
-                            <td><?php echo $val->cus_phone;?></td>
-                            <td><?php echo $val->cus_email;?></td>
+                            <td><?php echo $val->phone_number;?></td>
+                            <td><?php echo $val->email;?></td>
                             <td align="center">
 
                             <!--   <button type="button" class="btn btn-primary" onclick="callDetails('<?php echo $val->cus_id;?>');">ดูข้อมูล
