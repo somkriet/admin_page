@@ -44,7 +44,7 @@ class Customer extends CI_Controller {
         //     fetch_customer($config["per_page"], $page);
         // $data["links"] = $this->pagination->create_links();
  
-		$sql = "SELECT * FROM tb_customer WHERE delete_flag = 1;";
+		$sql = "SELECT * FROM customer WHERE delete_flag = 1;";
 		$data['customer_data'] = $this->customer_model->show_all_customer($sql);
 
 		$this->template->set('title', 'Show customer');
@@ -53,15 +53,61 @@ class Customer extends CI_Controller {
 	}
 	public function new_customer()
 	{
-		$data = array();
+		// $data = array();
+
+		$sql = "SELECT * FROM provinces order by name_th asc;";
+		$data['provinces_data'] = $this->customer_model->show_all_customer($sql);
+
 		$this->template->set('title', 'New customer');
 		$this->template->load('default_layout', 'contents' , 'customer/add_new_customer', $data);
   
 	}
 
+
+	public function get_amphures()
+	{
+		
+		$province_id = $this->input->post('provinceId');
+
+		$sql = "SELECT * FROM amphures WHERE province_id='".$province_id."'";
+		// $query = mysqli_query($conn, $sql);
+
+		$data['amphures_data'] = $this->customer_model->show_all_customer($sql);
+		 
+		// $json = array();
+		// while($result = mysqli_fetch_assoc($query)) {    
+		//     array_push($json, $result);
+		// }
+		echo json_encode($data);
+ 		// print_r($data);
+  
+	}
+
+
+	public function get_districts(){
+
+		$amphure_id = $this->input->post('amphureId');
+
+		$sql = "SELECT * FROM districts WHERE amphure_id='".$amphure_id."'";
+
+		$data['districts_data'] = $this->customer_model->show_all_customer($sql);
+
+		// $query = mysqli_query($conn, $sql);
+		 
+		// $json = array();
+		// while($result = mysqli_fetch_assoc($query)) {    
+		//     array_push($json, $result);
+		// }
+		echo json_encode($data);
+
+	}
+
+
+	
+
 	public function show_all_customer(){
 
-		$sql = "SELECT * FROM tb_customer WHERE delete_flag = 1;";
+		$sql = "SELECT * FROM customer WHERE delete_flag = 1;";
 
 		$data['customer_data'] = $this->customer_model->show_all_customer($sql);
 
@@ -76,12 +122,12 @@ class Customer extends CI_Controller {
 		        //Main query
 		        $pages = new Paginator;
 		        $pages->default_ipp = 15;
-		        $sql_forms = $db->query("SELECT * FROM tb_customer WHERE 1 ".$condition."");
+		        $sql_forms = $db->query("SELECT * FROM customer WHERE 1 ".$condition."");
 		        $pages->items_total = $sql_forms->num_rows;
 		        $pages->mid_range = 9;
 		        $pages->paginate();  
 		         
-		        $data['result'] =   $db->query("SELECT * FROM tb_customer WHERE 1 ".$condition." ORDER BY cus_name ASC ".$pages->limit."");
+		        $data['result'] =   $db->query("SELECT * FROM customer WHERE 1 ".$condition." ORDER BY cus_name ASC ".$pages->limit."");
 		    }
 
 		// $data['status'] = 'success';
@@ -102,32 +148,41 @@ class Customer extends CI_Controller {
 		// $customerchanel = $this->input->post('chanel');
 		$customerchanel = 1;
 
-		// print_r($customername);
-		// exit();
+		$check_customer_data = "SELECT pro_id FROM customer WHERE delete_flag = 1;";
+		$get_check_customer_data = $this->customer_model->show_all_customer($check_customer_data);
 
-			 // if ($customername == "") {
-			 // 	$data['status'] = 'success';
-			 // }
+		$customer_date = date('Ymd');
+
+		if ($get_check_product_data == "") {
+
+			$product_id = "CU".$customer_date."0001";
+
+		}else{
+
+			$check_product = "SELECT SUBSTR(pro_id,11,13) AS mypro_id 
+							  FROM tb_product 
+							  WHERE SUBSTR(pro_id,3,8) = $product_date  
+							  AND delete_flag = 1";
+			$data['get_check_product'] = $this->product_model->show_all_product($check_product);
+
+			$product_id = "PD".$product_date.$this->add_index($data['get_check_product']);
+			// print_r($get_check_product);
+
+		}
 
 
 			 if($customername != ""){
-			 	$sql = "INSERT INTO tb_customer (
-						tb_customer.cus_name,
-						tb_customer.cus_name_social,
-						tb_customer.cus_phone,
-						tb_customer.cus_email,
-						tb_customer.cus_id_card_number,
-						tb_customer.cus_address,
-						tb_customer.cus_postal,
-						tb_customer.cus_sales_channel
+			 	$sql = "INSERT INTO customer (
+						customer.name,
+						customer.name_social,
+						customer.phone_number,
+						customer.email,
+						customer.sales_channel
 					) VALUES (
 						'$customername',
 						'$customername_socail',
 						'$customerphone',
 						'$customeremail',
-						'$customerid_card',
-						'$customeraddress',
-						'$customerpostal',
 						'$customerchanel'
 					)";
 
@@ -195,7 +250,7 @@ class Customer extends CI_Controller {
 		$id = $this->input->post('id');
 
 		$sql = "SELECT * 
-				FROM tb_customer 
+				FROM customer 
 				WHERE cus_id = '$id' 
 				AND delete_flag = 1;";
 		$data['customer_data'] = $this->customer_model->show_all_customer($sql);
@@ -212,25 +267,19 @@ class Customer extends CI_Controller {
 		$customername_socail = $this->input->post('name_socail');
 		$customerphone = $this->input->post('phone');
 		$customeremail = $this->input->post('email');
-		$customerid_card = $this->input->post('id_card');
-		$customeraddress = $this->input->post('address');
-		$customerpostal = $this->input->post('postal');
-		// $customerchanel = $this->input->post('chanel');
+		$customerchanel = $this->input->post('chanel');
 		$customerchanel = 1;
 
 		$sql = "UPDATE
 					tb_customer
 				SET
-					tb_customer.cus_name = '$customername',
-					tb_customer.cus_name_social = '$customername_socail',
-					tb_customer.cus_phone = '$customerphone',
-					tb_customer.cus_email = '$customeremail',
-					tb_customer.cus_id_card_number = '$customerid_card',
-					tb_customer.cus_address = '$customeraddress',
-					tb_customer.cus_postal = '$customerpostal',
-					tb_customer.cus_sales_channel = '$customerchanel'
+					customer.cus_name = '$customername',
+					customer.cus_name_social = '$customername_socail',
+					customer.cus_phone = '$customerphone',
+					customer.cus_email = '$customeremail',
+					customer.cus_sales_channel = '$customerchanel'
 				WHERE
-					tb_customer.cus_id = '$id'";
+					customer.cus_id = '$id'";
 		$this->customer_model->edit_customer($sql);
 
 		// $sql = "SELECT * 
@@ -255,9 +304,9 @@ class Customer extends CI_Controller {
 					FROM
 						customer
 					WHERE
-						deleteFlag = 0
+						delete_flag = 0
 						AND supplierID = '$supplier'
-						AND custID = '$custID'";
+						AND cus_id = '$custID'";
 			if(!empty($id)){
 				$sql .= " AND id != '$id'";
 			}
@@ -284,14 +333,38 @@ class Customer extends CI_Controller {
 		// $user = $userdata['name_en'];
 
 		$sql = "UPDATE
-					tb_customer
+					customer
 				SET
-					tb_customer.delete_flag = 0
+					customer.delete_flag = 0
 				WHERE
-					tb_customer.cus_id = '$id'";
+					customer.cus_id = '$id'";
 		$this->customer_model->delete_customer($sql);
 
 		echo json_encode('success');
+	}
+
+	function add_index($data){
+
+		$data_num = $data;
+	
+		$run_max = max($data_num);
+		$num = $run_max->mypro_id+1;
+		$max = strlen($num);
+
+		if ($max == 1) {
+			$a = '000'.$num;
+		}elseif ($max == 2) {
+			$a = '00'.$num;
+		}elseif ($max == 3) {
+			$a = '0'.$num;
+		}else{
+			$a = $num;
+		}
+
+		// print_r($a);
+		// exit();
+		return $a;
+
 	}
 
 
