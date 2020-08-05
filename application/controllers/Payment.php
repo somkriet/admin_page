@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Order extends CI_Controller {
+class Payment extends CI_Controller {
 
 	public function __construct()
     {
@@ -37,7 +37,7 @@ class Order extends CI_Controller {
         $data['order_data'] = $this->order_model->show_all_order($sql);
 
 		$this->template->set('title', 'order');
-		$this->template->load('default_layout', 'contents' , 'order/show_all_order', $data);
+		$this->template->load('default_layout', 'contents' , 'payment/show_payment_all', $data);
 	}
 
 	public function new_order() 

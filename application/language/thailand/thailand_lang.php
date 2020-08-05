@@ -14,5 +14,10 @@ $lang['head_promotion'] = 'โปรโมชั่น';
 
 $lang['head_report'] = 'รายงาน';
 
+$lang['today_sales'] = 'ยอดขายวันนี้';
+
+//order
+
+$lang['list_order'] = 'รายการสั่งซื้อสินค้า';
 
 ?>

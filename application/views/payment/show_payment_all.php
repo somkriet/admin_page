@@ -2,16 +2,13 @@
         <div class="container-fluid" id="page-sumary">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800"><?= $this->lang->line('list_order'); ?></h1>
+          <!-- <h1 class="h3 mb-2 text-gray-800"><?= $this->lang->line('list_order'); ?></h1> -->
          <!--  <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
-
-
-
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">ตารางข้อมูลการสั่งซื้อ</h6>
+              <h6 class="m-0 font-weight-bold text-primary">ตารางข้อมูลการชำระเงิน</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -21,23 +18,22 @@
                       <th>ลำดับ</th>
                       <th>หมายเลขออเดอร์</th>
                       <th>ชื่อลูกค้า</th>
-                      <th>ช่องทางการขาย</th>
-                      <th>อัปเดตล่าสุด</th>
-                      <th>รวมทั้งหมด</th>
-                      <th>การชำระเงิน</th>
-                      <th>การจัดส่ง</th>
+                      <th>วันที่ทำรายการ</th>
+                      <th>โอนเงินแล้ว</th>
+                      <th>ยอดชำระทั้งหมด</th>
+                      <th>สถานะ</th>
+                      <!-- <th>การจัดส่ง</th> -->
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>ลำดับ</th>
+                     <th>ลำดับ</th>
                       <th>หมายเลขออเดอร์</th>
                       <th>ชื่อลูกค้า</th>
-                      <th>ช่องทางการขาย</th>
-                      <th>อัปเดตล่าสุด</th>
-                      <th>รวมทั้งหมด</th>
-                      <th>การชำระเงิน</th>
-                      <th>การจัดส่ง</th>
+                      <th>วันที่ทำรายการ</th>
+                      <th>โอนเงินแล้ว</th>
+                      <th>ยอดชำระทั้งหมด</th>
+                      <th>สถานะ</th>
                     </tr>
                   </tfoot>
                    <tbody>
@@ -53,11 +49,10 @@
                               </button>
                             </td>
                             <td align="center"><?php echo $val->customer_name;?></td>
-                            <td><?php echo $val->sales_channels;?></td>
-                            <td><?php echo $val->time_update;?></td>
-                            <td><?php echo $val->total;?></td>
-                            <td><?php echo $val->payment;?></td>
-                            <td><?php echo $val->delivery;?></td>
+                            <td align="center"><?php echo $val->time_update;?></td>
+                            <td align="center"><?php echo $val->total;?></td>
+                            <td align="center"><?php echo $val->total;?></td>
+                            <td align="center"><?php echo $val->payment;?></td>
                            <!--  <td align="center">
                               <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->pro_id;?>');">แก้ไข
                                 <span class="glyphicon glyphicon-list-alt"></span>

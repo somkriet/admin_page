@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Admim page - Dashboard</title>
+  <title>e-commerce</title>
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo base_url();?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -43,7 +43,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Admin Page<?= $this->lang->line('admin_page '); ?><sup>1</sup></div>
+        <div class="sidebar-brand-text mx-3">e-commerce<?= $this->lang->line('admin_page '); ?><sup>1</sup></div>
       </a>
 
       <!-- Divider -->
@@ -51,9 +51,28 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="<?php echo base_url();?>home">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>หน้าหลัก</span></a>
+      </li>
+
+       <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="<?php echo base_url();?>order">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>รายการสั่งซื้อ</span></a>
+      </li>
+
+       <li class="nav-item active">
+        <a class="nav-link" href="<?php echo base_url();?>payment">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>ติดตามการชำระเงิน</span></a>
+      </li>
+
+       <li class="nav-item active">
+        <a class="nav-link" href="<?php echo base_url();?>logistics">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>จัดการการจัดส่ง</span></a>
       </li>
 
 
