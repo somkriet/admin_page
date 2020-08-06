@@ -137,64 +137,94 @@ class Customer extends CI_Controller {
 
 	public function add_new_customer()
 	{
-		$customerID = $this->input->post('customerID');
 		$customername = $this->input->post('name');
 		$customername_socail = $this->input->post('name_socail');
 		$customerphone = $this->input->post('phone');
 		$customeremail = $this->input->post('email');
-		$customerid_card = $this->input->post('id_card');
 		$customeraddress = $this->input->post('address');
-		$customerpostal = $this->input->post('postal');
-		// $customerchanel = $this->input->post('chanel');
-		$customerchanel = 1;
-
-		$check_customer_data = "SELECT pro_id FROM customer WHERE delete_flag = 1;";
+		$customerprovince = $this->input->post('province');
+		$customeramphure = $this->input->post('amphure');
+		$customerdistrict = $this->input->post('district');
+		$customerchanel = $this->input->post('chanel');
+	
+		$check_customer_data = "SELECT cus_id FROM customer WHERE delete_flag = 1;";
 		$get_check_customer_data = $this->customer_model->show_all_customer($check_customer_data);
 
 		$customer_date = date('Ymd');
 
-		if ($get_check_product_data == "") {
+		if ($check_customer_data == "") {
 
-			$product_id = "CU".$customer_date."0001";
+			$customer_id = "CU".$customer_date."0001";
 
 		}else{
 
-			$check_product = "SELECT SUBSTR(pro_id,11,13) AS mypro_id 
-							  FROM tb_product 
-							  WHERE SUBSTR(pro_id,3,8) = $product_date  
+			$check_product = "SELECT SUBSTR(cus_id,11,13) AS mycus_id 
+							  FROM customer 
+							  WHERE SUBSTR(cus_id,3,8) = $customer_date  
 							  AND delete_flag = 1";
-			$data['get_check_product'] = $this->product_model->show_all_product($check_product);
+			$data['get_check_customer'] = $this->customer_model->show_all_customer($check_product);
 
-			$product_id = "PD".$product_date.$this->add_index($data['get_check_product']);
-			// print_r($get_check_product);
+			$customer_id = "CU".$customer_date.$this->add_index($data['get_check_customer']);
 
-		}
-
-
-			 if($customername != ""){
-			 	$sql = "INSERT INTO customer (
-						customer.name,
-						customer.name_social,
+			$sql = "INSERT INTO customer (
+			 			customer.cus_id,
+						customer.cus_name,
+						customer.cus_name_social,
 						customer.phone_number,
 						customer.email,
-						customer.sales_channel
-					) VALUES (
+						customer.sales_channels,
+						customer.cus_address,
+						customer.cus_provinces,
+						customer.cus_amphures,
+						customer.cus_districts
+					) VALUES ('$customer_id',
 						'$customername',
 						'$customername_socail',
 						'$customerphone',
 						'$customeremail',
-						'$customerchanel'
+						'$customerchanel',
+						'$customeraddress',
+						'$customerprovince',
+						'$customeramphure',
+						'$customerdistrict'
 					)";
 
 					$this->customer_model->add_new_customer($sql);
 
 				$data['status'] = 'success';
+			// print_r($get_check_product);
 
-			 }else{
+		}
 
-			 	$data['status'] = 'notsave';
+			 // if($customername != ""){
+			 // 	$sql = "INSERT INTO customer (
+			 // 			customer.cus_id,
+				// 		customer.cusname,
+				// 		customer.cus_name_social,
+				// 		customer.phone_number,
+				// 		customer.email,
+				// 		customer.sales_channels,
+				// 		customer.cus_address,
+				// 		customer.cus_provinces,
+				// 		customer.cus_amphures,
+				// 		customer.cus_districts,
+				// 	) VALUES (
+				// 		'$customername',
+				// 		'$customername_socail',
+				// 		'$customerphone',
+				// 		'$customeremail',
+				// 		'$customerchanel'
+				// 	)";
 
-			 }
+				// 	$this->customer_model->add_new_customer($sql);
+
+				// $data['status'] = 'success';
+
+			 // }else{
+
+			 // 	$data['status'] = 'notsave';
+
+			 // }
 
 
 
@@ -348,7 +378,7 @@ class Customer extends CI_Controller {
 		$data_num = $data;
 	
 		$run_max = max($data_num);
-		$num = $run_max->mypro_id+1;
+		$num = $run_max->mycus_id+1;
 		$max = strlen($num);
 
 		if ($max == 1) {

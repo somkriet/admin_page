@@ -67,7 +67,6 @@
                         <label for="province">จังหวัด</label>
                         <select name="province_id" id="province" class="form-control">
                             <option value="">เลือกจังหวัด</option>
-    
                               <?php foreach($provinces_data as $idx => $val):?>
                                 <option value="<?php echo $val->id;?>"><?php echo $val->name_th;?></option>
                             <?php endforeach; ?>
@@ -109,11 +108,12 @@
                   <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                       <label for="exampleFormControlInput1"><b>ช่องทางขาย</b></label>
-                        <select id="customer_chanel " class="form-control" name="customer_chanel">
+                        <select id="customer_chanel" class="form-control" name="customer_chanel">
                           <!-- style="display:none" tabindex="-1" aria-hidden="true" -->
                           <option value="">เลือกช่องทางขาย</option>
                           <option value="1">Facebook</option>
                           <option value="2">shopee</option>
+                          <option value="3">หน้าร้าน</option>
                         </select>
                     </div>
 
@@ -232,10 +232,12 @@
             var name_socail = $('#customer_name_socail').val();
             var phone = $('#customer_phone').val();
             var email = $('#customer_email').val();
-            var id_card = $('#customer_id_card').val();
             var address = $('#customer_address').val();
-            var postal = $('#customer_postal').val();
+            var province = $('#province').val();
+            var amphure = $('#amphure').val();
+            var district = $('#district').val();
             var chanel = $('#customer_chanel').val();
+            
 
             if (name == "") {
               Swal.fire('กรอกข้อมูลขื่อ-สกุล');
@@ -260,23 +262,11 @@
 
               $( "#customer_email" ).focus();
 
-            }else if(id_card == ""){
-              
-              Swal.fire('กรอกข้อมูลid_card');
-
-              $( "#customer_id_card" ).focus();
-
             }else if(address == ""){
               
               Swal.fire('กรอกข้อมูลaddress');
 
               $( "#customer_address" ).focus();
-
-            }else if(postal == ""){
-              
-              Swal.fire('กรอกข้อมูลpostal');
-
-              $( "#customer_postal" ).focus();
 
             }else if(chanel == ""){
               
@@ -294,14 +284,15 @@
                         'name_socail': name_socail,
                         'phone': phone,
                         'email': email,
-                        'id_card': id_card,
                         'address': address,
-                        'postal': postal,
+                        'province': province,
+                        'amphure' : amphure,
+                        'district' : district,
                         'chanel': chanel
                       },
-                success: function(res){
+                success: function(data){
 
-                  if(res['status'] == 'success'){
+                  if(data['status'] == 'success'){
 
                     Swal.fire('Success!!!');
                     
