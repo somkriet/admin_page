@@ -9,8 +9,10 @@
             </div>
             <div class="card-body">
 
-              <table id="myTable" class="display table-responsive-sm" style="width:100%">
-                <thead>
+              <!-- <table id="myTable" class="display table-responsive-sm" style="width:100%"> -->
+              <table id="myTable" class="table table-hover" style="width:100%">
+                
+                <thead class="thead-dark">
                   <tr>
                       <th><?= $this->lang->line('no'); ?></th>
                       <th><?= $this->lang->line('cus_sales_chanels'); ?></th>
@@ -22,7 +24,7 @@
                       <th><?= $this->lang->line('action'); ?></th>
                   </tr>
                 </thead>
-                <tfoot>
+                <!-- <tfoot>
                   <tr>
                       <th><?= $this->lang->line('no'); ?></th>
                       <th><?= $this->lang->line('cus_sales_chanels'); ?></th>
@@ -33,13 +35,28 @@
                       <th><?= $this->lang->line('cus_create_date'); ?></th>
                       <th><?= $this->lang->line('action'); ?></th>
                   </tr>
-                </tfoot>
+                </tfoot> -->
                 <tbody>
                   <?php if(!empty($customer_data)): 
                           foreach($customer_data as $idx => $val):?>
                           <tr>
                             <td align="center"><?php echo  $idx+1;?></td>
-                            <td align="center"><?php echo $val->sales_channels;?></td>
+                            <td align="center">
+                              <?php if ($val->sales_channels == "1")
+                                    {
+                                      echo "PageFacebook";
+                                    }elseif ($val->sales_channels == "2") {
+                                      echo "Shopee";
+                                    }elseif ($val->sales_channels == "3") {
+                                      echo "หน้าร้าน";
+                                    }elseif ($val->sales_channels == "4") {
+                                      echo "Instagram";
+                                    }else{
+                                      echo "Lazada";
+                                    }
+                              ?>
+                              
+                            </td>
                             <td align="center"><?php echo $val->cus_name_social;?></td>
                             <td align="center"><?php echo $val->cus_name;?></td>
                             <td align="center"><?php echo $val->phone_number;?></td>
@@ -47,19 +64,28 @@
                             <td align="center"><?php echo $val->date_create;?></td>
                             <td align="center">
 
-                            <!--   <button type="button" class="btn btn-primary" onclick="callDetails('<?php echo $val->cus_id;?>');">ดูข้อมูล
-                                <span class="glyphicon glyphicon-list-alt"></span>
-                              </button> -->
-                             <!--  <button type="button" class="btn-md btn-info  btn-sm btn-info" onclick="callDetails('<?php echo $val->cus_id;?>');">ดู
-                                <span class="glyphicon glyphicon-list-alt"></span>
-                              </button> -->
-                              <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->cus_id;?>');">แก้ไข
-                                <span class="glyphicon glyphicon-list-alt"></span>
-                              </button>
+                  
 
-                              <button type="button" class="btn-md btn-danger btn-sm btn-danger" onclick="delRow('<?php echo $val->cus_id;?>');">ลบ
+
+                              <!-- <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->cus_id;?>');">แก้ไข
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                              </button> -->
+
+                              <!-- <button type="button" class="btn-md btn-danger btn-sm btn-danger" onclick="delRow('<?php echo $val->cus_id;?>');">ลบ
                                 <span class="glyphicon glyphicon-trash"></span>
-                              </button>
+                              </button> -->
+
+                                <div class="dropdown show">
+                                  <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    
+                                  </a>
+
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="<?php echo base_url();?>customer/show_data_customer/<?php echo $val->cus_id;?>">ดูข้อมูล</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                  </div>
+                                </div>
 
                             </td>
                           </tr>
@@ -107,7 +133,7 @@
 
                     <div class="form-group">
                       <label for="exampleFormControlInput1"><b>เบอร์โทรศัพท์</b></label>
-                      <input type="text" class="form-control" id="customer_phone" placeholder="เบอร์โทรลูกค้า ...">
+                      <input type="text" class="form-control" id="customer_phone" placeholder="เบอร์โทรลูกค้า ..." maxlength="10">
                      
                       <i class="fa fa-info-circle"></i> หมายเลขโทรศัพท์ที่ถูกต้อง ตัวอย่าง 0614207877 หรือ 0246255934                    
                     </div>
@@ -115,13 +141,56 @@
                     <div class="form-group">
                       <label for="exampleFormControlInput1"><b>อีเมล</b></label>
                       <input type="email" class="form-control" id="customer_email" placeholder="อีเมลล์ลูกค้า ...">
-                       <i class="fa fa-info-circle"></i> รูปแบบอีเมลล์ที่ถูกต้อง เช่น info@xcommerce.co.th    
+                       <i class="fa fa-info-circle"></i> รูปแบบอีเมลล์ที่ถูกต้อง เช่น info@wintage.com    
                     </div>
 
                     <div class="form-group">
+                      <label for="exampleFormControlInput1"><b>ที่อยู่ลูกค้า</b></label>
+                      <textarea  id="customer_address" rows="4" class="form-control" placeholder="ที่อยู่จัดส่ง ..."></textarea>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">จังหวัด</label>
+                        <select name="province_id" id="province" class="form-control">
+                            <option value="">เลือกจังหวัด</option>
+                              <?php foreach($provinces_data as $idx => $val):?>
+                                <option value="<?php echo $val->id;?>"><?php echo $val->name_th;?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">อำเภอ</label>
+                        <select name="amphure_id" id="amphure" class="form-control">
+                            <option value="">เลือกอำเภอ</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">ตำบล</label>
+                        <select name="district_id" id="district" class="form-control">
+                            <option value="">เลือกตำบล</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1"><b>ช่องทางขาย</b></label>
+                        <select id="customer_chanel" class="form-control" name="customer_chanel">
+                          <!-- style="display:none" tabindex="-1" aria-hidden="true" -->
+                          <option value="">เลือกช่องทางขาย</option>
+                          <option value="1">PageFacebook</option>
+                          <option value="2">Shopee</option>
+                          <option value="3">หน้าร้าน</option>
+                          <option value="3">Instagram</option>
+                          <option value="5">Lazada</option>
+                        </select>
+                    </div>
+
+                    <!-- <div class="form-group">
                       <label for="exampleFormControlInput1"><b>เลขประจำตัวประชาชน</b></label>
                       <input type="text" class="form-control" id="customer_id_card" placeholder="เลขประจำตัวประชาชน">
-                    </div>
+                    </div> -->
 
                   </div>
                 </div>
@@ -148,6 +217,67 @@ $(function(){
   });
 });
 
+
+$(function(){
+    var provinceObject = $('#province');
+    var amphureObject = $('#amphure');
+    var districtObject = $('#district');
+    var zip_code = $('#customer_postal');
+    
+ 
+    // on change province
+    provinceObject.on('change', function(){
+        var provinceId = $(this).val();
+        // amphureObject.html('<option value="">เลือกอำเภอ</option>');
+        // districtObject.html('<option value="">เลือกตำบล</option>');
+        $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "<?php echo base_url('customer/get_amphures');?>",
+                data: { 'provinceId': provinceId },
+                success: function(data){
+                console.log('data'+data);
+                $('#amphure').empty();
+                $('#amphure').append('<option value="">เลือกอำเภอ</option>');
+                  $.each(data['amphures_data'], function(i, val){
+                    $('#amphure').append('<option value="' + val['id'] + '">' + val['name_th'] + '</option>');
+                  });
+                },
+                error: function(err){
+                  Swal.fire('Error!')
+                  return false;
+                }
+              });
+    });
+ 
+    // on change amphure
+    amphureObject.on('change', function(){
+        var amphureId = $(this).val();
+        $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "<?php echo base_url('customer/get_districts');?>",
+                data: { 'amphureId': amphureId },
+                success: function(data){
+                console.log('data'+data);
+                $('#district').empty();
+                $('#district').append('<option value="">เลือกตำบล</option>');
+                $.each(data['districts_data'], function(i, val){
+                    $('#district').append('<option value="' + val['id'] + '">' + val['name_th'] + '</option>');
+                    // $('#customer_postal').append('<input value="'+val['zip_code']+'">');
+                    // $('#customer_postal').val(data['districts_data'][0]['zip_code']);
+                });
+
+                },
+                error: function(err){
+                  Swal.fire('Error!')
+                  return false;
+                }
+              });
+    });
+    
+});
+
 //function show for edit
   function callDetails(id){
     $.ajax({
@@ -163,12 +293,13 @@ $(function(){
           $('#customer_id').val(res['customer_data'][0]['cus_id']);
           $('#customer_name').val(res['customer_data'][0]['cus_name']);
           $('#customer_name_socail').val(res['customer_data'][0]['cus_name_social']);
-          $('#customer_phone').val(res['customer_data'][0]['cus_phone']);
-          $('#customer_email').val(res['customer_data'][0]['cus_email']);
-          $('#customer_id_card').val(res['customer_data'][0]['cus_id_card_number']);
-          // $('#contactTel').val(res['result'][0]['cus_address']);
-          // $('#contactTel').val(res['result'][0]['cus_postal']);
-          // $('#contactTel').val(res['result'][0]['cus_sales_channel']);
+          $('#customer_phone').val(res['customer_data'][0]['phone_number']);
+          $('#customer_email').val(res['customer_data'][0]['email']);
+          $('#customer_address').val(res['customer_data'][0]['cus_address']);    
+          $('#province').val(res['customer_data'][0]['cus_provinces']);
+          $('#amphure').val(res['customer_data'][0]['cus_amphures']);
+          $('#district').val(res['customer_data'][0]['cus_districts']);
+          $('#customer_chanel').val(res['customer_data'][0]['sales_channels']);
 
           $('#edit_customer').modal('show');
         }else{

@@ -25,7 +25,7 @@ $lang['list_order'] = 'รายการสั่งซื้อสินค้
 
 $lang['cus_sales_chanels'] = 'ช่องทางการขาย';
 $lang['cus_name_social'] = 'ชื่อโซเซีบล';
-$lang['cus_name'] = '=ชื่อ-สกุล';
+$lang['cus_name'] = 'ชื่อ-สกุล';
 $lang['cus_phone'] = 'เบอร์โทร';
 $lang['cus_email'] = 'อีเมล์';
 $lang['cus_create_date'] = 'วันที่สร้าง';

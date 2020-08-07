@@ -30,22 +30,12 @@ class Customer extends CI_Controller {
 	public function index()
 	{
 		header("Access-Control-Allow-Origin: *");
-
-		// $config = array();
-  //       $config["base_url"] = base_url() . "customer/index";
-  //       $config["total_rows"] = $this->customer_model->record_count();
-  //       $config["per_page"] = 10;
-  //       $config["uri_segment"] = 3;
- 
-  //       $this->pagination->initialize($config);
- 
-        // $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        // $data["results"] = $this->customer_model->
-        //     fetch_customer($config["per_page"], $page);
-        // $data["links"] = $this->pagination->create_links();
  
 		$sql = "SELECT * FROM customer WHERE delete_flag = 1;";
 		$data['customer_data'] = $this->customer_model->show_all_customer($sql);
+
+		$sql = "SELECT * FROM provinces order by name_th asc;";
+		$data['provinces_data'] = $this->customer_model->show_all_customer($sql);
 
 		$this->template->set('title', 'Show customer');
 		$this->template->load('default_layout', 'contents' , 'customer/show_all_customer', $data);
@@ -53,8 +43,7 @@ class Customer extends CI_Controller {
 	}
 	public function new_customer()
 	{
-		// $data = array();
-
+		
 		$sql = "SELECT * FROM provinces order by name_th asc;";
 		$data['provinces_data'] = $this->customer_model->show_all_customer($sql);
 
@@ -105,33 +94,153 @@ class Customer extends CI_Controller {
 
 	
 
-	public function show_all_customer(){
+	public function show_data_customer($cus_id){
 
-		$sql = "SELECT * FROM customer WHERE delete_flag = 1;";
+		// $customer_id = $_POST['$cus_id'];
 
+		
+		$sql = "SELECT * FROM customer WHERE cus_id = '".$cus_id."' AND delete_flag = 1;";
 		$data['customer_data'] = $this->customer_model->show_all_customer($sql);
-
-
-		    if(isset($_REQUEST['tb1'])) {
-		        $condition      =   "";
-		        if(isset($_GET['tb1']) and $_GET['tb1']!="")
-		        {
-		            $condition      .=  " AND continentName='".$_GET['tb1']."'";
-		        }
-		         
-		        //Main query
-		        $pages = new Paginator;
-		        $pages->default_ipp = 15;
-		        $sql_forms = $db->query("SELECT * FROM customer WHERE 1 ".$condition."");
-		        $pages->items_total = $sql_forms->num_rows;
-		        $pages->mid_range = 9;
-		        $pages->paginate();  
-		         
-		        $data['result'] =   $db->query("SELECT * FROM customer WHERE 1 ".$condition." ORDER BY cus_name ASC ".$pages->limit."");
-		    }
-
+		// print_r($data);
+		// exit();
 		// $data['status'] = 'success';
-		echo json_encode($data);
+		$this->template->set('title', 'Show customer');
+		$this->template->load('default_layout', 'contents' , 'customer/show_data_customer', $data);
+
+	}
+
+	public function add_new_customer2()
+	{
+
+		$uploadDir = 'uploads/'; 
+		$response = array( 
+		    'status' => 0, 
+		    'message' => 'Form submission failed, please try again.' 
+		); 
+		 
+		// If form is submitted 
+		// if(isset($_POST['name']) || isset($_POST['email']) || isset($_POST['file'])){ 
+		    // Get the submitted form data 
+		    // $name = $_POST['name']; 
+		    // $email = $_POST['email']; 
+
+		$customername = $_POST['customer_name'];
+		$customername_socail = $_POST['customer_name_socail'];
+		$customerphone = $_POST['customer_phone'];
+		$customeremail = $_POST['customer_email'];
+		$customeraddress = $_POST['customer_address'];
+		$customerprovince = $_POST['province'];
+		$customeramphure = $_POST['amphure'];
+		$customerdistrict = $_POST['district'];
+		$customerchanel = $_POST['customer_chanel'];
+
+		// print_r($_POST); 
+		// exit();
+		     
+		    // Check whether submitted data is not empty 
+		    // if(!empty($name) && !empty($email)){ 
+		    if(!empty($customername)){ 
+		        // Validate email 
+		        // if(filter_var($email, FILTER_VALIDATE_EMAIL) === false){ 
+		        //     $response['message'] = 'Please enter a valid email.'; 
+		        // }else{ 
+		            $uploadStatus = 1; 
+		             
+		            // Upload file 
+		            $uploadedFile = ''; 
+		            if(!empty($_FILES["file"]["name"])){ 
+		                 
+		                // File path config 
+		                $fileName = basename($_FILES["file"]["name"]); 
+		                $targetFilePath = $uploadDir . $fileName; 
+		                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+		                 
+		                // Allow certain file formats 
+		                $allowTypes = array('pdf', 'doc', 'docx', 'jpg', 'png', 'jpeg'); 
+		                if(in_array($fileType, $allowTypes)){ 
+		                    // Upload file to the server 
+		                    if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){ 
+		                        $uploadedFile = $fileName; 
+		                    }else{ 
+		                        $uploadStatus = 0; 
+		                        $response['message'] = 'Sorry, there was an error uploading your file.'; 
+		                    } 
+		                }else{ 
+		                    $uploadStatus = 0; 
+		                    $response['message'] = 'Sorry, only PDF, DOC, JPG, JPEG, & PNG files are allowed to upload.'; 
+		                } 
+		            } 
+		             
+		            if($uploadStatus == 1){ 
+		                // Include the database config file 
+		                // include_once 'dbConfig.php'; 
+		                 
+		                // Insert form data in the database 
+		                // $insert = $db->query("INSERT INTO form_data (name,email,file_name) VALUES ('".$name."','".$email."','".$uploadedFile."')"); 
+
+
+		            	$check_customer_data = "SELECT cus_id FROM customer WHERE delete_flag = 1;";
+						$get_check_customer_data = $this->customer_model->show_all_customer($check_customer_data);
+
+						$customer_date = date('Ymd');
+
+						if ($check_customer_data == "") {
+
+							$customer_id = "CU".$customer_date."0001";
+
+						}else{
+
+							$check_product = "SELECT SUBSTR(cus_id,11,13) AS mycus_id 
+											  FROM customer 
+											  WHERE SUBSTR(cus_id,3,8) = $customer_date  
+											  AND delete_flag = 1";
+							$data['get_check_customer'] = $this->customer_model->show_all_customer($check_product);
+
+							$customer_id = "CU".$customer_date.$this->add_index($data['get_check_customer']);
+
+							$insert = "INSERT INTO customer (cus_id,
+							cus_name,
+							cus_name_social,
+							phone_number,
+							email,
+							sales_channels,
+							cus_address,
+							cus_provinces,
+							cus_amphures,
+							cus_districts,
+							link_img) VALUES (
+							'".$customer_id."',
+							'".$customername."',
+							'".$customername_socail."',
+							'".$customerphone."',
+							'".$customeremail."',
+							'".$customerchanel."',
+							'".$customeraddress."',
+							'".$customerprovince."',
+							'".$customeramphure."',
+							'".$customerdistrict."',
+							'".$uploadedFile."')"; 
+
+			                 $this->customer_model->add_new_customer($insert);
+			                 
+			                if($insert){ 
+			                    $response['status'] = 1; 
+			                    $response['message'] = 'Form data submitted successfully!'; 
+			                } 
+
+						}
+		              
+		            } 
+		        // } 
+		    }else{ 
+		         $response['message'] = 'Please fill all the mandatory fields (name and email).'; 
+		    } 
+		// } 
+ 
+	// Return response 
+	echo json_encode($response);
+
+
 	}
 
 
