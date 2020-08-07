@@ -20,4 +20,16 @@ $lang['today_sales'] = 'Today sales';
 
 $lang['list_order'] = 'List Order';
 
+
+//customer
+
+$lang['cus_sales_chanels'] = 'Sales chanels';
+$lang['cus_name_social'] = 'Name social';
+$lang['cus_name'] = 'Name';
+$lang['cus_phone'] = 'Phone number';
+$lang['cus_email'] = 'Email';
+$lang['cus_create_date'] = 'Date';
+$lang['action'] = 'Action';
+
+
 ?>
