@@ -13,6 +13,8 @@
   }
   .font-kanit {
     font-family: kanit;
+  .z-icon--success .fa-stack-2x{color:#cefff1}
+  .z-icon--success .fa-stack-1x{color:#13af82}
 }
 </style>
 
@@ -25,6 +27,7 @@ if(!empty($customer_data)):
     $name = $row->cus_name;
     $phone_number = $row->phone_number;
     $email = $row->email;
+    $adress = $row->cus_address;
     $date_create = $row->date_create;
     $img = $row->link_img;
 
@@ -60,8 +63,10 @@ endif;
           <div class="d-flex justify-content-between align-items-center p-4 mb-3 mb-lg-5 bg-white rounded-sm">
           <div class="">
             <span class="fa-stack fa-2x zort-icon fs-lg z-icon--progress">
+              <!-- <i class="fas fa-dollar-sign fa-2x text-gray-300"></i> -->
               <i class="fas fa-circle fa-stack-2x"></i>
               <i class="fal fa-calendar-week fa-stack-1x fa-inverse"></i>
+
             </span>
           </div>
           <div class="text-right">
@@ -77,6 +82,7 @@ endif;
           <div class="d-flex justify-content-between align-items-center p-4 mb-3 mb-lg-5 bg-white rounded-sm">
           <div class="">
             <span class="fa-stack fa-2x zort-icon fs-lg z-icon--success">
+              <!-- <i class="fas fa-dollar-sign fa-2x text-gray-300"></i> -->
               <i class="fas fa-circle fa-stack-2x"></i>
               <i class="fal fa-calendar-alt fa-stack-1x fa-inverse"></i>
             </span>
@@ -161,7 +167,7 @@ endif;
                       <span>ที่อยู่</span>
                      </div>
                     <div class="col-sm-8">
-                      <span title="20200805">20200805</span>
+                      <span title="20200805"><?php echo $adress; ?></span>
                     </div>
                   </div>
                 </div>
