@@ -8,7 +8,7 @@
               <h6 class="m-0 font-weight-bold text-primary">ตารางข้อมูลลูกค้า</h6>
             </div>
             <div class="card-body">
-
+              <div class="table-responsive">
               <!-- <table id="myTable" class="display table-responsive-sm" style="width:100%"> -->
               <table id="myTable" class="table table-hover" style="width:100%">
                 
@@ -93,6 +93,7 @@
                           endif;?>
                         </tbody>
               </table>
+            </div>
             </div>
           </div>
 

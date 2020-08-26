@@ -307,6 +307,7 @@ $("#file").change(function() {
 $(document).ready(function(e){
     // Submit form data via Ajax
     $("#fupForm").on('submit', function(e){
+        // var location = window.location.href;
         e.preventDefault();
         $.ajax({
             type: 'POST',
@@ -326,10 +327,19 @@ $(document).ready(function(e){
                     $('#fupForm')[0].reset();
                     // $('.statusMsg').html('<p class="alert alert-success">'+response.message+'</p>');
                     Swal.fire('Success!!!');
+
+                    // window.location = location;
+                    setTimeout(function(){
+                      location.reload();
+                    }, 1000);
                     return true;
                 }else{
                     // $('.statusMsg').html('<p class="alert alert-danger">'+response.message+'</p>');
                     Swal.fire('Not Success!!!')
+                    
+                    setTimeout(function(){
+                      location.reload();
+                    }, 1000);
                     return false;
                 }
                 $('#fupForm').css("opacity","");

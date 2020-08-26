@@ -41,7 +41,7 @@ endif;
       <div class="d-lg-flex flex-row justify-content-between mb-4">
         <div class="mb-4 mb-lg-0">
           <span class="font-kanit fs-sm"><a href="<?php echo base_url();?>customer" class="font-kanit fs-sm"><i class="fal fa-chevron-left fs-xs mr-1"></i> ตารางลูกค้า</a></span>
-          <h1 class="title-page">รายละเอียดผู้ติดต่อ<span>(รหัส : <?php echo $customer_id; ?> )</span></h1>
+          <h1 class="title-page">รายละเอียดลูกค้า<span>(รหัส : <?php echo $customer_id; ?> )</span></h1>
         </div>
         <div class="">
         </div>
@@ -158,7 +158,7 @@ endif;
                     </div>
                     <div class="col-sm-8">
                       <span title="rrrr@gmail.com"><?php echo $email; ?></span>
-                    </div>
+                    </div> 
                   </div>
                 </div>
                 <div class="form-group mb-2">

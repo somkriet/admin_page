@@ -5,7 +5,10 @@
           <h1 class="h3 mb-2 text-gray-800"><?= $this->lang->line('list_order'); ?></h1>
          <!--  <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
 
-
+          <div class="mb-4 mb-lg-0">
+          <span class="font-kanit fs-sm"><a href="<?php echo base_url();?>order/new_order" class="font-kanit fs-sm"><i class="fal fa-chevron-left fs-xs mr-1"></i> เพิ่มรายการ</a></span>
+          <!-- <h1 class="title-page">รายละเอียดลูกค้า<span>(รหัส : <?php echo $customer_id; ?> )</span></h1> -->
+        </div>
 
 
           <!-- DataTales Example -->
@@ -52,12 +55,12 @@
                                 <!-- <span class="glyphicon glyphicon-list-alt"></span> -->
                               </button>
                             </td>
-                            <td align="center"><?php echo $val->customer_name;?></td>
+                            <td align="center"><?php echo $val->cus_id;?></td>
                             <td><?php echo $val->sales_channels;?></td>
-                            <td><?php echo $val->time_update;?></td>
-                            <td><?php echo $val->total;?></td>
-                            <td><?php echo $val->payment;?></td>
-                            <td><?php echo $val->delivery;?></td>
+                            <td><?php echo $val->date_order;?></td>
+                            <td><?php echo $val->total_price;?></td>
+                            <td><?php echo $val->payment_chanels;?></td>
+                            <td><?php echo $val->transport;?></td>
                            <!--  <td align="center">
                               <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->pro_id;?>');">แก้ไข
                                 <span class="glyphicon glyphicon-list-alt"></span>

@@ -33,7 +33,10 @@ class Order extends CI_Controller {
 		header("Access-Control-Allow-Origin: *");
 		// $data = array();
 
-        $sql = "SELECT * FROM tb_order WHERE delete_flag = 1;";
+        // $sql = "SELECT * FROM Order WHERE delete_flag = 1;";
+        // $data['order_data'] = $this->order_model->show_all_order($sql);
+
+        $sql = "SELECT * FROM order_table WHERE delete_flag = 1;";
         $data['order_data'] = $this->order_model->show_all_order($sql);
 
 		$this->template->set('title', 'order');
@@ -55,7 +58,7 @@ class Order extends CI_Controller {
        
 
         if($orderid != ""){
-            $sql = "SELECT * FROM tb_order WHERE order_id = $orderid AND delete_flag = 1;";
+            $sql = "SELECT * FROM order WHERE order_id = $orderid AND delete_flag = 1;";
             $data['order_detail'] = $this->order_model->show_all_order($sql);
             $data['status'] = 'success';
 
@@ -85,7 +88,7 @@ class Order extends CI_Controller {
         $orderid = $this->input->post('id');
 
         // if($orderid != ""){
-            $sql = "SELECT * FROM tb_order WHERE order_id = $orderid AND delete_flag = 1;";
+            $sql = "SELECT * FROM order WHERE order_id = $orderid AND delete_flag = 1;";
             $data['detail'] = $this->order_model->show_all_order($sql);
             // $data['status'] = 'success';
 
