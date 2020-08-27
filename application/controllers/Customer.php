@@ -233,6 +233,7 @@ class Customer extends CI_Controller {
 		            } 
 		        // } 
 		    }else{ 
+		    	 $response['status'] = 2; 
 		         $response['message'] = 'Please fill all the mandatory fields (name and email).'; 
 		    } 
 		// } 

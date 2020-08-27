@@ -322,7 +322,7 @@ $(document).ready(function(e){
                 $('#fupForm').css("opacity",".5");
             },
             success: function(response){ //console.log(response);
-                $('.statusMsg').html('');
+                // $('.statusMsg').html('');
                 if(response.status == 1){
                     $('#fupForm')[0].reset();
                     // $('.statusMsg').html('<p class="alert alert-success">'+response.message+'</p>');
@@ -331,7 +331,7 @@ $(document).ready(function(e){
                     // window.location = location;
                     setTimeout(function(){
                       location.reload();
-                    }, 1000);
+                    }, 2000);
                     return true;
                 }else{
                     // $('.statusMsg').html('<p class="alert alert-danger">'+response.message+'</p>');
@@ -339,7 +339,7 @@ $(document).ready(function(e){
                     
                     setTimeout(function(){
                       location.reload();
-                    }, 1000);
+                    }, 2000);
                     return false;
                 }
                 $('#fupForm').css("opacity","");

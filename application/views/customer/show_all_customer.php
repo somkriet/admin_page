@@ -3,6 +3,12 @@
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">ข้อมูลลูกค้า</h1>
           <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
+           
+
+        <div class="col-sm-2 col-md-2">
+          <a href="<?php echo base_url();?>customer/new_customer" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"><i class='fas fa-user-plus'></i>เพิ่มลูกค้า</a>
+        </div><br>
+
            <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">ตารางข้อมูลลูกค้า</h6>
@@ -75,8 +81,14 @@
                                 <span class="glyphicon glyphicon-trash"></span>
                               </button> -->
 
+
+
+
                                 <div class="dropdown show">
-                                  <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
+  <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
+</svg>
                                     
                                   </a>
 
@@ -86,6 +98,13 @@
                                     <a class="dropdown-item" href="#">Something else here</a>
                                   </div>
                                 </div>
+
+
+                             <!--  <div class="btn-etc dropdown">
+                              <i class="far fa-ellipsis-v" id="14357479" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                              <ul class="dropdown-menu dropdown-menu-right sub-nav" aria-labelledby="14357479">
+                              <li><a id="favlink14357479" href="javascript:favTransaction(14357479)">ปักหมุดไว้บนสุด</a></li><li role="separator" class="divider"></li><li><a href="/Sell/Add?&amp;cpid=14357479">คัดลอก</a></li><li><a href="/Sell/Edit?&amp;tid=14357479&amp;rd=1">แก้ไข</a></li><li role="separator" class="divider"></li><li><a href="javascript:void(0);" style="cursor:pointer;" onclick="openeditshipping(0,14357479,'IV-202001001');">แก้ไขข้อมูลขนส่ง</a></li><li role="separator" class="divider"></li><li><a href="javascript:openPDF2(14357479,&quot;IV-202001001&quot;,&quot;17/1/2563&quot;)">พิมพ์เอกสาร</a></li><li><a href="javascript:openLetter2(14357479,&quot;IV-202001001&quot;,&quot;17/1/2563&quot;)">พิมพ์ใบแปะจดหมาย/กล่อง</a></li><li role="separator" class="divider"></li><li><a href="/Pickandpack/Details?&amp;tid=14357479&amp;mc=NTgwMzE=" target="_blank">แพ็คสินค้า</a></li><li role="separator" class="divider"></li><li><a href="javascript:openSMSmodal(&quot;confirmpurchase&quot;,14357479,&quot;IV-202001001&quot;,&quot;&quot;);">ส่ง SMS ยืนยันการสั่งซื้อ</a></li><li><a href="javascript:openSMSmodal(&quot;transaction&quot;,14357479,&quot;IV-202001001&quot;,&quot;&quot;);">ส่ง SMS ยืนยันการส่งสินค้า</a></li><li role="separator" class="divider"></li><li><a href="javascript:doArchiveTransaction(14357479,&quot;IV-202001001&quot;);">ซ่อน</a></li><li><a href="javascript:doVoidTransaction(14357479,&quot;IV-202001001&quot;)">ยกเลิกรายการ</a></li><li role="separator" class="divider"></li><li><a href="javascript:doDeleteTransaction(14357479,&quot;IV-202001001&quot;)">ลบรายการ</a></li> </ul>
+                              </div> -->
 
                             </td>
                           </tr>

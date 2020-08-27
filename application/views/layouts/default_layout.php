@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>e-commerce</title>
+  <title>Wintage Backend System</title>
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo base_url();?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -40,11 +40,12 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justi fy-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+      <a class="sidebar-brand d-flex align-items-center justi fy-content-center" href="home">
+        <div class="sidebar-brand-icon rotate-n-0">
+          <!-- <i class="fas fa-laugh-wink"></i> -->
+          <img src="<?php echo base_url();?>assets/img/wintage64px.ico">
         </div>
-        <div class="sidebar-brand-text mx-3">e-commerce<?= $this->lang->line('admin_page '); ?><sup>1</sup></div>
+        <div class="sidebar-brand-text mx-1">Wintage Backend System<?= $this->lang->line('admin_page '); ?><sup></sup></div>
       </a>
 
       <!-- Divider -->
@@ -54,25 +55,28 @@
       <li class="nav-item active">
         <a class="nav-link" href="<?php echo base_url();?>home">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>หน้าหลัก</span></a>
+          <span>รายงาน</span></a>
       </li>
 
        <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
         <a class="nav-link" href="<?php echo base_url();?>order">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
+          <i class='far fa-file-alt'></i>
           <span>คำสั่งซื้อ</span></a>
       </li>
 
        <li class="nav-item active">
         <a class="nav-link" href="<?php echo base_url();?>payment">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
+          <i class='fas fa-donate'></i>
           <span>การชำระเงิน</span></a>
       </li>
 
        <li class="nav-item active">
         <a class="nav-link" href="<?php echo base_url();?>logistics">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
+          <i class='fas fa-truck'></i>
           <span>การจัดส่ง</span></a>
       </li>
 
@@ -134,7 +138,8 @@
         <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menucustomer" aria-expanded="true" aria-controls="menucustomer">
-          <i class="fas fa-fw fa-cog"></i>
+          <!-- <i class="fas fa-fw fa-cog"></i> -->
+          <i class='fas fa-user-tie'></i>
           <span>ลูกค้า</span>
         </a>
         <div id="menucustomer" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -142,11 +147,17 @@
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="<?php echo base_url();?>customer">ข้อมูลลูกค้า</a>
             <a class="collapse-item" href="<?php echo base_url();?>customer/new_customer">เพิ่มลูกค้า</a>
-         <!--    <a class="collapse-item" href="cards.html">เพิ่มสินค้า</a>
-            <a class="collapse-item" href="cards.html">สมุดราคา</a>
-            <a class="collapse-item" href="cards.html">ซัพพลายเออร์</a> -->
           </div>
         </div>
+      </li>
+
+
+       <li class="nav-item active">
+        <a class="nav-link" href="<?php echo base_url();?>customer">
+          <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
+          <!-- <i class='fas fa-truck'></i> -->
+          <i class='fas fa-user-tie'></i>
+          <span>ลูกค้า</span></a>
       </li>
 
 
