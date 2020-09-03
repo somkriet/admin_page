@@ -1,238 +1,214 @@
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">เพิ่มข้อมูลการสั่งซื้อ</h1>
-         <!--  <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
-
-
-           <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">ตารางข้อมูลการสั่งซื้อ</h6>
-            </div>
-            <div class="card-body">
-
-          
-          <!--  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group">
-               <label>ข้อมูลลูกค้า : </label>
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">เพิ่มข้อมูลการสั่งซื้อ</h1>
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">ตารางข้อมูลการสั่งซื้อ</h6>
+        </div>
+        <div class="card-body">
+          <div class="content">
+            <div class="container-fluid">
+                <div class="d-lg-flex flex-row justify-content-between mb-4">
+                  <div class="mb-4 mb-lg-0">
+                    <span class="font-kanit fs-sm">
+                    <a href="/Buy/list?">
+                    <i class="fal fa-chevron-left fs-xs mr-1"></i>
+                    รายการซื้อ </a>
+                    </span>
+                  <h1 class="title-page">สร้างรายการซื้อ </h1>
+                  <span class="font-kanit"></span>
+                  </div>
+                  <div class=""></div>
+                </div>
+            <div class="box-white">
+            <div class="row">
+              <div class="col-sm-6">
+              <fieldset class="pl-lg-5 pr-lg-5 mb-5 mb-lg-0">
+                <legend>
+                <span class="fa-stack fa-stack fa-2x zort-icon fs-sm">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fal fa-clipboard-list-check fa-stack-1x fa-inverse"></i>
+                </span> ข้อมูล
+                </legend>
+                <div class="form-group">
+                <div class="row">
+                <label for="" class="col-sm-4">ประเภท</label>
+                <div class="col-sm-8">
+                ซื้อสินค้าเข้า <input type="hidden" id="subtransactiontype" value="0">
+                </div>
+                </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                  <label for="number" class="col-sm-4">รายการ <span style="color:red;">*</span></label>
+                  <div class="col-sm-8">
+                  <input type="text" class="form-control form-text" id="number" maxlength="128" value="PO-202008001" onkeyup="setNormalTextbox(this.id);">
+                  </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                  <label for="transactiondate" class="col-sm-4">วันที่ <span style="color: red;">*</span></label>
+                    <div class="col-sm-8">
+                      <div class="input-group date form_date" data-date="" data-date-format="d/m/yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                      <input class="form-control" type="text" name="transactiondate" value="26/8/2563" id="transactiondate" onkeyup="setNormalTextbox(this.id);" readonly="">
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                  <label for="refname" class="col-sm-4">อ้างอิง</label>
+                    <div class="col-sm-8">
+                      <div class="typeahead__container">
+                        <div class="typeahead__field">
+                        <span class="typeahead__query">
+                        <span class="typeahead__cancel-button"></span><input class="js-typeahead-input refnametags" name="q" type="search" id="refname" maxlength="128" value="" autofocus="" autocomplete="off">
+                        </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                  <label for="vattypeid" class="col-sm-4">ประเภทภาษี</label>
+                    <div class="col-sm-8">
+                    <select class="form-control form-text form-select" id="vattypeid" onchange="changeVatType()">
+                    <option value="1:0:1">ไม่มีภาษี</option>
+                    <option value="2:7:0">แยกภาษีมูลค่าเพิ่ม 7%</option>
+                    <option value="3:7:1">รวมภาษีมูลค่าเพิ่ม 7%</option>
+                    </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                  <input type="hidden" id="agentname" value=""><input type="hidden" id="agentemail" value=""><input type="hidden" id="agentphone" value=""><input type="hidden" id="agentaddress" value="">
+                  </div>
+                </div>
+              </fieldset>
+              </div>
+              <div class="col-sm-6">
+                <fieldset class="pl-lg-5 pr-lg-5 mb-0">
+                  <legend>
+                  <span class="fa-stack fa-stack fa-2x zort-icon fs-sm">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fal fa-user fa-stack-1x fa-inverse"></i>
+                  </span>ผู้ติดต่อ
+                  </legend>
+                  <div class="form-group">
+                    <div class="row">
+                    <label for="customername" class="col-sm-4">ชื่อผู้ติดต่อ</label>
+                      <div class="col-sm-8">
+                        <div class="typeahead__container">
+                          <div class="typeahead__field">
+                          <span class="typeahead__query">
+                          <span class="typeahead__cancel-button"></span><input class="js-typeahead-input customernametags" name="q" type="search" placeholder="พิมพ์ ชื่อ,รหัส" id="customername" maxlength="256" value="" autofocus="" autocomplete="off">
+                          </span>
+                          <span class="typeahead__button">
+                          <a href="javascript:showAllContact();" class="button button-link button-md"><i class="fal fa-address-book"></i></a>
+                          </span>
+                          </div>
+                        </div>
+                      <input type="hidden" id="contactid" value="0">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                    <label for="customercode" class="col-sm-4">รหัสผู้ติดต่อ</label>
+                      <div class="col-sm-8">
+                      <input type="text" class="form-control form-text" id="customercode" maxlength="128" value="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                    <label for="customerphone" class="col-sm-4">เบอร์โทรศัพท์ผู้ติดต่อ</label>
+                      <div class="col-sm-8">
+                      <input type="text" class="form-control form-text" id="customerphone" maxlength="64" value="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group" style="display:none;">
+                    <div class="row">
+                    <label for="customermobile" class="col-sm-4">เบอร์มือถือผู้ติดต่อ</label>
+                      <div class="col-sm-8">
+                      <input type="text" class="form-control form-text" id="customermobile" maxlength="64" value="">
+                      </div>
+                    </div>
+                  </div>
+                <div class="form-group" style="display:none;">
+                <div class="row">
+                <label for="customerfax" class="col-sm-4">เบอร์โทรสารผู้ติดต่อ</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control form-text" id="customerfax" maxlength="64" value="">
+                </div>
+                </div>
+                </div>
+                <div class="form-group">
+                <div class="row">
+                <label for="customeremail" class="col-sm-4">อีเมลผู้ติดต่อ</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control form-text" id="customeremail" maxlength="128" value="">
+                </div>
+                </div>
+                </div>
+                <div class="form-group">
+                <div class="row">
+                <label for="customeraddress" class="col-sm-4">ที่อยู่ผู้ติดต่อ</label>
+                <div class="col-sm-8">
+                <textarea class="form-control form-text" rows="2" id="customeraddress"></textarea>
+                </div>
+                </div>
+                </div>
+                <div class="form-group">
+                <div class="row">
+                <div class="col-sm-offset-4 col-sm-8">
+                <div class="d-flex">
+                <div class="mr-3">
+                <input type="checkbox" id="tmpmerchantstatus" onclick="setmerchantstatus();">
+                </div>
+                <div>
+                <label for="tmpmerchantstatus" class="help-text">กำหนดเลขผู้เสียภาษี, ชื่อสาขา, เลขที่สาขา</label>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                <div class="setarea" style="display:none;">
+                <div class="form-group">
+                <div class="row">
+                <label for="customeridnumber" class="col-sm-4">เลขประจำตัวผู้เสียภาษี</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control form-text" maxlength="32" id="customeridnumber" value="">
+                </div>
+                </div>
+                </div>
+                <div class="form-group">
+                <div class="row">
+                <label for="customerbranchname" class="col-sm-4">ชื่อสาขา</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control form-text" maxlength="256" id="customerbranchname" value="">
+                </div>
+                </div>
+                </div>
+                <div class="form-group">
+                <div class="row">
+                <label for="customerbranchno" class="col-sm-4">เลขที่สาขา</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control form-text" maxlength="128" id="customerbranchno" value="">
+                </div>
+                </div>
+                </div>
+                </div>
+                </fieldset>
               </div>
             </div>
-          </form> -->
-
-          <!-- <form name='check' action="<?php echo base_url();?>order/check_ip">
-            <button type="submit" id="ip_adress">check ip</button>
-          </form> -->
-
-
-          <div class="content">
-<div class="container-fluid">
-<div class="d-lg-flex flex-row justify-content-between mb-4">
-<div class="mb-4 mb-lg-0">
-<span class="font-kanit fs-sm">
-<a href="/Buy/list?">
-<i class="fal fa-chevron-left fs-xs mr-1"></i>
-รายการซื้อ </a>
-</span>
-<h1 class="title-page">
-สร้างรายการซื้อ </h1>
-<span class="font-kanit"></span>
-</div>
-<div class=""></div>
-</div>
-<div class="box-white">
-<div class="row">
-<div class="col-sm-6">
-<fieldset class="pl-lg-5 pr-lg-5 mb-5 mb-lg-0">
-<legend>
-<span class="fa-stack fa-stack fa-2x zort-icon fs-sm">
-<i class="fas fa-circle fa-stack-2x"></i>
-<i class="fal fa-clipboard-list-check fa-stack-1x fa-inverse"></i>
-</span> ข้อมูล
-</legend>
-<div class="form-group">
-<div class="row">
-<label for="" class="col-sm-4">ประเภท</label>
-<div class="col-sm-8">
-ซื้อสินค้าเข้า <input type="hidden" id="subtransactiontype" value="0">
-</div>
-</div>
-</div>
-<div class="form-group">
-<div class="row">
-<label for="number" class="col-sm-4">รายการ <span style="color:red;">*</span></label>
-<div class="col-sm-8">
-<input type="text" class="form-control form-text" id="number" maxlength="128" value="PO-202008001" onkeyup="setNormalTextbox(this.id);">
-</div>
-</div>
-</div>
-<div class="form-group">
-<div class="row">
-<label for="transactiondate" class="col-sm-4">วันที่ <span style="color: red;">*</span></label>
-<div class="col-sm-8">
-<div class="input-group date form_date" data-date="" data-date-format="d/m/yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-<input class="form-control" type="text" name="transactiondate" value="26/8/2563" id="transactiondate" onkeyup="setNormalTextbox(this.id);" readonly="">
-<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-</div>
-</div>
-</div>
-</div>
-<div class="form-group">
-<div class="row">
-<label for="refname" class="col-sm-4">อ้างอิง</label>
-<div class="col-sm-8">
-<div class="typeahead__container">
-<div class="typeahead__field">
-<span class="typeahead__query">
-<span class="typeahead__cancel-button"></span><input class="js-typeahead-input refnametags" name="q" type="search" id="refname" maxlength="128" value="" autofocus="" autocomplete="off">
-</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="form-group">
-<div class="row">
-<label for="vattypeid" class="col-sm-4">ประเภทภาษี</label>
-<div class="col-sm-8">
-<select class="form-control form-text form-select" id="vattypeid" onchange="changeVatType()">
-<option value="1:0:1">ไม่มีภาษี</option>
-<option value="2:7:0">แยกภาษีมูลค่าเพิ่ม 7%</option>
-<option value="3:7:1">รวมภาษีมูลค่าเพิ่ม 7%</option>
-</select>
-</div>
-</div>
-</div>
-<div class="form-group">
-<div class="row">
-<input type="hidden" id="agentname" value=""><input type="hidden" id="agentemail" value=""><input type="hidden" id="agentphone" value=""><input type="hidden" id="agentaddress" value="">
-</div>
-</div>
-</fieldset>
-</div>
-<div class="col-sm-6">
-<fieldset class="pl-lg-5 pr-lg-5 mb-0">
-<legend>
-<span class="fa-stack fa-stack fa-2x zort-icon fs-sm">
-<i class="fas fa-circle fa-stack-2x"></i>
-<i class="fal fa-user fa-stack-1x fa-inverse"></i>
-</span>ผู้ติดต่อ
-</legend>
-<div class="form-group">
-<div class="row">
-<label for="customername" class="col-sm-4">ชื่อผู้ติดต่อ</label>
-<div class="col-sm-8">
-<div class="typeahead__container">
-<div class="typeahead__field">
-<span class="typeahead__query">
-<span class="typeahead__cancel-button"></span><input class="js-typeahead-input customernametags" name="q" type="search" placeholder="พิมพ์ ชื่อ,รหัส" id="customername" maxlength="256" value="" autofocus="" autocomplete="off">
-</span>
-<span class="typeahead__button">
-<a href="javascript:showAllContact();" class="button button-link button-md"><i class="fal fa-address-book"></i></a>
-</span>
-</div>
-</div>
-<input type="hidden" id="contactid" value="0">
-</div>
-</div>
-</div>
-<div class="form-group">
-<div class="row">
-<label for="customercode" class="col-sm-4">รหัสผู้ติดต่อ</label>
-<div class="col-sm-8">
-<input type="text" class="form-control form-text" id="customercode" maxlength="128" value="">
-</div>
-</div>
-</div>
-<div class="form-group">
-<div class="row">
-<label for="customerphone" class="col-sm-4">เบอร์โทรศัพท์ผู้ติดต่อ</label>
-<div class="col-sm-8">
-<input type="text" class="form-control form-text" id="customerphone" maxlength="64" value="">
-</div>
-</div>
-</div>
-<div class="form-group" style="display:none;">
-<div class="row">
-<label for="customermobile" class="col-sm-4">เบอร์มือถือผู้ติดต่อ</label>
-<div class="col-sm-8">
-<input type="text" class="form-control form-text" id="customermobile" maxlength="64" value="">
-</div>
-</div>
-</div>
-<div class="form-group" style="display:none;">
-<div class="row">
-<label for="customerfax" class="col-sm-4">เบอร์โทรสารผู้ติดต่อ</label>
-<div class="col-sm-8">
-<input type="text" class="form-control form-text" id="customerfax" maxlength="64" value="">
-</div>
-</div>
-</div>
-<div class="form-group">
-<div class="row">
-<label for="customeremail" class="col-sm-4">อีเมลผู้ติดต่อ</label>
-<div class="col-sm-8">
-<input type="text" class="form-control form-text" id="customeremail" maxlength="128" value="">
-</div>
-</div>
-</div>
-<div class="form-group">
-<div class="row">
-<label for="customeraddress" class="col-sm-4">ที่อยู่ผู้ติดต่อ</label>
-<div class="col-sm-8">
-<textarea class="form-control form-text" rows="2" id="customeraddress"></textarea>
-</div>
-</div>
-</div>
-<div class="form-group">
-<div class="row">
-<div class="col-sm-offset-4 col-sm-8">
-<div class="d-flex">
-<div class="mr-3">
-<input type="checkbox" id="tmpmerchantstatus" onclick="setmerchantstatus();">
-</div>
-<div>
-<label for="tmpmerchantstatus" class="help-text">กำหนดเลขผู้เสียภาษี, ชื่อสาขา, เลขที่สาขา</label>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="setarea" style="display:none;">
-<div class="form-group">
-<div class="row">
-<label for="customeridnumber" class="col-sm-4">เลขประจำตัวผู้เสียภาษี</label>
-<div class="col-sm-8">
-<input type="text" class="form-control form-text" maxlength="32" id="customeridnumber" value="">
-</div>
-</div>
-</div>
-<div class="form-group">
-<div class="row">
-<label for="customerbranchname" class="col-sm-4">ชื่อสาขา</label>
-<div class="col-sm-8">
-<input type="text" class="form-control form-text" maxlength="256" id="customerbranchname" value="">
-</div>
-</div>
-</div>
-<div class="form-group">
-<div class="row">
-<label for="customerbranchno" class="col-sm-4">เลขที่สาขา</label>
-<div class="col-sm-8">
-<input type="text" class="form-control form-text" maxlength="128" id="customerbranchno" value="">
-</div>
-</div>
-</div>
-</div>
-</fieldset>
-</div>
-</div>
 </div>
 <div class="box-white">
 <fieldset class="mb-0">
