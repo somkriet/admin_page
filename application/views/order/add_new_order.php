@@ -1,12 +1,16 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">เพิ่มข้อมูลการสั่งซื้อ</h1>
+    <h1 class="h3 mb-2 text-gray-800">รายการสั่งซื้อใหม่</h1>
       <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">ตารางข้อมูลการสั่งซื้อ</h6>
+            <h6 class="m-0 font-weight-bold text-primary"></h6>
         </div>
+
         <div class="card-body">
+
+        </div>
+<!--         <div class="card-body">
           <div class="content">
             <div class="container-fluid">
                 <div class="d-lg-flex flex-row justify-content-between mb-4">
@@ -261,7 +265,7 @@
 <span class="typeahead__cancel-button"></span><input class="js-typeahead-input nametags" name="q" type="text" id="productname1" maxlength="256" value="" onfocus="autocompleteshow=false;" onkeyup="setNormalTextbox(this.id);setNormalTextbox('td'+this.id);hideUnittext('1',event.keyCode);" onkeydown="gotoNext(1,'productname',event.keyCode);" autofocus="" autocomplete="off">
 </span>
 </div>
-</div>
+</div> 
 </td>
 <td class="amount">
 <div class="input-group form-input-group spinner">
@@ -549,7 +553,7 @@
  
 
             </div>
-          </div>
+          </div> -->
 
         </div>
         <!-- /.container-fluid -->

@@ -33,6 +33,16 @@ class Home extends CI_Controller {
         
 		header("Access-Control-Allow-Origin: *");
 		$data = array();
+
+
+
+        // $test = date('Y-m-d', strtotime('-3 Days'));//2020-09-05
+
+        // $diff = date_diff(date_create(date('Y-m-d')), date_create($test));
+
+        // print_r($diff);
+
+
 		$this->template->set('title', 'Home');
 		$this->template->load('default_layout', 'contents' , 'home', $data);
 

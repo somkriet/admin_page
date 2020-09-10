@@ -88,8 +88,8 @@ class Order extends CI_Controller {
         $orderid = $this->input->post('id');
 
         // if($orderid != ""){
-            $sql = "SELECT * FROM order WHERE order_id = $orderid AND delete_flag = 1;";
-            $data['detail'] = $this->order_model->show_all_order($sql);
+            // $sql = "SELECT * FROM order WHERE order_id = $orderid AND delete_flag = 1;";
+            // $data['detail'] = $this->order_model->show_all_order($sql);
             // $data['status'] = 'success';
 
             // $this->template->set('title', 'order');
@@ -101,6 +101,7 @@ class Order extends CI_Controller {
         // $data['status'] = 'success';
 
         // json_encode($data);
+        $data = 1;
 
         $this->template->set('title', 'order');
         $this->template->load('default_layout', 'contents' , 'order/show_order_detail', $data);
