@@ -12,7 +12,7 @@
             <div class="col-sm-6">
             <fieldset id="tour-sale-info" class="pl-lg-5 pr-lg-5 mb-5 mb-lg-0">
              
-              <i class='fas fa-user-plus'></i><label class="col-sm-4">ข้อมูลลูกค้า</label>
+              <label class="col-sm-4"><b>ข้อมูล</b></label>
               <div class="form-group">
                 <div class="row">
                 <label for="subtransactiontype" class="col-sm-4">ประเภท</label>
@@ -112,7 +112,7 @@
                   <i class="fal fa-user fa-stack-1x fa-inverse"></i>
                 </span>
                 </legend> -->
-                <i class='fas fa-user-plus'></i><label class="col-sm-4">ลูกค้า</label>
+                <label class="col-sm-4"><b>ลูกค้า</b></label>
                 <div class="form-group">
                   <div class="row">
                     <label for="customername" class="col-sm-4 pt-md-2">ชื่อลูกค้า</label>
@@ -228,6 +228,10 @@
               </fieldset>
             </div>
           </div>
+
+
+
+
         </div>
 
       </div>
