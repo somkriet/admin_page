@@ -1,4 +1,4 @@
-        <style type="text/css">
+<style type="text/css">
           .w3-button {
               border: none;
               display: inline-block;
@@ -69,7 +69,7 @@
     color: inherit;
 }
 
-        </style>
+</style>
         <!-- Begin Page Content -->
         <div class="container-fluid" id="page-sumary">
 
@@ -88,10 +88,6 @@
                                 </div>
                             </div>
                         </div>
-
-        
-<!--  -->
-
 
 
           <!-- <div class="card-body"> -->
@@ -380,7 +376,7 @@
           $('#order_id').val(res['order_detail'][0]['order_id']);
           $('#customer_name').val(res['order_detail'][0]['customer_name']);
           $('#sale_channel').val(res['order_detail'][0]['sales_channels']);
-          // $('#product_price').val(res['order_detail'][0]['pro_price']);z
+          // $('#product_price').val(res['order_detail'][0]['pro_price']);
           // $('#product_qty').val(res['order_detail'][0]['pro_qty']);
           // $('#product_unit').val(res['order_detail'][0]['pro_unit']);
           // $('#product_unit').val(res['order_detail'][0]['pro_img']);
