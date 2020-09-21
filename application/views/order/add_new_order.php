@@ -23,7 +23,7 @@
 
                 <div class="col-sm-10">
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control form-text" placeholder="ค้นหาข้อมูลลูกค้า">
+                    <input type="text" class="form-control" placeholder="ค้นหาข้อมูลลูกค้า">
                     <div class="input-group-append">
                       <button class="btn btn-success" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </div>
