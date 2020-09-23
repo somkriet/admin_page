@@ -86,17 +86,6 @@
             <div class="col-sm">
               <label class="col-sm"><b>ประเภทภาษี</b></label>
 
-              <!-- <div class="form-group">
-                <div class="row">
-                <label for="number" class="col-sm-4 pt-md-2"><b>การจัดส่ง</b> <span class="required-field">*</span></label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="number" maxlength="128" placeholder="การจัดส่ง" onkeyup="setNormalTextbox(this.id);">
-                  </div>
-                </div>
-              </div> -->
-
-                <!-- <label ><b>ประเภทภาษี</b></label> -->
-
                  <div class="form-group row">
                         <!-- <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ขนส่ง</b></label> -->
                         <div class="col-sm-10">
@@ -160,32 +149,9 @@
           <div class="row">
             <div class="col-sm">
                <label class="col-sm"><b>ข้อมูลที่อยู่ผู้รับ</b></label>
-             <!--  <div class="form-group">
-                <div class="row">
-                <label for="subtransactiontype" class="col-sm-4">ประเภท</label>
-                <div class="col-sm-8">
-                  ขายสินค้าออก <input type="hidden" id="subtransactiontype" value="0">
-                </div>
-                </div>
-              </div> -->
-
-               <!-- <div class="form-group"> -->
-
-                <div class="col-sm-10">
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control form-text" placeholder="ค้นหาข้อมูลลูกค้า">
-                    <div class="input-group-append">
-                      <button class="btn btn-success" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </div>
-                  </div>
-                 </div>
-
-           
-              <!-- </div> -->
-
+       
               <div class="form-group">
                 <div class="row">
-                <!-- <label for="number" class="col-sm-4 pt-md-2"><b>ชื่อ-สกุล</b> <span class="required-field">*</span></label> -->
                   <div class="col-sm-10">
                     <input type="text" class="form-control form-text" id="number" maxlength="128" placeholder="ชื่อ-สกุล" onkeyup="setNormalTextbox(this.id);">
                   </div>
@@ -195,7 +161,6 @@
 
               <div class="form-group">
                 <div class="row">
-                <!-- <label for="number" class="col-sm-4 pt-md-2"><b>เบอร์โทร</b> <span class="required-field">*</span></label> -->
                   <div class="col-sm-10">
                     <input type="text" class="form-control form-text" id="number" maxlength="128" placeholder="เบอร์โทร" onkeyup="setNormalTextbox(this.id);">
                   </div>
@@ -204,7 +169,6 @@
 
               <div class="form-group">
                 <div class="row">
-                <!-- <label for="number" class="col-sm-4 pt-md-2"><b>อีเมล์</b> <span class="required-field">*</span></label> -->
                   <div class="col-sm-10">
                     <input type="text" class="form-control form-text" id="number" maxlength="128" placeholder="อีเมล์" onkeyup="setNormalTextbox(this.id);">
                   </div>
@@ -213,7 +177,6 @@
 
               <div class="form-group">
                 <div class="row">
-                <!-- <label for="number" class="col-sm-4 pt-md-2"><b>ที่อยู่ลูกค้า</b> <span class="required-field">*</span></label> -->
                   <div class="col-sm-10">
                     <textarea  id="customer_address" name="customer_address" rows="4" class="form-control" placeholder="ที่อยู่จัดส่ง ..." style="overflow: hidden; resize: none;"></textarea>
                   </div>
@@ -227,15 +190,7 @@
             <div class="col-sm">
               <label class="col-sm"><b>การขนส่ง</b></label>
 
-              <!-- <div class="form-group">
-                <div class="row">
-                <label for="number" class="col-sm-4 pt-md-2"><b>การจัดส่ง</b> <span class="required-field">*</span></label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="number" maxlength="128" placeholder="การจัดส่ง" onkeyup="setNormalTextbox(this.id);">
-                  </div>
-                </div>
-              </div> -->
-
+    
                <div class="form-group row">
                         <!-- <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ขนส่ง</b></label> -->
                         <div class="col-sm-10">
