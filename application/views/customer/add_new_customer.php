@@ -177,18 +177,8 @@
                   <div class="col-sm-6 col-md-6">
 
                     <div class="form-group">
-                      <label for="exampleFormControlInput1"><b>อัพโหลดรูป</b></label>
-                        <!-- <div id="image_preview">
-                            <img id="product_img" src="" />
-                        </div> -->
-                        <!-- <div id="selectImage"> -->
-                          <!-- <label>Select Your Image</label><br/> -->
-                        <!-- <input type="file" name="file" id="file" required /> -->
+                      <label for="exampleFormControlInput1"><b>อัพโหลดรูป</b></label>    
                         <input type="file" class="form-control" id="file" name="file" required />
-<!-- 
-                          <input type="gu" name="" id="" required>   -->            
-                    <!-- </div> -->
-
                   </div>
                 </div>
               </div>

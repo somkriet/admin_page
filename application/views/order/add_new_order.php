@@ -138,16 +138,48 @@
           <div class="row">
 
 
-            <fieldset class="mb-0">
+            <!-- <fieldset class="mb-0"> -->
                 <div class="d-lg-flex flex-row justify-content-between align-items-center mb-3">
-                    <div class="mb-3 mb-lg-0">
-                        <span class="fa-stack fa-stack fa-2x zort-icon fs-sm">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fal fa-box fa-stack-1x fa-inverse"></i>
-                        </span><span class="font-kanit fs-xmd fw-500">สินค้า</span>
-                    </div>
+                 
                     <div>
-                        <a class="button button-default button-md" href="javascript:showMultiAllProduct();">เลือกสินค้า</a>
+                        <!-- <a class="button button-default button-md text-right" href="javascript:showMultiAllProduct();">เลือกสินค้า</a>
+ -->
+                        <!-- Large modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">เลือกสินค้า</button>
+
+                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                              
+
+                               <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">เลือกสินค้าหลายรายการ</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <form>
+                                    <div class="form-group">
+                                      <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                      <input type="text" class="form-control" id="recipient-name">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="message-text" class="col-form-label">Message:</label>
+                                      <textarea class="form-control" id="message-text"></textarea>
+                                    </div>
+                                  </form>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Send message</button>
+                                </div>
+
+
+
+                            </div>
+                          </div>
+                        </div>
                     </div>
                 </div>
 
@@ -178,7 +210,8 @@
                                                 <div class="typeahead__container">
                                                     <div class="typeahead__field">
                                                         <span class="typeahead__query">
-                                                            <input class="js-typeahead-input codetags" name="q" type="search" id="productcode1" maxlength="32" value="" onfocus="autocompleteshow=false;" onkeyup="hideUnittext('1',event.keyCode);" onkeydown="gotoNext(1,'productcode',event.keyCode);" autofocus="off" autocomplete="off">
+                                                          <!-- js-typeahead-input codetags -->
+                                                            <input class="form-control" name="q" type="search" id="productcode1" maxlength="32" value="" onfocus="autocompleteshow=false;" onkeyup="hideUnittext('1',event.keyCode);" onkeydown="gotoNext(1,'productcode',event.keyCode);" autofocus="off" autocomplete="off">
                                                         </span>
                                                     </div>
                                                 </div>
@@ -189,7 +222,9 @@
                                                 <div class="typeahead__container">
                                                     <div class="typeahead__field">
                                                         <span class="typeahead__query">
-                                                            <span class="typeahead__cancel-button"></span><input class="js-typeahead-input nametags" name="q" type="text" id="productname1" maxlength="256" value="" onfocus="autocompleteshow=false;" onkeyup="setNormalTextbox(this.id);setNormalTextbox('td'+this.id);hideUnittext('1',event.keyCode);" onkeydown="gotoNext(1,'productname',event.keyCode);" autofocus="off" autocomplete="off">
+                                                            <span class="typeahead__cancel-button"></span>
+                                                            <!-- js-typeahead-input nametags -->
+                                                            <input class="form-control" name="q" type="text" id="productname1" maxlength="256" value="" onfocus="autocompleteshow=false;" onkeyup="setNormalTextbox(this.id);setNormalTextbox('td'+this.id);hideUnittext('1',event.keyCode);" onkeydown="gotoNext(1,'productname',event.keyCode);" autofocus="off" autocomplete="off">
                                                         </span>
                                                     </div>
                                                 </div>
@@ -197,10 +232,7 @@
                                             <td class="amount">
                                                 <div class="input-group form-input-group spinner">
                                                     <input type="number" class="form-control" id="productnumber1" placeholder="0.00" maxlength="32" onfocus="removeComma(this.id);autocompleteshow=false;" onblur="updateTotalPrice(1)" value="" onkeyup="setNormalTextbox(this.id);" onkeydown="gotoNext(1,'productnumber',event.keyCode);">
-                                                   <!--  <div class="input-group-btn-vertical">
-                                                        <button class="btn btn-default" style="margin-top:0px !important;" type="button" onclick="plusNumber('productnumber1');updateTotalPrice(1);"><i class="fa fa-caret-up"></i></button>
-                                                        <button class="btn btn-default" style="margin-top:-2px !important;" type="button" onclick="minusNumber('productnumber1');updateTotalPrice(1);"><i class="fa fa-caret-down"></i></button>
-                                                    </div> -->
+                                                  
                                                 </div>
                                             </td>
                                             <td class="value">
@@ -244,11 +276,6 @@
                                     <!-- <label class="col-sm"><b>การขนส่ง</b></label> -->
                                     <div class="col-sm-9">
 
-                                      <!-- <label class="col-sm"><b>การขนส่ง</b></label> -->
-
-    
-                                       <!-- <div class="form-group row"> -->
-                                                <!-- <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ขนส่ง</b></label> -->
                                                 <div class="col-sm-10">
                                                   <select class="form-control form-text" id="product_location" placeholder="การจัดส่ง">
                                                     <option>เลือกช่องทางจัดส่ง</option>
@@ -259,20 +286,7 @@
                                                     <option>J&T</option>
                                                   </select>
                                                 </div>
-                                        <!-- </div> -->
-
-                                        <!-- <div id="shippingchannelarea">
-                                            <div class="typeahead__container">
-                                                <div class="typeahead__field">
-                                                    <span class="typeahead__query">
-                                                        <span class="typeahead__cancel-button"></span><input class="js-typeahead-input shippingchanneltags" name="q" type="search" id="shippingchannel" maxlength="128" value="" onchange="resetShippingFee();" autofocus="" autocomplete="off">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div> -->
-                                        <!-- <div id="fulfilmentcourierarea" style="display:none;">
-
-                                        </div> -->
+                                      
                                     </div>
                                 </div>
                             </div>
@@ -390,46 +404,7 @@
                         </div>
                     </div>
                 </div>
-            </fieldset>
-
-
-<!--             <div class="col-sm">
-               <label class="col-sm"><b>ช่องทางการชำระ</b></label>
-            
-                 <div class="form-group row">
-                        <div class="col-sm-10">
-                          <select class="form-control form-text" id="product_location" placeholder="การจัดส่ง">
-                            <option>เลือกการชำระเงิน</option>
-                            <option>ธนาคารกสิกรไทย</option>
-                            <option>COD (เก็บเงินปลายทาง)</option>
-                          </select>
-                        </div>
-                      </div>
-
-            </div>
-
-            <div class="col-sm">
-              <label class="col-sm"><b>การขนส่ง</b></label>
-
-
-               <div class="form-group row">
-                        <div class="col-sm-10">
-                          <select class="form-control form-text" id="product_location" placeholder="การจัดส่ง">
-                            <option>เลือกขนส่ง</option>
-                            <option>ไปรษณีย์ไทย ธรรมดา</option>
-                            <option>ไปรษณีย์ไทย EMS</option>
-                            <option>Flash</option>
-                            <option>Kerry</option>
-                            <option>J&T</option>
-                          </select>
-                        </div>
-                </div>
-
-            </div> -->
-
-
-
-
+            <!-- </fieldset> -->
        
         </div>
     </div>
@@ -530,11 +505,16 @@
 
             </div>
 
-           <!--  <div class="col-sm">
-              <label class="col-sm"><b>การขนส่ง</b></label>
+            <div class="col-sm">
+              <label class="col-sm"><b>อัพโหลดสลิปโอน</b></label>
 
-
-               <div class="form-group row">
+              <div class="form-group">
+                      <!-- <label for="exampleFormControlInput1"><b>อัพโหลดรูป</b></label>   -->
+                      <div class="col-sm-10">  
+                        <input type="file" class="form-control" id="file" name="file" required />
+                      </div>
+                  </div>
+              <!--  <div class="form-group row">
                         <div class="col-sm-10">
                           <select class="form-control form-text" id="product_location" placeholder="การจัดส่ง">
                             <option>เลือกขนส่ง</option>
@@ -546,15 +526,15 @@
                           </select>
                         </div>
                 </div>
-
-            </div> -->
+ -->
+            </div>
        
         </div>
     </div>
 </div>
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   
   function addRow()
     {
@@ -571,12 +551,21 @@
         var cell5 = row.insertCell(5);
         var cell6 = row.insertCell(6);
         var cell7 = row.insertCell(7);
-
+        // js-typeahead-input codetags
         cell0.innerHTML = "<span id=\"productcount"+rowcount+"\" class=\"sr-only\">" + length+"</span><a class=\"button button-default button-sm mb-0\" href='javascript:showAllProduct("+rowcount+");'>เลือก</a>";
-  cell1.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"js-typeahead-input codetags\" name=\"q\" type=\"search\" id=\"productcode"+rowcount+"\" maxlength=\"32\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"hideUnittext('"+rowcount+"',event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productcode',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div><input type='hidden' id='productid"+rowcount+"' value='0'/> <input type=\"hidden\" id=\"isbundles" + rowcount + "\" value=\"0-0\" />";
 
-        cell2.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"js-typeahead-input nametags\" name=\"q\" type=\"text\" id=\"productname"+rowcount+"\" maxlength=\"256\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"setNormalTextbox(this.id);setNormalTextbox('td'+this.id);hideUnittext(\""+rowcount+"\",event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productname',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div>";
-        cell3.innerHTML = "<div class=\"input-group form-input-group spinner\"><input type=\"text\" placeholder='0.00' class=\"form-control\" id=\"productnumber"+rowcount+"\" maxlength=\"32\" onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+")\" value=\"\" onkeyup=\"setNormalTextbox(this.id);\" onkeydown=\"gotoNext("+rowcount+",'productnumber',event.keyCode);\"><div class=\"input-group-btn-vertical\"><button class=\"btn btn-default\" style=\"margin-top:0px !important;\" type=\"button\" onclick=\"plusNumber('productnumber"+rowcount+"');updateTotalPrice("+rowcount+");\"><i class=\"fa fa-caret-up\"></i></button><button class=\"btn btn-default\" style=\"margin-top:-2px !important;\" type=\"button\" onclick=\"minusNumber('productnumber"+rowcount+"');updateTotalPrice("+rowcount+");\"><i class=\"fa fa-caret-down\"></i></button></div> </div>";
+        cell1.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control\" name=\"q\" type=\"search\" id=\"productcode"+rowcount+"\" maxlength=\"32\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"hideUnittext('"+rowcount+"',event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productcode',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div><input type='hidden' id='productid"+rowcount+"' value='0'/> <input type=\"hidden\" id=\"isbundles" + rowcount + "\" value=\"0-0\" />";
+
+
+          // js-typeahead-input nametags
+        cell2.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control\" name=\"q\" type=\"text\" id=\"productname"+rowcount+"\" maxlength=\"256\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"setNormalTextbox(this.id);setNormalTextbox('td'+this.id);hideUnittext(\""+rowcount+"\",event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productname',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div>";
+
+        cell3.innerHTML = "<div class=\"input-group form-input-group spinner\"><input type=\"number\" placeholder='0.00' class=\"form-control\" id=\"productnumber"+rowcount+"\" maxlength=\"32\" onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+")\" value=\"\" onkeyup=\"setNormalTextbox(this.id);\" onkeydown=\"gotoNext("+rowcount+",'productnumber',event.keyCode);\"></div>";
+
+
+        // <div class=\"input-group-btn-vertical\"><button class=\"btn btn-default\" style=\"margin-top:0px !important;\" type=\"button\" onclick=\"plusNumber('productnumber"+rowcount+"');updateTotalPrice("+rowcount+");\"><i class=\"fa fa-caret-up\"></i></button><button class=\"btn btn-default\" style=\"margin-top:-2px !important;\" type=\"button\" onclick=\"minusNumber('productnumber"+rowcount+"');updateTotalPrice("+rowcount+");\"><i class=\"fa fa-caret-down\"></i></button></div> </div>";
+
+
         //cell3.innerHTML = "<input type=\"number\" class=\"form-control form-text text-right\" id='productnumber"+rowcount+"' maxlength='32'  onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+");\" onkeyup='setNormalTextbox(this.id);' onkeydown='if (event.keyCode == 13) gotoNext("+rowcount+",\"productnumber\");' />";        cell4.innerHTML = "<input type=\"text\" class=\"form-control form-text\" id='productpricepernumber"+rowcount+ "' maxlength='32' onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+");\" onkeyup='setNormalTextbox(this.id);' onkeydown='if (event.keyCode == 13) gotoNext("+rowcount+",\"productpricepernumber\");' />";
         cell4.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato\" id='productpricepernumber"+rowcount+ "' placeholder='0.00' maxlength='32' onfocus=\"removeComma(this.id);\" onblur=\"updateTotalPrice("+rowcount+");\" onkeyup='setNormalTextbox(this.id);' onkeydown='gotoNext("+rowcount+",\"productpricepernumber\",event.keyCode);' />";
         cell5.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato\" id='discountpernumber"+rowcount+"' placeholder=\"จำนวนเงิน หรือ %\" maxlength='32' onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+");\" onkeydown='gotoNext("+rowcount+",\"discountpernumber\",event.keyCode);' /><span id='unittext"+rowcount+"' class='unittextspan spantruncatenoblock fs-xs grey-400 d-block text-right' style=\"display:none;\"></span><span id='serialnotext"+rowcount+"' style=\"display: none;\"><img src='/Content/themes/base/images/serialicon.png' width=20/></span><input type=\"hidden\" id='serialnoid"+rowcount+"' value='0' />";
@@ -623,7 +612,7 @@
         }
     }
 
-</script>
+</script> -->
 
 
 <script>
@@ -1161,6 +1150,8 @@
         return countnumber;
 
     }
+
+
     function addRow()
     {
         rowcount++;
@@ -1178,15 +1169,24 @@
         var cell7 = row.insertCell(7);
 
         cell0.innerHTML = "<span id=\"productcount"+rowcount+"\" class=\"sr-only\">" + length+"</span><a class=\"button button-default button-sm mb-0\" href='javascript:showAllProduct("+rowcount+");'>เลือก</a>";
-  cell1.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"js-typeahead-input codetags\" name=\"q\" type=\"search\" id=\"productcode"+rowcount+"\" maxlength=\"32\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"hideUnittext('"+rowcount+"',event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productcode',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div><input type='hidden' id='productid"+rowcount+"' value='0'/> <input type=\"hidden\" id=\"isbundles" + rowcount + "\" value=\"0-0\" />";
 
-        cell2.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"js-typeahead-input nametags\" name=\"q\" type=\"text\" id=\"productname"+rowcount+"\" maxlength=\"256\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"setNormalTextbox(this.id);setNormalTextbox('td'+this.id);hideUnittext(\""+rowcount+"\",event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productname',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div>";
-        cell3.innerHTML = "<div class=\"input-group form-input-group spinner\"><input type=\"text\" placeholder='0.00' class=\"form-control\" id=\"productnumber"+rowcount+"\" maxlength=\"32\" onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+")\" value=\"\" onkeyup=\"setNormalTextbox(this.id);\" onkeydown=\"gotoNext("+rowcount+",'productnumber',event.keyCode);\"><div class=\"input-group-btn-vertical\"><button class=\"btn btn-default\" style=\"margin-top:0px !important;\" type=\"button\" onclick=\"plusNumber('productnumber"+rowcount+"');updateTotalPrice("+rowcount+");\"><i class=\"fa fa-caret-up\"></i></button><button class=\"btn btn-default\" style=\"margin-top:-2px !important;\" type=\"button\" onclick=\"minusNumber('productnumber"+rowcount+"');updateTotalPrice("+rowcount+");\"><i class=\"fa fa-caret-down\"></i></button></div> </div>";
+        // js-typeahead-input codetags
+        cell1.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control\" name=\"q\" type=\"search\" id=\"productcode"+rowcount+"\" maxlength=\"32\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"hideUnittext('"+rowcount+"',event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productcode',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div><input type='hidden' id='productid"+rowcount+"' value='0'/> <input type=\"hidden\" id=\"isbundles" + rowcount + "\" value=\"0-0\" />";
+
+        // js-typeahead-input nametags
+        cell2.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control\" name=\"q\" type=\"text\" id=\"productname"+rowcount+"\" maxlength=\"256\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"setNormalTextbox(this.id);setNormalTextbox('td'+this.id);hideUnittext(\""+rowcount+"\",event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productname',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div>";
+        cell3.innerHTML = "<div class=\"input-group form-input-group spinner\"><input type=\"number\" placeholder='0.00' class=\"form-control\" id=\"productnumber"+rowcount+"\" maxlength=\"32\" onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+")\" value=\"\" onkeyup=\"setNormalTextbox(this.id);\" onkeydown=\"gotoNext("+rowcount+",'productnumber',event.keyCode);\"></div>";
+
+
+
+        // <div class=\"input-group-btn-vertical\"><button class=\"btn btn-default\" style=\"margin-top:0px !important;\" type=\"button\" onclick=\"plusNumber('productnumber"+rowcount+"');updateTotalPrice("+rowcount+");\"><i class=\"fa fa-caret-up\"></i></button><button class=\"btn btn-default\" style=\"margin-top:-2px !important;\" type=\"button\" onclick=\"minusNumber('productnumber"+rowcount+"');updateTotalPrice("+rowcount+");\"><i class=\"fa fa-caret-down\"></i></button></div> </div>";
+
+
         //cell3.innerHTML = "<input type=\"number\" class=\"form-control form-text text-right\" id='productnumber"+rowcount+"' maxlength='32'  onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+");\" onkeyup='setNormalTextbox(this.id);' onkeydown='if (event.keyCode == 13) gotoNext("+rowcount+",\"productnumber\");' />";        cell4.innerHTML = "<input type=\"text\" class=\"form-control form-text\" id='productpricepernumber"+rowcount+ "' maxlength='32' onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+");\" onkeyup='setNormalTextbox(this.id);' onkeydown='if (event.keyCode == 13) gotoNext("+rowcount+",\"productpricepernumber\");' />";
         cell4.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato\" id='productpricepernumber"+rowcount+ "' placeholder='0.00' maxlength='32' onfocus=\"removeComma(this.id);\" onblur=\"updateTotalPrice("+rowcount+");\" onkeyup='setNormalTextbox(this.id);' onkeydown='gotoNext("+rowcount+",\"productpricepernumber\",event.keyCode);' />";
         cell5.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato\" id='discountpernumber"+rowcount+"' placeholder=\"จำนวนเงิน หรือ %\" maxlength='32' onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+");\" onkeydown='gotoNext("+rowcount+",\"discountpernumber\",event.keyCode);' /><span id='unittext"+rowcount+"' class='unittextspan spantruncatenoblock fs-xs grey-400 d-block text-right' style=\"display:none;\"></span><span id='serialnotext"+rowcount+"' style=\"display: none;\"><img src='/Content/themes/base/images/serialicon.png' width=20/></span><input type=\"hidden\" id='serialnoid"+rowcount+"' value='0' />";
         cell6.innerHTML = "<p id='totalprice" + rowcount + "' class='form-text--transparent font-lato'>0.00</p><input type='hidden' id='producttotalprice" + rowcount + "' value='0' />";
-        cell7.innerHTML = "<a href='javascript:deleteRow(" + rowcount + ");' class=\"d-inline-block btn-etc mt-2\" ><i class=\"far fa-times\"></i></a>";
+        cell7.innerHTML = "<a href='javascript:deleteRow(" + rowcount + ");' class=\"d-inline-block btn-etc mt-2\" ><i class=\"fa fa-times-circle\" style=\"color: red;\"></i></a>   </a>";
 
         cell0.className = "select text-center vertical-align";
         cell1.className = "id";
