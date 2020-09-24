@@ -1,3 +1,8 @@
+ <style>
+            .xdsoft_autocomplete_dropdown{
+                padding: 10px;
+            }
+  </style>
 <!--Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
@@ -10,16 +15,6 @@
           <div class="row">
             <div class="col-sm">
                <label class="col-sm"><b>ข้อมูลลูกค้า</b></label>
-
-                <!-- <div class="col-sm-10">
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="ค้นหาข้อมูลลูกค้า">
-                    <div class="input-group-append">
-                      <button class="btn btn-success" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </div>
-                  </div>
-                 </div> -->
-
 
           <!-- Topbar Search -->
           <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"> -->
@@ -38,7 +33,7 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="number" maxlength="128" placeholder="ชื่อ-สกุล" onkeyup="setNormalTextbox(this.id);">
+                    <input type="text" class="form-control form-text" id="order_code" name="order_code" maxlength="128" placeholder="IV202009240001" onkeyup="setNormalTextbox(this.id);" disabled>
                   </div>
                 </div>
               </div>
@@ -46,7 +41,7 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="number" maxlength="128" placeholder="ชื่อโซเซียล" onkeyup="setNormalTextbox(this.id);">
+                    <input type="text" class="form-control form-text" id="name_customer" name="name_customer" maxlength="128" placeholder="ชื่อ-สกุล" style="border: 1px solid #cccccc; height: 30px;width: 300px;padding: 5px;" onkeyup="setNormalTextbox(this.id);">
                   </div>
                 </div>
               </div>
@@ -54,7 +49,7 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="number" maxlength="128" placeholder="เบอร์โทร" onkeyup="setNormalTextbox(this.id);">
+                    <input type="text" class="form-control form-text" id="name_socail" name="name_socail" maxlength="128" placeholder="ชื่อโซเซียล" onkeyup="setNormalTextbox(this.id);">
                   </div>
                 </div>
               </div>
@@ -62,7 +57,15 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="number" maxlength="128" placeholder="อีเมล์" onkeyup="setNormalTextbox(this.id);">
+                    <input type="text" class="form-control form-text" id="phone" name="phone" maxlength="128" placeholder="เบอร์โทร" onkeyup="setNormalTextbox(this.id);">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control form-text" id="email" name="email" maxlength="128" placeholder="อีเมล์" onkeyup="setNormalTextbox(this.id);">
                   </div>
                 </div>
               </div>
@@ -84,7 +87,7 @@
 
                  <div class="form-group row">
                         <div class="col-sm-10">
-                          <select class="form-control form-text" id="product_location" placeholder="การจัดส่ง">
+                          <select class="form-control form-text" id="vat" name="vat" placeholder="การจัดส่ง">
                             <option value="1:0:1">ไม่มีภาษี</option>
                             <option value="2:7:0">แยกภาษีมูลค่าเพิ่ม 7%</option>
                             <option value="3:7:1">รวมภาษีมูลค่าเพิ่ม 7%</option>
@@ -97,7 +100,7 @@
                   <div class="row">
                     
                     <div class="col-sm-10">
-                      <input type="text" class="form-control form-text" id="number" maxlength="128" placeholder="เลขประจำตัวผู้เสียภาษี" onkeyup="setNormalTextbox(this.id);">
+                      <input type="text" class="form-control form-text" id="vat_number" name="vat_number" maxlength="128" placeholder="เลขประจำตัวผู้เสียภาษี" onkeyup="setNormalTextbox(this.id);">
                     </div>
                   </div>
                 </div>
@@ -107,7 +110,7 @@
                   <div class="row">
                    
                     <div class="col-sm-10">
-                      <input type="text" class="form-control form-text" id="number" maxlength="128" placeholder="ชื่อสาขา" onkeyup="setNormalTextbox(this.id);">
+                      <input type="text" class="form-control form-text" id="name_branch" name="name_branch" maxlength="128" placeholder="ชื่อสาขา" onkeyup="setNormalTextbox(this.id);">
                     </div>
                   </div>
                 </div>
@@ -116,7 +119,7 @@
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-10">
-                      <input type="text" class="form-control form-text" id="number" maxlength="128" placeholder="เลขที่สาขา" onkeyup="setNormalTextbox(this.id);">
+                      <input type="text" class="form-control form-text" id="number_branch" name="number_branch"  maxlength="128" placeholder="เลขที่สาขา" onkeyup="setNormalTextbox(this.id);">
                     </div>
                   </div>
                 </div>
@@ -211,7 +214,10 @@
                                                     <div class="typeahead__field">
                                                         <span class="typeahead__query">
                                                           <!-- js-typeahead-input codetags -->
-                                                            <input class="form-control" name="q" type="search" id="productcode1" maxlength="32" value="" onfocus="autocompleteshow=false;" onkeyup="hideUnittext('1',event.keyCode);" onkeydown="gotoNext(1,'productcode',event.keyCode);" autofocus="off" autocomplete="off">
+                                                           <!--  <input class="form-control" name="q" type="search" id="productcode1" maxlength="32" value="" onfocus="autocompleteshow=false;" onkeyup="hideUnittext('1',event.keyCode);" onkeydown="gotoNext(1,'productcode',event.keyCode);" autofocus="off" autocomplete="off">
+ -->
+                                                            <input class="form-control" name="productcode1" type="search" id="productcode1" maxlength="32" value="">
+
                                                         </span>
                                                     </div>
                                                 </div>
@@ -224,7 +230,11 @@
                                                         <span class="typeahead__query">
                                                             <span class="typeahead__cancel-button"></span>
                                                             <!-- js-typeahead-input nametags -->
-                                                            <input class="form-control" name="q" type="text" id="productname1" maxlength="256" value="" onfocus="autocompleteshow=false;" onkeyup="setNormalTextbox(this.id);setNormalTextbox('td'+this.id);hideUnittext('1',event.keyCode);" onkeydown="gotoNext(1,'productname',event.keyCode);" autofocus="off" autocomplete="off">
+
+                                                           <!--  <input class="form-control" name="q" type="text" id="productname1" maxlength="256" value="" onfocus="autocompleteshow=false;" onkeyup="setNormalTextbox(this.id);setNormalTextbox('td'+this.id);hideUnittext('1',event.keyCode);" onkeydown="gotoNext(1,'productname',event.keyCode);" autofocus="off" autocomplete="off">
+ -->
+                                                            <input class="form-control" name="q" type="text" id="productname1" maxlength="256" value="">
+
                                                         </span>
                                                     </div>
                                                 </div>
@@ -277,7 +287,7 @@
                                     <div class="col-sm-9">
 
                                                 <div class="col-sm-10">
-                                                  <select class="form-control form-text" id="product_location" placeholder="การจัดส่ง">
+                                                  <select class="form-control form-text" id="product_chanel" placeholder="การจัดส่ง">
                                                     <option>เลือกช่องทางจัดส่ง</option>
                                                     <option>ไปรษณีย์ไทย ธรรมดา</option>
                                                     <option>ไปรษณีย์ไทย EMS</option>
@@ -424,7 +434,7 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="number" maxlength="128" placeholder="ชื่อ-สกุล" onkeyup="setNormalTextbox(this.id);">
+                    <input type="text" class="form-control form-text" id="name_receiver" maxlength="128" placeholder="ชื่อ-สกุล" onkeyup="setNormalTextbox(this.id);">
                   </div>
                 </div>
               </div>
@@ -433,7 +443,7 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="number" maxlength="128" placeholder="เบอร์โทร" onkeyup="setNormalTextbox(this.id);">
+                    <input type="text" class="form-control form-text" id="phone_receiver" maxlength="128" placeholder="เบอร์โทร" onkeyup="setNormalTextbox(this.id);">
                   </div>
                 </div>
               </div>
@@ -441,7 +451,7 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="number" maxlength="128" placeholder="อีเมล์" onkeyup="setNormalTextbox(this.id);">
+                    <input type="text" class="form-control form-text" id="email_receiver" maxlength="128" placeholder="อีเมล์" onkeyup="setNormalTextbox(this.id);">
                   </div>
                 </div>
               </div>
@@ -449,7 +459,7 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <textarea  id="customer_address" name="customer_address" rows="4" class="form-control" placeholder="ที่อยู่จัดส่ง ..." style="overflow: hidden; resize: none;"></textarea>
+                    <textarea  id="customer_address" name="address_receiver" rows="4" class="form-control" placeholder="ที่อยู่จัดส่ง ..." style="overflow: hidden; resize: none;"></textarea>
                   </div>
                 </div>
               </div>
@@ -464,7 +474,7 @@
                   <div class="form-group row">
                     <!-- <label for="example-date-input" class="col-2 col-form-label">Date</label> -->
                     <div class="col-sm-10">
-                      <input class="form-control" type="date" value="" id="example-date-input">
+                      <input class="form-control" type="date" value="" id="sent_date">
                    </div>
                   </div>
                 <!-- </div> -->
@@ -472,7 +482,7 @@
                 <label ><b>Tracking No.</b></label>
                   <div class="form-group row">
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="">
+                        <input type="text" class="form-control" id="track_no">
                     </div>
                   </div>
 
@@ -494,7 +504,7 @@
                  <div class="form-group row">
                         <!-- <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ขนส่ง</b></label> -->
                         <div class="col-sm-10">
-                          <select class="form-control form-text" id="product_location" placeholder="การจัดส่ง">
+                          <select class="form-control form-text" id="payment_channel" placeholder="=ช่องทางการชำระเงิน">
                             <option>เลือกการชำระเงิน</option>
                             <option value="CASH">เงินสด</option>
                             <option value="BANK">ธนาคารกสิกรไทย</option>
@@ -514,19 +524,6 @@
                         <input type="file" class="form-control" id="file" name="file" required />
                       </div>
                   </div>
-              <!--  <div class="form-group row">
-                        <div class="col-sm-10">
-                          <select class="form-control form-text" id="product_location" placeholder="การจัดส่ง">
-                            <option>เลือกขนส่ง</option>
-                            <option>ไปรษณีย์ไทย ธรรมดา</option>
-                            <option>ไปรษณีย์ไทย EMS</option>
-                            <option>Flash</option>
-                            <option>Kerry</option>
-                            <option>J&T</option>
-                          </select>
-                        </div>
-                </div>
- -->
             </div>
        
         </div>
@@ -534,9 +531,27 @@
 </div>
 
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
+
+   var states = [
+    <?php
+    $province = "";
+    while ($result = mysql_fetch_array($query)) {
+        $province .= "'" . $result['province_name'] . "',";
+    }
+    echo rtrim($province, ",");
+    ?>
+            ];
+  $(function () {
+    $("input").autocomplete({
+        source: [states]
+    });
+  });
+
+
+  var rowcount = 1;
   
-  function addRow()
+   function addRow()
     {
         rowcount++;
         var table = document.getElementById("productrow");
@@ -551,16 +566,16 @@
         var cell5 = row.insertCell(5);
         var cell6 = row.insertCell(6);
         var cell7 = row.insertCell(7);
-        // js-typeahead-input codetags
+
         cell0.innerHTML = "<span id=\"productcount"+rowcount+"\" class=\"sr-only\">" + length+"</span><a class=\"button button-default button-sm mb-0\" href='javascript:showAllProduct("+rowcount+");'>เลือก</a>";
 
+        // js-typeahead-input codetags
         cell1.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control\" name=\"q\" type=\"search\" id=\"productcode"+rowcount+"\" maxlength=\"32\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"hideUnittext('"+rowcount+"',event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productcode',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div><input type='hidden' id='productid"+rowcount+"' value='0'/> <input type=\"hidden\" id=\"isbundles" + rowcount + "\" value=\"0-0\" />";
 
-
-          // js-typeahead-input nametags
+        // js-typeahead-input nametags
         cell2.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control\" name=\"q\" type=\"text\" id=\"productname"+rowcount+"\" maxlength=\"256\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"setNormalTextbox(this.id);setNormalTextbox('td'+this.id);hideUnittext(\""+rowcount+"\",event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productname',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div>";
-
         cell3.innerHTML = "<div class=\"input-group form-input-group spinner\"><input type=\"number\" placeholder='0.00' class=\"form-control\" id=\"productnumber"+rowcount+"\" maxlength=\"32\" onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+")\" value=\"\" onkeyup=\"setNormalTextbox(this.id);\" onkeydown=\"gotoNext("+rowcount+",'productnumber',event.keyCode);\"></div>";
+
 
 
         // <div class=\"input-group-btn-vertical\"><button class=\"btn btn-default\" style=\"margin-top:0px !important;\" type=\"button\" onclick=\"plusNumber('productnumber"+rowcount+"');updateTotalPrice("+rowcount+");\"><i class=\"fa fa-caret-up\"></i></button><button class=\"btn btn-default\" style=\"margin-top:-2px !important;\" type=\"button\" onclick=\"minusNumber('productnumber"+rowcount+"');updateTotalPrice("+rowcount+");\"><i class=\"fa fa-caret-down\"></i></button></div> </div>";
@@ -570,7 +585,7 @@
         cell4.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato\" id='productpricepernumber"+rowcount+ "' placeholder='0.00' maxlength='32' onfocus=\"removeComma(this.id);\" onblur=\"updateTotalPrice("+rowcount+");\" onkeyup='setNormalTextbox(this.id);' onkeydown='gotoNext("+rowcount+",\"productpricepernumber\",event.keyCode);' />";
         cell5.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato\" id='discountpernumber"+rowcount+"' placeholder=\"จำนวนเงิน หรือ %\" maxlength='32' onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+");\" onkeydown='gotoNext("+rowcount+",\"discountpernumber\",event.keyCode);' /><span id='unittext"+rowcount+"' class='unittextspan spantruncatenoblock fs-xs grey-400 d-block text-right' style=\"display:none;\"></span><span id='serialnotext"+rowcount+"' style=\"display: none;\"><img src='/Content/themes/base/images/serialicon.png' width=20/></span><input type=\"hidden\" id='serialnoid"+rowcount+"' value='0' />";
         cell6.innerHTML = "<p id='totalprice" + rowcount + "' class='form-text--transparent font-lato'>0.00</p><input type='hidden' id='producttotalprice" + rowcount + "' value='0' />";
-        cell7.innerHTML = "<a href='javascript:deleteRow(" + rowcount + ");' class=\"d-inline-block btn-etc mt-2\" ><i class=\"far fa-times\"></i></a>";
+        cell7.innerHTML = "<a href='javascript:deleteRow(" + rowcount + ");' class=\"d-inline-block btn-etc mt-2\" ><i class=\"fa fa-times-circle\" style=\"color: red;\"></i></a>   </a>";
 
         cell0.className = "select text-center vertical-align";
         cell1.className = "id";
@@ -611,11 +626,268 @@
             autocalculate();
         }
     }
+    function updateAutocomplete(tmpindex)
+    {
+        $("#productname" + tmpindex).typeahead({
+            minLength: 2,
+            //cache: true,
+            dynamic: true,
+            filter: false,
+            template: '<span>' +
+           '<span>{{label}}</span>' + "</span>",
+            source: {
+                ajax:
+                function (query) {
+                    var subtransactiontype = document.getElementById("subtransactiontype").value;
+                    var tmpisbundle = 0;
+                    if (subtransactiontype == 0)
+                        tmpisbundle = -1;
+                            return {
+                                type: "POST",
+                                url: '/Sell/getProductAutoComplete',
+                                data: {
+                                    producttype: 1,
+                                    term: encodeURI(query),
+                                    customername: encodeURI($('#customername').val()),
+                                    customercode: encodeURI($('#customercode').val()),
+                                    customeridnumber: encodeURI($('#customeridnumber').val()),
+                                    customeremail: encodeURI($('#customeremail').val()),
+                                    customerphone: encodeURI($('#customerphone').val()),
+                                    customermobile: encodeURI($('#customermobile').val()),
+                                    customerfax: encodeURI($('#customerfax').val()),
+                                    //customeraddress: encodeURI($('#customeraddress').val()),
+                                    isbundle: tmpisbundle
+                                },
+                                callback: {
+                                    done: function (data) {
+                                        return data;
+                                    }
+                                }
+                            }
+                        }
+            },
+             display: ["name"],
+             cache: false,
+             //emptyTemplate: "ไม่พบข้อมูล {{query}}",
+             callback: {
+                 onClick: function (node, a, item, event) {
+                     $("#productcode" + tmpindex).val(item.code);
+                     $("#productnumber" + tmpindex).val("1");
+                     var subtransactiontype = document.getElementById("subtransactiontype").value;
+                     if(subtransactiontype==0)
+                     {
+                         $("#productpricepernumber" + tmpindex).val(item.sellprice);
+                         $("#discountpernumber" + tmpindex).val(item.discounttext);
+                     }
+                     else
+                         $("#productpricepernumber" + tmpindex).val(item.purchaseprice);
+                     updateTotalPrice(tmpindex);
+                     setNormalTextbox("productnumber"+tmpindex);
+                     setNormalTextbox("productpricepernumber"+tmpindex);
+                     if(item.unittext==null || item.unittext.trim().length==0)
+                     {
+                         $("#unittext" + tmpindex).html("");
+                         $("#unittext" + tmpindex).hide();
+                     }
+                     else
+                     {
+                         $("#unittext" + tmpindex).html(item.unittext);
+                         $('#unittext' + tmpindex).attr('title', item.unittext);
+                         $("#unittext" + tmpindex).show();
+                     }
+                     $("#serialnoid" + tmpindex).val(0);
+                     $("#serialnotext" + tmpindex).hide();
+                     setTimeout(function(){  $("#productname" + tmpindex).val(item.name);
+                         setNormalTextbox("productname"+tmpindex);
+                         setNormalTextbox("tdproductname"+tmpindex); }, 50);
+                     autocompleteshow=false;
 
-</script> -->
+                     if (item.isbundle == 1)
+                     {
+                         let bundleFormat = "1-" + item.id;
+                         document.getElementById("productname" + tmpindex).disabled = true;
+                         document.getElementById("productcode" + tmpindex).disabled = true;
+                         $("#isbundles" + tmpindex).val(bundleFormat);
+                     }
+                 },
+                 onSendRequest: function (node, query) {
+                 },
+                 onReceiveRequest: function (node, query) {
+                 },
+                 onResult: function (node, query, obj, objCount) {
+                     if(objCount>0)
+                         autocompleteshow=true;
+                 }
+             }
+         });
+        $("#productcode" + tmpindex).typeahead({
+            minLength: 2,
+            //cache: true,
+            dynamic: true,
+            filter: false,
+            template: '<span>' +
+           '<span>{{label}}</span>' + "</span>",
+            source: {
+                ajax:
+                function (query) {
+                    var subtransactiontype = document.getElementById("subtransactiontype").value;
+                    var tmpisbundle = 0;
+                    if (subtransactiontype == 0)
+                        tmpisbundle = -1;
+                            return {
+                                type: "POST",
+                                url: '/Sell/getProductAutoComplete',
+                                data: {
+                                    producttype: 0,
+                                    term: encodeURI(query),
+                                    customername: encodeURI($('#customername').val()),
+                                    customercode: encodeURI($('#customercode').val()),
+                                    customeridnumber: encodeURI($('#customeridnumber').val()),
+                                    customeremail: encodeURI($('#customeremail').val()),
+                                    customerphone: encodeURI($('#customerphone').val()),
+                                    customermobile: encodeURI($('#customermobile').val()),
+                                    customerfax: encodeURI($('#customerfax').val()),
+                                    //customeraddress: encodeURI($('#customeraddress').val()),
+                                    isbundle: tmpisbundle
+                                },
+                                callback: {
+                                    done: function (data) {
+                                        return data;
+                                    }
+                                }
+                            }
+                        }
+            },
+             display: ["code"],
+             cache: false,
+             cancelButton: false,
+             //emptyTemplate: "ไม่พบข้อมูล {{query}}",
+             callback: {
+                 onClick: function (node, a, item, event) {
+                     $("#productname" + tmpindex).val(item.name);
+                     $("#productnumber" + tmpindex).val("1");
+                     var subtransactiontype = document.getElementById("subtransactiontype").value;
+                     if(subtransactiontype==0)
+                     {
+                         $("#productpricepernumber" + tmpindex).val(item.sellprice);
+                         $("#discountpernumber" + tmpindex).val(item.discounttext);
+                     }
+                     else
+                         $("#productpricepernumber" + tmpindex).val(item.purchaseprice);
+                     updateTotalPrice(tmpindex);
+                     setNormalTextbox("productname"+tmpindex);
+                     setNormalTextbox("tdproductname"+tmpindex);
+                     setNormalTextbox("productnumber"+tmpindex);
+                     setNormalTextbox("productpricepernumber"+tmpindex);
+                     if(item.unittext==null || item.unittext.trim().length==0)
+                     {
+                         $("#unittext" + tmpindex).html("");
+                         $("#unittext" + tmpindex).hide();
+                     }
+                     else
+                     {
+                         $("#unittext" + tmpindex).html(item.unittext);
+                         $('#unittext' + tmpindex).attr('title', item.unittext);
+                         $("#unittext" + tmpindex).show();
+                     }
+                     $("#serialnoid" + tmpindex).val(0);
+                     $("#serialnotext" + tmpindex).hide();
+                     setTimeout(function(){  $("#productcode" + tmpindex).val(item.code); }, 50);
+                     autocompleteshow=false;
+
+                     if (item.isbundle == 1)
+                     {
+                         let bundleFormat = "1-" + item.id;
+                         document.getElementById("productname" + tmpindex).disabled = true;
+                         document.getElementById("productcode" + tmpindex).disabled = true;
+                         $("#isbundles" + tmpindex).val(bundleFormat);
+                     }
+                 },
+                 onSendRequest: function (node, query) {
+                 },
+                 onReceiveRequest: function (node, query) {
+                 },
+                 onPopulateSource: function (node, data, group, path) {
+                    if (data == null)
+                        return null;
+                     if(data.length>0)
+                         autocompleteshow=true;
+                     if(data.length==1)
+                     {
+                         var item=data[0];
+                         if(item.barcodeauto)
+                         {
+                             autocompleteshow = false;
+                             var isserial = false;
+                             if (item.serialnoid != null && item.serialnoid > 0) {
+                                 isserial = true;
+                             }
+                             var price = item.sellprice;
+                             if (subtransactiontype == 1)
+                                 price = item.purchaseprice;
+                             var tmprow = findRow(item.code, item.name, price);
+
+                             if (tmprow == 0 || isserial) {
+                                 $("#productname" + tmpindex).val(item.name);
+                                 $("#productnumber" + tmpindex).val("1");
+                                 var subtransactiontype = document.getElementById("subtransactiontype").value;
+                                 if (subtransactiontype == 0) {
+                                     $("#productpricepernumber" + tmpindex).val(item.sellprice);
+                                     $("#discountpernumber" + tmpindex).val(item.discounttext);
+                                 }
+                                 else
+                                     $("#productpricepernumber" + tmpindex).val(item.purchaseprice);
+                                 updateTotalPrice(tmpindex);
+                                 setNormalTextbox("productname" + tmpindex);
+                                 setNormalTextbox("tdproductname" + tmpindex);
+                                 setNormalTextbox("productnumber" + tmpindex);
+                                 setNormalTextbox("productpricepernumber" + tmpindex);
+                                 if (item.unittext == null || item.unittext.trim().length == 0) {
+                                     $("#unittext" + tmpindex).html("");
+                                     $("#unittext" + tmpindex).hide();
+                                 }
+                                 else {
+                                     $("#unittext" + tmpindex).html(item.unittext);
+                                     $('#unittext' + tmpindex).attr('title', item.unittext);
+                                     $("#unittext" + tmpindex).show();
+                                 }
+                                 if (item.serialnoid != null && item.serialnoid > 0) {
+                                     $("#serialnoid" + tmpindex).val(item.serialnoid);
+                                     $('#serialnotext' + tmpindex).attr('title', item.serialname);
+                                     $("#serialnotext" + tmpindex).show();
+                                     $("#unittext" + tmpindex).html("");
+                                     $("#unittext" + tmpindex).hide();
+                                 }
+                                 else {
+                                     $("#serialnoid" + tmpindex).val(0);
+                                     $("#serialnotext" + tmpindex).hide();
+                                 }
+                                 $("#productcode" + tmpindex).val(item.code);
+                                 if (!linestatus)
+                                    gotoNext(tmpindex, 'productcode', 13);
+                             }
+                             else {
+                                 $("#productcode" + tmpindex).val("");
+                                 plusProduct(tmprow);
+                             }
+
+                             return null;
+                         }
+                     }
+                     return data;
+                 },
+                 onResult: function (node, query, obj, objCount) {
+
+                 }
+             }
+         });
+
+    }
+
+</script>
 
 
-<script>
+<!-- <script>
     const strDefaultBundleFormat = "0-0";
     var shippingitemprice = 0;
     var shippingitempriceplusmoreone = 0;
@@ -2201,4 +2473,4 @@
 
 
     }
-</script>
+</script> -->
