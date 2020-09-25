@@ -312,7 +312,7 @@ class Product extends CI_Controller {
 
 		$product_id = $this->input->post('id');
 
-		$sql = "SELECT * FROM tb_product WHERE pro_id = '$product_id' AND delete_flag = 1;";
+		$sql = "SELECT * FROM product WHERE product_id = '$product_id' AND delete_flag = 1;";
 
 		$product = $this->product_model->show_all_product($sql);
 

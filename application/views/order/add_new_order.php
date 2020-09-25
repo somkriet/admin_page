@@ -1,8 +1,8 @@
- <style>
+<!--  <style>
             .xdsoft_autocomplete_dropdown{
                 padding: 10px;
             }
-  </style>
+  </style>  -->
 <!--Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
@@ -16,32 +16,34 @@
             <div class="col-sm">
                <label class="col-sm"><b>ข้อมูลลูกค้า</b></label>
 
-          <!-- Topbar Search -->
-          <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"> -->
-            <div class="col-sm-10">
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- </form> -->
-
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
                     <input type="text" class="form-control form-text" id="order_code" name="order_code" maxlength="128" placeholder="IV202009240001" onkeyup="setNormalTextbox(this.id);" disabled>
+
                   </div>
                 </div>
-              </div>
+              </div> 
+
+              <div class="form-group row">
+                    <!-- <label for="example-date-input" class="col-2 col-form-label">Date</label> -->
+                    <div class="col-sm-10">
+                      <input class="form-control" type="date" value="" id="sent_date">
+                   </div>
+                  </div>
 
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="name_customer" name="name_customer" maxlength="128" placeholder="ชื่อ-สกุล" style="border: 1px solid #cccccc; height: 30px;width: 300px;padding: 5px;" onkeyup="setNormalTextbox(this.id);">
+                    <!-- <input type="text" class="form-control form-text" id="name_customer" name="name_customer" maxlength="128" placeholder="ชื่อ-สกุล"  onkeyup="setNormalTextbox(this.id);"> -->
+
+                     <div class="input-group">
+                      <input type="text" class="form-control" id="name_customer" name="name_customer" placeholder="ชื่อ-สกุล" aria-label="Search" aria-describedby="basic-addon2">
+                      <div class="input-group-append">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg1"><i class="fa fa-address-book"></i></button>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -127,6 +129,73 @@
             </div>
 
         </div>
+
+
+                  <!-- Large modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">เลือกสินค้า</button> -->
+
+                        <div id="data_customer" class="modal fade bd-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                              
+
+                               <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">เลือกลูกค้า</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+
+                                  <div class="table-responsive">
+              <!-- <table id="myTable" class="display table-responsive-sm" style="width:100%"> -->
+                                    <table id="myTable" class="table table-hover" style="width:100%">
+                                      
+                                      <thead class="thead-dark">
+                                        <tr>
+                                            <th><?= $this->lang->line('no'); ?></th>
+                                           <!--  <th><?= $this->lang->line('cus_sales_chanels'); ?></th>
+                                            <th><?= $this->lang->line('cus_name_social'); ?></th> -->
+                                            <th><?= $this->lang->line('cus_name'); ?></th>
+                                        <!--     <th><?= $this->lang->line('cus_phone'); ?></th>
+                                            <th><?= $this->lang->line('cus_email'); ?></th>
+                                            <th><?= $this->lang->line('cus_create_date'); ?></th> -->
+                                            <th><?= $this->lang->line('action'); ?></th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <?php if(!empty($customer_data)): 
+                                                foreach($customer_data as $idx => $val):?>
+                                                <tr>
+                                                  <td align="center"><?php echo  $idx+1;?></td>
+                                                  <td >
+                                                    <b><?= $this->lang->line('cus_name'); ?> : </b><?php echo $val->cus_name;?> (<b>รหัส : </b><?php echo  $val->cus_id;?>)<br>
+                                                    <b><?= $this->lang->line('cus_phone'); ?> : </b> <?php echo $val->phone_number;?><br>
+                                                    <b><?= $this->lang->line('cus_email'); ?> : </b> <?php echo $val->email;?><br>
+                                                    <b><?= $this->lang->line('cus_name_social'); ?> : </b> <?php echo $val->cus_name_social;?>
+                                                  </td>
+                                                  <td align="center">
+                                                    <button type="button" class="btn btn-primary" onclick="selectCustomer('<?php echo $val->cus_id;?>');">เลือก</button>
+                                                  </td>
+                                                </tr>
+                                                    <?php endforeach; 
+                                                endif;?>
+                                              </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                               <!--  <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Send message</button>
+                                </div> -->
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Large modal --> 
+
+
+
+
     </div>
 
 </div>
@@ -206,8 +275,11 @@
                             <tbody>
                                         <tr id="prow1">
                                             <td class="select text-center vertical-align">
-                                                <span id="productcount1" class="sr-only">1</span>
-                                                <a class="button button-default button-sm mb-0" href="javascript:showAllProduct(1);">เลือก</a>
+                                               <!--  <span id="productcount1" class="sr-only">1</span>
+                                                <a class="button button-default button-sm mb-0" href="javascript:showAllProduct(1);">เลือก</a> -->
+
+                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".selectproduct">เลือก</button>
+
                                             </td>
                                             <td class="id">
                                                 <div class="typeahead__container">
@@ -249,7 +321,10 @@
                                                 <input type="text" class="form-control form-text text-right font-lato" id="productpricepernumber1" placeholder="0.00" maxlength="32" onfocus="removeComma(this.id);autocompleteshow=false;" onblur="updateTotalPrice(1)" onkeyup="setNormalTextbox(this.id);" onkeydown="gotoNext(1,'productpricepernumber',event.keyCode);">
                                             </td>
                                             <td class="discount">
-                                                <input type="text" class="form-control form-text font-lato text-right" id="discountpernumber1" placeholder="จำนวนเงิน หรือ %" maxlength="32" onfocus="removeComma(this.id);autocompleteshow=false;" onblur="updateTotalPrice(1)" onkeydown="gotoNext(1,'discountpernumber',event.keyCode);"><span id="unittext1" class="unittextspan spantruncatenoblock fs-xs grey-400 d-block text-right" style="display: none;"></span><span id="serialnotext1" style="display: none;"><img src="/Content/themes/base/images/serialicon.png" width="20"></span>
+                                                <input type="text" class="form-control form-text font-lato text-right" id="discountpernumber1" placeholder="จำนวนเงิน หรือ %" maxlength="32" onfocus="removeComma(this.id);autocompleteshow=false;" onblur="updateTotalPrice(1)" onkeydown="gotoNext(1,'discountpernumber',event.keyCode);"><span id="unittext1" class="unittextspan spantruncatenoblock fs-xs grey-400 d-block text-right" style="display: none;"></span>
+                                               <!--  <span id="serialnotext1" style="display: none;">
+                                                  <img src="/Content/themes/base/images/serialicon.png" width="20">
+                                                </span> -->
                                                 <input type="hidden" id="serialnoid1" value="0">
                                             </td>
                                             <td class="total text-right">
@@ -415,6 +490,83 @@
                     </div>
                 </div>
             <!-- </fieldset> -->
+
+                 <!-- Large modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".selectproduct">เลือกสินค้า</button> -->
+
+                        <div id="data_product" class="modal fade selectproduct" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                              
+
+                               <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">เลือกสินค้า</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+
+                                 <!--  <form>
+                                    <div class="form-group">
+                                      <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                      <input type="text" class="form-control" id="recipient-name">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="message-text" class="col-form-label">Message:</label>
+                                      <textarea class="form-control" id="message-text"></textarea>
+                                    </div>
+                                  </form> -->
+                                   <div class="table-responsive">
+              <!-- <table id="myTable" class="display table-responsive-sm" style="width:100%"> -->
+                                    <table id="myTable2" class="table table-hover" style="width:100%">
+                                      
+                                      <thead class="thead-dark">
+                                        <tr>
+                                            <th><?= $this->lang->line('no'); ?></th>
+                                            <th>ชื่อสินค้า</th>
+                                            <th>คงเหลือ</th>
+                                            <th>พร้อมขาย</th>
+                                            <th>ราคาขาย</th>
+                                            <th><?= $this->lang->line('action'); ?></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php if(!empty($product_data)): 
+                                                foreach($product_data as $idx => $val):?>
+                                                <tr>
+                                                  <td align="center"><?php echo  $idx+1;?></td>
+                                                  <td >
+                                                    <?php echo $val->product_name;?>
+                                                  </td>
+                                                  <td align="center">
+                                                    <?php echo  $val->amount;?>  
+                                                  </td>
+                                                  <td align="center">
+                                                    <?php echo  $val->amount;?> 
+                                                  </td>
+                                                  <td align="center">
+                                                    <?php echo  $val->sale_price;?>
+                                                      
+                                                  </td>
+                                                  <td align="center">
+                                                    <button type="button" class="btn btn-primary" onclick="selectProductone('<?php echo $val->product_id;?>');">เลือก</button>
+                                                  </td>
+                                                </tr>
+                                                    <?php endforeach; 
+                                                endif;?>
+                                        </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                                <!-- <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Send message</button>
+                                </div> -->
+                            </div>
+                          </div>
+                        </div>
+                    <!-- Large modal -->    
        
         </div>
     </div>
@@ -430,7 +582,9 @@
           <div class="row">
             <div class="col-sm">
                <label class="col-sm"><b>ข้อมูลที่อยู่ผู้รับ</b></label>
-       
+              
+              <a href="javascript:copyInfo()" onclick="copyInfo();" value="info_customer"><i class="fa fa-clone"></i><span>คัดลอกจากข้อมูลลูกค้า</span></a>
+
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
@@ -438,7 +592,6 @@
                   </div>
                 </div>
               </div>
-
 
               <div class="form-group">
                 <div class="row">
@@ -459,7 +612,7 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <textarea  id="customer_address" name="address_receiver" rows="4" class="form-control" placeholder="ที่อยู่จัดส่ง ..." style="overflow: hidden; resize: none;"></textarea>
+                    <textarea  id="address_receiver" name="address_receiver" rows="4" class="form-control" placeholder="ที่อยู่จัดส่ง ..." style="overflow: hidden; resize: none;"></textarea>
                   </div>
                 </div>
               </div>
@@ -530,23 +683,105 @@
     </div>
 </div>
 
-
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
 <script type="text/javascript">
 
-   var states = [
-    <?php
-    $province = "";
-    while ($result = mysql_fetch_array($query)) {
-        $province .= "'" . $result['province_name'] . "',";
-    }
-    echo rtrim($province, ",");
-    ?>
-            ];
-  $(function () {
-    $("input").autocomplete({
-        source: [states]
-    });
+$(function(){
+  $('#myTable').dataTable({
+    ordering: true,
+    searching: true,
+    lengthChange: true
   });
+
+   $('#myTable2').dataTable({
+    ordering: true,
+    searching: true,
+    lengthChange: true
+  });
+
+});
+
+  function copyInfo(){
+
+      $('#name_receiver').val($('#name_customer').val());
+      $('#phone_receiver').val($('#phone').val());
+      $('#email_receiver').val($('#email').val());
+      $('#address_receiver').val($('#customer_address').val());    
+  }
+
+
+//function show for edit
+  function selectCustomer(id){
+    $.ajax({
+      type: "POST",
+      dataType: "JSON",
+      url: "<?php echo base_url('index.php/customer/callDetails');?>",
+      data: { 'id': id },
+      success: function(res){
+
+        if(res['status'] == 'success'){
+         
+          // $('#name_customer').val(res['customer_data']['cus_name']);
+          // $('#name_socail').val(res['customer_data']['cus_name_social']);
+          // $('#phone').val(res['customer_data']['phone_number']);
+          // $('#email').val(res['customer_data']['email']);
+          // $('#customer_address').val(res['customer_data']['cus_address']);    
+          // $('#info_customer').val(res['customer_data']['cus_id']);
+
+          $('#name_customer').val(res['customer_data']['cus_name']);
+          $('#name_socail').val(res['customer_data'][0]['cus_name_social']);
+          $('#phone').val(res['customer_data'][0]['phone_number']);
+          $('#email').val(res['customer_data'][0]['email']);
+          $('#customer_address').val(res['customer_data'][0]['cus_address']);    
+          $('#info_customer').val(res['customer_data'][0]['cus_id']);
+
+          $('#data_customer').modal('hide');
+        }else{
+          Swal.fire('Error!');
+          return false;
+        }
+      },
+      error: function(err){
+        // console.log(err);
+        Swal.fire('Error!');
+        return false;
+      }
+    });
+  }
+//function show for edit
+
+
+//function show for edit
+  function selectProductone(id){
+    $.ajax({
+      type: "POST",
+      dataType: "JSON",
+      url: "<?php echo base_url('index.php/product/callDetails');?>",
+      data: { 'id': id },
+      success: function(res){
+
+        if(res['status'] == 'success'){
+
+          $('#productcode1').val(res['show_product'][0]['product_id']);
+          $('#productname1').val(res['show_product'][0]['product_name']);
+          $('#productnumber1').val(1);
+          $('#productpricepernumber1').val(res['show_product'][0]['sale_price']);
+          $('#discountpernumber1').val(res['show_product'][0]['discount']);    
+       
+          $('#data_product').modal('hide');
+        }else{
+          Swal.fire('Error!');
+          return false;
+        }
+      },
+      error: function(err){
+        // console.log(err);
+        Swal.fire('Error!');
+        return false;
+      }
+    });
+  }
+//function show for edit
 
 
   var rowcount = 1;
@@ -2473,4 +2708,4 @@
 
 
     }
-</script> -->
+</script>

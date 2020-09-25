@@ -12,6 +12,9 @@ class Order extends CI_Controller {
 
         $this->CI = get_instance();
         $this->load->model('order_model');
+        $this->load->model('customer_model');
+        $this->load->model('product_model');
+        
         // $this->load->library("pagination");
 
         if ($this->session->userdata('lang') == 'english') {
@@ -39,13 +42,25 @@ class Order extends CI_Controller {
         $sql = "SELECT * FROM order_table WHERE delete_flag = 1;";
         $data['order_data'] = $this->order_model->show_all_order($sql);
 
+
+        $sql = "SELECT * FROM customer WHERE delete_flag = 1;";
+        $data['customer_data'] = $this->customer_model->show_all_customer($sql);
+
 		$this->template->set('title', 'order');
 		$this->template->load('default_layout', 'contents' , 'order/show_all_order', $data);
 	}
 
 	public function new_order() 
 	{
-		$data = array();
+		// $data = array();
+
+        $sql = "SELECT * FROM customer WHERE delete_flag = 1;";
+        $data['customer_data'] = $this->customer_model->show_all_customer($sql);
+
+        $sql = "SELECT * FROM product WHERE delete_flag = 1;";
+
+        $data['product_data'] = $this->product_model->show_all_product($sql);
+
 		$this->template->set('title', 'about'); 
 		$this->template->load('default_layout', 'contents' , 'order/add_new_order', $data);
 	}
@@ -57,6 +72,18 @@ class Order extends CI_Controller {
 
         echo json_encode($data);
     }
+
+    // public function call_data_customer(){
+    //     $id = $this->input->post('id');
+
+    //     $sql = "SELECT * 
+    //             FROM customer 
+    //             WHERE cus_id = '$id' 
+    //             AND delete_flag = 1;";
+    //     $data['customer_data'] = $this->customer_model->show_all_customer($sql);
+    //     $data['status'] = 'success';
+    //     echo json_encode($data);
+    // }
 
 
     public function call_order_detail(){
