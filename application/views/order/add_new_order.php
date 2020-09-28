@@ -812,7 +812,6 @@ $(function(){
         cell3.innerHTML = "<div class=\"input-group form-input-group spinner\"><input type=\"number\" placeholder='0.00' class=\"form-control\" id=\"productnumber"+rowcount+"\" maxlength=\"32\" onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+")\" value=\"\" onkeyup=\"setNormalTextbox(this.id);\" onkeydown=\"gotoNext("+rowcount+",'productnumber',event.keyCode);\"></div>";
 
 
-
         // <div class=\"input-group-btn-vertical\"><button class=\"btn btn-default\" style=\"margin-top:0px !important;\" type=\"button\" onclick=\"plusNumber('productnumber"+rowcount+"');updateTotalPrice("+rowcount+");\"><i class=\"fa fa-caret-up\"></i></button><button class=\"btn btn-default\" style=\"margin-top:-2px !important;\" type=\"button\" onclick=\"minusNumber('productnumber"+rowcount+"');updateTotalPrice("+rowcount+");\"><i class=\"fa fa-caret-down\"></i></button></div> </div>";
 
 
