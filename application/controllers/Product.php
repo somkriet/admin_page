@@ -40,7 +40,7 @@ class Product extends CI_Controller {
 		header("Access-Control-Allow-Origin: *");
 		// $data = array(); 
 
-		$sql = "SELECT * FROM tb_product WHERE delete_flag = 1;";
+		$sql = "SELECT * FROM product WHERE delete_flag = 1;";
 		$data['product_data'] = $this->product_model->show_all_product($sql);
 
 		$this->template->set('title', 'product');
@@ -124,7 +124,7 @@ class Product extends CI_Controller {
 			
 		if($product_name != ""){
 
-			$sql = "INSERT INTO tb_product (
+			$sql = "INSERT INTO product (
 						tb_product.pro_id,
 						tb_product.pro_name,
 						tb_product.pro_detail,

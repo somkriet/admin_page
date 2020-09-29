@@ -27,7 +27,7 @@
                       <th>No</th>
                       <th>รหัสสินค้า</th>
                       <th>ชื่อสินค้า</th>
-                      <th>ราคาซื้อ</th>
+                      <!-- <th>ราคาซื้อ</th> -->
                       <th>ราคาขาย</th>
                       <th>คงเหลือ</th>
                       <th>พร้อมขาย</th>
@@ -39,7 +39,7 @@
                       <th>No</th>
                       <th>รหัสสินค้า</th>
                       <th>ชื่อสินค้า</th>
-                      <th>ราคาซื้อ</th>
+                      <!-- <th>ราคาซื้อ</th> -->
                       <th>ราคาขาย</th>
                       <th>คงเหลือ</th>
                       <th>พร้อมขาย</th>
@@ -51,18 +51,18 @@
                           foreach($product_data as $idx => $val):?>
                           <tr>
                             <td align="center"><?php echo  $idx+1;?></td>
-                            <td align="center"><?php echo $val->pro_id;?></td>
-                            <td align="center"><?php echo $val->pro_name;?></td>
-                            <td><?php echo $val->pro_purchase_price;?></td>
-                            <td><?php echo $val->pro_sale_price;?></td>
-                            <td><?php echo $val->pro_qty;?></td>
-                            <td><?php echo $val->pro_qty;?></td>
+                            <td align="center"><?php echo $val->product_id;?></td>
+                            <td align="center"><?php echo $val->product_name;?></td>
+                            <!-- <td><?php echo $val->pro_purchase_price;?></td> -->
+                            <td><?php echo $val->sale_price;?></td>
+                            <td><?php echo $val->amount;?></td>
+                            <td><?php echo $val->discount;?></td>
                             <td align="center">
-                              <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->pro_id;?>');">แก้ไข
+                              <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->product_id;?>');">แก้ไข
                                 <span class="glyphicon glyphicon-list-alt"></span>
                               </button>
 
-                              <button type="button" class="btn-md btn-danger btn-sm btn-danger" onclick="delRow('<?php echo $val->pro_id;?>');">ลบ
+                              <button type="button" class="btn-md btn-danger btn-sm btn-danger" onclick="delRow('<?php echo $val->product_id;?>');">ลบ
                                 <span class="glyphicon glyphicon-trash"></span>
                               </button>
 
