@@ -65,6 +65,11 @@ class Order extends CI_Controller {
 		$this->template->load('default_layout', 'contents' , 'order/add_new_order', $data);
 	}
 
+
+    public function add_new_order(){
+        
+    }
+
     public function auto_name(){
 
         $sql = "select * from province ";

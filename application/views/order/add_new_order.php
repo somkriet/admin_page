@@ -1,17 +1,19 @@
-<!--  <style>
-            .xdsoft_autocomplete_dropdown{
-                padding: 10px;
-            }
-  </style>  -->
 <!--Begin Page Content -->
 <div class="container-fluid">
-    <!-- Page Heading -->
+
+<form id="fupForm1" enctype="multipart/form-data">
+
+
+       <!-- Page Heading -->
   <h1 class="h3 mb-2 text-gray-800">สร้างรายการสั่งซื้อใหม่</h1>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">ข้อมูลทั่วไป</h6>
         </div>
         <div class="card-body">
+
+
+          
           <div class="row">
             <div class="col-sm">
                <label class="col-sm"><b>ข้อมูลลูกค้า</b></label>
@@ -154,12 +156,7 @@
                                       <thead class="thead-dark">
                                         <tr>
                                             <th><?= $this->lang->line('no'); ?></th>
-                                           <!--  <th><?= $this->lang->line('cus_sales_chanels'); ?></th>
-                                            <th><?= $this->lang->line('cus_name_social'); ?></th> -->
                                             <th><?= $this->lang->line('cus_name'); ?></th>
-                                        <!--     <th><?= $this->lang->line('cus_phone'); ?></th>
-                                            <th><?= $this->lang->line('cus_email'); ?></th>
-                                            <th><?= $this->lang->line('cus_create_date'); ?></th> -->
                                             <th><?= $this->lang->line('action'); ?></th>
                                         </tr>
                                       </thead>
@@ -184,39 +181,23 @@
                                     </table>
                                   </div>
                                 </div>
-                               <!--  <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                  <button type="button" class="btn btn-primary">Send message</button>
-                                </div> -->
                             </div>
                           </div>
                         </div>
                         <!-- Large modal --> 
-
-
-
-
+      </div>
     </div>
 
-</div>
-
-<div class="card shadow mb-4">
+    <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">สินค้า</h6>
         </div>
         <div class="card-body">
-
-
           <div class="row">
-
-
-            <!-- <fieldset class="mb-0"> -->
                 <div class="d-lg-flex flex-row justify-content-between align-items-center mb-3">
                  
                     <div>
-                        <!-- <a class="button button-default button-md text-right" href="javascript:showMultiAllProduct();">เลือกสินค้า</a>
- -->
-                        <!-- Large modal -->
+                      
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">เลือกสินค้า</button>
 
                         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -231,7 +212,7 @@
                                   </button>
                                 </div>
                                 <div class="modal-body">
-                                  <form>
+                                 <!--  <form>
                                     <div class="form-group">
                                       <label for="recipient-name" class="col-form-label">Recipient:</label>
                                       <input type="text" class="form-control" id="recipient-name">
@@ -240,7 +221,7 @@
                                       <label for="message-text" class="col-form-label">Message:</label>
                                       <textarea class="form-control" id="message-text"></textarea>
                                     </div>
-                                  </form>
+                                  </form> -->
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -255,9 +236,11 @@
                     </div>
                 </div>
 
-                <div class="">
-                    <div class="t-responsive">
-                        <!-- <table class="table zort-table zort-table--tiny zort-table--insert-product zort-table--full" id="productrow"> -->
+                <!-- <div class=""> -->
+
+
+                    <!-- <div class="t-responsive">
+
                          <table class="table-bordered" id="productrow">
                             <thead>
                                 <tr>
@@ -275,19 +258,12 @@
                             <tbody>
                                         <tr id="prow1">
                                             <td class="select text-center vertical-align">
-                                               <!--  <span id="productcount1" class="sr-only">1</span>
-                                                <a class="button button-default button-sm mb-0" href="javascript:showAllProduct(1);">เลือก</a> -->
-
                                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".selectproduct">เลือก</button>
-
                                             </td>
                                             <td class="id">
                                                 <div class="typeahead__container">
                                                     <div class="typeahead__field">
                                                         <span class="typeahead__query">
-                                                          <!-- js-typeahead-input codetags -->
-                                                           <!--  <input class="form-control" name="q" type="search" id="productcode1" maxlength="32" value="" onfocus="autocompleteshow=false;" onkeyup="hideUnittext('1',event.keyCode);" onkeydown="gotoNext(1,'productcode',event.keyCode);" autofocus="off" autocomplete="off">
- -->
                                                             <input class="form-control" name="productcode1" type="search" id="productcode1" maxlength="32" value="">
 
                                                         </span>
@@ -301,10 +277,6 @@
                                                     <div class="typeahead__field">
                                                         <span class="typeahead__query">
                                                             <span class="typeahead__cancel-button"></span>
-                                                            <!-- js-typeahead-input nametags -->
-
-                                                           <!--  <input class="form-control" name="q" type="text" id="productname1" maxlength="256" value="" onfocus="autocompleteshow=false;" onkeyup="setNormalTextbox(this.id);setNormalTextbox('td'+this.id);hideUnittext('1',event.keyCode);" onkeydown="gotoNext(1,'productname',event.keyCode);" autofocus="off" autocomplete="off">
- -->
                                                             <input class="form-control" name="q" type="text" id="productname1" maxlength="256" value="">
 
                                                         </span>
@@ -313,39 +285,34 @@
                                             </td>
                                             <td class="amount">
                                                 <div class="input-group form-input-group spinner">
-                                                    <input type="number" class="form-control" id="productnumber1" placeholder="0.00" maxlength="32" onfocus="removeComma(this.id);autocompleteshow=false;" onblur="updateTotalPrice(1)" value="" onkeyup="setNormalTextbox(this.id);" onkeydown="gotoNext(1,'productnumber',event.keyCode);">
-                                                  
+                                                    <input type="number" class="form-control" id="productnumber1" placeholder="0.00" maxlength="32" value="">
                                                 </div>
                                             </td>
                                             <td class="value">
-                                                <input type="text" class="form-control form-text text-right font-lato" id="productpricepernumber1" placeholder="0.00" maxlength="32" onfocus="removeComma(this.id);autocompleteshow=false;" onblur="updateTotalPrice(1)" onkeyup="setNormalTextbox(this.id);" onkeydown="gotoNext(1,'productpricepernumber',event.keyCode);">
+                                                <input type="text" class="form-control form-text text-right font-lato" id="productpricepernumber1" placeholder="0.00" maxlength="32" value="">
                                             </td>
                                             <td class="discount">
-                                                <input type="text" class="form-control form-text font-lato text-right" id="discountpernumber1" placeholder="จำนวนเงิน หรือ %" maxlength="32" onfocus="removeComma(this.id);autocompleteshow=false;" onblur="updateTotalPrice(1)" onkeydown="gotoNext(1,'discountpernumber',event.keyCode);"><span id="unittext1" class="unittextspan spantruncatenoblock fs-xs grey-400 d-block text-right" style="display: none;"></span>
-                                               <!--  <span id="serialnotext1" style="display: none;">
-                                                  <img src="/Content/themes/base/images/serialicon.png" width="20">
-                                                </span> -->
+                                                <input type="text" class="form-control form-text font-lato text-right" id="discountpernumber1" placeholder="จำนวนเงิน หรือ %" maxlength="32" value="">
+                                            
                                                 <input type="hidden" id="serialnoid1" value="0">
                                             </td>
                                             <td class="total text-right">
                                                 <p id="totalprice1" class="form-text--transparent font-lato">0.00</p><input type="hidden" id="producttotalprice1" value="0.00">
                                             </td>
                                             <td class="action">
-                                                <a href="javascript:deleteRow(1);" class="d-inline-block btn-etc mt-2"><!-- <i class="far fa-times"></i> -->
+                                                <a href="javascript:deleteRow(1);" class="d-inline-block btn-etc mt-2">
                                                   <i class="fa fa-times-circle" aria-hidden="true" style="color: red;"></i></a>
                                             </td>
                                         </tr>
-                      
-
-
                           </tbody>
                         </table>
-                    </div>
+
+                    </div> -->
+
 
                     <div class="row mt-2">
                         <div class="col-md-7">
                             <a href="javascript:addRow();" class="button button-link button-md">
-                                <!-- <i class="fal fa-plus"></i> -->
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                 <span>เพิ่มสินค้า</span>
                             </a>
@@ -358,7 +325,6 @@
                             <div class="form-group">
                                 <div class="row">
                                     <label for="shippingchannel" class="col-sm-3">ช่องทางจัดส่ง</label>
-                                    <!-- <label class="col-sm"><b>การขนส่ง</b></label> -->
                                     <div class="col-sm-9">
 
                                                 <div class="col-sm-10">
@@ -414,7 +380,7 @@
                                             <label class="d-block fs-sm"><input type="checkbox" onclick="autocalculate()" id="isshippingchk" disabled="disabled"> ภาษีมูลค่าเพิ่ม</label>
                                         </div>
                                         <div class="col-sm-6 text-right">
-                                            <input type="text" class="form-control form-text pull-right text-right font-lato" id="shippingamount" placeholder="0.00" onblur="autocalculate()" maxlength="32" onfocus="removeComma(this.id);">
+                                            <input type="text" class="form-control form-text pull-right text-right font-lato" id="shippingamount" placeholder="0.00" onblur="autocalculate()" maxlength="32" >
                                         </div>
                                     </div>
                                 </div>
@@ -447,7 +413,7 @@
                                     <div class="col-sm-6 text-right">
                                         <p>
                                             <span id="amountbeforeshippingtext" class="font-lato">0.00</span>
-                                            <input type="hidden" class="form-control form-text" id="amountbeforeshipping" maxlength="32" onfocus="removeComma(this.id);" onblur="isMoney(this.id);" value="0.00">
+                                            <input type="hidden" class="form-control form-text" id="amountbeforeshipping" maxlength="32" value="0.00">
                                         </p>
                                     </div>
                                 </div>
@@ -458,7 +424,7 @@
                                     <div class="col-sm-6 text-right">
                                         <p class="font-lato fw-600 fs-xmd m-0">
                                             <span id="amounttext">0.00</span>
-                                            <input type="hidden" class="form-control form-text" id="amount" maxlength="32" onfocus="removeComma(this.id);" onblur="isMoney(this.id);" value="0.00">
+                                            <input type="hidden" class="form-control form-text" id="amount" maxlength="32" value="0.00">
                                         </p>
                                     </div>
                                 </div>
@@ -488,12 +454,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
+
+
+                <!-- </div> -->
             <!-- </fieldset> -->
 
                  <!-- Large modal -->
-                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".selectproduct">เลือกสินค้า</button> -->
-
                         <div id="data_product" class="modal fade selectproduct" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -507,18 +473,7 @@
                                 </div>
                                 <div class="modal-body">
 
-                                 <!--  <form>
-                                    <div class="form-group">
-                                      <label for="recipient-name" class="col-form-label">Recipient:</label>
-                                      <input type="text" class="form-control" id="recipient-name">
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="message-text" class="col-form-label">Message:</label>
-                                      <textarea class="form-control" id="message-text"></textarea>
-                                    </div>
-                                  </form> -->
                                    <div class="table-responsive">
-              <!-- <table id="myTable" class="display table-responsive-sm" style="width:100%"> -->
                                     <table id="myTable2" class="table table-hover" style="width:100%">
                                       
                                       <thead class="thead-dark">
@@ -559,10 +514,6 @@
                                     </table>
                                   </div>
                                 </div>
-                                <!-- <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                  <button type="button" class="btn btn-primary">Send message</button>
-                                </div> -->
                             </div>
                           </div>
                         </div>
@@ -570,121 +521,190 @@
        
         </div>
     </div>
-</div>
+    </div>
 
+    <div class="card shadow mb-4">
+          <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">การจัดส่ง</h6>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm">
+                 <label class="col-sm"><b>ข้อมูลที่อยู่ผู้รับ</b></label>
+                
+                <a href="javascript:copyInfo()" onclick="copyInfo();" value="info_customer"><i class="fa fa-clone"></i><span>คัดลอกจากข้อมูลลูกค้า</span></a>
 
-
- <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">การจัดส่ง</h6>
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm">
-               <label class="col-sm"><b>ข้อมูลที่อยู่ผู้รับ</b></label>
-              
-              <a href="javascript:copyInfo()" onclick="copyInfo();" value="info_customer"><i class="fa fa-clone"></i><span>คัดลอกจากข้อมูลลูกค้า</span></a>
-
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="name_receiver" maxlength="128" placeholder="ชื่อ-สกุล" onkeyup="setNormalTextbox(this.id);">
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="phone_receiver" maxlength="128" placeholder="เบอร์โทร" onkeyup="setNormalTextbox(this.id);">
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="email_receiver" maxlength="128" placeholder="อีเมล์" onkeyup="setNormalTextbox(this.id);">
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-sm-10">
-                    <textarea  id="address_receiver" name="address_receiver" rows="4" class="form-control" placeholder="ที่อยู่จัดส่ง ..." style="overflow: hidden; resize: none;"></textarea>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="col-sm">
-
-
-              <label class="col-sm"><b>วันส่งสินค้า</b></label>
-                <!-- <div class="col-sm-10"> -->
-                  <div class="form-group row">
-                    <!-- <label for="example-date-input" class="col-2 col-form-label">Date</label> -->
+                <div class="form-group">
+                  <div class="row">
                     <div class="col-sm-10">
-                      <input class="form-control" type="date" value="" id="sent_date">
-                   </div>
-                  </div>
-                <!-- </div> -->
-
-                <label ><b>Tracking No.</b></label>
-                  <div class="form-group row">
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="track_no">
+                      <input type="text" class="form-control form-text" id="name_receiver" maxlength="128" placeholder="ชื่อ-สกุล" onkeyup="setNormalTextbox(this.id);">
                     </div>
                   </div>
+                </div>
 
-            </div>
-       
-        </div>
-    </div>
-</div>
-
-<div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">การชำระเงิน</h6>
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm">
-               <label class="col-sm"><b>ช่องทางการชำระ</b></label>
-            
-                 <div class="form-group row">
-                        <!-- <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ขนส่ง</b></label> -->
-                        <div class="col-sm-10">
-                          <select class="form-control form-text" id="payment_channel" placeholder="=ช่องทางการชำระเงิน">
-                            <option>เลือกการชำระเงิน</option>
-                            <option value="CASH">เงินสด</option>
-                            <option value="BANK">ธนาคารกสิกรไทย</option>
-                            <option value="COD">COD (เก็บเงินปลายทาง)</option>
-                          </select>
-                        </div>
-                      </div>
-
-            </div>
-
-            <div class="col-sm">
-              <label class="col-sm"><b>อัพโหลดสลิปโอน</b></label>
-
-              <div class="form-group">
-                      <!-- <label for="exampleFormControlInput1"><b>อัพโหลดรูป</b></label>   -->
-                      <div class="col-sm-10">  
-                        <input type="file" class="form-control" id="file" name="file" required />
-                      </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control form-text" id="phone_receiver" maxlength="128" placeholder="เบอร์โทร" onkeyup="setNormalTextbox(this.id);">
+                    </div>
                   </div>
-            </div>
-       
-        </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control form-text" id="email_receiver" maxlength="128" placeholder="อีเมล์" onkeyup="setNormalTextbox(this.id);">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-10">
+                      <textarea  id="address_receiver" name="address_receiver" rows="4" class="form-control" placeholder="ที่อยู่จัดส่ง ..." style="overflow: hidden; resize: none;"></textarea>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-sm">
+
+
+                <label class="col-sm"><b>วันส่งสินค้า</b></label>
+                  <!-- <div class="col-sm-10"> -->
+                    <div class="form-group row">
+                      <!-- <label for="example-date-input" class="col-2 col-form-label">Date</label> -->
+                      <div class="col-sm-10">
+                        <input class="form-control" type="date" value="" id="sent_date">
+                     </div>
+                    </div>
+                  <!-- </div> -->
+
+                  <label ><b>Tracking No.</b></label>
+                    <div class="form-group row">
+                      <div class="col-sm-10">
+                          <input type="text" class="form-control" id="track_no">
+                      </div>
+                    </div>
+
+              </div>
+         
+          </div>
+      </div>
     </div>
+
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">การชำระเงิน</h6>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm">
+              <label class="col-sm"><b>ช่องทางการชำระ</b></label>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                      <select class="form-control form-text" id="payment_channel" placeholder="=ช่องทางการชำระเงิน">
+                        <option>เลือกการชำระเงิน</option>
+                        <option value="CASH">เงินสด</option>
+                        <option value="BANK">ธนาคารกสิกรไทย</option>
+                        <option value="COD">COD (เก็บเงินปลายทาง)</option>
+                            </select>
+                    </div>
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <label class="col-sm"><b>อัพโหลดสลิปโอน</b></label>
+                <div class="form-group">                      
+                    <div class="col-sm-10">  
+                          <input type="file" class="form-control" id="file" name="file"  />
+                          <!-- required -->
+                        </div>
+                    </div>
+              </div>
+         
+          </div>
+      </div>
+  </div>
+
+   <div class="row">
+    <div class="col-sm-2 text-right">
+      <!-- <button class="form-control">aaa</button> -->
+    </div>
+    <div class="col-sm-2 text-right">
+      <!-- <button class="form-control">aaa</button> -->
+    </div>
+    <div class="col-sm-2 text-right">
+      <!-- <button class="form-control">บันทึก</button> -->
+      <!-- <button type="button" class="form-control btn btn-secondary">บันทึก+สร้างใหม่</button> -->
+    </div>
+     <div class="col-sm-2 text-right">
+      <!-- <button class="form-control">บันทึก</button> -->
+      <!-- <button type="button" class="form-control btn btn-primary">บันทึก</button> -->
+      <input type="submit" name="submit" class="form-control btn btn-primary" value="บันทึก"/>  
+    </div>
+  </div>
+
+</form>
 </div>
+
+
+
+
 
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
 <script type="text/javascript">
+
+  $(document).ready(function(e){
+    // Submit form data via Ajax
+    $("#fupForm1").on('submit', function(e){
+        // var location = window.location.href;
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url('order/add_new_order');?>',
+            data: new FormData(this),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ 
+
+
+            console.log(response);
+
+
+                // $('.statusMsg').html('');
+                // if(response.status == 1){
+                //     $('#fupForm')[0].reset();
+                //     // $('.statusMsg').html('<p class="alert alert-success">'+response.message+'</p>');
+                //     Swal.fire('Success!!!');
+
+                //     // window.location = location;
+                //     setTimeout(function(){
+                //       location.reload();
+                //     }, 2000);
+                //     return true;
+                // }else{
+                //     // $('.statusMsg').html('<p class="alert alert-danger">'+response.message+'</p>');
+                //     Swal.fire('Not Success!!!')
+                    
+                //     setTimeout(function(){
+                //       location.reload();
+                //     }, 2000);
+                //     return false;
+                // }
+                $('#fupForm').css("opacity","");
+                $(".submitBtn").removeAttr("disabled");
+            }
+        });
+    });
+});  
 
 $(function(){
   $('#myTable').dataTable({
