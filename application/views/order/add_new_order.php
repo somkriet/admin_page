@@ -194,54 +194,33 @@
             <h6 class="m-0 font-weight-bold text-primary">สินค้า</h6>
         </div>
         <div class="card-body">
-          <div class="row">
-                <div class="d-lg-flex flex-row justify-content-between align-items-center mb-3">
-                 
-                    <div>
-                      
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">เลือกสินค้า</button>
 
-                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">เลือกสินค้า</button>
+
+              <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
                               
-
-                               <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">เลือกสินค้าหลายรายการ</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                 <!--  <form>
-                                    <div class="form-group">
-                                      <label for="recipient-name" class="col-form-label">Recipient:</label>
-                                      <input type="text" class="form-control" id="recipient-name">
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="message-text" class="col-form-label">Message:</label>
-                                      <textarea class="form-control" id="message-text"></textarea>
-                                    </div>
-                                  </form> -->
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                  <button type="button" class="btn btn-primary">Send message</button>
-                                </div>
-
-
-
-                            </div>
-                          </div>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">เลือกสินค้าหลายรายการ</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                                
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Send message</button>
                         </div>
                     </div>
-                </div>
+                  </div>
+              </div><br><br>
 
-                <!-- <div class=""> -->
 
-
-                    <div class="t-responsive">
-
+              <div class="t-responsive">
                          <table class="table-bordered" id="productrow">
                             <thead>
                                 <tr>
@@ -259,7 +238,7 @@
                             <tbody>
                                         <tr id="prow1">
                                             <td class="select text-center vertical-align">
-                                                <button type="button" id="productcount1" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".selectproduct" value="">เลือก</button>
+                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".selectproduct" value=""><span id="productcount1" class="sr-only"></span>เลือก</button>
                                             </td>
                                             <td class="id">
                                                 <div class="typeahead__container">
@@ -308,73 +287,67 @@
                           </tbody>
                         </table>
 
-                    </div>
+                    </div><br>
 
 
-                    <!-- <div class="row mt-2"> -->
-                        <div class="col-md-10">
-                            <a href="javascript:addRow();" class="button button-link button-md">
+
+              <a href="javascript:addRow();" class="button button-link button-md">
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                 <span>เพิ่มสินค้า</span>
-                            </a>
-                        </div>
-                    <!-- </div> -->
-                    <hr>
+                            </a><br>
 
-                    <div class="row">
-                        <div class="col-sm-6 mb-5 mb-lg-0">
-                            <div class="form-group">
-                                <div class="row">
-                                    <label for="shippingchannel" class="col-sm-4">ช่องทางจัดส่ง</label>
-                                    <div class="col-sm-8">
 
-                                                <div class="col-sm-10">
-                                                  <select class="form-control form-text" id="product_chanel" placeholder="การจัดส่ง">
+          <br>                  
+          <div class="row">
+            <div class="col-sm">
+
+
+              <div class="form-group">
+                  <div class="row">
+                      <div class="col-sm-4 text-left">
+                          <label for="discounttext">ช่องทางจัดส่ง</label>
+                      </div>
+                      <div class="col-sm-8">
+                          <select class="form-control form-text" id="shippingchannel" placeholder="การจัดส่ง">
                                                     <option>เลือกช่องทางจัดส่ง</option>
                                                     <option>ไปรษณีย์ไทย ธรรมดา</option>
                                                     <option>ไปรษณีย์ไทย EMS</option>
                                                     <option>Flash</option>
                                                     <option>Kerry</option>
                                                     <option>J&T</option>
-                                                  </select>
-                                                </div>
-                                      
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <label for="description" class="col-sm-4">หมายเหตุ</label>
-                                    <div class="col-sm-8">
-                                        <textarea class="form-control form-text" rows="3" id="description" name="description"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <!-- <div class="p-3 pt-0 pb-0"> -->
-                            <div class="row">
-                                <div class="col-sm-6">
+                      </select>
+                      </div>
+                  </div>
+              </div>
 
-                                </div>
-                                <div class="col-sm-6">
+               <div class="form-group">
+                  <div class="row">
+                      <div class="col-sm-4 text-left">
+                          <label for="discounttext">หมายเหตุ</label>
+                      </div>
+                      <div class="col-sm-8">
+                             <textarea class="form-control form-text" rows="3" id="description" name="description"></textarea>
+                      </div>
+                  </div>
+              </div>
 
-                                </div>
-                                 <div class="col-sm-6">
+            </div>
 
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-sm-6 text-right">
-                                      <label for="discounttext">ส่วนลด</label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                      <input type="text" class="form-control form-text pull-right text-right font-lato" placeholder="จำนวนเงิน หรือ %" id="discounttext" onblur="autocalculate()" maxlength="32" value="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
+
+            <div class="col-sm">
+
+              <div class="form-group">
+                  <div class="row">
+                      <div class="col-sm-6 text-right">
+                          <label for="discounttext">ส่วนลด</label>
+                      </div>
+                      <div class="col-sm-6">
+                          <input type="text" class="form-control form-text pull-right text-right font-lato" placeholder="จำนวนเงิน หรือ %" id="discounttext" onblur="autocalculate()" maxlength="32" value="">
+                      </div>
+                  </div>
+              </div>
+
+                  <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-6 text-right">
                                             <label for="shippingamount" class="">
@@ -455,27 +428,40 @@
                                 <div class="row">
                                     <input type="hidden" id="paymentamount" maxlength="32" value="0.00"><input type="hidden" id="paymentname" maxlength="32" value=""><input type="hidden" id="paymentdatetimestatus" value="0"><input type="hidden" id="paymentdatetime" value="">
                                 </div>
-                            <!-- </div> -->
+
+
+              <!-- <label class="col-sm"><b>ประเภทภาษี</b></label>
+
+                 <div class="form-group row">
+                        <div class="col-sm-10">
+                          <select class="form-control form-text" id="vat" name="vat" placeholder="การจัดส่ง">
+                            <option value="1:0:1">ไม่มีภาษี</option>
+                            <option value="2:7:0">แยกภาษีมูลค่าเพิ่ม 7%</option>
+                            <option value="3:7:1">รวมภาษีมูลค่าเพิ่ม 7%</option>
+                          </select>
                         </div>
-                    </div>
+                      </div> -->
 
 
-                <!-- </div> -->
-            <!-- </fieldset> -->
+            </div>
 
-                 <!-- Large modal -->
-                        <div id="data_product" class="modal fade selectproduct" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                              
+        </div>
 
-                               <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">เลือกสินค้า</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
+
+
+       <!-- Large modal -->
+            <div id="data_product" class="modal fade selectproduct" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">      
+
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">เลือกสินค้า</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+
+                      <div class="modal-body">
 
                                    <div class="table-responsive">
                                     <table id="myTable2" class="table table-hover" style="width:100%">
@@ -522,8 +508,7 @@
                           </div>
                         </div>
                     <!-- Large modal -->    
-       
-        </div>
+
     </div>
     </div>
 
@@ -641,7 +626,7 @@
     </div>
     <div class="col-sm-2 text-right">
       <!-- <button class="form-control">บันทึก</button> -->
-      <!-- <button type="button" class="form-control btn btn-secondary">บันทึก+สร้างใหม่</button> -->
+      <button type="button" class="form-control btn btn-secondary">บันทึก+สร้างใหม่</button>
     </div>
      <div class="col-sm-2 text-right">
       <!-- <button class="form-control">บันทึก</button> -->
@@ -654,7 +639,11 @@
 </div>
 
 
-
+<style type="text/css">
+  .bg-grey-50 {
+    background-color: #e8ecef;
+}
+</style>
 
 
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
@@ -828,7 +817,7 @@ $(function(){
 
         // cell0.innerHTML = "<span id=\"productcount"+rowcount+"\" class=\"sr-only\">" + length+"</span><a class=\"button button-default button-sm mb-0\" href='javascript:showAllProduct("+rowcount+");'>เลือก</a>";
 
-        cell0.innerHTML = "<button type=\"button\" id=\"productcount"+rowcount+"\" class=\"btn btn-primary btn-sm\" data-toggle=\"modal\" data-target=\".selectproduct\">เลือก</button>"
+        cell0.innerHTML = "<button type=\"button\" id=\"productcount"+rowcount+"\" class=\"btn btn-primary btn-sm\" data-toggle=\"modal\" data-target=\".selectproduct\"><span id=\"productcount1\" class=\"sr-only\"></span>เลือก</button>"
 
         // js-typeahead-input codetags
         cell1.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control\" name=\"q\" type=\"search\" id=\"productcode"+rowcount+"\" maxlength=\"32\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"hideUnittext('"+rowcount+"',event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productcode',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div><input type='hidden' id='productid"+rowcount+"' value='0'/> <input type=\"hidden\" id=\"isbundles" + rowcount + "\" value=\"0-0\" />";
