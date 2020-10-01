@@ -30,7 +30,8 @@
               <div class="form-group row">
                     <!-- <label for="example-date-input" class="col-2 col-form-label">Date</label> -->
                     <div class="col-sm-10">
-                      <input class="form-control" type="date" value="" id="sent_date">
+                      
+                      <input class="form-control" type="date" id="sent_date" value="<?php echo date('d/m/Y') ?>">
                    </div>
                   </div>
 
@@ -239,7 +240,7 @@
                 <!-- <div class=""> -->
 
 
-                    <!-- <div class="t-responsive">
+                    <div class="t-responsive">
 
                          <table class="table-bordered" id="productrow">
                             <thead>
@@ -258,7 +259,7 @@
                             <tbody>
                                         <tr id="prow1">
                                             <td class="select text-center vertical-align">
-                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".selectproduct">เลือก</button>
+                                                <button type="button" id="productcount1" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".selectproduct" value="">เลือก</button>
                                             </td>
                                             <td class="id">
                                                 <div class="typeahead__container">
@@ -277,7 +278,7 @@
                                                     <div class="typeahead__field">
                                                         <span class="typeahead__query">
                                                             <span class="typeahead__cancel-button"></span>
-                                                            <input class="form-control" name="q" type="text" id="productname1" maxlength="256" value="">
+                                                            <input class="form-control" name="productname1" type="text" id="productname1" maxlength="256" value="">
 
                                                         </span>
                                                     </div>
@@ -285,19 +286,19 @@
                                             </td>
                                             <td class="amount">
                                                 <div class="input-group form-input-group spinner">
-                                                    <input type="number" class="form-control" id="productnumber1" placeholder="0.00" maxlength="32" value="">
+                                                    <input type="number" class="form-control" id="productnumber1" name="productnumber1" placeholder="0.00" maxlength="32" value="">
                                                 </div>
                                             </td>
                                             <td class="value">
-                                                <input type="text" class="form-control form-text text-right font-lato" id="productpricepernumber1" placeholder="0.00" maxlength="32" value="">
+                                                <input type="text" class="form-control form-text text-right font-lato" id="productpricepernumber1" name="productpricepernumber1" placeholder="0.00" maxlength="32" value="">
                                             </td>
                                             <td class="discount">
-                                                <input type="text" class="form-control form-text font-lato text-right" id="discountpernumber1" placeholder="จำนวนเงิน หรือ %" maxlength="32" value="">
+                                                <input type="text" class="form-control form-text font-lato text-right" id="discountpernumber1" name="discountpernumber1" placeholder="จำนวนเงิน หรือ %" maxlength="32" value="">
                                             
                                                 <input type="hidden" id="serialnoid1" value="0">
                                             </td>
                                             <td class="total text-right">
-                                                <p id="totalprice1" class="form-text--transparent font-lato">0.00</p><input type="hidden" id="producttotalprice1" value="0.00">
+                                                <p id="totalprice1" class="form-text--transparent font-lato">0.00</p><input type="hidden" id="producttotalprice1" name="producttotalprice1" value="0.00">
                                             </td>
                                             <td class="action">
                                                 <a href="javascript:deleteRow(1);" class="d-inline-block btn-etc mt-2">
@@ -307,25 +308,25 @@
                           </tbody>
                         </table>
 
-                    </div> -->
+                    </div>
 
 
-                    <div class="row mt-2">
-                        <div class="col-md-7">
+                    <!-- <div class="row mt-2"> -->
+                        <div class="col-md-10">
                             <a href="javascript:addRow();" class="button button-link button-md">
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                 <span>เพิ่มสินค้า</span>
                             </a>
                         </div>
-                    </div>
+                    <!-- </div> -->
                     <hr>
 
                     <div class="row">
                         <div class="col-sm-6 mb-5 mb-lg-0">
                             <div class="form-group">
                                 <div class="row">
-                                    <label for="shippingchannel" class="col-sm-3">ช่องทางจัดส่ง</label>
-                                    <div class="col-sm-9">
+                                    <label for="shippingchannel" class="col-sm-4">ช่องทางจัดส่ง</label>
+                                    <div class="col-sm-8">
 
                                                 <div class="col-sm-10">
                                                   <select class="form-control form-text" id="product_chanel" placeholder="การจัดส่ง">
@@ -343,20 +344,23 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <label for="description" class="col-sm-3">หมายเหตุ</label>
-                                    <div class="col-sm-9">
+                                    <label for="description" class="col-sm-4">หมายเหตุ</label>
+                                    <div class="col-sm-8">
                                         <textarea class="form-control form-text" rows="3" id="description" name="description"></textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="p-3 pt-0 pb-0">
+                            <!-- <div class="p-3 pt-0 pb-0"> -->
                             <div class="row">
                                 <div class="col-sm-6">
 
                                 </div>
                                 <div class="col-sm-6">
+
+                                </div>
+                                 <div class="col-sm-6">
 
                                 </div>
                             </div>
@@ -451,7 +455,7 @@
                                 <div class="row">
                                     <input type="hidden" id="paymentamount" maxlength="32" value="0.00"><input type="hidden" id="paymentname" maxlength="32" value=""><input type="hidden" id="paymentdatetimestatus" value="0"><input type="hidden" id="paymentdatetime" value="">
                                 </div>
-                            </div>
+                            <!-- </div> -->
                         </div>
                     </div>
 
@@ -822,7 +826,9 @@ $(function(){
         var cell6 = row.insertCell(6);
         var cell7 = row.insertCell(7);
 
-        cell0.innerHTML = "<span id=\"productcount"+rowcount+"\" class=\"sr-only\">" + length+"</span><a class=\"button button-default button-sm mb-0\" href='javascript:showAllProduct("+rowcount+");'>เลือก</a>";
+        // cell0.innerHTML = "<span id=\"productcount"+rowcount+"\" class=\"sr-only\">" + length+"</span><a class=\"button button-default button-sm mb-0\" href='javascript:showAllProduct("+rowcount+");'>เลือก</a>";
+
+        cell0.innerHTML = "<button type=\"button\" id=\"productcount"+rowcount+"\" class=\"btn btn-primary btn-sm\" data-toggle=\"modal\" data-target=\".selectproduct\">เลือก</button>"
 
         // js-typeahead-input codetags
         cell1.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control\" name=\"q\" type=\"search\" id=\"productcode"+rowcount+"\" maxlength=\"32\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"hideUnittext('"+rowcount+"',event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productcode',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div><input type='hidden' id='productid"+rowcount+"' value='0'/> <input type=\"hidden\" id=\"isbundles" + rowcount + "\" value=\"0-0\" />";
@@ -851,7 +857,7 @@ $(function(){
         cell6.className = "total text-right";
         cell7.className = "action";
 
-        updateAutocomplete(rowcount);
+        // updateAutocomplete(rowcount);
     }
     function deleteRow(id) {
         var table = document.getElementById("productrow");
@@ -875,11 +881,12 @@ $(function(){
                     idTmp++;
                     //a/lert('ptotalTmp : ' + ptotalTmp);
                 }
-                document.getElementById('productcount' + idTmp).innerHTML = i;
+                // document.getElementById('productcount' + idTmp).innerHTML = i;
             }
             autocalculate();
         }
     }
+
     function updateAutocomplete(tmpindex)
     {
         $("#productname" + tmpindex).typeahead({
@@ -1137,6 +1144,131 @@ $(function(){
          });
 
     }
+
+        function autocalculate()
+    {
+        var stateshippingvat = document.getElementById("isshippingchk").checked;
+        var isshippingvat = 0;
+
+        if (stateshippingvat == true){
+            isshippingvat = 1
+        }
+
+        var table = document.getElementById("productrow");
+        var rCount = table.rows.length;
+
+        var netamount=0;
+        var total = 0;
+        var vattotal = 0;
+        var beforetotal = 0;
+        var whttotal = 0;
+        var paymenttotal = 0;
+        var i = 0;
+        for (var j = 1; j < rCount; j++) {
+            i++;
+            while (!document.getElementById('productnumber' + i)) {
+                i++;
+            }
+            isMoney("productnumber" + i);
+            isMoney("productpricepernumber" + i);
+            isPercent("discountpernumber" + i);
+            isMoney("producttotalprice" + i);
+        }
+
+        isMoney("shippingamount");
+        isPercent("discounttext");
+        i = 0;
+        for (var j = 1; j < rCount; j++)
+        {
+            i++;
+            while (!document.getElementById('producttotalprice' + i)) {
+                i++;
+            }
+            var tmp = toremoveComma($("#producttotalprice" + i).val());
+            total += Number(tmp);
+        }
+        var tmpshipping = toremoveComma($("#shippingamount").val());
+        var discounttext = toremoveComma($("#discounttext").val());
+        if (discounttext.indexOf("%") > -1) {
+            discounttext = discounttext.replace(/%/g, "");
+            discounttext = total * discounttext / 100;
+        }
+        var tmpnetamount = 0;
+        var tmpnetamount2 = 0;
+        if(calculatetype==1)
+        {
+
+            if (isshippingvat == 0) {
+                tmpnetamount=total-Number(discounttext);
+                tmpnetamount2 = tmpnetamount;
+                tmpnetamount2 = Math.round(tmpnetamount2 * 100) / 100;
+                netamount += tmpnetamount2 + Number(tmpshipping);
+                beforetotal = 100 * tmpnetamount2/(100+percent);
+                vattotal = netamount.toFixed(2)-beforetotal.toFixed(2)-Number(tmpshipping).toFixed(2);
+            }
+            else {
+                tmpnetamount=total-Number(discounttext);
+                tmpnetamount2 = tmpnetamount;
+                tmpnetamount2 = Math.round(tmpnetamount2 * 100) / 100 + (Math.round(tmpshipping * 100) / 100);
+                netamount += tmpnetamount2;
+                beforetotal = (100 * tmpnetamount2 / (100 + percent));
+                vattotal = netamount.toFixed(2) - beforetotal.toFixed(2);
+            }
+
+        }
+        else
+        {
+
+            if (isshippingvat == 0) {
+                tmpnetamount=total-Number(discounttext);
+                beforetotal = tmpnetamount;
+                tmpnetamount2 = tmpnetamount * (1 + (percent / 100));
+                tmpnetamount2 = Math.round(tmpnetamount2 * 100) / 100;
+                netamount += tmpnetamount2 + Number(tmpshipping);
+                vattotal = netamount.toFixed(2)-beforetotal.toFixed(2)-Number(tmpshipping).toFixed(2);
+            }
+            else {
+                tmpnetamount=total-Number(discounttext);
+                beforetotal = tmpnetamount + Number(tmpshipping);
+                tmpnetamount2 = tmpnetamount * (1 + (percent / 100)) + (tmpshipping * (1 + (percent / 100)));
+                netamount += tmpnetamount2;
+                vattotal = netamount.toFixed(2) - tmpnetamount.toFixed(2) - Number(tmpshipping).toFixed(2);
+            }
+
+        }
+        if(document.getElementById("whtcheck").checked)
+        {
+            var whtpercent = document.getElementById("whtpercent").value;
+            whttotal = ((whtpercent*beforetotal)/100).toFixed(2);
+        }
+        paymentamount = netamount-whttotal;
+        $("#vatamount").val(vattotal);
+        $("#amount").val(netamount);
+        $("#amountbeforeshipping").val(tmpnetamount2);
+        $("#amount2").val(beforetotal);
+        $("#whtamount").val(whttotal);
+        $("#paymentwhtamount").val(paymentamount);
+
+        //change text
+
+        isMoney2("vatamount");
+        isMoney2("amount");
+        isMoney2("amountbeforeshipping");
+        isMoney2("amount2");
+        isMoney2("whtamount");
+        isMoney2("paymentwhtamount");
+        $("#amounttext").html($("#amount").val());
+        $("#amountbeforeshippingtext").html($("#amountbeforeshipping").val());
+        $("#amount2text").html($("#amount2").val());
+        $("#paymentamounttext").html($("#paymentwhtamount").val());
+        $("#vatamounttext").html($("#vatamount").val());
+
+
+    }
+
+
+
+
 
 </script>
 
