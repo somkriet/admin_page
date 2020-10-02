@@ -67,6 +67,48 @@ class Order extends CI_Controller {
 
 
     public function add_new_order(){
+
+        $order_date = $this->input->post('order_date');
+        $name_customer = $this->input->post('name_customer');
+        $name_socail = $this->input->post('name_socail');
+        $phone = $this->input->post('phone');
+        $email = $this->input->post('email');
+        $customer_address = $this->input->post('customer_address');
+
+        
+        $product_category = $this->input->post(''); 
+        $product_location = $this->input->post('');
+        $product_img = $this->input->post('');
+
+
+
+        $insert = "INSERT INTO customer (cus_id,
+                            cus_name,
+                            cus_name_social,
+                            phone_number,
+                            email,
+                            sales_channels,
+                            cus_address,
+                            cus_provinces,
+                            cus_amphures,
+                            cus_districts,
+                            link_img) VALUES (
+                            '".$customer_id."',
+                            '".$customername."',
+                            '".$customername_socail."',
+                            '".$customerphone."',
+                            '".$customeremail."',
+                            '".$customerchanel."',
+                            '".$customeraddress."',
+                            '".$customerprovince."',
+                            '".$customeramphure."',
+                            '".$customerdistrict."',
+                            '".$uploadedFile."')"; 
+
+        $this->customer_model->add_new_customer($insert);
+
+
+
         
     }
 

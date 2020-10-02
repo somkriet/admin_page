@@ -1,3 +1,20 @@
+<?php
+
+    $percent = 0;
+    $decimal = 2;
+    $total = 0;
+    $subtotal = 0;
+    $bag_total = 0;
+    $order_num = 0;
+    $design_price = 0;
+    $percent_price = 0;
+    $total_discount =0;
+    $price_discount = 0;
+    $total_percent = 0;
+
+ ?>
+
+
 <!--Begin Page Content -->
 <div class="container-fluid">
 
@@ -18,20 +35,20 @@
             <div class="col-sm">
                <label class="col-sm"><b>ข้อมูลลูกค้า</b></label>
 
-              <div class="form-group">
+            <!--   <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
                     <input type="text" class="form-control form-text" id="order_code" name="order_code" maxlength="128" placeholder="IV202009240001" onkeyup="setNormalTextbox(this.id);" disabled>
 
                   </div>
                 </div>
-              </div> 
+              </div>  -->
 
               <div class="form-group row">
                     <!-- <label for="example-date-input" class="col-2 col-form-label">Date</label> -->
                     <div class="col-sm-10">
                       
-                      <input class="form-control" type="date" id="sent_date" value="<?php echo date('d/m/Y') ?>">
+                      <input class="form-control" type="date" id="order_date" name="order_date" value="<?php echo date('d/m/Y') ?>">
                    </div>
                   </div>
 
@@ -220,6 +237,16 @@
               </div><br><br>
 
 
+              <div id='TextBoxesGroup'>
+                <div id="TextBoxDiv1">
+                  <label>Textbox #1 : </label><input type='textbox' id='textbox1' >
+                </div>
+              </div>
+              <input type='button' value='Add Button' id='addButton'>
+              <input type='button' value='Remove Button' id='removeButton'>
+              <input type='button' value='Get TextBox Value' id='getButtonValue'>
+
+
               <div class="t-responsive">
                          <table class="table-bordered" id="productrow">
                             <thead>
@@ -367,7 +394,7 @@
                                     </div>
                                     <div class="col-sm-6 text-right">
                                         <p>
-                                            <span id="amount2text" class="font-lato">0.00</span>
+                                            <span id="amount2text" class="font-lato"><?php echo $total_percent; ?></span>
                                             <input type="hidden" id="amount2" value="0.00">
                                         </p>
                                     </div>
@@ -378,7 +405,7 @@
                                     </div>
                                     <div class="col-sm-6 text-right">
                                         <p>
-                                            <span id="vatamounttext" class="font-lato">0.00</span>
+                                            <span id="vatamounttext" class="font-lato"><?php echo $total_percent; ?></span>
                                             <input type="hidden" class="form-control form-text" id="vatamount" onblur="autocalculate()" maxlength="32" onfocus="removeComma(this.id);" value="0.00">
                                         </p>
                                     </div>
@@ -389,7 +416,7 @@
                                     </div>
                                     <div class="col-sm-6 text-right">
                                         <p>
-                                            <span id="amountbeforeshippingtext" class="font-lato">0.00</span>
+                                            <span id="amountbeforeshippingtext" class="font-lato"><?php echo $total_percent; ?></span>
                                             <input type="hidden" class="form-control form-text" id="amountbeforeshipping" maxlength="32" value="0.00">
                                         </p>
                                     </div>
@@ -400,7 +427,7 @@
                                     </div>
                                     <div class="col-sm-6 text-right">
                                         <p class="font-lato fw-600 fs-xmd m-0">
-                                            <span id="amounttext">0.00</span>
+                                            <span id="amounttext"><?php echo $total_percent; ?></span>
                                             <input type="hidden" class="form-control form-text" id="amount" maxlength="32" value="0.00">
                                         </p>
                                     </div>
@@ -598,7 +625,7 @@
                         <option value="CASH">เงินสด</option>
                         <option value="BANK">ธนาคารกสิกรไทย</option>
                         <option value="COD">COD (เก็บเงินปลายทาง)</option>
-                            </select>
+                      </select>
                     </div>
                 </div>
               </div>
@@ -697,6 +724,67 @@
             }
         });
     });
+
+
+
+    // ตั้งค่าเริ่มต้นจำนวนถัดไปของ Textbox 
+   var counter = 2;
+ 
+   // เมื่อคลิกปุ่ม Add Button 
+   jQuery("#addButton").click(function () {
+
+      // ตรวจสอบว่ามี Textbox มากกว่า 10 หรือไม่ ถ้ามากกว่า่ให้แจ้งกล่องข้อความ
+      // Textbox ไม่ให้เกิน 10
+      if(counter>10){
+         alert("Only 10 textboxes allow");
+         return false;
+      }   
+      
+      // ถ้า Textbox ยังไม่ถึง 10 ให้สร้าง Textbox ขึ้นมา
+      jQuery('#TextBoxesGroup').append('<div id="TextBoxDiv' + counter + '">');
+      jQuery('#TextBoxesGroup').append('<label>Textbox #' + counter + ' : </label>');
+      jQuery('#TextBoxesGroup').append('<input type="text" name="key[]" id="key[]" /></div>');
+      
+      // เพิ่มค่าของจำนวน Textbox 
+      counter++;
+   });
+ 
+   // เมื่อคลิกปุ่ม Remove Button
+   jQuery("#removeButton").click(function () {
+      // ถ้าค่าจำนวนถัดไปของ Textbox เท่ากับ 1 ให้แจ้งข้อความเตือน
+      if(counter==1){
+         alert("No more textbox to remove");
+         return false;
+      }   
+      
+      // แต่ถ้าจำนวนยังไม่เท่ากับ 1 ให้ลดค่าลงไป 1
+      counter--;
+ 
+      // ลบ Textbox โดยอ้างอิงจาก ID ของแท็ก Div ที่มี Textbox อยู่ภายใน
+      jQuery("#TextBoxDiv" + counter).remove();
+   });
+
+   // เมื่อคลิกปุ่ม Get TextBox Value
+   jQuery("#getButtonValue").click(function () {
+      
+      // สร้างตัวแปรสำหรับเก็บค่าของ TextBox แต่ละตัว
+      var msg = '';
+
+      // วนรอบเก็บค่าของ TextBox แต่ละตัวไว้ที่ตัวแปร
+      for(i=1; i<counter; i++){
+         msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
+      }
+
+      // แสดงค่าที่อยู่ใน TextBox แต่ละตัว
+      alert(msg);
+   });
+
+
+
+
+
+
+
 });  
 
 $(function(){
@@ -713,6 +801,8 @@ $(function(){
   });
 
 });
+
+
 
   function copyInfo(){
 
@@ -815,26 +905,22 @@ $(function(){
         var cell6 = row.insertCell(6);
         var cell7 = row.insertCell(7);
 
-        // cell0.innerHTML = "<span id=\"productcount"+rowcount+"\" class=\"sr-only\">" + length+"</span><a class=\"button button-default button-sm mb-0\" href='javascript:showAllProduct("+rowcount+");'>เลือก</a>";
 
-        cell0.innerHTML = "<button type=\"button\" id=\"productcount"+rowcount+"\" class=\"btn btn-primary btn-sm\" data-toggle=\"modal\" data-target=\".selectproduct\"><span id=\"productcount1\" class=\"sr-only\"></span>เลือก</button>"
+        cell0.innerHTML = "<button type=\"button\" id=\"productcount"+rowcount+"\" class=\"btn btn-primary btn-sm\" data-toggle=\"modal\" data-target=\".selectproduct\"><span id=\"productcount1\" class=\"sr-only\"></span>เลือก</button>";
 
-        // js-typeahead-input codetags
         cell1.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control\" name=\"q\" type=\"search\" id=\"productcode"+rowcount+"\" maxlength=\"32\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"hideUnittext('"+rowcount+"',event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productcode',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div><input type='hidden' id='productid"+rowcount+"' value='0'/> <input type=\"hidden\" id=\"isbundles" + rowcount + "\" value=\"0-0\" />";
 
-        // js-typeahead-input nametags
         cell2.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control\" name=\"q\" type=\"text\" id=\"productname"+rowcount+"\" maxlength=\"256\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"setNormalTextbox(this.id);setNormalTextbox('td'+this.id);hideUnittext(\""+rowcount+"\",event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productname',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div>";
+
         cell3.innerHTML = "<div class=\"input-group form-input-group spinner\"><input type=\"number\" placeholder='0.00' class=\"form-control\" id=\"productnumber"+rowcount+"\" maxlength=\"32\" onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+")\" value=\"\" onkeyup=\"setNormalTextbox(this.id);\" onkeydown=\"gotoNext("+rowcount+",'productnumber',event.keyCode);\"></div>";
 
-
-        // <div class=\"input-group-btn-vertical\"><button class=\"btn btn-default\" style=\"margin-top:0px !important;\" type=\"button\" onclick=\"plusNumber('productnumber"+rowcount+"');updateTotalPrice("+rowcount+");\"><i class=\"fa fa-caret-up\"></i></button><button class=\"btn btn-default\" style=\"margin-top:-2px !important;\" type=\"button\" onclick=\"minusNumber('productnumber"+rowcount+"');updateTotalPrice("+rowcount+");\"><i class=\"fa fa-caret-down\"></i></button></div> </div>";
-
-
-        //cell3.innerHTML = "<input type=\"number\" class=\"form-control form-text text-right\" id='productnumber"+rowcount+"' maxlength='32'  onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+");\" onkeyup='setNormalTextbox(this.id);' onkeydown='if (event.keyCode == 13) gotoNext("+rowcount+",\"productnumber\");' />";        cell4.innerHTML = "<input type=\"text\" class=\"form-control form-text\" id='productpricepernumber"+rowcount+ "' maxlength='32' onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+");\" onkeyup='setNormalTextbox(this.id);' onkeydown='if (event.keyCode == 13) gotoNext("+rowcount+",\"productpricepernumber\");' />";
         cell4.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato\" id='productpricepernumber"+rowcount+ "' placeholder='0.00' maxlength='32' onfocus=\"removeComma(this.id);\" onblur=\"updateTotalPrice("+rowcount+");\" onkeyup='setNormalTextbox(this.id);' onkeydown='gotoNext("+rowcount+",\"productpricepernumber\",event.keyCode);' />";
+
         cell5.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato\" id='discountpernumber"+rowcount+"' placeholder=\"จำนวนเงิน หรือ %\" maxlength='32' onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+");\" onkeydown='gotoNext("+rowcount+",\"discountpernumber\",event.keyCode);' /><span id='unittext"+rowcount+"' class='unittextspan spantruncatenoblock fs-xs grey-400 d-block text-right' style=\"display:none;\"></span><span id='serialnotext"+rowcount+"' style=\"display: none;\"><img src='/Content/themes/base/images/serialicon.png' width=20/></span><input type=\"hidden\" id='serialnoid"+rowcount+"' value='0' />";
+
         cell6.innerHTML = "<p id='totalprice" + rowcount + "' class='form-text--transparent font-lato'>0.00</p><input type='hidden' id='producttotalprice" + rowcount + "' value='0' />";
-        cell7.innerHTML = "<a href='javascript:deleteRow(" + rowcount + ");' class=\"d-inline-block btn-etc mt-2\" ><i class=\"fa fa-times-circle\" style=\"color: red;\"></i></a>   </a>";
+        
+        cell7.innerHTML = "<a href='javascript:deleteRow(" + rowcount + ");' class=\"d-inline-block btn-etc mt-2\" ><i class=\"fa fa-times-circle\" style=\"color: red;\"></i></a></a>";
 
         cell0.className = "select text-center vertical-align";
         cell1.className = "id";
