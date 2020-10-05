@@ -237,14 +237,14 @@
               </div><br><br>
 
 
-              <div id='TextBoxesGroup'>
+              <!-- <div id='TextBoxesGroup'>
                 <div id="TextBoxDiv1">
                   <label>Textbox #1 : </label><input type='textbox' id='textbox1' >
                 </div>
               </div>
               <input type='button' value='Add Button' id='addButton'>
               <input type='button' value='Remove Button' id='removeButton'>
-              <input type='button' value='Get TextBox Value' id='getButtonValue'>
+              <input type='button' value='Get TextBox Value' id='getButtonValue'> -->
 
 
               <div class="t-responsive">
@@ -335,7 +335,7 @@
                           <label for="discounttext">ช่องทางจัดส่ง</label>
                       </div>
                       <div class="col-sm-8">
-                          <select class="form-control form-text" id="shippingchannel" placeholder="การจัดส่ง">
+                          <select class="form-control form-text" id="shippingchannel" name="shippingchannel" placeholder="การจัดส่ง">
                                                     <option>เลือกช่องทางจัดส่ง</option>
                                                     <option>ไปรษณีย์ไทย ธรรมดา</option>
                                                     <option>ไปรษณีย์ไทย EMS</option>
