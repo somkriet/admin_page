@@ -75,27 +75,27 @@ class Order extends CI_Controller {
         $email = $this->input->post('email');
         $customer_address = $this->input->post('customer_address');
 
-        productcode1
-        productname1
-        productnumber1
-        productpricepernumber1
-        discountpernumber1
-        producttotalprice1
+        // productcode1
+        // productname1
+        // productnumber1
+        // productpricepernumber1
+        // discountpernumber1
+        // producttotalprice1
 
-        shippingchannel
-        description
-        discounttext
-        shippingamount
+        // shippingchannel
+        // description
+        // discounttext
+        // shippingamount
 
-        name_receiver
-        phone_receiver
-        email_receiver
-        address_receiver
-        sent_date
-        track_no
+        // name_receiver
+        // phone_receiver
+        // email_receiver
+        // address_receiver
+        // sent_date
+        // track_no
 
-        payment_channel
-        file
+        // payment_channel
+        // file
         
         $product_category = $this->input->post(''); 
         $product_location = $this->input->post('');
