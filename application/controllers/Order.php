@@ -75,61 +75,91 @@ class Order extends CI_Controller {
         $email = $this->input->post('email');
         $customer_address = $this->input->post('customer_address');
 
-        // productcode1
-        // productname1
-        // productnumber1
-        // productpricepernumber1
-        // discountpernumber1
-        // producttotalprice1
+        $productcode1 = $this->input->post('productcode1');
+        $productname1 = $this->input->post('productname1');
+        $productnumber1 = $this->input->post('productnumber1');
+        $productpricepernumber1 = $this->input->post('productpricepernumber1');
+        $discountpernumber1 = $this->input->post('discountpernumber1');
+        $producttotalprice1 = $this->input->post('producttotalprice1');
 
-        // shippingchannel
-        // description
-        // discounttext
-        // shippingamount
+        $shippingchannel = $this->input->post('shippingchannel');
+        $description = $this->input->post('description');
+        $discounttext = $this->input->post('discounttext');
+        $shippingamount = $this->input->post('shippingamount');
 
-        // name_receiver
-        // phone_receiver
-        // email_receiver
-        // address_receiver
-        // sent_date
-        // track_no
+        $name_receiver = $this->input->post('name_receiver');
+        $phone_receiver = $this->input->post('phone_receiver');
+        $email_receiver = $this->input->post('email_receiver');
+        $address_receiver = $this->input->post('address_receiver');
+        $sent_date = $this->input->post('sent_date');
+        $track_no = $this->input->post('track_no');
 
-        // payment_channel
-        // file
-        
-        $product_category = $this->input->post(''); 
-        $product_location = $this->input->post('');
-        $product_img = $this->input->post('');
+        $payment_channel = $this->input->post('payment_channel');
+        $file = $this->input->post('file');
+
+        // $product_category = $this->input->post(''); 
+        // $product_location = $this->input->post('');
+        // $product_img = $this->input->post('');
 
 
+        if($order_date != ""){
 
-        $insert = "INSERT INTO customer (cus_id,
-                            cus_name,
-                            cus_name_social,
-                            phone_number,
+            $sql = "INSERT INTO order (order_id,
+                            order_date,
+                            name_customer,
+                            name_socail,
+                            phone,
                             email,
-                            sales_channels,
-                            cus_address,
-                            cus_provinces,
-                            cus_amphures,
-                            cus_districts,
-                            link_img) VALUES (
-                            '".$customer_id."',
-                            '".$customername."',
-                            '".$customername_socail."',
-                            '".$customerphone."',
-                            '".$customeremail."',
-                            '".$customerchanel."',
-                            '".$customeraddress."',
-                            '".$customerprovince."',
-                            '".$customeramphure."',
-                            '".$customerdistrict."',
-                            '".$uploadedFile."')"; 
+                            customer_address,
+                            shippingchannel,
+                            description,
+                            discounttext,
+                            shippingamount,
+                            producttotalprice1,
+                            name_receiver,
+                            phone_receiver,
+                            email_receiver,
+                            address_receiver,
+                            sent_date,
+                            track_no,
+                            payment_channel,
+                            file
+                            ) VALUES (
+                            '".$order_id."',
+                            '".$order_date."',
+                            '".$name_customer."',
+                            '".$name_socail."',
+                            '".$phone."',
+                            '".$email."',
+                            '".$customer_address."',
+                            '".$shippingchannel."',
+                            '".$description."',
+                            '".$discounttext."',
+                            '".$shippingamount."',
+                            '".$producttotalprice1."',
+                            '".$name_receiver."',
+                            '".$phone_receiver."',
+                            '".$email_receiver."',
+                            '".$address_receiver."',
+                            '".$sent_date."',
+                            '".$track_no."',
+                            '".$payment_channel."',
+                            '".$file."')"; 
 
-        $this->customer_model->add_new_customer($insert);
+        
 
 
+            $this->order_model->add_new_order($sql);
 
+                $data['status'] = 'success';
+
+            }else{ 
+
+                $data['status'] = 'notsave';
+
+            }
+
+            echo json_encode($data);
         
     }
 

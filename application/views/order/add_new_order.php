@@ -71,7 +71,8 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="name_socail" name="name_socail" maxlength="128" placeholder="ชื่อโซเซียล" onkeyup="setNormalTextbox(this.id);">
+                    <input type="text" class="form-control form-text" id="name_socail" name="name_socail" maxlength="128" placeholder="ชื่อโซเซียล" >
+                    <!-- onkeyup="setNormalTextbox(this.id);" -->
                   </div>
                 </div>
               </div>
@@ -79,7 +80,8 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="phone" name="phone" maxlength="128" placeholder="เบอร์โทร" onkeyup="setNormalTextbox(this.id);">
+                    <input type="text" class="form-control form-text" id="phone" name="phone" maxlength="128" placeholder="เบอร์โทร" >
+                    <!-- onkeyup="setNormalTextbox(this.id);" -->
                   </div>
                 </div>
               </div>
@@ -87,7 +89,8 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="email" name="email" maxlength="128" placeholder="อีเมล์" onkeyup="setNormalTextbox(this.id);">
+                    <input type="text" class="form-control form-text" id="email" name="email" maxlength="128" placeholder="อีเมล์" >
+                    <!-- onkeyup="setNormalTextbox(this.id);" -->
                   </div>
                 </div>
               </div>
@@ -122,7 +125,8 @@
                   <div class="row">
                     
                     <div class="col-sm-10">
-                      <input type="text" class="form-control form-text" id="vat_number" name="vat_number" maxlength="128" placeholder="เลขประจำตัวผู้เสียภาษี" onkeyup="setNormalTextbox(this.id);">
+                      <input type="text" class="form-control form-text" id="vat_number" name="vat_number" maxlength="128" placeholder="เลขประจำตัวผู้เสียภาษี" >
+                      <!-- onkeyup="setNormalTextbox(this.id);" -->
                     </div>
                   </div>
                 </div>
@@ -132,7 +136,8 @@
                   <div class="row">
                    
                     <div class="col-sm-10">
-                      <input type="text" class="form-control form-text" id="name_branch" name="name_branch" maxlength="128" placeholder="ชื่อสาขา" onkeyup="setNormalTextbox(this.id);">
+                      <input type="text" class="form-control form-text" id="name_branch" name="name_branch" maxlength="128" placeholder="ชื่อสาขา" >
+                      <!-- onkeyup="setNormalTextbox(this.id);" -->
                     </div>
                   </div>
                 </div>
@@ -141,7 +146,8 @@
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-10">
-                      <input type="text" class="form-control form-text" id="number_branch" name="number_branch"  maxlength="128" placeholder="เลขที่สาขา" onkeyup="setNormalTextbox(this.id);">
+                      <input type="text" class="form-control form-text" id="number_branch" name="number_branch"  maxlength="128" placeholder="เลขที่สาขา" >
+                      <!-- onkeyup="setNormalTextbox(this.id);" -->
                     </div>
                   </div>
                 </div>
@@ -553,7 +559,8 @@
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-10">
-                      <input type="text" class="form-control form-text" id="name_receiver" maxlength="128" placeholder="ชื่อ-สกุล" onkeyup="setNormalTextbox(this.id);">
+                      <input type="text" class="form-control form-text" id="name_receiver" maxlength="128" placeholder="ชื่อ-สกุล" >
+                      <!-- onkeyup="setNormalTextbox(this.id);" -->
                     </div>
                   </div>
                 </div>
@@ -561,7 +568,8 @@
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-10">
-                      <input type="text" class="form-control form-text" id="phone_receiver" maxlength="128" placeholder="เบอร์โทร" onkeyup="setNormalTextbox(this.id);">
+                      <input type="text" class="form-control form-text" id="phone_receiver" maxlength="128" placeholder="เบอร์โทร" >
+                      <!-- onkeyup="setNormalTextbox(this.id);" -->
                     </div>
                   </div>
                 </div>
@@ -569,7 +577,8 @@
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-10">
-                      <input type="text" class="form-control form-text" id="email_receiver" maxlength="128" placeholder="อีเมล์" onkeyup="setNormalTextbox(this.id);">
+                      <input type="text" class="form-control form-text" id="email_receiver" maxlength="128" placeholder="อีเมล์" >
+                      <!-- onkeyup="setNormalTextbox(this.id);" -->
                     </div>
                   </div>
                 </div>
@@ -680,6 +689,28 @@
     // Submit form data via Ajax
     $("#fupForm1").on('submit', function(e){
         // var location = window.location.href;
+
+    //      data_detail = new Array;
+    //     table = $('#table_detail').DataTable();
+    //     tb = table.rows().data();
+    //     $.each(tb, function(i, val){
+    //     var tmpt = new Object;
+    //   if(val[0] != ""){
+    //     tmpt.part_code = val[0];
+    //     tmpt.part_name = val[1];
+    //     tmpt.quantity = val[2];
+    //     tmpt.currency = val[3];
+    //     tmpt.ORIGIN = val[4];
+    //     tmpt.LOTMARK = val[5];
+    //     tmpt.add_po_no = val[6];
+    //     tmpt.DO_line_no = val[7];
+    //     tmpt.customer_order_no = val[8];
+    //     tmpt.remark = val[9];
+
+    //     data_detail.push(tmpt);
+    //   }
+    // })  
+        
         e.preventDefault();
         $.ajax({
             type: 'POST',
