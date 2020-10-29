@@ -117,12 +117,19 @@
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="text-lg-right">
-                                                    <!-- <button type="button" class="btn btn-danger mb-2 mr-2"><i class="mdi mdi-basket mr-1"></i> Add New Order</button> -->
+                                                   
 
-                                                    <a class="w3-button w3-black" href="<?php echo base_url();?>order/new_order">Add New Order</a>
-                                                    <!-- <button class="w3-button" disabled>Button</button> -->
+                                                    <!-- <a class="w3-button w3-black" href="<?php echo base_url();?>order/new_order">Add New Order</a>
+                                                 
                                                     <button type="button" class="btn btn-light mb-2">Export</button>
+                                                </div> -->
+
+
+                                                <!-- <div class="col-sm-2 col-md-2"> -->
+                                                  <a href="<?php echo base_url();?>order/new_order" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"><i class='fas fa-user-plus'></i>เพิ่มการสั่งซื้อ</a>
                                                 </div>
+                                                <br>
+
                                             </div><!-- end col-->
                                         </div>
                 

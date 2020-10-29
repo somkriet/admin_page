@@ -48,7 +48,7 @@
                     <!-- <label for="example-date-input" class="col-2 col-form-label">Date</label> -->
                     <div class="col-sm-10">
                       
-                      <input class="form-control" type="date" id="order_date" name="order_date" value="<?php echo date('d/m/Y') ?>">
+                      <input class="form-control" type="date" id="order_date" name="order_date" value="<?php echo date('d/m/Y') ?>" required>
                    </div>
                   </div>
 
@@ -58,7 +58,7 @@
                     <!-- <input type="text" class="form-control form-text" id="name_customer" name="name_customer" maxlength="128" placeholder="ชื่อ-สกุล"  onkeyup="setNormalTextbox(this.id);"> -->
 
                      <div class="input-group">
-                      <input type="text" class="form-control" id="name_customer" name="name_customer" placeholder="ชื่อ-สกุล" aria-label="Search" aria-describedby="basic-addon2">
+                      <input type="text" class="form-control" id="name_customer" name="name_customer" placeholder="ชื่อ-สกุล" aria-label="Search" aria-describedby="basic-addon2" required>
                       <div class="input-group-append">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg1"><i class="fa fa-address-book"></i></button>
                       </div>
@@ -71,7 +71,7 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="name_socail" name="name_socail" maxlength="128" placeholder="ชื่อโซเซียล" >
+                    <input type="text" class="form-control form-text" id="name_socail" name="name_socail" maxlength="128" placeholder="ชื่อโซเซียล" required>
                     <!-- onkeyup="setNormalTextbox(this.id);" -->
                   </div>
                 </div>
@@ -80,7 +80,7 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="phone" name="phone" maxlength="128" placeholder="เบอร์โทร" >
+                    <input type="text" class="form-control form-text" id="phone" name="phone" maxlength="128" placeholder="เบอร์โทร" required>
                     <!-- onkeyup="setNormalTextbox(this.id);" -->
                   </div>
                 </div>
@@ -89,7 +89,7 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="email" name="email" maxlength="128" placeholder="อีเมล์" >
+                    <input type="text" class="form-control form-text" id="email" name="email" maxlength="128" placeholder="อีเมล์" required>
                     <!-- onkeyup="setNormalTextbox(this.id);" -->
                   </div>
                 </div>
@@ -98,7 +98,7 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <textarea  id="customer_address" name="customer_address" rows="4" class="form-control" placeholder="ที่อยู่จัดส่ง ..." style="overflow: hidden; resize: none;"></textarea>
+                    <textarea  id="customer_address" name="customer_address" rows="4" class="form-control" placeholder="ที่อยู่จัดส่ง ..."  required></textarea>
                   </div>
                 </div>
               </div>
@@ -335,7 +335,7 @@
             <div class="col-sm">
 
 
-              <div class="form-group">
+             <!--  <div class="form-group">
                   <div class="row">
                       <div class="col-sm-4 text-left">
                           <label for="discounttext">ช่องทางจัดส่ง</label>
@@ -362,7 +362,7 @@
                              <textarea class="form-control form-text" rows="3" id="description" name="description"></textarea>
                       </div>
                   </div>
-              </div>
+              </div> -->
 
             </div>
 
@@ -613,6 +613,34 @@
                       </div>
                     </div>
 
+                     
+               
+                  <label for="discounttext">ช่องทางจัดส่ง</label>
+                    <div class="form-group">
+                      <div class="col-sm-10">
+                          <select class="form-control form-text" id="shippingchannel" name="shippingchannel" placeholder="การจัดส่ง">
+                              <option>เลือกช่องทางจัดส่ง</option>
+                              <option>ไปรษณีย์ไทย ธรรมดา</option>
+                              <option>ไปรษณีย์ไทย EMS</option>
+                              <option>Flash</option>
+                              <option>Kerry</option>
+                              <option>J&T</option>
+                          </select>
+                      </div>
+                    </div>
+
+                 <label for="discounttext">หมายเหตุ</label>
+               <div class="form-group">
+                  <!-- <div class="row"> -->
+                      <!-- <div class="col-sm-4 text-left"> -->
+                         
+                      <!-- </div> -->
+                      <div class="col-sm-10">
+                             <textarea class="form-control form-text" rows="3" id="description" name="description"></textarea>
+                      </div>
+                  <!-- </div> -->
+              </div>
+
               </div>
          
           </div>
@@ -855,14 +883,7 @@ $(function(){
 
         if(res['status'] == 'success'){
          
-          // $('#name_customer').val(res['customer_data']['cus_name']);
-          // $('#name_socail').val(res['customer_data']['cus_name_social']);
-          // $('#phone').val(res['customer_data']['phone_number']);
-          // $('#email').val(res['customer_data']['email']);
-          // $('#customer_address').val(res['customer_data']['cus_address']);    
-          // $('#info_customer').val(res['customer_data']['cus_id']);
-
-          $('#name_customer').val(res['customer_data']['cus_name']);
+          $('#name_customer').val(res['customer_data'][0]['cus_name']);
           $('#name_socail').val(res['customer_data'][0]['cus_name_social']);
           $('#phone').val(res['customer_data'][0]['phone_number']);
           $('#email').val(res['customer_data'][0]['email']);
