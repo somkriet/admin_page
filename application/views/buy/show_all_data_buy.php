@@ -77,7 +77,7 @@
                             <div class="col-12">
                                 <div class="page-title-box">
                                     <div class="page-title-right">
-                                      <h4 class="page-title"><?= $this->lang->line('list_order'); ?></h4>
+                                      <h4 class="page-title">รายการซื้อสินค้าเข้า</h4> <!-- <?= $this->lang->line('list_order'); ?> -->
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">eCommerce</a></li>
@@ -126,7 +126,7 @@
 
 
                                                 <!-- <div class="col-sm-2 col-md-2"> -->
-                                                  <a href="<?php echo base_url();?>order/new_order" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"><i class='fas fa-user-plus'></i>สร้างรายการสั่งซื้อ</a>
+                                                  <a href="<?php echo base_url();?>order/new_order" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"><i class='fas fa-user-plus'></i>เพิ่มการสั่งซื้อ</a>
                                                 </div>
                                                 <br>
 
@@ -137,52 +137,47 @@
                                             <table class="table table-centered mb-0">
                                                 <thead class="thead-light">
                                                     <tr>
-                                                        <!-- <th style="width: 20px;">
+                                                        <th style="width: 20px;">
                                                             <div class="custom-control custom-checkbox">
                                                                 <input type="checkbox" class="custom-control-input" id="customCheck1">
                                                                 <label class="custom-control-label" for="customCheck1">&nbsp;</label>
                                                             </div>
-                                                        </th> -->
-                                                        <th>ลำดับ</th>
-                                                        <th>วันที่สั่งซื้อ</th>
-                                                        <th>หมายเลขออเดอร์</th>
-                                                        <th>ชื่อลูกค้า</th>
-                                                        <th>ยอดรวมทั้งหมด</th>
-                                                        <th>ช่องทางชำระเงิน</th>
-                                                        <th>ช่องทางจัดส่ง</th>
-                                                        <th>สถานะออเดอร์</th>
+                                                        </th>
+                                                      <!--    <th>ลำดับ</th>
+                      <th>หมายเลขออเดอร์</th>
+                      <th>ชื่อลูกค้า</th>
+                      <th>ช่องทางการขาย</th>
+                      <th>อัปเดตล่าสุด</th>
+                      <th>รวมทั้งหมด</th>
+                      <th>การชำระเงิน</th>
+                      <th>การจัดส่ง</th> -->
+                                                        <th>Order ID</th>
+                                                        <th>Date</th>
+                                                        <th>Payment Status</th>
+                                                        <th>Total</th>
+                                                        <th>Payment Method</th>
+                                                        <th>Order Status</th>
                                                         <th style="width: 125px;">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
 
                                                 <?php if(!empty($order_data)): 
-                                                          foreach($order_data as $idx => $val):
-                                                          $num = $idx+1;  
-                                                ?>
-
+                                                          foreach($order_data as $idx => $val):?>
                                                     <tr>
-                                                       <!--  <td>
+                                                        <td>
                                                             <div class="custom-control custom-checkbox">
                                                                 <input type="checkbox" class="custom-control-input" id="customCheck2">
                                                                 <label class="custom-control-label" for="customCheck2">&nbsp;</label>
                                                             </div>
-                                                        </td> -->
+                                                        </td>
+                                                        <td><a href="<?php echo base_url();?>order/order_detail" class="text-body font-weight-bold"><?php echo $val->order_id;?></a> </td>
                                                         <td>
-                                                            <?php echo $num;?>
+                                                            <?php echo $val->date_order;?>
+                                                            <!-- <small class="text-muted">10:29 PM</small> -->
                                                         </td>
                                                         <td>
-                                                            <?php
-                                                            $time = strtotime($val->date_order);
-                                                            $newformat = date("d/m/Y", $time);
-                                                            echo $newformat; // 2011-02-01 
-                                                            ?>
-                                                        </td>
-                                                        <td>
-                                                          <a href="<?php echo base_url();?>order/order_detail" class="text-body font-weight-bold"><?php echo $val->order_id;?></a>
-                                                        </td>
-                                                        <td>
-                                                           <?php echo $val->cus_id;?>
+                                                            <h5><span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> Paid</span></h5>
                                                         </td>
                                                         <td>
                                                             <?php echo $val->total_price;?>
@@ -190,38 +185,14 @@
                                                         <td>
                                                             <?php echo $val->payment_chanels;?>
                                                         </td>
-                                                       <!--  <td>
-                                                            <h5><span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> Paid</span></h5>
-                                                        </td> -->
-                                                        <td>
-                                                            <h5><span class="badge badge-info-lighten"><?php echo $val->transport;?></span></h5>
-                                                        </td>
-                                                        
                                                         <td>
                                                             <h5><span class="badge badge-info-lighten"><?php echo $val->transport;?></span></h5>
                                                         </td>
                                                         <td>
 
-
-                                                           <div class="dropdown show">
-                                  <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
-  <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
-</svg>
-                                    
-                                  </a>
-
-                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="<?php echo base_url();?>order/order_detail">ดูข้อมูล</a>
-                                    <!-- <a class="dropdown-item" href="<?php echo base_url();?>customer/show_order_detail/<?php echo $val->cus_id;?>">ดูข้อมูล</a> -->
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                  </div>
-                                </div>
-
-                                                            <!-- <a href="javascript:void(0);" class="action-icon"> <i class="fas fa-eye"></i></a>&nbsp;&nbsp;
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="fas fa-eye"></i></a>&nbsp;&nbsp;
                                                             <a href="javascript:void(0);" class="action-icon"> <i class="fas fa-file-signature"></i></a>&nbsp;&nbsp;
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="fas fa-trash-alt"></i></a> -->
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="fas fa-trash-alt"></i></a>
                                                         </td>
                                                     </tr>
                                                      <?php endforeach; 
@@ -249,7 +220,6 @@
               </button>
             </div>
             <div class="modal-body">
-              <!-- ... -->
 
               <div class="container">
                 <div class="row">

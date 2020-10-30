@@ -53,20 +53,20 @@
         <a class="nav-link" href="<?php echo base_url();?>order">
           <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
           <i class='far fa-file-alt'></i>
-          <span>รายการขาย</span></a>
+          <span>รายการขายสินค้าออก</span></a>
       </li>
 
       <li class="nav-item ">
         <a class="nav-link" href="<?php echo base_url();?>buy">
           <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
           <i class='far fa-file-alt'></i>
-          <span>รายการซื้อ</span></a>
+          <span>รายการซื้อสินค้าเข้า</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuproduct" aria-expanded="true" aria-controls="menuproduct">
           <i class="fas fa-fw fa-cog"></i>
-          <span>สินค้า</span>
+          <span>จัดการข้อมูลสินค้า</span>
         </a>
         <div id="menuproduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -84,7 +84,7 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menucustomer" aria-expanded="true" aria-controls="menucustomer">
           <!-- <i class="fas fa-fw fa-cog"></i> -->
           <i class='fas fa-user-tie'></i>
-          <span>ลูกค้า</span>
+          <span>จัดการข้อมูลลูกค้า</span>
         </a>
         <div id="menucustomer" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
