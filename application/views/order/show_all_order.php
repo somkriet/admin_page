@@ -69,6 +69,44 @@
     color: inherit;
 }
 
+
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
 </style>
         <!-- Begin Page Content -->
         <div class="container-fluid" id="page-sumary">
@@ -132,9 +170,35 @@
 
                                             </div><!-- end col-->
                                         </div>
+
+
+                                        <!-- Tab links -->
+                                        <div class="tab">
+                                          <button class="tablinks" onclick="openCity(event, 'London')">London</button>
+                                          <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+                                          <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+                                        </div>
+
+                                        <!-- Tab content -->
+                                        <div id="London" class="tabcontent">
+                                          <h3>London</h3>
+                                          <p>London is the capital city of England.</p>
+                                        </div>
+
+                                        <div id="Paris" class="tabcontent">
+                                          <h3>Paris</h3>
+                                          <p>Paris is the capital of France.</p>
+                                        </div>
+
+                                        <div id="Tokyo" class="tabcontent">
+                                          <h3>Tokyo</h3>
+                                          <p>Tokyo is the capital of Japan.</p>
+                                        </div>
+
+
                 
                                         <div class="table-responsive">
-                                            <table class="table table-centered mb-0">
+                                            <table class="table table-centered mb-0" style="width:100%">
                                                 <thead class="thead-light">
                                                     <tr>
                                                         <!-- <th style="width: 20px;">
@@ -143,15 +207,27 @@
                                                                 <label class="custom-control-label" for="customCheck1">&nbsp;</label>
                                                             </div>
                                                         </th> -->
-                                                        <th>ลำดับ</th>
+                                                       <!--  <th>ลำดับ</th>
                                                         <th>วันที่สั่งซื้อ</th>
                                                         <th>หมายเลขออเดอร์</th>
                                                         <th>ชื่อลูกค้า</th>
                                                         <th>ยอดรวมทั้งหมด</th>
                                                         <th>ช่องทางชำระเงิน</th>
                                                         <th>ช่องทางจัดส่ง</th>
-                                                        <th>สถานะออเดอร์</th>
-                                                        <th style="width: 125px;">Action</th>
+                                                        <th>สถานะออเดอร์</th> -->
+
+                                                         <th>ลำดับ</th>
+                                                        <th>ช่องทาง</th>
+                                                        <th>รูปภาพ</th>
+                                                        <th>หมายเลขคำสั่งซื้อ</th>
+                                                        <th>ลูกค้า</th>
+                                                        <th>สถานะ</th>
+                                                        <th>การชำระเงิน</th>
+                                                        <th>บริการขนส่ง</th>
+                                                        <th>ยอดรวม</th>
+                                                        <th>วันที่นัดรับสินค้า</th>
+                                                        <th>วันที่สั่งซื้อ</th>
+                                                        <th>ดำเนินการ</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -172,35 +248,74 @@
                                                             <?php echo $num;?>
                                                         </td>
                                                         <td>
-                                                            <?php
-                                                            $time = strtotime($val->date_order);
-                                                            $newformat = date("d/m/Y", $time);
-                                                            echo $newformat; // 2011-02-01 
-                                                            ?>
+                                                           
                                                         </td>
                                                         <td>
-                                                          <a href="<?php echo base_url();?>order/order_detail" class="text-body font-weight-bold"><?php echo $val->order_id;?></a>
+                                                          
+                                                          <?php echo $val->sales_channels;?>
+                                                          
                                                         </td>
                                                         <td>
                                                            <?php echo $val->cus_id;?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $val->total_price;?>
+                                                          <a href="<?php echo base_url();?>order/order_detail" class="text-body font-weight-bold"><?php echo $val->order_id;?></a>
+                                                            <!-- <?php echo $val->total_price;?> -->
                                                         </td>
                                                         <td>
-                                                            <?php echo $val->payment_chanels;?>
+                                                            
+                                                             <h5><span class="badge badge-info-lighten">
+                                                               <?php if ($val->status_order == '1') {
+                                                                 echo "ยืนยันคำสั่งซื้อ";
+                                                               }elseif ($val->status_order == '2') {
+                                                                 echo "แพ็คสินค้า";
+                                                               }
+                                                                
+                                                                ?>
+
+                                                            </span></h5>
+
                                                         </td>
                                                        <!--  <td>
                                                             <h5><span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> Paid</span></h5>
                                                         </td> -->
                                                         <td>
-                                                            <h5><span class="badge badge-info-lighten"><?php echo $val->transport;?></span></h5>
+                                                            <h5><span class="badge badge-info-lighten">
+                                                               <?php if ($val->status_payment == '1') {
+                                                                 echo "ชำระเงินแล้ว";
+                                                               }elseif ($val->status_payment == '2') {
+                                                                 echo "ยังไม่ชำระเงิน";
+                                                               }
+                                                                
+                                                                ?>
+
+                                                            </span></h5>
                                                         </td>
                                                         
                                                         <td>
-                                                            <h5><span class="badge badge-info-lighten"><?php echo $val->transport;?></span></h5>
+                                                            <?php echo $val->transport;?>
                                                         </td>
                                                         <td>
+                                                            <h5><span class="badge badge-info-lighten"><?php echo $val->total_price;?></span></h5>
+                                                        </td>
+                                                        <td>
+                                                            <h5><span class="badge badge-info-lighten"> <?php
+                                                            $time = strtotime($val->date_order);
+                                                            $newformat = date("d/m/Y", $time);
+                                                            echo $newformat; // 2011-02-01 
+                                                            ?>
+                                                            </span></h5>
+                                                        </td>
+                                                        <td>
+                                                            <h5><span class="badge badge-info-lighten"> <?php
+                                                            $time = strtotime($val->date_order);
+                                                            $newformat = date("d/m/Y", $time);
+                                                            echo $newformat; // 2011-02-01 
+                                                            ?>
+                                                            </span></h5>
+                                                        </td>
+                                                       
+                                                        <td style="width: 30%;">
 
 
                                                            <div class="dropdown show">
@@ -233,6 +348,18 @@
                                                 </tbody>
                                             </table>
                                         </div>
+
+
+
+
+
+
+
+
+
+
+
+
                                     </div>
                                   </div>
 
@@ -393,6 +520,27 @@
         <!-- /.container-fluid -->
 
 <script type="text/javascript">
+
+  function openCity(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
      
   //function show for edit
   function callDetails(id){

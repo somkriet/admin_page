@@ -44,14 +44,17 @@
                 </div>
               </div>  -->
 
+              <!--วันที่สั่งซื้อ-->
               <div class="form-group row">
                     <!-- <label for="example-date-input" class="col-2 col-form-label">Date</label> -->
                     <div class="col-sm-10">
                       
-                      <input class="form-control" type="date" id="order_date" name="order_date" value="<?php echo date('d/m/Y') ?>" required>
+                      <input class="form-control" type="date" id="order_date" name="order_date" value="<?php echo date('Y-m-d'); ?>" required>
                    </div>
-                  </div>
+              </div>
+              <!--วันที่สั่งซื้อ-->
 
+              <!--ชื่อลูกค้า-->
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
@@ -67,7 +70,9 @@
                   </div>
                 </div>
               </div>
+              <!--ชื่อลูกค้า-->
 
+              <!--ชื่อโซเซียล-->
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
@@ -76,7 +81,9 @@
                   </div>
                 </div>
               </div>
+              <!--ชื่อโซเซียล-->
 
+              <!--เบอร์โทร-->
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
@@ -85,7 +92,9 @@
                   </div>
                 </div>
               </div>
+              <!--เบอร์โทร-->
 
+              <!--อีเมล์-->
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
@@ -94,7 +103,9 @@
                   </div>
                 </div>
               </div>
+              <!--อีเมล์-->
 
+              <!--ที่อยู่ลูกค้า-->
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
@@ -102,8 +113,7 @@
                   </div>
                 </div>
               </div>
-
-
+              <!--ที่อยู่ลูกค้า-->
 
             </div>
 

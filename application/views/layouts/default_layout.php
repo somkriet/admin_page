@@ -41,11 +41,27 @@
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
+
+      <!-- <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Components</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Components:</h6>
+            <a class="collapse-item" href="<?php echo base_url();?>order">Buttons</a>
+            <a class="collapse-item" href="<?php echo base_url();?>buy">Cards</a>
+          </div>
+        </div>
+      </li> -->
+
+
       <!-- Nav Item - Dashboard -->
       <li class="nav-item ">
         <a class="nav-link" href="<?php echo base_url();?>home">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>รายงาน</span></a>
+          <span>แผงควบคุม</span></a>
       </li>
 
        <!-- Nav Item - Dashboard -->
@@ -53,20 +69,38 @@
         <a class="nav-link" href="<?php echo base_url();?>order">
           <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
           <i class='far fa-file-alt'></i>
-          <span>รายการขายสินค้าออก</span></a>
+          <span>คำสั่งซื้อสินค้า</span></a>
       </li>
 
+       <!-- Nav Item - Dashboard -->
       <li class="nav-item ">
-        <a class="nav-link" href="<?php echo base_url();?>buy">
+        <a class="nav-link" href="<?php echo base_url();?>payment">
           <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
           <i class='far fa-file-alt'></i>
-          <span>รายการซื้อสินค้าเข้า</span></a>
+          <span>การชำระเงิน</span></a>
       </li>
+
+       <!-- Nav Item - Dashboard -->
+      <li class="nav-item ">
+        <a class="nav-link" href="<?php echo base_url();?>order">
+          <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
+          <i class='far fa-file-alt'></i>
+          <span>คำสั่งซื้อตีกลับ</span></a>
+      </li>
+
+       <!-- Nav Item - Dashboard -->
+      <li class="nav-item ">
+        <a class="nav-link" href="<?php echo base_url();?>logistics">
+          <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
+          <i class='far fa-file-alt'></i>
+          <span>การจัดส่ง</span></a>
+      </li>
+
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuproduct" aria-expanded="true" aria-controls="menuproduct">
           <i class="fas fa-fw fa-cog"></i>
-          <span>จัดการข้อมูลสินค้า</span>
+          <span>สินค้า</span>
         </a>
         <div id="menuproduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -74,7 +108,7 @@
             <a class="collapse-item" href="<?php echo base_url();?>product">รายการสินค้า</a>
             <a class="collapse-item" href="<?php echo base_url();?>product/new_product">คลังสินค้า/สาขา</a>
             <a class="collapse-item" href="cards.html">หมวดหมู่สินค้า</a>
-            <!-- <a class="collapse-item" href="cards.html">ซัพพลายเออร์</a> -->
+            <a class="collapse-item" href="<?php echo base_url();?>buy">รายการซื้อสินค้าเข้า</a>
           </div>
         </div>  
       </li>
@@ -84,7 +118,7 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menucustomer" aria-expanded="true" aria-controls="menucustomer">
           <!-- <i class="fas fa-fw fa-cog"></i> -->
           <i class='fas fa-user-tie'></i>
-          <span>จัดการข้อมูลลูกค้า</span>
+          <span>ลูกค้า</span>
         </a>
         <div id="menucustomer" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -96,17 +130,13 @@
       </li>
 
 
-       <!-- <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url();?>payment">
-          <i class='fas fa-donate'></i>
-          <span>การชำระเงิน</span></a>
+       <!-- Nav Item - Dashboard -->
+      <li class="nav-item ">
+        <a class="nav-link" href="<?php echo base_url();?>order">
+          <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
+          <i class='far fa-file-alt'></i>
+          <span>ช่องทางการขาย</span></a>
       </li>
-
-       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url();?>logistics">
-          <i class='fas fa-truck'></i>
-          <span>การจัดส่ง</span></a>
-      </li> -->
 
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -212,6 +242,15 @@
 
          
         </div>
+      </li>
+
+
+       <!-- Nav Item - Dashboard -->
+      <li class="nav-item ">
+        <a class="nav-link" href="<?php echo base_url();?>order">
+          <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
+          <i class='far fa-file-alt'></i>
+          <span>นำเข้า/ส่งออกข้อมูล</span></a>
       </li>
 
       <!-- Divider -->
@@ -582,35 +621,26 @@
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
 
   <!-- Bootbox JavaScript-->
-   <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootbox.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootbox.locales.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootbox.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootbox.locales.min.js"></script>
 
   <!-- Bootstrap core JavaScript-->
-  <script language="JavaScript" type="text/javascript" src="<?php echo base_url();?>assets/vendor/jquery/jquery.min.js"></script>
-  <script language="JavaScript" type="text/javascript" src="<?php echo base_url();?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo base_url();?>assets/vendor/jquery/jquery.min.js"></script>
+  <script src="<?php echo base_url();?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script language="JavaScript" type="text/javascript" src="<?php echo base_url();?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script  src="<?php echo base_url();?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script language="JavaScript" type="text/javascript" src="<?php echo base_url();?>assets/js/sb-admin-2.min.js"></script>
+  <script  src="<?php echo base_url();?>assets/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script language="JavaScript" type="text/javascript" src="<?php echo base_url();?>assets/vendor/chart.js/Chart.min.js"></script>
+  <script  src="<?php echo base_url();?>assets/vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script language="JavaScript" type="text/javascript" src="<?php echo base_url();?>assets/js/demo/chart-area-demo.js"></script>
-  <script language="JavaScript" type="text/javascript" src="<?php echo base_url();?>assets/js/demo/chart-pie-demo.js"></script>
+  <script  src="<?php echo base_url();?>assets/js/demo/chart-area-demo.js"></script>
+  <script  src="<?php echo base_url();?>assets/js/demo/chart-pie-demo.js"></script>
 
-  <!-- Bootstrap core JavaScript-->
-<!--   <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-
-  <!-- Core plugin JavaScript-->
-  <!-- <script src="vendor/jquery-easing/jquery.easing.min.js"></script> -->
-
-  <!-- Custom scripts for all pages-->
-  <!-- <script src="js/sb-admin-2.min.js"></script> -->
 
   <!-- Page level plugins -->
   <script language="JavaScript" type="text/javascript" src="<?php echo base_url();?>assets/vendor/datatables/jquery.dataTables.min.js"></script>
@@ -629,6 +659,7 @@
 
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.dataTables.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.dataTables.min.js"></script>
+
 
 </body>
 

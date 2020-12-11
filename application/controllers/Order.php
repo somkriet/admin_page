@@ -181,7 +181,7 @@ class Order extends CI_Controller {
                                      date_order,
                                      delete_flag
                                     ) VALUES (
-                                    '000002',
+                                    '000003',
                                     '".$name_customer."',
                                     '".$shippingchannel."',
                                     '22222',

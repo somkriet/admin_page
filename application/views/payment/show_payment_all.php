@@ -29,16 +29,14 @@
                     <tr>
                      <th>ลำดับ</th>
                       <th>หมายเลขออเดอร์</th>
-                      <th>ชื่อลูกค้า</th>
-                      <th>วันที่ทำรายการ</th>
-                      <th>โอนเงินแล้ว</th>
                       <th>ยอดชำระทั้งหมด</th>
                       <th>สถานะ</th>
+                      <th>วันที่ทำรายการ</th>
                     </tr>
                   </tfoot>
                    <tbody>
-                  <?php if(!empty($order_data)): 
-                          foreach($order_data as $idx => $val):?>
+                  <?php if(!empty($payment_data)): 
+                          foreach($payment_data as $idx => $val):?>
                           <tr>
                             <td align="center"><?php echo  $idx+1;?></td>
                             <!-- <td align="center"><?php echo $val->order_id;?></td> -->
@@ -48,11 +46,11 @@
                                 <!-- <span class="glyphicon glyphicon-list-alt"></span> -->
                               </button>
                             </td>
-                            <td align="center"><?php echo $val->customer_name;?></td>
-                            <td align="center"><?php echo $val->time_update;?></td>
-                            <td align="center"><?php echo $val->total;?></td>
-                            <td align="center"><?php echo $val->total;?></td>
-                            <td align="center"><?php echo $val->payment;?></td>
+                            <td align="center"><?php echo $val->paymentID;?></td>
+                            <td align="center"><?php echo $val->paymentChanel;?></td>
+                            <td align="center"><?php echo $val->paymentStatus;?></td>
+                            <td align="center"><?php echo $val->date;?></td>
+                            <!-- <td align="center"><?php echo $val->payment;?></td> -->
                            <!--  <td align="center">
                               <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->pro_id;?>');">แก้ไข
                                 <span class="glyphicon glyphicon-list-alt"></span>

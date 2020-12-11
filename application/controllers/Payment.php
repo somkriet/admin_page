@@ -33,8 +33,8 @@ class Payment extends CI_Controller {
 		header("Access-Control-Allow-Origin: *");
 		// $data = array();
 
-        $sql = "SELECT * FROM tb_order WHERE delete_flag = 1;";
-        $data['order_data'] = $this->order_model->show_all_order($sql);
+        $sql = "SELECT * FROM payment ;";
+        $data['payment_data'] = $this->order_model->show_all_order($sql);
 
 		$this->template->set('title', 'order');
 		$this->template->load('default_layout', 'contents' , 'payment/show_payment_all', $data);
