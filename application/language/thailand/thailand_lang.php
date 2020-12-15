@@ -32,4 +32,19 @@ $lang['cus_create_date'] = 'วันที่สร้าง';
 $lang['action'] = 'ดำเนินการ';
 
 
+
+//order
+
+$lang['order_item'] = 'ชื่อสินค้า';
+$lang['order_quantity'] = 'จำนวน';
+$lang['order_price'] = 'ราคา';
+$lang['order_total'] = 'ราคารวม';
+$lang['order_items_from_order'] = 'ข้อมูลสินค้าของคำสั่งซื้อที่';
+
+$lang['order_cus_email'] = 'อีเมล์';
+$lang['order_cus_create_date'] = 'วันที่สร้าง';
+$lang['order_action'] = 'ดำเนินการ';
+
+
+
 ?>

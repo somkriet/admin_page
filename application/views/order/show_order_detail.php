@@ -159,43 +159,33 @@ endif;
                     <div class="col-lg-8">
                         <div class="card">
                             <div class="card-body">
-                            <h4 class="header-title mb-3">Items from Order : <?php echo $order_id;?></h4>
+                            <h4 class="header-title mb-3"><?= $this->lang->line('order_items_from_order'); ?>: <?php echo $order_id;?></h4>
             
                                 <div class="table-responsive">
                                     <table class="table mb-0">
                                         <thead class="thead-light">
                                         <tr>
-                                            <th>Item</th>
-                                            <th>Quantity</th>
-                                            <th>Price</th>
-                                            <th>Total</th>
+                                            <th><?= $this->lang->line('order_item'); ?></th>
+                                            <th><?= $this->lang->line('order_quantity'); ?></th>
+                                            <th><?= $this->lang->line('order_price'); ?></th>
+                                            <th><?= $this->lang->line('order_total'); ?></th>
                                         </tr>
                                         </thead>
                                         <tbody>
+                                             <?php if(!empty($order_detail_iteam)): 
+                                                          foreach($order_detail_iteam as $idx => $val):
+                                                          $num = $idx+1;  
+                                                ?>
+
                                         <tr>
-                                            <td>The Military Duffle Bag</td>
-                                            <td>3</td>
-                                            <td>$128</td>
-                                            <td>$384</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Mountain Basket Ball</td>
-                                                    <td>1</td>
-                                                    <td>$199</td>
-                                                    <td>$199</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Wavex Canvas Messenger Bag</td>
-                                                    <td>5</td>
-                                                    <td>$180</td>
-                                                    <td>$900</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>The Utility Shirt</td>
-                                                    <td>2</td>
-                                                    <td>$79</td>
-                                                    <td>$158</td>
-                                                </tr>
+                                            <td><?php echo $val->productID;?></td>
+                                            <td><?php echo $val->quantity;?> </td>
+                                            <td><?php echo $val->price;?></td>
+                                            <td><?php echo $val->total;?></td>
+                                         </tr>
+                                                  <?php endforeach; 
+                                                  endif;?>
+                                                    
                                                 </tbody>
                                             </table>
                                         </div>
