@@ -69,6 +69,30 @@
 }
   </style>    
 
+  <?php
+
+if(!empty($order_detail)): 
+   foreach ($order_detail as $row) {
+    $order_id = $row->order_id;
+    $cus_id = $row->cus_id;
+    $sales_channels = $row->sales_channels;
+    $link_img = $row->link_img;
+    $status_order = $row->status_order;
+    $transport = $row->transport;
+    $payment_chanels = $row->payment_chanels;
+    $total_price = $row->total_price;
+    $status_payment = $row->status_payment;
+    $balance = $row->balance;
+    $employee_id = $row->employee_id;
+    $money_transfer_slip = $row->money_transfer_slip;
+    $date_pay = $row->date_pay;
+    $date_order = $row->date_order;
+
+    }
+endif;
+
+?>
+
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
@@ -76,7 +100,7 @@
           <h1 class="h3 mb-2 text-gray-800">รายละเอียดคำสั่งซื้อ</h1>
 
 
-            <div class="row justify-content-center">
+           <!--  <div class="row justify-content-center">
                             <div class="col-lg-7 col-md-10 col-sm-11">
         
                                 <div class="horizontal-steps mt-4 mb-4 pb-5">
@@ -98,7 +122,7 @@
                                     <div class="process-line" style="width: 33%;"></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
 
            <div class="card shadow mb-4">
@@ -108,28 +132,28 @@
             <div class="card-body">
 
 
-                        <div class="row">
-                            <div class="col-lg-8">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="header-title mb-3">Items from Order #12537</h4>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                            <h4 class="header-title mb-3">Items from Order : <?php echo $order_id;?></h4>
             
-                                        <div class="table-responsive">
-                                            <table class="table mb-0">
-                                                <thead class="thead-light">
-                                                <tr>
-                                                    <th>Item</th>
-                                                    <th>Quantity</th>
-                                                    <th>Price</th>
-                                                    <th>Total</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>The Military Duffle Bag</td>
-                                                    <td>3</td>
-                                                    <td>$128</td>
-                                                    <td>$384</td>
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <thead class="thead-light">
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+                                            <th>Total</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>The Military Duffle Bag</td>
+                                            <td>3</td>
+                                            <td>$128</td>
+                                            <td>$384</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Mountain Basket Ball</td>

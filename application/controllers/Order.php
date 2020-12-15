@@ -233,34 +233,30 @@ class Order extends CI_Controller {
     // }
 
 
-    public function call_order_detail(){
+    // public function show_data_customer($order_id){
 
-        $orderid = $this->input->post('id');
+    //     // $customer_id = $_POST['$cus_id'];
 
-       
+        
+    //     $sql = "SELECT * FROM customer WHERE cus_id = '".$cus_id."' AND delete_flag = 1;";
+    //     $data['customer_data'] = $this->customer_model->show_all_customer($sql);
+    //     // print_r($data);
+    //     // exit();
+    //     // $data['status'] = 'success';
+    //     $this->template->set('title', 'Show customer');
+    //     $this->template->load('default_layout', 'contents' , 'customer/show_data_customer', $data);
 
-        if($orderid != ""){
-            $sql = "SELECT * FROM order WHERE order_id = $orderid AND delete_flag = 1;";
+    // }
+
+
+    public function call_order_detail($order_id){
+
+            $sql = "SELECT * FROM order_table WHERE order_id = '".$order_id."' AND delete_flag = 1;";
             $data['order_detail'] = $this->order_model->show_all_order($sql);
-            $data['status'] = 'success';
 
-            // $this->template->set('title', 'order');
-            // $this->template->load('default_layout', 'contents' , 'order/show_all_order', $data);
 
-        }else{
-            $data['status'] = 'error';
-        }
-        // $data['status'] = 'success';
-
-        // json_encode($data);
-
-        // $this->template->set('title', 'order');
-        // $this->template->load('default_layout', 'contents' , 'order/show_order_detail', $data);
-
-        // $this->PAGE['order_code'] = $omise_order_code;
-        // $this->template->load('default_layout', 'contents' , 'order/show_order_detail', $data);
-        // $this->load->view('order/show_order_detail', $data);
-        echo json_encode($data);
+       $this->template->set('title', 'order');
+       $this->template->load('default_layout', 'contents' , 'order/show_order_detail', $data);
 
     }
 
