@@ -91,6 +91,29 @@ if(!empty($order_detail)):
     }
 endif;
 
+if(!empty($order_detail_iteam)): 
+   foreach ($order_detail_iteam as $row) {
+    $iteam_order_id = $row->order_id;
+    $productID = $row->productID;
+    $orderNumber = $row->orderNumber;
+    $price = $row->price;
+    $quantity = $row->quantity;
+    $discount = $row->discount;
+    $total = $row->total;
+    $size = $row->size;
+    $color = $row->color;
+    $location = $row->location;
+    $shipdate = $row->shipdate;
+    $orderDetailID = $row->orderDetailID;
+    $billdate = $row->billdate;
+
+
+    }
+endif;
+
+
+
+
 ?>
 
         <!-- Begin Page Content -->

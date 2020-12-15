@@ -254,6 +254,10 @@ class Order extends CI_Controller {
             $sql = "SELECT * FROM order_table WHERE order_id = '".$order_id."' AND delete_flag = 1;";
             $data['order_detail'] = $this->order_model->show_all_order($sql);
 
+            $sql = "SELECT * FROM order_details WHERE order_id = '".$order_id."';";
+            $data['order_detail_iteam'] = $this->order_model->show_all_order($sql);
+
+
 
        $this->template->set('title', 'order');
        $this->template->load('default_layout', 'contents' , 'order/show_order_detail', $data);
