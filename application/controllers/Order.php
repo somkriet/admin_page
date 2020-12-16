@@ -97,74 +97,27 @@ class Order extends CI_Controller {
         $payment_channel = $this->input->post('payment_channel');
         $file = $this->input->post('file');
 
-        // $product_category = $this->input->post(''); 
-        // $product_location = $this->input->post('');
-        // $product_img = $this->input->post('');
+        $check_order_data = "SELECT cus_id FROM customer WHERE delete_flag = 1;";
+        $get_check_order_data = $this->order_model->show_all_order($check_order_data);
+        $order_datecheck = date('Ymd');
 
-        // order_id,
-        // cus_id,
-        // sales_channels,
-        // link_img,
-        // status_order,
-        // transport,
-        // payment_chanels,
-        // total_price,
-        // status_payment`,
-        // balance,
-        // employee_id,
-        // money_transfer_slip,
-        // date_pay,
-        // date_order,
-        // delete_flag
+        if ($get_check_order_data == "") {
 
-        if($order_date != ""){
+            $order_id = "OR".$order_datecheck."0001";
 
-            // $sql = "INSERT INTO order_table (
-            //                 order_id,
-            //                 order_date,
-            //                 name_customer,
-            //                 name_socail,
-            //                 phone,
-            //                 email,
-            //                 customer_address,
-            //                 shippingchannel,
-            //                 description,
-            //                 discounttext,
-            //                 shippingamount,
-            //                 producttotalprice1,
-            //                 name_receiver,
-            //                 phone_receiver,
-            //                 email_receiver,
-            //                 address_receiver,
-            //                 sent_date,
-            //                 track_no,
-            //                 payment_channel,
-            //                 file
-            //                 ) VALUES (
-            //                 '".$order_id."',
-            //                 '".$order_date."',
-            //                 '".$name_customer."',
-            //                 '".$name_socail."',
-            //                 '".$phone."',
-            //                 '".$email."',
-            //                 '".$customer_address."',
-            //                 '".$shippingchannel."',
-            //                 '".$description."',
-            //                 '".$discounttext."',
-            //                 '".$shippingamount."',
-            //                 '".$producttotalprice1."',
-            //                 '".$name_receiver."',
-            //                 '".$phone_receiver."',
-            //                 '".$email_receiver."',
-            //                 '".$address_receiver."',
-            //                 '".$sent_date."',
-            //                 '".$track_no."',
-            //                 '".$payment_channel."',
-            //                 '".$file."')"; 
+            // OR202008050002
 
+        }else{
 
+            $check_order = "SELECT SUBSTR(order_id,11,13) AS myorder_id 
+                                              FROM order_table 
+                                              WHERE SUBSTR(order_id,3,8) = $order_datecheck  
+                                              AND delete_flag = 1";
+            $data['get_check_order'] = $this->order_model->show_all_order($check_order);
 
-                        $sql = "INSERT INTO order_table (
+            $order_id = "OR".$order_datecheck.$this->add_index($data['get_check_order']);
+
+            $insert = "INSERT INTO order_table (
                                      order_id,
                                      cus_id,
                                      sales_channels,
@@ -181,7 +134,7 @@ class Order extends CI_Controller {
                                      date_order,
                                      delete_flag
                                     ) VALUES (
-                                    '000003',
+                                    '".$order_id."',
                                     '".$name_customer."',
                                     '".$shippingchannel."',
                                     '22222',
@@ -198,15 +151,42 @@ class Order extends CI_Controller {
                                     '1'
                                     )"; 
 
-             $data['order_add'] = $this->order_model->add_new_order($sql);
+            $data['order_add'] = $this->order_model->add_new_order($insert);
 
-                $data['status'] = 'success';
 
-            }else{ 
+            $insert_detail = "INSERT INTO order_details (
+                                     order_id,
+                                     productID,
+                                     price,
+                                     quantity,
+                                     discount,
+                                     total,
+                                     IDSKU,
+                                     size,
+                                     color,
+                                     location
+                                    ) VALUES (
+                                    '".$order_id."',
+                                    '".$productcode1."',
+                                    '".$productpricepernumber1."',
+                                    '".$productnumber1."',
+                                    '".$discountpernumber1."',
+                                    '".$producttotalprice1."',
+                                    '1221',
+                                    'L',
+                                    'blue',
+                                    'A001'
+                                    )"; 
 
-                $data['status'] = 'notsave';
+            $data['order_add_detail'] = $this->order_model->add_new_order($insert_detail);
 
-            }
+            if($insert){ 
+                $data['status'] = 1; 
+                $data['message'] = 'Form data submitted successfully!'; 
+                // response
+            } 
+
+        }
 
             echo json_encode($data);
         
@@ -258,7 +238,6 @@ class Order extends CI_Controller {
             $data['order_detail_iteam'] = $this->order_model->show_all_order($sql);
 
 
-
        $this->template->set('title', 'order');
        $this->template->load('default_layout', 'contents' , 'order/show_order_detail', $data);
 
@@ -302,29 +281,29 @@ class Order extends CI_Controller {
         $this->template->load('default_layout', 'contents' , 'order/add_new_quotation', $data);
     }
 
-    public function check_ip(){
+    // public function check_ip(){
 
-        // $ip = $_SERVER['REMOTE_ADDR']; // อ่าน ip จาก เพจที่เรียก
-        // $ip = '222.123.92.135';
-        $ip = '184.82.225.104'; //thai
-        // $ip = '110.33.122.75';
-        // if(!empty($_SERVER['HTTP_CLIENT_IP'])){
-        //     $ip=$_SERVER['HTTP_CLIENT_IP'];
-        // }else{
-        //     $ip=$_SERVER['REMOTE_ADDR'];
-        // }
-        // print_r($ip);
-        $ip_number = sprintf("%u", ip2long($ip)); // แปลง ip เป็นตัวเลข
-         print_r($ip_number);
-        $sql = "SELECT country_3 
-                FROM iptocountry 
-                WHERE $ip_number >= ip_from 
-                AND $ip_number <= ip_to;";
+    //     // $ip = $_SERVER['REMOTE_ADDR']; // อ่าน ip จาก เพจที่เรียก
+    //     // $ip = '222.123.92.135';
+    //     $ip = '184.82.225.104'; //thai
+    //     // $ip = '110.33.122.75';
+    //     // if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+    //     //     $ip=$_SERVER['HTTP_CLIENT_IP'];
+    //     // }else{
+    //     //     $ip=$_SERVER['REMOTE_ADDR'];
+    //     // }
+    //     // print_r($ip);
+    //     $ip_number = sprintf("%u", ip2long($ip)); // แปลง ip เป็นตัวเลข
+    //      print_r($ip_number);
+    //     $sql = "SELECT country_3 
+    //             FROM iptocountry 
+    //             WHERE $ip_number >= ip_from 
+    //             AND $ip_number <= ip_to;";
 
-        $show_ip= $this->customer_model->show_all_customer($sql);
+    //     $show_ip= $this->customer_model->show_all_customer($sql);
 
-        return $show_ip;
-    }
+    //     return $show_ip;
+    // }
 
     public function get_id_country(){//ดึงข้อมูลประเทศของลูกค้า
 
@@ -343,7 +322,29 @@ class Order extends CI_Controller {
     }
 
 
+    function add_index($data){
 
+        $data_num = $data;
+    
+        $run_max = max($data_num);
+        $num = $run_max->myorder_id+1;
+        $max = strlen($num);
+
+        if ($max == 1) {
+            $a = '000'.$num;
+        }elseif ($max == 2) {
+            $a = '00'.$num;
+        }elseif ($max == 3) {
+            $a = '0'.$num;
+        }else{
+            $a = $num;
+        }
+
+        // print_r($a);
+        // exit();
+        return $a;
+
+    }
 
 	 public function change($type)
     {
