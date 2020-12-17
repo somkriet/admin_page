@@ -111,24 +111,323 @@
 
  <!-- DataTales Example -->
           <div class="card shadow mb-4">
+
+            
+
+
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">ตารางข้อมูลการชำระเงิน</h6>
             </div>
             <div class="card-body">
-              <div class="table-responsive">
+
+
+              <div class="row mt-4">
+            <nav class="w-100">
+              <div class="nav nav-tabs" id="product-tab" role="tablist">
+                <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">ทั้งหมด  
+                </a>
+                
+                <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">ยังไม่จ่าย
+                 <span class="badge badge-warning"><i class="mdi mdi-coin"></i> 0</span>
+               </a>
+                
+                <a class="nav-item nav-link" id="product-rating-tab1" data-toggle="tab" href="#product-rating1" role="tab" aria-controls="product-rating1" aria-selected="false">
+                  จ่ายแล้ว
+                <span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> 0</span>
+               </a>
+                
+                <a class="nav-item nav-link" id="product-rating-tab2" data-toggle="tab" href="#product-rating2" role="tab" aria-controls="product-rating2" aria-selected="false">
+                ยืนยัน
+               <span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> 0</span>
+               </a>
+                
+                <a class="nav-item nav-link" id="product-rating-tab3" data-toggle="tab" href="#product-rating3" role="tab" aria-controls="product-rating3" aria-selected="false">
+                กำลังแพ็ค 
+                <span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> 0</span>
+                </a>
+                
+                <a class="nav-item nav-link" id="product-rating-tab4" data-toggle="tab" href="#product-rating4" role="tab" aria-controls="product-rating4" aria-selected="false">
+                กำลังจัดส่ง
+                <span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> 0</span>
+                </a>
+
+                <a class="nav-item nav-link" id="product-rating-tab5" data-toggle="tab" href="#product-rating5" role="tab" aria-controls="product-rating5" aria-selected="false">
+                  สำเร็จ
+                  <span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> 0</span>
+                </a>
+              </div>
+            </nav>
+            <div class="tab-content p-3" id="nav-tabContent">
+              <div class="tab-pane fade active show" id="product-desc" role="tabpanel" aria-labelledby="order-all"> 
+
+                <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>ลำดับ</th>
-                      <th>ช่องทาง</th>
-                      <th>รูปภาพ</th>
+                      <th>ช่องทางสั่งซื้อ</th>
                       <th>หมายเลขคำสั่งซื้อ</th>
                       <th>ลูกค้า</th>
                       <th>สถานะ</th>
                       <th>การชำระเงิน</th>
                       <th>บริการขนส่ง</th>
                       <th>ยอดรวม</th>
-                      <th>วันที่นัดรับสินค้า</th>
+                      <th>วันที่สั่งซื้อ</th>
+                      <th>ดำเนินการ</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                     <th>ลำดับ</th>
+                      <th>ช่องทางสั่งซื้อ</th>
+                      <th>หมายเลขคำสั่งซื้อ</th>
+                      <th>ลูกค้า</th>
+                      <th>สถานะ</th>
+                      <th>การชำระเงิน</th>
+                      <th>บริการขนส่ง</th>
+                      <th>ยอดรวม</th>
+                      <th>วันที่สั่งซื้อ</th>
+                      <th>ดำเนินการ</th>
+                    </tr>
+                  </tfoot>
+                   <tbody>
+                 <?php if(!empty($order_data)): 
+                        foreach($order_data as $idx => $val):
+                        $num = $idx+1;  ?>
+                      <tr>
+                      <td>
+                          <?php echo $num;?>
+                      </td>
+                      <td>
+                          <?php echo $val->sales_channels;?>                                 
+                      </td>
+                      <td> 
+                          <a href="<?php echo base_url();?>order/order_detail" class="text-body font-weight-bold"><?php echo $val->order_id;?></a>
+                      </td>                                
+                      <td>
+                          <?php echo $val->cus_id;?>
+                      </td>
+                      <td>
+                         <span class="badge badge-info-lighten">
+                              <?php if ($val->status_order == '1') {
+                                  echo "ยืนยันคำสั่งซื้อ";
+                              }elseif ($val->status_order == '2') {
+                                  echo "แพ็คสินค้า";
+                              }                                   
+                              ?>
+                          </span>
+                      </td>
+                      <td>
+                          <?php if ($val->status_payment == '1') {?>
+                                <span class="badge badge-success-lighten">
+                                <i class="mdi mdi-coin"></i>
+                                  ชำระเงินแล้ว
+                                </span>
+                              <?php
+                              }elseif ($val->status_payment == '2') {?>
+                                <span class="badge badge-info-lighten">
+                                <i class="mdi mdi-coin"></i>
+                                  ยังไม่ชำระเงิน
+                                </span>
+                              <?php }                                 
+                            ?>
+                      </td>
+                                                        
+                      <td>
+                          <?php echo $val->transport;?>
+                      </td>
+                      
+                      <td>
+                        <h5><span class="badge badge-info-lighten"><?php echo $val->total_price;?></span></h5>
+                      </td>
+                      
+                      <td>
+                        <span class="badge badge-info-lighten"> <?php
+                          $time = strtotime($val->date_order);
+                          $newformat = date("d/m/Y", $time);
+                          echo $newformat; // 2011-02-01 
+                          ?>
+                        </span>
+                      </td>
+                                                                                   
+                      <td style="width: 30%;">
+                        <div class="dropdown show">
+                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
+                            <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
+                            </svg>       
+                            </a>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="<?php echo base_url();?>order/call_order_detail/<?php echo $val->order_id;?>">ดูข้อมูล</a>
+                                    <!-- <a class="dropdown-item" href="<?php echo base_url();?>customer/show_order_detail/<?php echo $val->cus_id;?>">ดูข้อมูล</a> -->
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                  </div>
+                              </div>
+                                                        
+                        </td>
+                    </tr>
+                    <?php endforeach; 
+                    endif;?>
+
+                        </tbody>
+                </table>
+              </div>
+
+              </div>
+
+              <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab"> 
+
+              comments-tab  Vivamus rhoncus nisl sed venenatis luctus. Sed condimentum risus ut tortor feugiat laoreet. Suspendisse potenti. Donec et finibus sem, ut commodo lectus. Cras eget neque dignissim, placerat orci interdum, venenatis odio. Nulla turpis elit, consequat dui. Curabitur a ex ullamcorper, ornare velit vel, tincidunt ipsum. 
+
+
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>ลำดับ</th>
+                      <th>ช่องทางสั่งซื้อ</th>
+                      <th>หมายเลขคำสั่งซื้อ</th>
+                      <th>ลูกค้า</th>
+                      <th>สถานะ</th>
+                      <th>การชำระเงิน</th>
+                      <th>บริการขนส่ง</th>
+                      <th>ยอดรวม</th>
+                      <th>วันที่สั่งซื้อ</th>
+                      <th>ดำเนินการ</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                     <th>ลำดับ</th>
+                      <th>ช่องทางสั่งซื้อ</th>
+                      <th>หมายเลขคำสั่งซื้อ</th>
+                      <th>ลูกค้า</th>
+                      <th>สถานะ</th>
+                      <th>การชำระเงิน</th>
+                      <th>บริการขนส่ง</th>
+                      <th>ยอดรวม</th>
+                      <th>วันที่สั่งซื้อ</th>
+                      <th>ดำเนินการ</th>
+                    </tr>
+                  </tfoot>
+                   <tbody>
+                 <?php if(!empty($order_data)): 
+                        foreach($order_data as $idx => $val):
+                        $num = $idx+1;  ?>
+                      <tr>
+                      <td>
+                          <?php echo $num;?>
+                      </td>
+                      <td>
+                          <?php echo $val->sales_channels;?>                                 
+                      </td>
+                      <td> 
+                          <a href="<?php echo base_url();?>order/order_detail" class="text-body font-weight-bold"><?php echo $val->order_id;?></a>
+                      </td>                                
+                      <td>
+                          <?php echo $val->cus_id;?>
+                      </td>
+                      <td>
+                         <span class="badge badge-info-lighten">
+                              <?php if ($val->status_order == '1') {
+                                  echo "ยืนยันคำสั่งซื้อ";
+                              }elseif ($val->status_order == '2') {
+                                  echo "แพ็คสินค้า";
+                              }                                   
+                              ?>
+                          </span>
+                      </td>
+                      <td>
+                          <?php if ($val->status_payment == '1') {?>
+                                <span class="badge badge-success-lighten">
+                                <i class="mdi mdi-coin"></i>
+                                  ชำระเงินแล้ว
+                                </span>
+                              <?php
+                              }elseif ($val->status_payment == '2') {?>
+                                <span class="badge badge-info-lighten">
+                                <i class="mdi mdi-coin"></i>
+                                  ยังไม่ชำระเงิน
+                                </span>
+                              <?php }                                 
+                            ?>
+                      </td>
+                                                        
+                      <td>
+                          <?php echo $val->transport;?>
+                      </td>
+                      
+                      <td>
+                        <h5><span class="badge badge-info-lighten"><?php echo $val->total_price;?></span></h5>
+                      </td>
+                      
+                      <td>
+                        <span class="badge badge-info-lighten"> <?php
+                          $time = strtotime($val->date_order);
+                          $newformat = date("d/m/Y", $time);
+                          echo $newformat; // 2011-02-01 
+                          ?>
+                        </span>
+                      </td>
+                                                                                   
+                      <td style="width: 30%;">
+                        <div class="dropdown show">
+                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
+                            <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
+                            </svg>       
+                            </a>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="<?php echo base_url();?>order/call_order_detail/<?php echo $val->order_id;?>">ดูข้อมูล</a>
+                                    <!-- <a class="dropdown-item" href="<?php echo base_url();?>customer/show_order_detail/<?php echo $val->cus_id;?>">ดูข้อมูล</a> -->
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                  </div>
+                              </div>
+                                                        
+                        </td>
+                    </tr>
+                    <?php endforeach; 
+                    endif;?>
+
+                        </tbody>
+                </table>
+              </div>
+
+              </div>
+
+              <div class="tab-pane fade" id="product-rating1" role="tabpanel" aria-labelledby="product-rating-tab"> 11111Cras ut ipsum ornare, aliquam ipsum non, posuere elit. In hac habitasse platea dictumst. Aenean elementum leo augue, id fermentum risus efficitur vel. Nulla iaculis malesuada scelerisque. Praesent vel ipsum felis. Ut molestie, purus aliquam placerat sollicitudin, mi ligula euismod neque, non bibendum nibh neque et erat. Etiam  varius massa at semper posuere. Integer finibus orci vitae vehicula placerat. </div>
+
+              <div class="tab-pane fade" id="product-rating2" role="tabpanel" aria-labelledby="product-rating-tab"> 222222Cras ut ipsum ornare, aliquam ipsum non, posuere elit. In hac habitasse platea dictumst. Aenean elementum leo augue, id fermentum risus efficitur vel. Nulla iaculis malesuada scelerisque. Praesent vel ipsum felis. Ut molestie, purus aliquam placerat sollicitudin, mi ligula euismod neque, non bibendum nibh neque et erat. Etiam  varius massa at semper posuere. Integer finibus orci vitae vehicula placerat. </div>
+
+              <div class="tab-pane fade" id="product-rating3" role="tabpanel" aria-labelledby="product-rating-tab"> 33333Cras ut ipsum ornare, aliquam ipsum non, posuere elit. In hac habitasse platea dictumst. Aenean elementum leo augue, id fermentum risus efficitur vel. Nulla iaculis malesuada scelerisque. Praesent vel ipsum felis. Ut molestie, purus aliquam placerat sollicitudin, mi ligula euismod neque, non bibendum nibh neque et erat. Etiam  varius massa at semper posuere. Integer finibus orci vitae vehicula placerat. </div>
+
+              <div class="tab-pane fade" id="product-rating4" role="tabpanel" aria-labelledby="product-rating-tab"> 44444Cras ut ipsum ornare, aliquam ipsum non, posuere elit. In hac habitasse platea dictumst. Aenean elementum leo augue, id fermentum risus efficitur vel. Nulla iaculis malesuada scelerisque. Praesent vel ipsum felis. Ut molestie, purus aliquam placerat sollicitudin, mi ligula euismod neque, non bibendum nibh neque et erat. Etiam  varius massa at semper posuere. Integer finibus orci vitae vehicula placerat. </div>
+
+              <div class="tab-pane fade" id="product-rating5" role="tabpanel" aria-labelledby="product-rating-tab"> 555555Cras ut ipsum ornare, aliquam ipsum non, posuere elit. In hac habitasse platea dictumst. Aenean elementum leo augue, id fermentum risus efficitur vel. Nulla iaculis malesuada scelerisque. Praesent vel ipsum felis. Ut molestie, purus aliquam placerat sollicitudin, mi ligula euismod neque, non bibendum nibh neque et erat. Etiam  varius massa at semper posuere. Integer finibus orci vitae vehicula placerat. </div>
+            </div>
+          </div>
+
+
+
+
+
+
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>ลำดับ</th>
+                      <th>ช่องทางสั่งซื้อ</th>
+                      <!-- <th>รูปภาพ</th> -->
+                      <th>หมายเลขคำสั่งซื้อ</th>
+                      <th>ลูกค้า</th>
+                      <th>สถานะ</th>
+                      <th>การชำระเงิน</th>
+                      <th>บริการขนส่ง</th>
+                      <th>ยอดรวม</th>
+                     <!--  <th>วันที่นัดรับสินค้า</th> -->
                       <th>วันที่สั่งซื้อ</th>
                       <th>ดำเนินการ</th>
                     </tr>
@@ -137,14 +436,14 @@
                     <tr>
                      <th>ลำดับ</th>
                       <th>ช่องทาง</th>
-                      <th>รูปภาพ</th>
+                      <!-- <th>รูปภาพ</th> -->
                       <th>หมายเลขคำสั่งซื้อ</th>
                       <th>ลูกค้า</th>
                       <th>สถานะ</th>
                       <th>การชำระเงิน</th>
                       <th>บริการขนส่ง</th>
                       <th>ยอดรวม</th>
-                      <th>วันที่นัดรับสินค้า</th>
+                      <!-- <th>วันที่นัดรับสินค้า</th> -->
                       <th>วันที่สั่งซื้อ</th>
                       <th>ดำเนินการ</th>
                     </tr>
@@ -172,102 +471,87 @@
                           <?php echo $val->sales_channels;?>                                 
                       </td>
 
-                      <td>                                 
-                                                            
+                      <td>
+                          
+                          <a href="<?php echo base_url();?>order/order_detail" class="text-body font-weight-bold"><?php echo $val->order_id;?></a>
+                        
                       </td>
-                                                        <td>
-                                                           <h5>
-                                                           <a href="<?php echo base_url();?>order/order_detail" class="text-body font-weight-bold"><?php echo $val->order_id;?></a>
-                                                          </h5>
-                                                        </td>
-                                                        <td>
-                                                          
-                                                            <!-- <?php echo $val->total_price;?> -->
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $val->cus_id;?>
-                                                             <h5><span class="badge badge-info-lighten">
-                                                               <?php if ($val->status_order == '1') {
-                                                                 echo "ยืนยันคำสั่งซื้อ";
-                                                               }elseif ($val->status_order == '2') {
-                                                                 echo "แพ็คสินค้า";
-                                                               }
-                                                                
-                                                                ?>
+                                                    
+                      <td>
+                          <?php echo $val->cus_id;?>
+                           
 
-                                                            </span></h5>
-
-                                                        </td>
-                                                       <!--  <td>
-                                                            <h5><span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> Paid</span></h5>
-                                                        </td> -->
-                                                        <td>
-                                                            <h5><span class="badge badge-info-lighten">
-                                                               <?php if ($val->status_payment == '1') {
-                                                                 echo "ชำระเงินแล้ว";
-                                                               }elseif ($val->status_payment == '2') {
-                                                                 echo "ยังไม่ชำระเงิน";
-                                                               }
-                                                                
-                                                                ?>
-
-                                                            </span></h5>
-                                                        </td>
+                      </td>
+                      <td>
+                         <span class="badge badge-info-lighten">
+                              <?php if ($val->status_order == '1') {
+                                  echo "ยืนยันคำสั่งซื้อ";
+                              }elseif ($val->status_order == '2') {
+                                  echo "แพ็คสินค้า";
+                              }                                   
+                              ?>
+                          </span>
+                        
+                      </td>
+                      <!--  <td>
+                      <h5><span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> Paid</span></h5>
+                      </td> -->
+                      <td>
+                          
+                              <?php if ($val->status_payment == '1') {?>
+                                <span class="badge badge-success-lighten">
+                                <i class="mdi mdi-coin"></i>
+                                  ชำระเงินแล้ว
+                                </span>
+                              <?php
+                              }elseif ($val->status_payment == '2') {?>
+                                <span class="badge badge-info-lighten">
+                                <i class="mdi mdi-coin"></i>
+                                  ยังไม่ชำระเงิน
+                                </span>
+                              <?php }                                 
+                              ?></span>
+                      </td>
                                                         
-                                                        <td>
-                                                            <?php echo $val->transport;?>
-                                                        </td>
-                                                        <td>
-                                                            <h5><span class="badge badge-info-lighten"><?php echo $val->total_price;?></span></h5>
-                                                        </td>
-                                                        <td>
-                                                            <h5><span class="badge badge-info-lighten"> <?php
-                                                            $time = strtotime($val->date_order);
-                                                            $newformat = date("d/m/Y", $time);
-                                                            echo $newformat; // 2011-02-01 
-                                                            ?>
-                                                            </span></h5>
-                                                        </td>
-                                                        <td>
-                                                            <h5><span class="badge badge-info-lighten"> <?php
-                                                            $time = strtotime($val->date_order);
-                                                            $newformat = date("d/m/Y", $time);
-                                                            echo $newformat; // 2011-02-01 
-                                                            ?>
-                                                            </span></h5>
-                                                        </td>
-                                                       
-                                                        <td style="width: 30%;">
-
-
-                                                           <div class="dropdown show">
-                                  <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <td>
+                          <?php echo $val->transport;?>
+                      </td>
+                      
+                      <td>
+                        <h5><span class="badge badge-info-lighten"><?php echo $val->total_price;?></span></h5>
+                      </td>
+                      
+                      <td>
+                        <span class="badge badge-info-lighten"> <?php
+                          $time = strtotime($val->date_order);
+                          $newformat = date("d/m/Y", $time);
+                          echo $newformat; // 2011-02-01 
+                          ?>
+                        </span>
+                      </td>
+                                                                                   
+                      <td style="width: 30%;">
+                        <div class="dropdown show">
+                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
                             <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
-                          </svg>
-                                    
-                                  </a>
-
-                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            </svg>       
+                            </a>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <a class="dropdown-item" href="<?php echo base_url();?>order/call_order_detail/<?php echo $val->order_id;?>">ดูข้อมูล</a>
                                     <!-- <a class="dropdown-item" href="<?php echo base_url();?>customer/show_order_detail/<?php echo $val->cus_id;?>">ดูข้อมูล</a> -->
                                     <a class="dropdown-item" href="#">Another action</a>
                                     <a class="dropdown-item" href="#">Something else here</a>
                                   </div>
-                                </div>
-
+                              </div>
                                                             <!-- <a href="javascript:void(0);" class="action-icon"> <i class="fas fa-eye"></i></a>&nbsp;&nbsp;
                                                             <a href="javascript:void(0);" class="action-icon"> <i class="fas fa-file-signature"></i></a>&nbsp;&nbsp;
                                                             <a href="javascript:void(0);" class="action-icon"> <i class="fas fa-trash-alt"></i></a> -->
-                                                        </td>
-                                                    </tr>
-                                                     <?php endforeach; 
-                                                  endif;?>
-
-
-
-
-                        </tbody>
+                        </td>
+                    </tr>
+                    <?php endforeach; 
+                    endif;?>
+                  </tbody>
                 </table>
               </div>
             </div>
