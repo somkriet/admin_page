@@ -42,6 +42,24 @@ class Order extends CI_Controller {
         $sql = "SELECT * FROM order_table WHERE delete_flag = 1;";
         $data['order_data'] = $this->order_model->show_all_order($sql);
 
+        $sql = "SELECT * FROM order_table WHERE status_order = 1 AND delete_flag = 1;";
+        $data['order_data_status1'] = $this->order_model->show_all_order($sql);
+
+        $sql = "SELECT * FROM order_table WHERE status_order = 2 AND delete_flag = 1;";
+        $data['order_data_status2'] = $this->order_model->show_all_order($sql);
+
+        $sql = "SELECT * FROM order_table WHERE status_order = 3 AND delete_flag = 1;";
+        $data['order_data_status3'] = $this->order_model->show_all_order($sql);
+
+        $sql = "SELECT * FROM order_table WHERE status_order = 4 AND delete_flag = 1;";
+        $data['order_data_status4'] = $this->order_model->show_all_order($sql);
+
+        $sql = "SELECT * FROM order_table WHERE status_order = 5 AND delete_flag = 1;";
+        $data['order_data_status5'] = $this->order_model->show_all_order($sql);
+
+        $sql = "SELECT * FROM order_table WHERE status_order = 6 AND delete_flag = 1;";
+        $data['order_data_status6'] = $this->order_model->show_all_order($sql);
+
 
         $sql = "SELECT * FROM customer WHERE delete_flag = 1;";
         $data['customer_data'] = $this->customer_model->show_all_customer($sql);
