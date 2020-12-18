@@ -19,13 +19,12 @@
                       <th>หมายเลขออเดอร์</th>
                       <th>ชื่อลูกค้า</th>
                       <th>วันที่ทำรายการ</th>
-                      <th>โอนเงินแล้ว</th>
                       <th>ยอดชำระทั้งหมด</th>
-                      <th>สถานะ</th>
+                      <th>สถานะชำระเงิน</th>
                       <!-- <th>การจัดส่ง</th> -->
                     </tr>
                   </thead>
-                  <tfoot>
+                  <!-- <tfoot>
                     <tr>
                      <th>ลำดับ</th>
                       <th>หมายเลขออเดอร์</th>
@@ -33,7 +32,7 @@
                       <th>สถานะ</th>
                       <th>วันที่ทำรายการ</th>
                     </tr>
-                  </tfoot>
+                  </tfoot> -->
                    <tbody>
                   <?php if(!empty($payment_data)): 
                           foreach($payment_data as $idx => $val):?>
@@ -46,10 +45,31 @@
                                 <!-- <span class="glyphicon glyphicon-list-alt"></span> -->
                               </button>
                             </td>
-                            <td align="center"><?php echo $val->paymentID;?></td>
-                            <td align="center"><?php echo $val->paymentChanel;?></td>
-                            <td align="center"><?php echo $val->paymentStatus;?></td>
-                            <td align="center"><?php echo $val->date;?></td>
+                            <td align="center"><?php echo $val->cus_id;?></td>
+                            <td align="center">
+                                  <?php
+                                  $time = strtotime($val->date_order);
+                                  $newformat = date("d/m/Y", $time);
+                                  echo $newformat; // 2011-02-01 
+                                  ?>
+                          </td>
+                            <td align="center"><?php echo $val->total_price;?></td>
+                            <td align="center">  
+                              <?php if ($val->status_order == '1') {
+                                  echo "ยังไม่จ่าย";
+                              }elseif ($val->status_order == '2') {
+                                  echo "จ่ายแล้ว";
+                              }elseif ($val->status_order == '3') {
+                                  echo "ยืนยันคำสั่งซื้อ";
+                              }elseif ($val->status_order == '4') {
+                                  echo "กำลังแพ็คสินค้า";
+                              }elseif ($val->status_order == '5') {
+                                  echo "กำลังจัดส่ง";
+                              }elseif ($val->status_order == '6') {
+                                  echo "สำเร็จ";
+                              }?>
+                                
+                              </td>
                             <!-- <td align="center"><?php echo $val->payment;?></td> -->
                            <!--  <td align="center">
                               <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->pro_id;?>');">แก้ไข
