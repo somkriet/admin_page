@@ -112,9 +112,7 @@
  <!-- DataTales Example -->
           <div class="card shadow mb-4">
 
-            
-
-
+          
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">ตารางข้อมูลการชำระเงิน</h6>
             </div>
@@ -338,9 +336,6 @@
 
               <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab"> 
 
-              comments-tab  Vivamus rhoncus nisl sed venenatis luctus. Sed condimentum risus ut tortor feugiat laoreet. Suspendisse potenti. Donec et finibus sem, ut commodo lectus. Cras eget neque dignissim, placerat orci interdum, venenatis odio. Nulla turpis elit, consequat dui. Curabitur a ex ullamcorper, ornare velit vel, tincidunt ipsum. 
-
-
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
                   <thead>
@@ -466,7 +461,7 @@
 
               </div>
 
-              <div class="tab-pane fade" id="product-rating1" role="tabpanel" aria-labelledby="product-rating-tab"> 11111Cras ut ipsum ornare, aliquam ipsum non, posuere elit. In hac habitasse platea dictumst. Aenean elementum leo augue, id fermentum risus efficitur vel. Nulla iaculis malesuada scelerisque. Praesent vel ipsum felis. Ut molestie, purus aliquam placerat sollicitudin, mi ligula euismod neque, non bibendum nibh neque et erat. Etiam  varius massa at semper posuere. Integer finibus orci vitae vehicula placerat. 
+              <div class="tab-pane fade" id="product-rating1" role="tabpanel" aria-labelledby="product-rating-tab"> 
 
                 <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
@@ -593,7 +588,7 @@
 
               </div>
 
-              <div class="tab-pane fade" id="product-rating2" role="tabpanel" aria-labelledby="product-rating-tab"> 222222Cras ut ipsum ornare, aliquam ipsum non, posuere elit. In hac habitasse platea dictumst. Aenean elementum leo augue, id fermentum risus efficitur vel. Nulla iaculis malesuada scelerisque. Praesent vel ipsum felis. Ut molestie, purus aliquam placerat sollicitudin, mi ligula euismod neque, non bibendum nibh neque et erat. Etiam  varius massa at semper posuere. Integer finibus orci vitae vehicula placerat. 
+              <div class="tab-pane fade" id="product-rating2" role="tabpanel" aria-labelledby="product-rating-tab"> 
 
                 <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
@@ -721,7 +716,7 @@
 
               </div>
 
-              <div class="tab-pane fade" id="product-rating3" role="tabpanel" aria-labelledby="product-rating-tab"> 33333Cras ut ipsum ornare, aliquam ipsum non, posuere elit. In hac habitasse platea dictumst. Aenean elementum leo augue, id fermentum risus efficitur vel. Nulla iaculis malesuada scelerisque. Praesent vel ipsum felis. Ut molestie, purus aliquam placerat sollicitudin, mi ligula euismod neque, non bibendum nibh neque et erat. Etiam  varius massa at semper posuere. Integer finibus orci vitae vehicula placerat. 
+              <div class="tab-pane fade" id="product-rating3" role="tabpanel" aria-labelledby="product-rating-tab"> 
 
                 <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
@@ -850,7 +845,7 @@
 
               </div>
 
-              <div class="tab-pane fade" id="product-rating4" role="tabpanel" aria-labelledby="product-rating-tab"> 44444Cras ut ipsum ornare, aliquam ipsum non, posuere elit. In hac habitasse platea dictumst. Aenean elementum leo augue, id fermentum risus efficitur vel. Nulla iaculis malesuada scelerisque. Praesent vel ipsum felis. Ut molestie, purus aliquam placerat sollicitudin, mi ligula euismod neque, non bibendum nibh neque et erat. Etiam  varius massa at semper posuere. Integer finibus orci vitae vehicula placerat. 
+              <div class="tab-pane fade" id="product-rating4" role="tabpanel" aria-labelledby="product-rating-tab"> 
 
                 <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
@@ -978,7 +973,7 @@
 
               </div>
 
-              <div class="tab-pane fade" id="product-rating5" role="tabpanel" aria-labelledby="product-rating-tab"> 555555Cras ut ipsum ornare, aliquam ipsum non, posuere elit. In hac habitasse platea dictumst. Aenean elementum leo augue, id fermentum risus efficitur vel. Nulla iaculis malesuada scelerisque. Praesent vel ipsum felis. Ut molestie, purus aliquam placerat sollicitudin, mi ligula euismod neque, non bibendum nibh neque et erat. Etiam  varius massa at semper posuere. Integer finibus orci vitae vehicula placerat. 
+              <div class="tab-pane fade" id="product-rating5" role="tabpanel" aria-labelledby="product-rating-tab"> 
 
                 <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
@@ -1111,26 +1106,8 @@
 
 
 
-
-
-
-              
-
-
-
-
-
             </div>
           </div>
-
-
-
-
-
-
-
-
-
 
      
 
