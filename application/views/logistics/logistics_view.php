@@ -15,17 +15,19 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>ลำดับ</th>
-                      <th>หมายเลขออเดอร์</th>
-                      <th>ชื่อลูกค้า</th>
-                      <th>วันที่ทำรายการ</th>
-                      <th>โอนเงินแล้ว</th>
-                      <th>ยอดชำระทั้งหมด</th>
+                     <th>ลำดับ</th>
+                      <th>ช่องทางสั่งซื้อ</th>
+                      <th>หมายเลขคำสั่งซื้อ</th>
+                      <th>ลูกค้า</th>
                       <th>สถานะ</th>
-                      <!-- <th>การจัดส่ง</th> -->
+                      <th>การชำระเงิน</th>
+                      <th>บริการขนส่ง</th>
+                      <th>ยอดรวม</th>
+                      <th>วันที่สั่งซื้อ</th>
+                      <th>ดำเนินการ</th>
                     </tr>
                   </thead>
-                  <tfoot>
+                  <!-- <tfoot>
                     <tr>
                      <th>ลำดับ</th>
                       <th>หมายเลขออเดอร์</th>
@@ -35,37 +37,95 @@
                       <th>ยอดชำระทั้งหมด</th>
                       <th>สถานะ</th>
                     </tr>
-                  </tfoot>
+                  </tfoot> -->
                    <tbody>
-                  <?php if(!empty($order_data)): 
-                          foreach($order_data as $idx => $val):?>
-                          <tr>
-                            <td align="center"><?php echo  $idx+1;?></td>
-                            <!-- <td align="center"><?php echo $val->order_id;?></td> -->
-
-                            <td align="center">
-                             <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->order_id;?>');"><?php echo $val->order_id;?>
-                                <!-- <span class="glyphicon glyphicon-list-alt"></span> -->
-                              </button>
-                            </td>
-                            <td align="center"><?php echo $val->customer_name;?></td>
-                            <td align="center"><?php echo $val->time_update;?></td>
-                            <td align="center"><?php echo $val->total;?></td>
-                            <td align="center"><?php echo $val->total;?></td>
-                            <td align="center"><?php echo $val->payment;?></td>
-                           <!--  <td align="center">
-                              <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->pro_id;?>');">แก้ไข
-                                <span class="glyphicon glyphicon-list-alt"></span>
-                              </button>
-
-                              <button type="button" class="btn-md btn-danger btn-sm btn-danger" onclick="delRow('<?php echo $val->pro_id;?>');">ลบ
-                                <span class="glyphicon glyphicon-trash"></span>
-                              </button>
-
-                            </td> -->
-                          </tr>
-                              <?php endforeach; 
-                          endif;?>
+                 <?php if(!empty($order_data)): 
+                        foreach($order_data as $idx => $val):
+                        $num = $idx+1;  ?>
+                      <tr>
+                      <td>
+                          <?php echo $num;?>
+                      </td>
+                      <td>
+                          <?php echo $val->sales_channels;?>                                 
+                      </td>
+                      <td> 
+                          <a href="<?php echo base_url();?>order/order_detail" class="text-body font-weight-bold"><?php echo $val->order_id;?></a>
+                      </td>                                
+                      <td>
+                          <?php echo $val->cus_id;?>
+                      </td>
+                      <td>
+                         <span class="badge badge-info-lighten">
+                              <?php if ($val->status_order == '1') {
+                                  echo "ยังไม่จ่าย";
+                              }elseif ($val->status_order == '2') {
+                                  echo "จ่ายแล้ว";
+                              }elseif ($val->status_order == '3') {
+                                  echo "ยืนยันคำสั่งซื้อ";
+                              }elseif ($val->status_order == '4') {
+                                  echo "กำลังแพ็คสินค้า";
+                              }elseif ($val->status_order == '5') {
+                                  echo "กำลังจัดส่ง";
+                              }elseif ($val->status_order == '6') {
+                                  echo "สำเร็จ";
+                              } 
+                                                             
+                              ?>
+                          </span>
+                      </td>
+                      <td>
+                          <?php if ($val->status_payment == '1') {?>
+                                <span class="badge badge-success-lighten">
+                                <i class="mdi mdi-coin"></i>
+                                  ชำระเงินแล้ว
+                                </span>
+                              <?php
+                              }elseif ($val->status_payment == '2') {?>
+                                <span class="badge badge-info-lighten">
+                                <i class="mdi mdi-coin"></i>
+                                  ยังไม่ชำระเงิน
+                                </span>
+                              <?php }                                 
+                            ?>
+                      </td>
+                                                        
+                      <td>
+                          <?php echo $val->transport;?>
+                      </td>
+                      
+                      <td>
+                        <h5><span class="badge badge-info-lighten"><?php echo $val->total_price;?></span></h5>
+                      </td>
+                      
+                      <td>
+                        <span class="badge badge-info-lighten"> <?php
+                          $time = strtotime($val->date_order);
+                          $newformat = date("d/m/Y", $time);
+                          echo $newformat; // 2011-02-01 
+                          ?>
+                        </span>
+                      </td>
+                                                                                   
+                      <td style="width: 30%;">
+                        <div class="dropdown show">
+                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
+                            <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
+                            </svg>       
+                            </a>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="<?php echo base_url();?>order/call_order_detail/<?php echo $val->order_id;?>">ดูข้อมูล</a>
+                                    <!-- <a class="dropdown-item" href="<?php echo base_url();?>customer/show_order_detail/<?php echo $val->cus_id;?>">ดูข้อมูล</a> -->
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                  </div>
+                              </div>
+                                                        
+                        </td>
+                    </tr>
+                    <?php endforeach; 
+                    endif;?>
                         </tbody>
                 </table>
               </div>

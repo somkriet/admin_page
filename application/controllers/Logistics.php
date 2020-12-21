@@ -33,7 +33,7 @@ class Logistics extends CI_Controller {
 		header("Access-Control-Allow-Origin: *");
 		// $data = array();
 
-        $sql = "SELECT * FROM tb_order WHERE delete_flag = 1;";
+        $sql = "SELECT * FROM order_table WHERE delete_flag = 1;";
         $data['order_data'] = $this->order_model->show_all_order($sql);
 
 		$this->template->set('title', 'order');
