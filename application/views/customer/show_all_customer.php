@@ -99,13 +99,6 @@
                                   </div>
                                 </div>
 
-
-                             <!--  <div class="btn-etc dropdown">
-                              <i class="far fa-ellipsis-v" id="14357479" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-                              <ul class="dropdown-menu dropdown-menu-right sub-nav" aria-labelledby="14357479">
-                              <li><a id="favlink14357479" href="javascript:favTransaction(14357479)">ปักหมุดไว้บนสุด</a></li><li role="separator" class="divider"></li><li><a href="/Sell/Add?&amp;cpid=14357479">คัดลอก</a></li><li><a href="/Sell/Edit?&amp;tid=14357479&amp;rd=1">แก้ไข</a></li><li role="separator" class="divider"></li><li><a href="javascript:void(0);" style="cursor:pointer;" onclick="openeditshipping(0,14357479,'IV-202001001');">แก้ไขข้อมูลขนส่ง</a></li><li role="separator" class="divider"></li><li><a href="javascript:openPDF2(14357479,&quot;IV-202001001&quot;,&quot;17/1/2563&quot;)">พิมพ์เอกสาร</a></li><li><a href="javascript:openLetter2(14357479,&quot;IV-202001001&quot;,&quot;17/1/2563&quot;)">พิมพ์ใบแปะจดหมาย/กล่อง</a></li><li role="separator" class="divider"></li><li><a href="/Pickandpack/Details?&amp;tid=14357479&amp;mc=NTgwMzE=" target="_blank">แพ็คสินค้า</a></li><li role="separator" class="divider"></li><li><a href="javascript:openSMSmodal(&quot;confirmpurchase&quot;,14357479,&quot;IV-202001001&quot;,&quot;&quot;);">ส่ง SMS ยืนยันการสั่งซื้อ</a></li><li><a href="javascript:openSMSmodal(&quot;transaction&quot;,14357479,&quot;IV-202001001&quot;,&quot;&quot;);">ส่ง SMS ยืนยันการส่งสินค้า</a></li><li role="separator" class="divider"></li><li><a href="javascript:doArchiveTransaction(14357479,&quot;IV-202001001&quot;);">ซ่อน</a></li><li><a href="javascript:doVoidTransaction(14357479,&quot;IV-202001001&quot;)">ยกเลิกรายการ</a></li><li role="separator" class="divider"></li><li><a href="javascript:doDeleteTransaction(14357479,&quot;IV-202001001&quot;)">ลบรายการ</a></li> </ul>
-                              </div> -->
-
                             </td>
                           </tr>
                               <?php endforeach; 

@@ -1,3 +1,81 @@
+<style type="text/css">
+       table.d {
+  table-layout: auto;
+  width: 100%;  
+}
+
+          .w3-button {
+              border: none;
+              display: inline-block;
+              padding: 8px 16px;
+              vertical-align: middle;
+              overflow: hidden;
+              text-decoration: none;
+              color: inherit;
+              background-color: inherit;
+              text-align: center;
+              cursor: pointer;
+              white-space: nowrap;
+          }
+
+          .w3-black, .w3-hover-black:hover {
+              color: #fff!important;
+              background-color: #000!important;
+          }
+
+
+          .badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+}
+
+.badge-info-lighten {
+    color: #39afd1;
+    background-color: rgba(57,175,209,.18);
+}
+
+.badge-success-lighten {
+    color: #0acf97;
+    background-color: rgba(10,207,151,.18);
+}
+
+.mdi-set, .mdi:before {
+    display: inline-block;
+    font: normal normal normal 24px/1 "Material Design Icons";
+    font-size: inherit;
+    text-rendering: auto;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.mdi-eye::before {
+    content: "\F208";
+}
+
+.page-title-box .page-title {
+    font-size: 18px;
+    margin: 0;
+    line-height: 75px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: inherit;
+}
+
+</style> 
+
         <!-- Begin Page Content -->
         <div class="container-fluid" id="page-sumary">
 
@@ -12,39 +90,37 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered d" id="dataTable1" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                     <th>ลำดับ</th>
+                     <th style="width: 5%;">ลำดับ</th>
+                     <th>รูปภาพ</th>
                       <th>ช่องทางสั่งซื้อ</th>
                       <th>หมายเลขคำสั่งซื้อ</th>
-                      <th>ลูกค้า</th>
+                      <th style="width: 30%;">ลูกค้า</th>
+                      <th>เบอร์โทร</th>
                       <th>สถานะ</th>
-                      <th>การชำระเงิน</th>
+                      <!-- <th>การชำระเงิน</th> -->
                       <th>บริการขนส่ง</th>
+                      <th>หมายเลขแทร็คกิ้ง</th>
+                      <th>ค่าจัดส่ง</th>
+                      <th>จำนวน</th>
                       <th>ยอดรวม</th>
+                      <th>วันที่ส่งสินค้า</th>
                       <th>วันที่สั่งซื้อ</th>
                       <th>ดำเนินการ</th>
                     </tr>
                   </thead>
-                  <!-- <tfoot>
-                    <tr>
-                     <th>ลำดับ</th>
-                      <th>หมายเลขออเดอร์</th>
-                      <th>ชื่อลูกค้า</th>
-                      <th>วันที่ทำรายการ</th>
-                      <th>โอนเงินแล้ว</th>
-                      <th>ยอดชำระทั้งหมด</th>
-                      <th>สถานะ</th>
-                    </tr>
-                  </tfoot> -->
                    <tbody>
                  <?php if(!empty($order_data)): 
                         foreach($order_data as $idx => $val):
                         $num = $idx+1;  ?>
                       <tr>
-                      <td>
+                      <td >
                           <?php echo $num;?>
+                      </td>
+                      <td>
+                          รูปภาพ
                       </td>
                       <td>
                           <?php echo $val->sales_channels;?>                                 
@@ -54,6 +130,9 @@
                       </td>                                
                       <td>
                           <?php echo $val->cus_id;?>
+                      </td>
+                      <td>
+                          เบอร์โทร
                       </td>
                       <td>
                          <span class="badge badge-info-lighten">
@@ -74,7 +153,7 @@
                               ?>
                           </span>
                       </td>
-                      <td>
+                     <!--  <td>
                           <?php if ($val->status_payment == '1') {?>
                                 <span class="badge badge-success-lighten">
                                 <i class="mdi mdi-coin"></i>
@@ -88,15 +167,31 @@
                                 </span>
                               <?php }                                 
                             ?>
-                      </td>
+                      </td> -->
                                                         
                       <td>
                           <?php echo $val->transport;?>
+                      </td>
+                      <td>
+                          เลขแทร็คกิ้ง
+                      </td>
+                      <td>
+                        ค่าจัดส่ง
+                      </td>
+
+                      <td>
+                          จำนวน
                       </td>
                       
                       <td>
                         <h5><span class="badge badge-info-lighten"><?php echo $val->total_price;?></span></h5>
                       </td>
+
+                       <td>
+                          วันที่ส่งสินค้า
+                      </td>
+
+                      
                       
                       <td>
                         <span class="badge badge-info-lighten"> <?php
@@ -107,20 +202,37 @@
                         </span>
                       </td>
                                                                                    
-                      <td style="width: 30%;">
-                        <div class="dropdown show">
-                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
-                            <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
-                            </svg>       
+                      <td style="width: 20%;">
+
+                       <!--  <button type="button" class="btn btn-info" href="<?php echo base_url();?>order/call_order_detail/<?php echo $val->order_id;?>">ดูข้อมูล</button> -->
+
+
+                       <a href="<?php echo base_url();?>order/call_order_detail/<?php echo $val->order_id;?>" class="btn btn-info btn-sm " role="button" aria-pressed="true"></i>ดูข้อมูล</a>
+
+                        <!-- class="badge badge-success-lighten" -->
+
+                        <!-- <div class="btn-group">
+                          <button type="button" class="badge badge-success-lighten dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-ellipsis-v"></i>
+                          </button>
+                          <ul class="dropdown-menu action">
+                          <li><a class="dropdown-item" href="<?php echo base_url();?>order/call_order_detail/<?php echo $val->order_id;?>" data-pjax="0" target="_blank">ดูข้อมูล</a></li>
+                          </ul>
+                        </div> -->
+
+
+                       <!--  <div class="dropdown show">
+                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
                             </a>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <a class="dropdown-item" href="<?php echo base_url();?>order/call_order_detail/<?php echo $val->order_id;?>">ดูข้อมูล</a>
-                                    <!-- <a class="dropdown-item" href="<?php echo base_url();?>customer/show_order_detail/<?php echo $val->cus_id;?>">ดูข้อมูล</a> -->
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                  </div>
-                              </div>
+                                   <a class="dropdown-item" href="<?php echo base_url();?>customer/show_order_detail/<?php echo $val->cus_id;?>">ดูข้อมูล</a> -->
+                                    <!-- <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a> -->
+                        <!--       </div>
+                        </div>  -->
+ 
+
                                                         
                         </td>
                     </tr>
@@ -133,7 +245,7 @@
           </div>
 
 
-          <!-- Modal edit-->
+          <!-- Modal edit
       <div class="modal fade bd-example-modal-lg" id="order_product" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
@@ -145,7 +257,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <!-- ... -->
+             
 
               <div class="container">
                 <div class="row">
@@ -171,7 +283,7 @@
                           <input type="text" class="form-control" id="sale_channel" placeholder="ชื่อสินค้า ...">
                         </div>
                       </div>
-
+ -->
 
                       <!-- <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>รายละเอียดสินค้า</b></label>
@@ -270,7 +382,7 @@
                       </form> -->
                      
 
-                  </div>
+               <!--    </div>
                 </div>
               </div>
 
@@ -282,7 +394,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- Modal edit-->
 
         </div>
