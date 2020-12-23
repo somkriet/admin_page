@@ -1,0 +1,456 @@
+  <style type="text/css">
+    .justify-content-center {
+    -webkit-box-pack: center!important;
+    -ms-flex-pack: center!important;
+    justify-content: center!important;
+}
+
+.horizontal-steps .horizontal-steps-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.horizontal-steps .process-line {
+    display: block;
+    position: absolute;
+    width: 50%;
+    height: .2em;
+    background-color: #727cf5;
+}
+
+.horizontal-steps .horizontal-steps-content .step-item {
+    display: block;
+    position: relative;
+    bottom: calc(100% + 1em);
+    height: 8px;
+    width: 8px;
+    margin: 0 2em;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    color: #727cf5;
+    background-color: currentColor;
+    border: .25em solid #fafbfe;
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.horizontal-steps .horizontal-steps-content .step-item.current:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 47.5%;
+    left: 51%;
+    padding: 1em;
+    background-color: currentColor;
+    border-radius: 50%;
+    opacity: 0;
+    z-index: -1;
+    -webkit-animation-name: animation-steps-current;
+    animation-name: animation-steps-current;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+}
+
+
+.m-b-md {
+    margin-bottom: 20px;
+}
+.m-t-md {
+    margin-top: 20px;
+}
+
+
+/*.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}*/
+
+
+#note-input {
+    display:none;
+}
+.note-textarea {
+    max-width:100%;
+}
+.nav-tabs > li > a {
+  font-weight: 600;
+  padding: 10px 25px 10px 25px;
+}
+
+i.fa-globe:hover{
+    color:#1ab394;
+}
+
+/* order status list */
+.point-status {
+    display: inline-block;
+    width: 16.3%;
+    text-align: center;
+}
+
+.status-icon i {
+    font-size: 25px;
+}
+
+.status-icon {
+    margin-bottom: 0px;
+    margin-top: 0;
+    line-height: 55px;
+}
+
+.status-message {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.status-line {
+    position: absolute;
+    background: #f1f1f1;
+    height: 3px;
+    width: 100%;
+    top: 35%;
+}
+
+.order-list-status {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.main-point {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    border-radius: 50px;
+    z-index: 10;
+    background: #f3f3f4;
+    border: 2px solid #f1f1f1;
+    position: relative;
+}
+
+.active .main-point {
+    background: #1ab394;
+    color: #fff;
+}
+
+@media screen and (max-width: 1075px) {
+    .point-status {
+        width: 16%;
+    }
+}
+
+@media screen and (max-width: 528px) {
+    .order-list-status .fa {
+        /* display: none; */
+        font-size: 18px;
+        top: -10px;
+        position: relative;
+    }
+
+    .point-status {
+        width: 15.5%;
+    }
+
+    .order-list-status .status-message {
+        text-overflow: ellipsis;
+        height: 14px;
+        white-space: nowrap;
+        font-size: 12px;
+        overflow: hidden;
+    }   
+
+    .main-point {
+        width: 35px;
+        height: 35px;
+    }
+
+    .order-status-icon.m-t-md.m-b-md {
+        margin:  0;
+    }
+}
+/* end order status list */
+
+/* CHOK CSS */
+#tab-payment a {
+    border-radius: 0;
+    margin: 0;
+    padding: 10px 30px;
+    margin-left: -1px;
+    border: 0;
+    color: #555;
+}
+
+ul#tab-payment li {
+    border: 1px solid #bbb;
+    margin-left: -1px;
+    background: #ccc;
+    border-bottom: 0;
+}
+
+ul#tab-payment {
+    margin-left: 1px;
+    border-left: 1px solid #e7eaec;
+}
+
+ul#tab-payment>li:first-child {
+    border-left: 0;
+    border-bottom: 0;
+}
+
+#tab-payment li.active a,#tab-payment li a:hover {
+    border-top: 2px solid;
+    background: #fff;
+}
+
+#tab-payment li a {
+    border-top: 2px solid transparent;
+    margin-top: -1px;
+    transition: 100ms;
+}
+
+ul#tab-payment>li:first-child a {
+    border-left: 1px solid #e7eaec;
+}
+
+.ibox-tools a {
+    color:#333;
+}
+
+.action-form-panel.footer-action {
+    padding-left:  0;
+}
+
+ul#tab-payment li {
+ border-right: 1px solid #e7eaec;
+}
+
+.ibox-tools a {
+    margin-left: 0;
+}
+
+.btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+    box-shadow: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .order-detail-col .col-lg-8 {
+        padding-right: 5px;
+    }
+
+    .order-detail-col h5.m-l-xs.m-r-xs {
+        margin-left: 0;
+    }
+
+    .order-detail-col .col-xs-12.col-lg-12 {
+      padding: 0;
+    }
+
+    .order-detail-col .col-lg-4.text-left {
+        width:  100px;
+        float:  left;
+        font-size: 13px;
+    }
+
+    .title-action {
+        text-align: right;
+        padding-top: 10px;
+    }
+    
+    label.col-xs-2.col-lg-1.text-center.m-b-none {
+        max-width: 20px;
+        font-size: 13px;
+        padding: 0;
+        text-align: left;
+    }
+
+    .table-custom .empty {
+        font-size:  15px;
+    }
+
+    .order-status-icon+.row .col-xs-4 .panel {
+        min-height: auto !important;
+    }
+
+    .order-status-icon+.row .col-xs-4 {
+      width:  100%;
+        margin-bottom:  15px;
+    }
+
+    #print-form button.btn.btn-danger {
+        font-size: 12px;
+    }
+
+    #print-form  button.btn.btn-success {
+        font-size: 12px;
+    }
+
+    #print-form  a.btn.btn-white {
+        font-size:  12px;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .page-heading .col-xs-7 {
+            width:  100%;
+        }
+
+        .page-heading .col-xs-5 {
+            width:  100%;
+            float: left;
+        }
+
+        form#print-form {
+            text-align:  left;
+        }
+}
+
+@media screen and (max-width: 767px) {
+.tabs-container .panel-body {
+    padding: 10px;
+}
+
+.ibox-title {
+    padding: 15px 10px 5px;
+}
+
+.ibox-content {
+    padding: 10px 10px 0px 10px;
+}
+
+#tab-payment a {
+    padding: 10px 10px;
+}
+
+table.table.table-bordered.invoice-tb {
+    min-width:  auto;
+}
+
+.shipment-list {
+    overflow-x: scroll;
+}
+
+div#pay-detail {
+   overflow-x:  scroll;
+}
+
+.ibox-content {
+    overflow-x:  scroll;
+}
+
+table.table {
+    min-width: 675px;
+}
+
+.order-status-icon+.row .col-xs-4 .panel {
+  min-height:  auto !important;
+}
+}
+
+@media screen and (max-width: 480px) {
+.order-status-icon+.row .col-xs-4 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.order-status-icon.m-t-md.m-b-md {
+    margin:  0;
+}
+
+.ibox-tools {
+    float: left;
+    text-align: left;
+    display: block;
+    width: 100%;
+}
+
+.ibox-title {
+  float: left;
+  width: 100%;
+}
+
+.page-heading h2 {
+    font-size: 16px;
+}
+
+.title-action {
+  padding-top: 5px;
+}
+
+.ibox-tools i, .ibox-tools a i {
+    font-size: 15px !important;
+}
+}
+
+@media screen and (max-width: 360px) {
+
+.order-detail-col .col-lg-4.text-left {
+    padding-right: 25px;
+}
+
+.navbar-top-links li {
+    display: inline-block;
+    /* padding-top: 15px; */
+}
+
+#print-form .btn-group {
+width:  100%;
+margin-bottom: 5px;
+}
+
+#print-form button.btn.btn-danger {
+    width: 100%;
+}
+
+#print-form  button.btn.btn-success {
+    width: 100%;
+}
+
+#print-form  a.btn.btn-white {
+    width: 100%;
+}
+
+.body-small .navbar-top-links li:last-child {
+    margin-right: 0;
+    float: right;
+    padding-top: 18px;
+}
+}
+
+@media screen and (max-width: 528px) {
+  .order-status-icon.m-t-md.m-b-md {
+   margin:  0;
+  }
+}
+
+#print-form .btn-group {
+    margin-bottom:  5px;
+}
+
+.dropdown-menu > li > a.a-disabled{
+    color:#eee;
+}
+.dropdown-menu > li > a.a-disabled:hover{
+    color:#eee;
+}
+  </style>  
