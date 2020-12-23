@@ -19,7 +19,7 @@
           }
 
 
-          .badge {
+   /*       .badge {
     display: inline-block;
     padding: .25em .4em;
     font-size: 75%;
@@ -33,7 +33,7 @@
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-}
+}*/
 
 .badge-info-lighten {
     color: #39afd1;
@@ -44,6 +44,14 @@
     color: #0acf97;
     background-color: rgba(10,207,151,.18);
 }
+
+/*.badge-success-lighten {
+    color: #0acf97;
+    background-color: rgba(10,207,151,.18);
+}
+*/
+
+.badge{display:inline-block;padding:.25em .4em;font-size:75%;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}@media (prefers-reduced-motion:reduce){.badge{transition:none}}a.badge:focus,a.badge:hover{text-decoration:none}.badge:empty{display:none}.btn .badge{position:relative;top:-1px}.badge-pill{padding-right:.6em;padding-left:.6em;border-radius:10rem}.badge-primary{color:#fff;background-color:#007bff}a.badge-primary:focus,a.badge-primary:hover{color:#fff;background-color:#0062cc}a.badge-primary.focus,a.badge-primary:focus{outline:0;box-shadow:0 0 0 .2rem rgba(0,123,255,.5)}.badge-secondary{color:#fff;background-color:#6c757d}a.badge-secondary:focus,a.badge-secondary:hover{color:#fff;background-color:#545b62}a.badge-secondary.focus,a.badge-secondary:focus{outline:0;box-shadow:0 0 0 .2rem rgba(108,117,125,.5)}.badge-success{color:#fff;background-color:#28a745}a.badge-success:focus,a.badge-success:hover{color:#fff;background-color:#1e7e34}a.badge-success.focus,a.badge-success:focus{outline:0;box-shadow:0 0 0 .2rem rgba(40,167,69,.5)}.badge-info{color:#fff;background-color:#17a2b8}a.badge-info:focus,a.badge-info:hover{color:#fff;background-color:#117a8b}a.badge-info.focus,a.badge-info:focus{outline:0;box-shadow:0 0 0 .2rem rgba(23,162,184,.5)}.badge-warning{color:#212529;background-color:#ffc107}a.badge-warning:focus,a.badge-warning:hover{color:#212529;background-color:#d39e00}a.badge-warning.focus,a.badge-warning:focus{outline:0;box-shadow:0 0 0 .2rem rgba(255,193,7,.5)}.badge-danger{color:#fff;background-color:#dc3545}a.badge-danger:focus,a.badge-danger:hover{color:#fff;background-color:#bd2130}a.badge-danger.focus,a.badge-danger:focus{outline:0;box-shadow:0 0 0 .2rem rgba(220,53,69,.5)}.badge-light{color:#212529;background-color:#f8f9fa}a.badge-light:focus,a.badge-light:hover{color:#212529;background-color:#dae0e5}a.badge-light.focus,a.badge-light:focus{outline:0;box-shadow:0 0 0 .2rem rgba(248,249,250,.5)}.badge-dark{color:#fff;background-color:#343a40}a.badge-dark:focus,a.badge-dark:hover{color:#fff;background-color:#1d2124}a.badge-dark.focus,a.badge-dark:focus{outline:0;box-shadow:0 0 0 .2rem rgba(52,58,64,.5)}
 
 .mdi-set, .mdi:before {
     display: inline-block;
@@ -118,8 +126,14 @@
             </div>
             <div class="card-body">
 
-
+                                              
               <div class="row mt-4">
+
+              <div class="text-lg-right">                           
+                  <a href="<?php echo base_url();?>order/new_order" class="btn btn-primary btn-sm " role="button" aria-pressed="true"><i class='fas fa-user-plus'></i>เพิ่มรายการสั่งซื้อ</a>
+              </div>
+                <br><br>
+
             <nav class="w-100">
               <div class="nav nav-tabs" id="product-tab" role="tablist">
                 <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">ทั้งหมด  
@@ -204,6 +218,7 @@
 
                   </span>
                 </a>
+
               </div>
             </nav>
             <div class="tab-content p-3" id="nav-tabContent">
@@ -218,7 +233,7 @@
                       <th>หมายเลขคำสั่งซื้อ</th>
                       <th>ลูกค้า</th>
                       <th>สถานะ</th>
-                      <th>การชำระเงิน</th>
+                      <!-- <th>การชำระเงิน</th> -->
                       <th>บริการขนส่ง</th>
                       <th>ยอดรวม</th>
                       <th>วันที่สั่งซื้อ</th>
@@ -257,7 +272,41 @@
                           <?php echo $val->cus_id;?>
                       </td>
                       <td>
-                         <span class="badge badge-info-lighten">
+
+                        <?php if ($val->status_order == '1') {?>
+                                <span class="badge badge-danger">
+                                <i class="mdi mdi-coin"></i>
+                                  ยังไม่จ่าย
+                                </span>
+                              <?php }elseif ($val->status_order == '2') {?>
+                                <span class="badge badge-success">
+                                <i class="mdi mdi-coin"></i>
+                                  จ่ายแล้ว
+                                </span>
+                              <?php }elseif ($val->status_order == '3') {?>
+                                <span class="badge badge-info">
+                                <i class="mdi mdi-coin"></i>
+                                  ยืนยันคำสั่งซื้อ
+                                </span>
+                              <?php }elseif ($val->status_order == '4') {?>
+                                <span class="badge badge-secondary">
+                                <i class="mdi mdi-coin"></i>
+                                  กำลังแพ็คสินค้า
+                                </span>
+                              <?php }elseif ($val->status_order == '5') {?>
+                                <span class="badge badge-warning">
+                                <i class="mdi mdi-coin"></i>
+                                  กำลังจัดส่ง
+                                </span>
+                              <?php }elseif ($val->status_order == '6') {?>
+                                <span class="badge badge-success-lighten">
+                                <i class="mdi mdi-coin"></i>
+                                  สำเร็จ
+                                </span>
+                              <?php } ?>
+
+
+                         <!-- <span class="badge badge-info-lighten">
                               <?php if ($val->status_order == '1') {
                                   echo "ยังไม่จ่าย";
                               }elseif ($val->status_order == '2') {
@@ -273,9 +322,9 @@
                               } 
                                                              
                               ?>
-                          </span>
+                          </span> -->
                       </td>
-                      <td>
+                     <!--  <td>
                           <?php if ($val->status_payment == '1') {?>
                                 <span class="badge badge-success-lighten">
                                 <i class="mdi mdi-coin"></i>
@@ -289,7 +338,7 @@
                                 </span>
                               <?php }                                 
                             ?>
-                      </td>
+                      </td> -->
                                                         
                       <td>
                           <?php echo $val->transport;?>
