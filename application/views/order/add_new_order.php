@@ -49,7 +49,8 @@
                     <!-- <label for="example-date-input" class="col-2 col-form-label">Date</label> -->
                     <div class="col-sm-10">
                       
-                      <input class="form-control" type="date" id="order_date" name="order_date" value="<?php echo date('Y-m-d'); ?>" required>
+                      <input class="form-control" type="date" id="order_date" name="order_date" value="<?php echo date('Y-m-d'); ?>" >
+                      <!-- required -->
                    </div>
               </div>
               <!--วันที่สั่งซื้อ-->
@@ -61,7 +62,8 @@
                     <!-- <input type="text" class="form-control form-text" id="name_customer" name="name_customer" maxlength="128" placeholder="ชื่อ-สกุล"  onkeyup="setNormalTextbox(this.id);"> -->
 
                      <div class="input-group">
-                      <input type="text" class="form-control" id="name_customer" name="name_customer" placeholder="ชื่อ-สกุล" aria-label="Search" aria-describedby="basic-addon2" required>
+                      <input type="text" class="form-control" id="name_customer" name="name_customer" placeholder="ชื่อ-สกุล" aria-label="Search" aria-describedby="basic-addon2" >
+                      <!-- required -->
                       <div class="input-group-append">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg1"><i class="fa fa-address-book"></i></button>
                       </div>
@@ -76,7 +78,8 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="name_socail" name="name_socail" maxlength="128" placeholder="ชื่อโซเซียล" required>
+                    <input type="text" class="form-control form-text" id="name_socail" name="name_socail" maxlength="128" placeholder="ชื่อโซเซียล" >
+                    <!-- required -->
                     <!-- onkeyup="setNormalTextbox(this.id);" -->
                   </div>
                 </div>
@@ -87,7 +90,8 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="phone" name="phone" maxlength="128" placeholder="เบอร์โทร" required>
+                    <input type="text" class="form-control form-text" id="phone" name="phone" maxlength="128" placeholder="เบอร์โทร" >
+                    <!-- required -->
                     <!-- onkeyup="setNormalTextbox(this.id);" -->
                   </div>
                 </div>
@@ -98,7 +102,8 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <input type="text" class="form-control form-text" id="email" name="email" maxlength="128" placeholder="อีเมล์" required>
+                    <input type="text" class="form-control form-text" id="email" name="email" maxlength="128" placeholder="อีเมล์" >
+                    <!-- required -->
                     <!-- onkeyup="setNormalTextbox(this.id);" -->
                   </div>
                 </div>
@@ -109,7 +114,8 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <textarea  id="customer_address" name="customer_address" rows="4" class="form-control" placeholder="ที่อยู่จัดส่ง ..."  required></textarea>
+                    <textarea  id="customer_address" name="customer_address" rows="4" class="form-control" placeholder="ที่อยู่จัดส่ง ..."  ></textarea>
+                    <!-- required -->
                   </div>
                 </div>
               </div>
@@ -223,6 +229,9 @@
     </div>
 
     <div class="card shadow mb-4">
+      <form id="fupForm2" enctype="multipart/form-data">
+
+
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">สินค้า</h6>
         </div>
@@ -553,6 +562,10 @@
                     <!-- Large modal -->    
 
     </div>
+
+
+    <input type="submit" name="submit" class="form-control btn btn-primary" value="บันทึก"/>  
+    </form>
     </div>
 
     <div class="card shadow mb-4">
@@ -793,6 +806,56 @@
             }
         });
     });
+
+
+     $("#fupForm2").on('submit', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url('order/add_new_order2');?>',
+            data: new FormData(this),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm2').css("opacity",".5");
+            },
+            success: function(response){ 
+
+
+            console.log(response);
+
+
+                // $('.statusMsg').html('');
+                // if(response.status == 1){
+                //     $('#fupForm')[0].reset();
+                //     // $('.statusMsg').html('<p class="alert alert-success">'+response.message+'</p>');
+                //     Swal.fire('Success!!!');
+
+                //     // window.location = location;
+                //     setTimeout(function(){
+                //       location.reload();
+                //     }, 2000);
+                //     return true;
+                // }else{
+                //     // $('.statusMsg').html('<p class="alert alert-danger">'+response.message+'</p>');
+                //     Swal.fire('Not Success!!!')
+                    
+                //     setTimeout(function(){
+                //       location.reload();
+                //     }, 2000);
+                //     return false;
+                // }
+                $('#fupForm').css("opacity","");
+                $(".submitBtn").removeAttr("disabled");
+            }
+        });
+    });
+
+
+
 
 
 

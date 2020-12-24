@@ -128,10 +128,13 @@ class Order extends CI_Controller {
         }else{
 
             $check_order = "SELECT SUBSTR(order_id,11,13) AS myorder_id 
-                                              FROM order_table 
-                                              WHERE SUBSTR(order_id,3,8) = $order_datecheck  
+                                              FROM order_detail 
+                                              WHERE SUBSTR(order_id,3,8) = '".$order_datecheck."'
                                               AND delete_flag = 1";
-            $data['get_check_order'] = $this->order_model->show_all_order($check_order);
+            // $check_order = "SELECT SUBSTR(order_id,11,13) AS myorder_id 
+            //                                   FROM order_detail 
+            //                                   WHERE SUBSTR(order_id,3,8) = '".$order_datecheck."'";
+            // $data['get_check_order'] = $this->order_model->show_all_order($check_order);
 
             $order_id = "OR".$order_datecheck.$this->add_index($data['get_check_order']);
 
@@ -209,6 +212,138 @@ class Order extends CI_Controller {
             echo json_encode($data);
         
     }
+
+
+    public function add_new_order2(){
+
+        $order_date = $this->input->post('order_date');
+        $name_customer = $this->input->post('name_customer');
+        $name_socail = $this->input->post('name_socail');
+        $phone = $this->input->post('phone');
+        $email = $this->input->post('email');
+        $customer_address = $this->input->post('customer_address');
+
+        $productcode1 = $this->input->post('productcode1');
+        $productname1 = $this->input->post('productname1');
+        $productnumber1 = $this->input->post('productnumber1');
+        $productpricepernumber1 = $this->input->post('productpricepernumber1');
+        $discountpernumber1 = $this->input->post('discountpernumber1');
+        $producttotalprice1 = $this->input->post('producttotalprice1');
+
+        $shippingchannel = $this->input->post('shippingchannel');
+        $description = $this->input->post('description');
+        $discounttext = $this->input->post('discounttext');
+        $shippingamount = $this->input->post('shippingamount');
+
+        $name_receiver = $this->input->post('name_receiver');
+        $phone_receiver = $this->input->post('phone_receiver');
+        $email_receiver = $this->input->post('email_receiver');
+        $address_receiver = $this->input->post('address_receiver');
+        $sent_date = $this->input->post('sent_date');
+        $track_no = $this->input->post('track_no');
+
+        $payment_channel = $this->input->post('payment_channel');
+        $file = $this->input->post('file');
+
+        $check_order_data = "SELECT cus_id FROM customer WHERE delete_flag = 1;";
+        $get_check_order_data = $this->order_model->show_all_order($check_order_data);
+        $order_datecheck = date('Ymd');
+
+        if ($get_check_order_data == "") {
+
+            $order_id = "OR".$order_datecheck."0001";
+
+            // OR202008050002
+
+        }else{
+
+            // $check_order = "SELECT SUBSTR(order_id,11,13) AS myorder_id 
+            //                                   FROM order_table 
+            //                                   WHERE SUBSTR(order_id,3,8) = $order_datecheck  
+            //                                   AND delete_flag = 1";
+            $check_order = "SELECT SUBSTR(order_id,11,13) AS myorder_id 
+                                              FROM order_details 
+                                              WHERE SUBSTR(order_id,3,8) = '".$order_datecheck."'";
+            $data['get_check_order'] = $this->order_model->show_all_order($check_order);
+            // $data['get_check_order'] = $this->order_model->show_all_order($check_order);
+
+            $order_id = "OR".$order_datecheck.$this->add_index($data['get_check_order']);
+
+            // $insert = "INSERT INTO order_table (
+            //                          order_id,
+            //                          cus_id,
+            //                          sales_channels,
+            //                          link_img,
+            //                          status_order,
+            //                          transport,
+            //                          payment_chanels,
+            //                          total_price,
+            //                          status_payment,
+            //                          balance,
+            //                          employee_id,
+            //                          money_transfer_slip,
+            //                          date_pay,
+            //                          date_order,
+            //                          delete_flag
+            //                         ) VALUES (
+            //                         '".$order_id."',
+            //                         '".$name_customer."',
+            //                         '".$shippingchannel."',
+            //                         '22222',
+            //                         'on',
+            //                         'ems',
+            //                         '".$payment_channel."',
+            //                         '".$producttotalprice1."',
+            //                         '1',
+            //                         '1111',
+            //                         'jay',
+            //                         'test',    
+            //                         '".$order_date."',
+            //                         '".$order_date."',
+            //                         '1'
+            //                         )"; 
+
+            // $data['order_add'] = $this->order_model->add_new_order($insert);
+
+
+            $insert_detail = "INSERT INTO order_details (
+                                     order_id,
+                                     productID,
+                                     price,
+                                     quantity,
+                                     discount,
+                                     total,
+                                     IDSKU,
+                                     size,
+                                     color,
+                                     location
+                                    ) VALUES (
+                                    '".$order_id."',
+                                    '".$productcode1."',
+                                    '".$productpricepernumber1."',
+                                    '".$productnumber1."',
+                                    '".$discountpernumber1."',
+                                    '".$producttotalprice1."',
+                                    '1221',
+                                    'L',
+                                    'blue',
+                                    'A001'
+                                    )"; 
+
+            $data['order_add_detail'] = $this->order_model->add_new_order($insert_detail);
+
+            if($insert){ 
+                $data['status'] = 1; 
+                $data['message'] = 'Form data submitted successfully!'; 
+                // response
+            } 
+
+        }
+
+            echo json_encode($data);
+        
+    }
+
 
     public function auto_name(){
 
