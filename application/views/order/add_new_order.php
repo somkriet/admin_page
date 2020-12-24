@@ -229,7 +229,7 @@
     </div>
 
     <div class="card shadow mb-4">
-      <form id="fupForm2" enctype="multipart/form-data">
+      <!-- <form id="fupForm2" enctype="multipart/form-data"> -->
 
 
         <div class="card-header py-3">
@@ -288,15 +288,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                        <tr id="prow1">
-                                            <td class="select text-center vertical-align">
-                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".selectproduct" value=""><span id="productcount1" class="sr-only"></span>เลือก</button>
+                                        <tr class="new_order">
+                                            <td class="text-center vertical-align">
+                                                <button type="button" class="btn btn-primary btn-sm select" data-toggle="modal" data-target=".selectproduct" value=""><span id="productcount1" class="sr-only"></span>เลือก</button>
                                             </td>
-                                            <td class="id">
+                                            <td>
                                                 <div class="typeahead__container">
                                                     <div class="typeahead__field">
                                                         <span class="typeahead__query">
-                                                            <input class="form-control" name="productcode1" type="search" id="productcode1" maxlength="32" value="">
+                                                            <input class="form-control productcode" name="productcode1" type="search" id="productcode1" maxlength="32" value="">
 
                                                         </span>
                                                     </div>
@@ -304,32 +304,32 @@
                                                 <input type="hidden" id="productid1">
                                                 <input type="hidden" id="isbundles1" value="0-0">
                                             </td>
-                                            <td id="tdproductname1" class="name">
+                                            <td>
                                                 <div class="typeahead__container">
                                                     <div class="typeahead__field">
                                                         <span class="typeahead__query">
                                                             <span class="typeahead__cancel-button"></span>
-                                                            <input class="form-control" name="productname1" type="text" id="productname1" maxlength="256" value="">
+                                                            <input class="form-control productname" name="productname1" type="text" id="productname1" maxlength="256" value="">
 
                                                         </span>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="amount">
+                                            <td>
                                                 <div class="input-group form-input-group spinner">
-                                                    <input type="number" class="form-control" id="productnumber1" name="productnumber1" placeholder="0.00" maxlength="32" value="">
+                                                    <input type="number" class="form-control amount" id="productnumber1" name="productnumber1" placeholder="0.00" maxlength="32" value="">
                                                 </div>
                                             </td>
                                             <td class="value">
-                                                <input type="text" class="form-control form-text text-right font-lato" id="productpricepernumber1" name="productpricepernumber1" placeholder="0.00" maxlength="32" value="">
+                                                <input type="text" class="form-control form-text text-right font-lato value" id="productpricepernumber1" name="productpricepernumber1" placeholder="0.00" maxlength="32" value="">
                                             </td>
-                                            <td class="discount">
-                                                <input type="text" class="form-control form-text font-lato text-right" id="discountpernumber1" name="discountpernumber1" placeholder="จำนวนเงิน หรือ %" maxlength="32" value="">
+                                            <td>
+                                                <input type="text" class="form-control form-text font-lato text-right discount" id="discountpernumber1" name="discountpernumber1" placeholder="จำนวนเงิน หรือ %" maxlength="32" value="">
                                             
                                                 <input type="hidden" id="serialnoid1" value="0">
                                             </td>
-                                            <td class="total text-right">
-                                                <p id="totalprice1" class="form-text--transparent font-lato">0.00</p><input type="hidden" id="producttotalprice1" name="producttotalprice1" value="0.00">
+                                            <td class="text-right">
+                                                <p id="totalprice1" class="form-text--transparent font-lato">0.00</p><input type="hidden" class="total" id="producttotalprice1" name="producttotalprice1" value="0.00">
                                             </td>
                                             <td class="action">
                                                 <a href="javascript:deleteRow(1);" class="d-inline-block btn-etc mt-2">
@@ -564,8 +564,9 @@
     </div>
 
 
-    <input type="submit" name="submit" class="form-control btn btn-primary" value="บันทึก"/>  
-    </form>
+    <input type="button" name="submit" id="fupForm2" class="form-control btn btn-primary" value="บันทึก"/>  
+
+    <!-- </form> -->
     </div>
 
     <div class="card shadow mb-4">
@@ -808,24 +809,25 @@
     });
 
 
-     $("#fupForm2").on('submit', function(e){
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: '<?php echo base_url('order/add_new_order2');?>',
-            data: new FormData(this),
-            dataType: 'json',
-            contentType: false,
-            cache: false,
-            processData:false,
-            beforeSend: function(){
-                $('.submitBtn').attr("disabled","disabled");
-                $('#fupForm2').css("opacity",".5");
-            },
-            success: function(response){ 
+     // $("#fupForm2").on('submit', function(e){
+     //    e.preventDefault();
+     //    $.ajax({
+     //        type: 'POST',
+     //        url: '<?php echo base_url('order/add_new_order2');?>',
+     //        data: new FormData(this),
+     //        dataType: 'json',
+     //        contentType: false,
+     //        cache: false,
+     //        processData:false,
+     //        beforeSend: function(){
+     //            $('.submitBtn').attr("disabled","disabled");
+     //            $('#fupForm2').css("opacity",".5");
+
+     //        },
+     //        success: function(response){ 
 
 
-            console.log(response);
+     //        console.log(response);
 
 
                 // $('.statusMsg').html('');
@@ -848,11 +850,152 @@
                 //     }, 2000);
                 //     return false;
                 // }
-                $('#fupForm').css("opacity","");
-                $(".submitBtn").removeAttr("disabled");
+    //             $('#fupForm').css("opacity","");
+    //             $(".submitBtn").removeAttr("disabled");
+    //         }
+    //     });
+    // });
+
+
+    $('#fupForm2').on('click', function(){
+
+    // if($('#supplier').val() == ""){
+    //   alertify.alert('กรุณาเลือก Supplier ก่อน');
+    //   return false;
+    // }
+
+    // if($('#cust_id').val().trim() == ""){
+    //   alertify.alert('กรุณากรอก Dealer ก่อน');
+    //   return false;
+    // }
+
+    // if($('#po_no').val().trim() == ""){
+    //   alertify.alert('กรุณากรอก P/O ก่อน');
+    //   return false;
+    // }
+
+    // if($('#tb_details tbody tr.old_order').length == 0 && $('#tb_details tbody tr.new_order').length == 0){
+    //   alertify.alert('กรุณาเพิ่ม Detail ในตารางข้างล่าง');
+    //   return false;
+    // }
+
+    // if($('#tb_details tbody tr.new_order').length > 0){
+    //   $.each($('#tb_details tbody tr.new_order'), function(){
+    //     if($(this).find('input.part_id').val().trim() == ""){
+    //       $(this).remove();
+    //     }
+    //   });
+    // }
+
+    // alertify.confirm('Save?', function(e){
+      // if(e){
+        // var deliverID = $('#deliverID').val();
+        // var supplier = $('#supplier').val();
+        // var po = $('#po_no').val().trim();
+        // var custID = $('#cust_id').val();
+        // var return_flag = $('input[name="return"]:checked').val();
+        // console.log(return_flag);
+
+        // if(return_flag == ''|| return_flag == undefined){
+        //   alertify.alert('Please Select Return Data');
+        //   return false;
+        // }
+        
+        // if($('input[name="full_load"]:checked').length > 0){
+        //   var full_load_flag = 1;
+        // }else{
+        //   var full_load_flag = 0;
+        // }
+        // // console.log(full_load_flag); return false;
+        // var old_arr = new Array();
+        // if($('#tb_details tbody tr.old_order').length > 0){
+        //   $.each($('#tb_details tbody tr.old_order'), function(){
+        //     var tmp = new Object();
+
+        //     tmp.id = $(this).attr('data');
+        //     tmp.part_id = $(this).find('input.part_id').val();
+        //     tmp.box = $(this).find('input.boxs').val();
+        //     tmp.pcs = $(this).find('input.pcs').val();
+
+        //     old_arr.push(tmp);
+        //   });
+        // }
+
+//         productcount1
+// productcode1
+// productname1
+// productnumber1
+// productpricepernumber1
+// discountpernumber1
+// producttotalprice1
+
+
+// productcode
+// productname
+// amount
+// value
+// discount
+// total
+
+
+        var new_arr = new Array();
+        if($('#productrow tbody tr.new_order').length > 0){
+          $.each($('#productrow tbody tr.new_order'), function(){
+            var tmp = new Object();
+
+            $('#po_no').val()
+
+            // tmp.productcode = $(this).find('#productcode').val();
+            tmp.productcode = $(this).find('input.productcode').val();
+            tmp.productname = $(this).find('input.productname').val();
+            tmp.amount = $(this).find('input.amount').val();
+            tmp.value = $(this).find('input.value').val();
+            tmp.discount = $(this).find('input.discount').val();
+            tmp.total = $(this).find('input.total').val();
+
+            new_arr.push(tmp);
+          });
+        }
+
+        // var del_arr = new Array();
+        // if($('#tb_details tbody tr.del_order').length > 0){
+        //   $.each($('#tb_details tbody tr.del_order'), function(){
+        //     var tmp = new Object();
+
+        //     tmp.id = $(this).attr('data');
+
+        //     del_arr.push(tmp);
+        //   });
+        // }
+
+        $.ajax({
+          type: "POST",
+          dataType: "JSON",
+          url: "<?php echo base_url('order/add_new_order2');?>",
+          data: {
+            'new_arr': new_arr
+          },
+          success: function(res){
+            console.log(res);
+            if(res == 'success'){
+              // alertify.success('Save Success.');
+              // $('#myModal').modal('hide');
+              setTimeout(function(){
+                location.reload();
+              }, 2000);
             }
+          },
+          error: function(err){
+            console.log(err);
+            // alertify.alert('Error!');
+            return false;
+          }
         });
-    });
+      // }else{
+      //   return false;
+      // }
+    // });
+  });
 
 
 
@@ -1033,17 +1176,17 @@ $(function(){
 
         cell0.innerHTML = "<button type=\"button\" id=\"productcount"+rowcount+"\" class=\"btn btn-primary btn-sm\" data-toggle=\"modal\" data-target=\".selectproduct\"><span id=\"productcount1\" class=\"sr-only\"></span>เลือก</button>";
 
-        cell1.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control\" name=\"q\" type=\"search\" id=\"productcode"+rowcount+"\" maxlength=\"32\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"hideUnittext('"+rowcount+"',event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productcode',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div><input type='hidden' id='productid"+rowcount+"' value='0'/> <input type=\"hidden\" id=\"isbundles" + rowcount + "\" value=\"0-0\" />";
+        cell1.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control productcode\" name=\"q\" type=\"search\" id=\"productcode"+rowcount+"\" maxlength=\"32\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"hideUnittext('"+rowcount+"',event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productcode',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div><input type='hidden' id='productid"+rowcount+"' value='0'/> <input type=\"hidden\" id=\"isbundles" + rowcount + "\" value=\"0-0\" />";
 
-        cell2.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control\" name=\"q\" type=\"text\" id=\"productname"+rowcount+"\" maxlength=\"256\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"setNormalTextbox(this.id);setNormalTextbox('td'+this.id);hideUnittext(\""+rowcount+"\",event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productname',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div>";
+        cell2.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control productname\" name=\"q\" type=\"text\" id=\"productname"+rowcount+"\" maxlength=\"256\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"setNormalTextbox(this.id);setNormalTextbox('td'+this.id);hideUnittext(\""+rowcount+"\",event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productname',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div>";
 
-        cell3.innerHTML = "<div class=\"input-group form-input-group spinner\"><input type=\"number\" placeholder='0.00' class=\"form-control\" id=\"productnumber"+rowcount+"\" maxlength=\"32\" onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+")\" value=\"\" onkeyup=\"setNormalTextbox(this.id);\" onkeydown=\"gotoNext("+rowcount+",'productnumber',event.keyCode);\"></div>";
+        cell3.innerHTML = "<div class=\"input-group form-input-group spinner\"><input type=\"number\" placeholder='0.00' class=\"form-control amount\" id=\"productnumber"+rowcount+"\" maxlength=\"32\" onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+")\" value=\"\" onkeyup=\"setNormalTextbox(this.id);\" onkeydown=\"gotoNext("+rowcount+",'productnumber',event.keyCode);\"></div>";
 
-        cell4.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato\" id='productpricepernumber"+rowcount+ "' placeholder='0.00' maxlength='32' onfocus=\"removeComma(this.id);\" onblur=\"updateTotalPrice("+rowcount+");\" onkeyup='setNormalTextbox(this.id);' onkeydown='gotoNext("+rowcount+",\"productpricepernumber\",event.keyCode);' />";
+        cell4.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato value\" id='productpricepernumber"+rowcount+ "' placeholder='0.00' maxlength='32' onfocus=\"removeComma(this.id);\" onblur=\"updateTotalPrice("+rowcount+");\" onkeyup='setNormalTextbox(this.id);' onkeydown='gotoNext("+rowcount+",\"productpricepernumber\",event.keyCode);' />";
 
-        cell5.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato\" id='discountpernumber"+rowcount+"' placeholder=\"จำนวนเงิน หรือ %\" maxlength='32' onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+");\" onkeydown='gotoNext("+rowcount+",\"discountpernumber\",event.keyCode);' /><span id='unittext"+rowcount+"' class='unittextspan spantruncatenoblock fs-xs grey-400 d-block text-right' style=\"display:none;\"></span><span id='serialnotext"+rowcount+"' style=\"display: none;\"><img src='/Content/themes/base/images/serialicon.png' width=20/></span><input type=\"hidden\" id='serialnoid"+rowcount+"' value='0' />";
+        cell5.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato discount\" id='discountpernumber"+rowcount+"' placeholder=\"จำนวนเงิน หรือ %\" maxlength='32' onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+");\" onkeydown='gotoNext("+rowcount+",\"discountpernumber\",event.keyCode);' /><span id='unittext"+rowcount+"' class='unittextspan spantruncatenoblock fs-xs grey-400 d-block text-right' style=\"display:none;\"></span><span id='serialnotext"+rowcount+"' style=\"display: none;\"><img src='/Content/themes/base/images/serialicon.png' width=20/></span><input type=\"hidden\" id='serialnoid"+rowcount+"' value='0' />";
 
-        cell6.innerHTML = "<p id='totalprice" + rowcount + "' class='form-text--transparent font-lato'>0.00</p><input type='hidden' id='producttotalprice" + rowcount + "' value='0' />";
+        cell6.innerHTML = "<p id='totalprice" + rowcount + "' class='form-text--transparent font-lato total'>0.00</p><input type='hidden' id='producttotalprice" + rowcount + "' value='0' />";
         
         cell7.innerHTML = "<a href='javascript:deleteRow(" + rowcount + ");' class=\"d-inline-block btn-etc mt-2\" ><i class=\"fa fa-times-circle\" style=\"color: red;\"></i></a></a>";
 
