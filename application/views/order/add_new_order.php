@@ -273,22 +273,24 @@
 
 
               <div class="t-responsive">
-                         <table class="table-bordered" id="productrow">
+                         <!-- <table class="table-bordered" id="myTbl"> -->
+                          <table class="table-bordered" id="productrow">
+                          
                             <thead>
                                 <tr>
                                     
                                     <th class="select"></th>
                                     <th class="id">รหัส</th>
                                     <th class="name">ชื่อสินค้า<span class="required-field">*</span></th>
-                                    <th class="amount text-right">จำนวน<span class="required-field">*</span></th>
-                                    <th class="value text-right">มูลค่าต่อหน่วย<span class="required-field">*</span></th>
-                                    <th class="discount text-right">ส่วนลดต่อหน่วย</th>
-                                    <th class="total text-right">รวม</th>
-                                    <th class="action"></th>
+                                    <th class="amount text-right"  style="width: 100px;">จำนวน<span class="required-field">*</span></th>
+                                    <th class="value text-right"  style="width: 100px;">มูลค่าต่อหน่วย<span class="required-field">*</span></th>
+                                    <th class="discount text-right" style="width: 100px;">ส่วนลดต่อหน่วย</th>
+                                    <th class="total text-right"  style="width: 150px;">รวม</th>
+                                    <th class="action text-center"  style="width: 50px;">ลบ</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                        <tr class="new_order">
+                                        <tr class="firstTr">
                                             <td class="text-center vertical-align">
                                                 <button type="button" class="btn btn-primary btn-sm select" data-toggle="modal" data-target=".selectproduct" value=""><span id="productcount1" class="sr-only"></span>เลือก</button>
                                             </td>
@@ -296,20 +298,19 @@
                                                 <div class="typeahead__container">
                                                     <div class="typeahead__field">
                                                         <span class="typeahead__query">
-                                                            <input class="form-control productcode" name="productcode1" type="search" id="productcode1" maxlength="32" value="">
+                                                            <input class="form-control productcode" name="productcode[]" type="search" id="productcode1" maxlength="32" value="">
 
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <input type="hidden" id="productid1">
-                                                <input type="hidden" id="isbundles1" value="0-0">
                                             </td>
                                             <td>
                                                 <div class="typeahead__container">
                                                     <div class="typeahead__field">
                                                         <span class="typeahead__query">
                                                             <span class="typeahead__cancel-button"></span>
-                                                            <input class="form-control productname" name="productname1" type="text" id="productname1" maxlength="256" value="">
+                                                            <input class="form-control productname" name="productname[]" type="text" id="productname1" maxlength="256" value="">
 
                                                         </span>
                                                     </div>
@@ -317,21 +318,23 @@
                                             </td>
                                             <td>
                                                 <div class="input-group form-input-group spinner">
-                                                    <input type="number" class="form-control amount" id="productnumber1" name="productnumber1" placeholder="0.00" maxlength="32" value="">
+                                                    <input type="number" class="form-control amount" id="productnumber1" name="productnumber[]" placeholder="0.00" maxlength="32" onblur="updateTotalPrice(1)" onkeyup="setNormalTextbox(this.id);" 
+                                                    onkeydown="gotoNext(this.id,'productnumber',event.keyCode);" value="">
                                                 </div>
                                             </td>
                                             <td class="value">
-                                                <input type="text" class="form-control form-text text-right font-lato value" id="productpricepernumber1" name="productpricepernumber1" placeholder="0.00" maxlength="32" value="">
+                                                <input type="text" class="form-control form-text text-right font-lato value" id="productpricepernumber1" name="productpricepernumber[]" onblur="updateTotalPrice(1)"  placeholder="0.00" maxlength="32" value="">
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control form-text font-lato text-right discount" id="discountpernumber1" name="discountpernumber1" placeholder="จำนวนเงิน หรือ %" maxlength="32" value="">
+                                                <input type="text" class="form-control form-text font-lato text-right discount" id="discountpernumber1" name="discountpernumber[]" onblur="updateTotalPrice(1)" placeholder="จำนวนเงิน หรือ %" maxlength="32" value="">
                                             
                                                 <input type="hidden" id="serialnoid1" value="0">
                                             </td>
                                             <td class="text-right">
-                                                <p id="totalprice1" class="form-text--transparent font-lato">0.00</p><input type="hidden" class="total" id="producttotalprice1" name="producttotalprice1" value="0.00">
+                                                <p id="totalprice1" class="form-text--transparent font-lato">0.00</p>
+                                                <input type="hidden" class="total" id="producttotalprice1" name="producttotalprice[]" value="0.00">
                                             </td>
-                                            <td class="action">
+                                            <td class="action text-center">
                                                 <a href="javascript:deleteRow(1);" class="d-inline-block btn-etc mt-2">
                                                   <i class="fa fa-times-circle" aria-hidden="true" style="color: red;"></i></a>
                                             </td>
@@ -341,15 +344,13 @@
 
                     </div><br>
 
+                    <a href="javascript:addRow();" class="button button-link button-md">
+                      <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                      <span>เพิ่มสินค้า</span>
+                    </a>
+                    <br>
 
-
-              <a href="javascript:addRow();" class="button button-link button-md">
-                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                <span>เพิ่มสินค้า</span>
-                            </a><br>
-
-
-          <br>                  
+          <hr>                  
           <div class="row">
             <div class="col-sm">
 
@@ -441,7 +442,7 @@
                                     </div>
                                     <div class="col-sm-6 text-right">
                                         <p>
-                                            <span id="amountbeforeshippingtext" class="font-lato"><?php echo $total_percent; ?></span>
+                                            <span id="amountbeforeshippingtext" class="font-lato" onblur="isMoney(this.id);"><?php echo $total_percent; ?></span>
                                             <input type="hidden" class="form-control form-text" id="amountbeforeshipping" maxlength="32" value="0.00">
                                         </p>
                                     </div>
@@ -453,7 +454,7 @@
                                     <div class="col-sm-6 text-right">
                                         <p class="font-lato fw-600 fs-xmd m-0">
                                             <span id="amounttext"><?php echo $total_percent; ?></span>
-                                            <input type="hidden" class="form-control form-text" id="amount" maxlength="32" value="0.00">
+                                            <input type="hidden" class="form-control form-text" id="amount" onfocus="removeComma(this.id);" onblur="isMoney(this.id);" maxlength="32" value="0.00">
                                         </p>
                                     </div>
                                 </div>
@@ -563,10 +564,6 @@
 
     </div>
 
-
-    <input type="button" name="submit" id="fupForm2" class="form-control btn btn-primary" value="บันทึก"/>  
-
-    <!-- </form> -->
     </div>
 
     <div class="card shadow mb-4">
@@ -737,32 +734,15 @@
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
 <script type="text/javascript">
 
+
+   var percent = 0;
+    var calculatetype = 1;
+    var rowcount = 1;
+    var tutorialpage = 1;
+
   $(document).ready(function(e){
     // Submit form data via Ajax
     $("#fupForm1").on('submit', function(e){
-        // var location = window.location.href;
-
-    //      data_detail = new Array;
-    //     table = $('#table_detail').DataTable();
-    //     tb = table.rows().data();
-    //     $.each(tb, function(i, val){
-    //     var tmpt = new Object;
-    //   if(val[0] != ""){
-    //     tmpt.part_code = val[0];
-    //     tmpt.part_name = val[1];
-    //     tmpt.quantity = val[2];
-    //     tmpt.currency = val[3];
-    //     tmpt.ORIGIN = val[4];
-    //     tmpt.LOTMARK = val[5];
-    //     tmpt.add_po_no = val[6];
-    //     tmpt.DO_line_no = val[7];
-    //     tmpt.customer_order_no = val[8];
-    //     tmpt.remark = val[9];
-
-    //     data_detail.push(tmpt);
-    //   }
-    // })  
-        
         e.preventDefault();
         $.ajax({
             type: 'POST',
@@ -777,290 +757,16 @@
                 $('#fupForm').css("opacity",".5");
             },
             success: function(response){ 
-
-
             console.log(response);
 
-
-                // $('.statusMsg').html('');
-                // if(response.status == 1){
-                //     $('#fupForm')[0].reset();
-                //     // $('.statusMsg').html('<p class="alert alert-success">'+response.message+'</p>');
-                //     Swal.fire('Success!!!');
-
-                //     // window.location = location;
-                //     setTimeout(function(){
-                //       location.reload();
-                //     }, 2000);
-                //     return true;
-                // }else{
-                //     // $('.statusMsg').html('<p class="alert alert-danger">'+response.message+'</p>');
-                //     Swal.fire('Not Success!!!')
-                    
-                //     setTimeout(function(){
-                //       location.reload();
-                //     }, 2000);
-                //     return false;
-                // }
                 $('#fupForm').css("opacity","");
                 $(".submitBtn").removeAttr("disabled");
             }
         });
     });
 
-
-     // $("#fupForm2").on('submit', function(e){
-     //    e.preventDefault();
-     //    $.ajax({
-     //        type: 'POST',
-     //        url: '<?php echo base_url('order/add_new_order2');?>',
-     //        data: new FormData(this),
-     //        dataType: 'json',
-     //        contentType: false,
-     //        cache: false,
-     //        processData:false,
-     //        beforeSend: function(){
-     //            $('.submitBtn').attr("disabled","disabled");
-     //            $('#fupForm2').css("opacity",".5");
-
-     //        },
-     //        success: function(response){ 
-
-
-     //        console.log(response);
-
-
-                // $('.statusMsg').html('');
-                // if(response.status == 1){
-                //     $('#fupForm')[0].reset();
-                //     // $('.statusMsg').html('<p class="alert alert-success">'+response.message+'</p>');
-                //     Swal.fire('Success!!!');
-
-                //     // window.location = location;
-                //     setTimeout(function(){
-                //       location.reload();
-                //     }, 2000);
-                //     return true;
-                // }else{
-                //     // $('.statusMsg').html('<p class="alert alert-danger">'+response.message+'</p>');
-                //     Swal.fire('Not Success!!!')
-                    
-                //     setTimeout(function(){
-                //       location.reload();
-                //     }, 2000);
-                //     return false;
-                // }
-    //             $('#fupForm').css("opacity","");
-    //             $(".submitBtn").removeAttr("disabled");
-    //         }
-    //     });
-    // });
-
-
-    $('#fupForm2').on('click', function(){
-
-    // if($('#supplier').val() == ""){
-    //   alertify.alert('กรุณาเลือก Supplier ก่อน');
-    //   return false;
-    // }
-
-    // if($('#cust_id').val().trim() == ""){
-    //   alertify.alert('กรุณากรอก Dealer ก่อน');
-    //   return false;
-    // }
-
-    // if($('#po_no').val().trim() == ""){
-    //   alertify.alert('กรุณากรอก P/O ก่อน');
-    //   return false;
-    // }
-
-    // if($('#tb_details tbody tr.old_order').length == 0 && $('#tb_details tbody tr.new_order').length == 0){
-    //   alertify.alert('กรุณาเพิ่ม Detail ในตารางข้างล่าง');
-    //   return false;
-    // }
-
-    // if($('#tb_details tbody tr.new_order').length > 0){
-    //   $.each($('#tb_details tbody tr.new_order'), function(){
-    //     if($(this).find('input.part_id').val().trim() == ""){
-    //       $(this).remove();
-    //     }
-    //   });
-    // }
-
-    // alertify.confirm('Save?', function(e){
-      // if(e){
-        // var deliverID = $('#deliverID').val();
-        // var supplier = $('#supplier').val();
-        // var po = $('#po_no').val().trim();
-        // var custID = $('#cust_id').val();
-        // var return_flag = $('input[name="return"]:checked').val();
-        // console.log(return_flag);
-
-        // if(return_flag == ''|| return_flag == undefined){
-        //   alertify.alert('Please Select Return Data');
-        //   return false;
-        // }
-        
-        // if($('input[name="full_load"]:checked').length > 0){
-        //   var full_load_flag = 1;
-        // }else{
-        //   var full_load_flag = 0;
-        // }
-        // // console.log(full_load_flag); return false;
-        // var old_arr = new Array();
-        // if($('#tb_details tbody tr.old_order').length > 0){
-        //   $.each($('#tb_details tbody tr.old_order'), function(){
-        //     var tmp = new Object();
-
-        //     tmp.id = $(this).attr('data');
-        //     tmp.part_id = $(this).find('input.part_id').val();
-        //     tmp.box = $(this).find('input.boxs').val();
-        //     tmp.pcs = $(this).find('input.pcs').val();
-
-        //     old_arr.push(tmp);
-        //   });
-        // }
-
-//         productcount1
-// productcode1
-// productname1
-// productnumber1
-// productpricepernumber1
-// discountpernumber1
-// producttotalprice1
-
-
-// productcode
-// productname
-// amount
-// value
-// discount
-// total
-
-
-        var new_arr = new Array();
-        if($('#productrow tbody tr.new_order').length > 0){
-          $.each($('#productrow tbody tr.new_order'), function(){
-            var tmp = new Object();
-
-            $('#po_no').val()
-
-            // tmp.productcode = $(this).find('#productcode').val();
-            tmp.productcode = $(this).find('input.productcode').val();
-            tmp.productname = $(this).find('input.productname').val();
-            tmp.amount = $(this).find('input.amount').val();
-            tmp.value = $(this).find('input.value').val();
-            tmp.discount = $(this).find('input.discount').val();
-            tmp.total = $(this).find('input.total').val();
-
-            new_arr.push(tmp);
-          });
-        }
-
-        // var del_arr = new Array();
-        // if($('#tb_details tbody tr.del_order').length > 0){
-        //   $.each($('#tb_details tbody tr.del_order'), function(){
-        //     var tmp = new Object();
-
-        //     tmp.id = $(this).attr('data');
-
-        //     del_arr.push(tmp);
-        //   });
-        // }
-
-        $.ajax({
-          type: "POST",
-          dataType: "JSON",
-          url: "<?php echo base_url('order/add_new_order2');?>",
-          data: {
-            'new_arr': new_arr
-          },
-          success: function(res){
-            console.log(res);
-            if(res == 'success'){
-              // alertify.success('Save Success.');
-              // $('#myModal').modal('hide');
-              setTimeout(function(){
-                location.reload();
-              }, 2000);
-            }
-          },
-          error: function(err){
-            console.log(err);
-            // alertify.alert('Error!');
-            return false;
-          }
-        });
-      // }else{
-      //   return false;
-      // }
-    // });
-  });
-
-
-
-
-
-
-    // ตั้งค่าเริ่มต้นจำนวนถัดไปของ Textbox 
-   var counter = 2;
- 
-   // เมื่อคลิกปุ่ม Add Button 
-   jQuery("#addButton").click(function () {
-
-      // ตรวจสอบว่ามี Textbox มากกว่า 10 หรือไม่ ถ้ามากกว่า่ให้แจ้งกล่องข้อความ
-      // Textbox ไม่ให้เกิน 10
-      if(counter>10){
-         alert("Only 10 textboxes allow");
-         return false;
-      }   
-      
-      // ถ้า Textbox ยังไม่ถึง 10 ให้สร้าง Textbox ขึ้นมา
-      jQuery('#TextBoxesGroup').append('<div id="TextBoxDiv' + counter + '">');
-      jQuery('#TextBoxesGroup').append('<label>Textbox #' + counter + ' : </label>');
-      jQuery('#TextBoxesGroup').append('<input type="text" name="key[]" id="key[]" /></div>');
-      
-      // เพิ่มค่าของจำนวน Textbox 
-      counter++;
-   });
- 
-   // เมื่อคลิกปุ่ม Remove Button
-   jQuery("#removeButton").click(function () {
-      // ถ้าค่าจำนวนถัดไปของ Textbox เท่ากับ 1 ให้แจ้งข้อความเตือน
-      if(counter==1){
-         alert("No more textbox to remove");
-         return false;
-      }   
-      
-      // แต่ถ้าจำนวนยังไม่เท่ากับ 1 ให้ลดค่าลงไป 1
-      counter--;
- 
-      // ลบ Textbox โดยอ้างอิงจาก ID ของแท็ก Div ที่มี Textbox อยู่ภายใน
-      jQuery("#TextBoxDiv" + counter).remove();
-   });
-
-   // เมื่อคลิกปุ่ม Get TextBox Value
-   jQuery("#getButtonValue").click(function () {
-      
-      // สร้างตัวแปรสำหรับเก็บค่าของ TextBox แต่ละตัว
-      var msg = '';
-
-      // วนรอบเก็บค่าของ TextBox แต่ละตัวไว้ที่ตัวแปร
-      for(i=1; i<counter; i++){
-         msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
-      }
-
-      // แสดงค่าที่อยู่ใน TextBox แต่ละตัว
-      alert(msg);
-   });
-
-
-
-
-
-
-
 });  
+
 
 $(function(){
   $('#myTable').dataTable({
@@ -1076,6 +782,26 @@ $(function(){
   });
 
 });
+
+
+      $("#productnumber1").change(function (e) {
+
+        // $("#shipping_method_cart").empty();
+
+        var productnumber = parseInt($(this).val());
+        
+            //  if (country_id == thai_id) {
+            //     $("#shipping_method_cart").val('ems');
+            // } else {
+            //     $("#shipping_method_cart").val('economy');
+            // }
+            // productpricepernumber
+          var productprice = $(this).find('input').attr("price");
+
+            console.log('productnumber='+productnumber+',productprice='+productprice);
+
+            // $("#shipping_method_cart").trigger("change");
+    });
 
 
 
@@ -1176,15 +902,15 @@ $(function(){
 
         cell0.innerHTML = "<button type=\"button\" id=\"productcount"+rowcount+"\" class=\"btn btn-primary btn-sm\" data-toggle=\"modal\" data-target=\".selectproduct\"><span id=\"productcount1\" class=\"sr-only\"></span>เลือก</button>";
 
-        cell1.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control productcode\" name=\"q\" type=\"search\" id=\"productcode"+rowcount+"\" maxlength=\"32\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"hideUnittext('"+rowcount+"',event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productcode',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div><input type='hidden' id='productid"+rowcount+"' value='0'/> <input type=\"hidden\" id=\"isbundles" + rowcount + "\" value=\"0-0\" />";
+        cell1.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control productcode\" type=\"search\" id=\"productcode"+rowcount+"\" name=\"productcode[]\" maxlength=\"32\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"hideUnittext('"+rowcount+"',event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productcode',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div><input type='hidden' id='productid"+rowcount+"' value='0'/> <input type=\"hidden\" id=\"isbundles" + rowcount + "\" value=\"0-0\" />";
 
-        cell2.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control productname\" name=\"q\" type=\"text\" id=\"productname"+rowcount+"\" maxlength=\"256\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"setNormalTextbox(this.id);setNormalTextbox('td'+this.id);hideUnittext(\""+rowcount+"\",event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productname',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div>";
+        cell2.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control productname\" type=\"text\" id=\"productname"+rowcount+"\" name=\"productname[]\" maxlength=\"256\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"setNormalTextbox(this.id);setNormalTextbox('td'+this.id);hideUnittext(\""+rowcount+"\",event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productname',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div>";
 
-        cell3.innerHTML = "<div class=\"input-group form-input-group spinner\"><input type=\"number\" placeholder='0.00' class=\"form-control amount\" id=\"productnumber"+rowcount+"\" maxlength=\"32\" onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+")\" value=\"\" onkeyup=\"setNormalTextbox(this.id);\" onkeydown=\"gotoNext("+rowcount+",'productnumber',event.keyCode);\"></div>";
+        cell3.innerHTML = "<div class=\"input-group form-input-group spinner\"><input type=\"number\" placeholder='0.00' class=\"form-control amount\" id=\"productnumber"+rowcount+"\" name=\"productnumber[]\" maxlength=\"32\" onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+")\" value=\"\" onkeyup=\"setNormalTextbox(this.id);\" onkeydown=\"gotoNext("+rowcount+",'productnumber',event.keyCode);\"></div>";
 
-        cell4.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato value\" id='productpricepernumber"+rowcount+ "' placeholder='0.00' maxlength='32' onfocus=\"removeComma(this.id);\" onblur=\"updateTotalPrice("+rowcount+");\" onkeyup='setNormalTextbox(this.id);' onkeydown='gotoNext("+rowcount+",\"productpricepernumber\",event.keyCode);' />";
+        cell4.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato value\" id=\"productpricepernumber"+rowcount+"\" name=\"productpricepernumber[]\" placeholder='0.00' maxlength='32' onfocus=\"removeComma(this.id);\" onblur=\"updateTotalPrice("+rowcount+");\" onkeyup='setNormalTextbox(this.id);' onkeydown='gotoNext("+rowcount+",\"productpricepernumber\",event.keyCode);' />";
 
-        cell5.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato discount\" id='discountpernumber"+rowcount+"' placeholder=\"จำนวนเงิน หรือ %\" maxlength='32' onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+");\" onkeydown='gotoNext("+rowcount+",\"discountpernumber\",event.keyCode);' /><span id='unittext"+rowcount+"' class='unittextspan spantruncatenoblock fs-xs grey-400 d-block text-right' style=\"display:none;\"></span><span id='serialnotext"+rowcount+"' style=\"display: none;\"><img src='/Content/themes/base/images/serialicon.png' width=20/></span><input type=\"hidden\" id='serialnoid"+rowcount+"' value='0' />";
+        cell5.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato discount\" id=\"discountpernumber"+rowcount+"\" name=\"discountpernumber[]\" placeholder=\"จำนวนเงิน หรือ %\" maxlength='32' onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+");\" onkeydown='gotoNext("+rowcount+",\"discountpernumber\",event.keyCode);' /><span id='unittext"+rowcount+"' class='unittextspan spantruncatenoblock fs-xs grey-400 d-block text-right' style=\"display:none;\"></span><span id='serialnotext"+rowcount+"' style=\"display: none;\"><img src='/Content/themes/base/images/serialicon.png' width=20/></span><input type=\"hidden\" id='serialnoid"+rowcount+"' value='0' />";
 
         cell6.innerHTML = "<p id='totalprice" + rowcount + "' class='form-text--transparent font-lato total'>0.00</p><input type='hidden' id='producttotalprice" + rowcount + "' value='0' />";
         
@@ -1198,13 +924,20 @@ $(function(){
         cell4.className = "value";
         cell5.className = "discount";
         cell6.className = "total text-right";
-        cell7.className = "action";
+        cell7.className = "action text-center";
 
         // updateAutocomplete(rowcount);
+
+        updateTotalPrice(rowcount);
+
     }
     function deleteRow(id) {
+
+
         var table = document.getElementById("productrow");
         var rowid = 'prow' + id;
+
+        console.log('rowid='+rowid);
         //var row = document.getElementById(rowid);
         //row.parentNode.removeChild(row);
         var row = document.getElementById(rowid);
@@ -1226,269 +959,313 @@ $(function(){
                 }
                 // document.getElementById('productcount' + idTmp).innerHTML = i;
             }
-            autocalculate();
+            // autocalculate();
         }
     }
 
-    function updateAutocomplete(tmpindex)
+    // function updateAutocomplete(tmpindex)
+    // {
+
+    //   console.log('tmpindex ='+tmpindex)
+    //     $("#productname" + tmpindex).typeahead({
+    //         minLength: 2,
+    //         //cache: true,
+    //         dynamic: true,
+    //         filter: false,
+    //         template: '<span>' +
+    //        '<span>{{label}}</span>' + "</span>",
+    //         source: {
+    //             ajax:
+    //             function (query) {
+    //                 var subtransactiontype = document.getElementById("subtransactiontype").value;
+    //                 var tmpisbundle = 0;
+    //                 if (subtransactiontype == 0)
+    //                     tmpisbundle = -1;
+    //                         return {
+    //                             type: "POST",
+    //                             url: '/Sell/getProductAutoComplete',
+    //                             data: {
+    //                                 producttype: 1,
+    //                                 term: encodeURI(query),
+    //                                 customername: encodeURI($('#customername').val()),
+    //                                 customercode: encodeURI($('#customercode').val()),
+    //                                 customeridnumber: encodeURI($('#customeridnumber').val()),
+    //                                 customeremail: encodeURI($('#customeremail').val()),
+    //                                 customerphone: encodeURI($('#customerphone').val()),
+    //                                 customermobile: encodeURI($('#customermobile').val()),
+    //                                 customerfax: encodeURI($('#customerfax').val()),
+    //                                 //customeraddress: encodeURI($('#customeraddress').val()),
+    //                                 isbundle: tmpisbundle
+    //                             },
+    //                             callback: {
+    //                                 done: function (data) {
+    //                                     return data;
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+    //         },
+    //          display: ["name"],
+    //          cache: false,
+    //          //emptyTemplate: "ไม่พบข้อมูล {{query}}",
+    //          callback: {
+    //              onClick: function (node, a, item, event) {
+    //                  $("#productcode" + tmpindex).val(item.code);
+    //                  $("#productnumber" + tmpindex).val("1");
+    //                  var subtransactiontype = document.getElementById("subtransactiontype").value;
+    //                  if(subtransactiontype==0)
+    //                  {
+    //                      $("#productpricepernumber" + tmpindex).val(item.sellprice);
+    //                      $("#discountpernumber" + tmpindex).val(item.discounttext);
+    //                  }
+    //                  else
+    //                      $("#productpricepernumber" + tmpindex).val(item.purchaseprice);
+    //                  updateTotalPrice(tmpindex);
+    //                  setNormalTextbox("productnumber"+tmpindex);
+    //                  setNormalTextbox("productpricepernumber"+tmpindex);
+    //                  if(item.unittext==null || item.unittext.trim().length==0)
+    //                  {
+    //                      $("#unittext" + tmpindex).html("");
+    //                      $("#unittext" + tmpindex).hide();
+    //                  }
+    //                  else
+    //                  {
+    //                      $("#unittext" + tmpindex).html(item.unittext);
+    //                      $('#unittext' + tmpindex).attr('title', item.unittext);
+    //                      $("#unittext" + tmpindex).show();
+    //                  }
+    //                  $("#serialnoid" + tmpindex).val(0);
+    //                  $("#serialnotext" + tmpindex).hide();
+    //                  setTimeout(function(){  $("#productname" + tmpindex).val(item.name);
+    //                      setNormalTextbox("productname"+tmpindex);
+    //                      setNormalTextbox("tdproductname"+tmpindex); }, 50);
+    //                  autocompleteshow=false;
+
+    //                  if (item.isbundle == 1)
+    //                  {
+    //                      let bundleFormat = "1-" + item.id;
+    //                      document.getElementById("productname" + tmpindex).disabled = true;
+    //                      document.getElementById("productcode" + tmpindex).disabled = true;
+    //                      $("#isbundles" + tmpindex).val(bundleFormat);
+    //                  }
+    //              },
+    //              onSendRequest: function (node, query) {
+    //              },
+    //              onReceiveRequest: function (node, query) {
+    //              },
+    //              onResult: function (node, query, obj, objCount) {
+    //                  if(objCount>0)
+    //                      autocompleteshow=true;
+    //              }
+    //          }
+    //      });
+    //     $("#productcode" + tmpindex).typeahead({
+    //         minLength: 2,
+    //         //cache: true,
+    //         dynamic: true,
+    //         filter: false,
+    //         template: '<span>' +
+    //        '<span>{{label}}</span>' + "</span>",
+    //         source: {
+    //             ajax:
+    //             function (query) {
+    //                 var subtransactiontype = document.getElementById("subtransactiontype").value;
+    //                 var tmpisbundle = 0;
+    //                 if (subtransactiontype == 0)
+    //                     tmpisbundle = -1;
+    //                         return {
+    //                             type: "POST",
+    //                             url: '/Sell/getProductAutoComplete',
+    //                             data: {
+    //                                 producttype: 0,
+    //                                 term: encodeURI(query),
+    //                                 customername: encodeURI($('#customername').val()),
+    //                                 customercode: encodeURI($('#customercode').val()),
+    //                                 customeridnumber: encodeURI($('#customeridnumber').val()),
+    //                                 customeremail: encodeURI($('#customeremail').val()),
+    //                                 customerphone: encodeURI($('#customerphone').val()),
+    //                                 customermobile: encodeURI($('#customermobile').val()),
+    //                                 customerfax: encodeURI($('#customerfax').val()),
+    //                                 //customeraddress: encodeURI($('#customeraddress').val()),
+    //                                 isbundle: tmpisbundle
+    //                             },
+    //                             callback: {
+    //                                 done: function (data) {
+    //                                     return data;
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+    //         },
+    //          display: ["code"],
+    //          cache: false,
+    //          cancelButton: false,
+    //          //emptyTemplate: "ไม่พบข้อมูล {{query}}",
+    //          callback: {
+    //              onClick: function (node, a, item, event) {
+    //                  $("#productname" + tmpindex).val(item.name);
+    //                  $("#productnumber" + tmpindex).val("1");
+    //                  var subtransactiontype = document.getElementById("subtransactiontype").value;
+    //                  if(subtransactiontype==0)
+    //                  {
+    //                      $("#productpricepernumber" + tmpindex).val(item.sellprice);
+    //                      $("#discountpernumber" + tmpindex).val(item.discounttext);
+    //                  }
+    //                  else
+    //                      $("#productpricepernumber" + tmpindex).val(item.purchaseprice);
+    //                  updateTotalPrice(tmpindex);
+    //                  setNormalTextbox("productname"+tmpindex);
+    //                  setNormalTextbox("tdproductname"+tmpindex);
+    //                  setNormalTextbox("productnumber"+tmpindex);
+    //                  setNormalTextbox("productpricepernumber"+tmpindex);
+    //                  if(item.unittext==null || item.unittext.trim().length==0)
+    //                  {
+    //                      $("#unittext" + tmpindex).html("");
+    //                      $("#unittext" + tmpindex).hide();
+    //                  }
+    //                  else
+    //                  {
+    //                      $("#unittext" + tmpindex).html(item.unittext);
+    //                      $('#unittext' + tmpindex).attr('title', item.unittext);
+    //                      $("#unittext" + tmpindex).show();
+    //                  }
+    //                  $("#serialnoid" + tmpindex).val(0);
+    //                  $("#serialnotext" + tmpindex).hide();
+    //                  setTimeout(function(){  $("#productcode" + tmpindex).val(item.code); }, 50);
+    //                  autocompleteshow=false;
+
+    //                  if (item.isbundle == 1)
+    //                  {
+    //                      let bundleFormat = "1-" + item.id;
+    //                      document.getElementById("productname" + tmpindex).disabled = true;
+    //                      document.getElementById("productcode" + tmpindex).disabled = true;
+    //                      $("#isbundles" + tmpindex).val(bundleFormat);
+    //                  }
+    //              },
+    //              onSendRequest: function (node, query) {
+    //              },
+    //              onReceiveRequest: function (node, query) {
+    //              },
+    //              onPopulateSource: function (node, data, group, path) {
+    //                 if (data == null)
+    //                     return null;
+    //                  if(data.length>0)
+    //                      autocompleteshow=true;
+    //                  if(data.length==1)
+    //                  {
+    //                      var item=data[0];
+    //                      if(item.barcodeauto)
+    //                      {
+    //                          autocompleteshow = false;
+    //                          var isserial = false;
+    //                          if (item.serialnoid != null && item.serialnoid > 0) {
+    //                              isserial = true;
+    //                          }
+    //                          var price = item.sellprice;
+    //                          if (subtransactiontype == 1)
+    //                              price = item.purchaseprice;
+    //                          var tmprow = findRow(item.code, item.name, price);
+
+    //                          if (tmprow == 0 || isserial) {
+    //                              $("#productname" + tmpindex).val(item.name);
+    //                              $("#productnumber" + tmpindex).val("1");
+    //                              var subtransactiontype = document.getElementById("subtransactiontype").value;
+    //                              if (subtransactiontype == 0) {
+    //                                  $("#productpricepernumber" + tmpindex).val(item.sellprice);
+    //                                  $("#discountpernumber" + tmpindex).val(item.discounttext);
+    //                              }
+    //                              else
+    //                                  $("#productpricepernumber" + tmpindex).val(item.purchaseprice);
+    //                              updateTotalPrice(tmpindex);
+    //                              setNormalTextbox("productname" + tmpindex);
+    //                              setNormalTextbox("tdproductname" + tmpindex);
+    //                              setNormalTextbox("productnumber" + tmpindex);
+    //                              setNormalTextbox("productpricepernumber" + tmpindex);
+    //                              if (item.unittext == null || item.unittext.trim().length == 0) {
+    //                                  $("#unittext" + tmpindex).html("");
+    //                                  $("#unittext" + tmpindex).hide();
+    //                              }
+    //                              else {
+    //                                  $("#unittext" + tmpindex).html(item.unittext);
+    //                                  $('#unittext' + tmpindex).attr('title', item.unittext);
+    //                                  $("#unittext" + tmpindex).show();
+    //                              }
+    //                              if (item.serialnoid != null && item.serialnoid > 0) {
+    //                                  $("#serialnoid" + tmpindex).val(item.serialnoid);
+    //                                  $('#serialnotext' + tmpindex).attr('title', item.serialname);
+    //                                  $("#serialnotext" + tmpindex).show();
+    //                                  $("#unittext" + tmpindex).html("");
+    //                                  $("#unittext" + tmpindex).hide();
+    //                              }
+    //                              else {
+    //                                  $("#serialnoid" + tmpindex).val(0);
+    //                                  $("#serialnotext" + tmpindex).hide();
+    //                              }
+    //                              $("#productcode" + tmpindex).val(item.code);
+    //                              if (!linestatus)
+    //                                 gotoNext(tmpindex, 'productcode', 13);
+    //                          }
+    //                          else {
+    //                              $("#productcode" + tmpindex).val("");
+    //                              plusProduct(tmprow);
+    //                          }
+
+    //                          return null;
+    //                      }
+    //                  }
+    //                  return data;
+    //              },
+    //              onResult: function (node, query, obj, objCount) {
+
+    //              }
+    //          }
+    //      });
+
+    // }
+
+    function updateTotalPriceNotUpdateTotal(tmpindex)
     {
-        $("#productname" + tmpindex).typeahead({
-            minLength: 2,
-            //cache: true,
-            dynamic: true,
-            filter: false,
-            template: '<span>' +
-           '<span>{{label}}</span>' + "</span>",
-            source: {
-                ajax:
-                function (query) {
-                    var subtransactiontype = document.getElementById("subtransactiontype").value;
-                    var tmpisbundle = 0;
-                    if (subtransactiontype == 0)
-                        tmpisbundle = -1;
-                            return {
-                                type: "POST",
-                                url: '/Sell/getProductAutoComplete',
-                                data: {
-                                    producttype: 1,
-                                    term: encodeURI(query),
-                                    customername: encodeURI($('#customername').val()),
-                                    customercode: encodeURI($('#customercode').val()),
-                                    customeridnumber: encodeURI($('#customeridnumber').val()),
-                                    customeremail: encodeURI($('#customeremail').val()),
-                                    customerphone: encodeURI($('#customerphone').val()),
-                                    customermobile: encodeURI($('#customermobile').val()),
-                                    customerfax: encodeURI($('#customerfax').val()),
-                                    //customeraddress: encodeURI($('#customeraddress').val()),
-                                    isbundle: tmpisbundle
-                                },
-                                callback: {
-                                    done: function (data) {
-                                        return data;
-                                    }
-                                }
-                            }
-                        }
-            },
-             display: ["name"],
-             cache: false,
-             //emptyTemplate: "ไม่พบข้อมูล {{query}}",
-             callback: {
-                 onClick: function (node, a, item, event) {
-                     $("#productcode" + tmpindex).val(item.code);
-                     $("#productnumber" + tmpindex).val("1");
-                     var subtransactiontype = document.getElementById("subtransactiontype").value;
-                     if(subtransactiontype==0)
-                     {
-                         $("#productpricepernumber" + tmpindex).val(item.sellprice);
-                         $("#discountpernumber" + tmpindex).val(item.discounttext);
-                     }
-                     else
-                         $("#productpricepernumber" + tmpindex).val(item.purchaseprice);
-                     updateTotalPrice(tmpindex);
-                     setNormalTextbox("productnumber"+tmpindex);
-                     setNormalTextbox("productpricepernumber"+tmpindex);
-                     if(item.unittext==null || item.unittext.trim().length==0)
-                     {
-                         $("#unittext" + tmpindex).html("");
-                         $("#unittext" + tmpindex).hide();
-                     }
-                     else
-                     {
-                         $("#unittext" + tmpindex).html(item.unittext);
-                         $('#unittext' + tmpindex).attr('title', item.unittext);
-                         $("#unittext" + tmpindex).show();
-                     }
-                     $("#serialnoid" + tmpindex).val(0);
-                     $("#serialnotext" + tmpindex).hide();
-                     setTimeout(function(){  $("#productname" + tmpindex).val(item.name);
-                         setNormalTextbox("productname"+tmpindex);
-                         setNormalTextbox("tdproductname"+tmpindex); }, 50);
-                     autocompleteshow=false;
 
-                     if (item.isbundle == 1)
-                     {
-                         let bundleFormat = "1-" + item.id;
-                         document.getElementById("productname" + tmpindex).disabled = true;
-                         document.getElementById("productcode" + tmpindex).disabled = true;
-                         $("#isbundles" + tmpindex).val(bundleFormat);
-                     }
-                 },
-                 onSendRequest: function (node, query) {
-                 },
-                 onReceiveRequest: function (node, query) {
-                 },
-                 onResult: function (node, query, obj, objCount) {
-                     if(objCount>0)
-                         autocompleteshow=true;
-                 }
-             }
-         });
-        $("#productcode" + tmpindex).typeahead({
-            minLength: 2,
-            //cache: true,
-            dynamic: true,
-            filter: false,
-            template: '<span>' +
-           '<span>{{label}}</span>' + "</span>",
-            source: {
-                ajax:
-                function (query) {
-                    var subtransactiontype = document.getElementById("subtransactiontype").value;
-                    var tmpisbundle = 0;
-                    if (subtransactiontype == 0)
-                        tmpisbundle = -1;
-                            return {
-                                type: "POST",
-                                url: '/Sell/getProductAutoComplete',
-                                data: {
-                                    producttype: 0,
-                                    term: encodeURI(query),
-                                    customername: encodeURI($('#customername').val()),
-                                    customercode: encodeURI($('#customercode').val()),
-                                    customeridnumber: encodeURI($('#customeridnumber').val()),
-                                    customeremail: encodeURI($('#customeremail').val()),
-                                    customerphone: encodeURI($('#customerphone').val()),
-                                    customermobile: encodeURI($('#customermobile').val()),
-                                    customerfax: encodeURI($('#customerfax').val()),
-                                    //customeraddress: encodeURI($('#customeraddress').val()),
-                                    isbundle: tmpisbundle
-                                },
-                                callback: {
-                                    done: function (data) {
-                                        return data;
-                                    }
-                                }
-                            }
-                        }
-            },
-             display: ["code"],
-             cache: false,
-             cancelButton: false,
-             //emptyTemplate: "ไม่พบข้อมูล {{query}}",
-             callback: {
-                 onClick: function (node, a, item, event) {
-                     $("#productname" + tmpindex).val(item.name);
-                     $("#productnumber" + tmpindex).val("1");
-                     var subtransactiontype = document.getElementById("subtransactiontype").value;
-                     if(subtransactiontype==0)
-                     {
-                         $("#productpricepernumber" + tmpindex).val(item.sellprice);
-                         $("#discountpernumber" + tmpindex).val(item.discounttext);
-                     }
-                     else
-                         $("#productpricepernumber" + tmpindex).val(item.purchaseprice);
-                     updateTotalPrice(tmpindex);
-                     setNormalTextbox("productname"+tmpindex);
-                     setNormalTextbox("tdproductname"+tmpindex);
-                     setNormalTextbox("productnumber"+tmpindex);
-                     setNormalTextbox("productpricepernumber"+tmpindex);
-                     if(item.unittext==null || item.unittext.trim().length==0)
-                     {
-                         $("#unittext" + tmpindex).html("");
-                         $("#unittext" + tmpindex).hide();
-                     }
-                     else
-                     {
-                         $("#unittext" + tmpindex).html(item.unittext);
-                         $('#unittext' + tmpindex).attr('title', item.unittext);
-                         $("#unittext" + tmpindex).show();
-                     }
-                     $("#serialnoid" + tmpindex).val(0);
-                     $("#serialnotext" + tmpindex).hide();
-                     setTimeout(function(){  $("#productcode" + tmpindex).val(item.code); }, 50);
-                     autocompleteshow=false;
+        
 
-                     if (item.isbundle == 1)
-                     {
-                         let bundleFormat = "1-" + item.id;
-                         document.getElementById("productname" + tmpindex).disabled = true;
-                         document.getElementById("productcode" + tmpindex).disabled = true;
-                         $("#isbundles" + tmpindex).val(bundleFormat);
-                     }
-                 },
-                 onSendRequest: function (node, query) {
-                 },
-                 onReceiveRequest: function (node, query) {
-                 },
-                 onPopulateSource: function (node, data, group, path) {
-                    if (data == null)
-                        return null;
-                     if(data.length>0)
-                         autocompleteshow=true;
-                     if(data.length==1)
-                     {
-                         var item=data[0];
-                         if(item.barcodeauto)
-                         {
-                             autocompleteshow = false;
-                             var isserial = false;
-                             if (item.serialnoid != null && item.serialnoid > 0) {
-                                 isserial = true;
-                             }
-                             var price = item.sellprice;
-                             if (subtransactiontype == 1)
-                                 price = item.purchaseprice;
-                             var tmprow = findRow(item.code, item.name, price);
+        var number = ($("#productnumber" + tmpindex).val());
+        var pricepernumber = ($("#productpricepernumber" + tmpindex).val());
+        var discountpernumber = ($("#discountpernumber" + tmpindex).val());
 
-                             if (tmprow == 0 || isserial) {
-                                 $("#productname" + tmpindex).val(item.name);
-                                 $("#productnumber" + tmpindex).val("1");
-                                 var subtransactiontype = document.getElementById("subtransactiontype").value;
-                                 if (subtransactiontype == 0) {
-                                     $("#productpricepernumber" + tmpindex).val(item.sellprice);
-                                     $("#discountpernumber" + tmpindex).val(item.discounttext);
-                                 }
-                                 else
-                                     $("#productpricepernumber" + tmpindex).val(item.purchaseprice);
-                                 updateTotalPrice(tmpindex);
-                                 setNormalTextbox("productname" + tmpindex);
-                                 setNormalTextbox("tdproductname" + tmpindex);
-                                 setNormalTextbox("productnumber" + tmpindex);
-                                 setNormalTextbox("productpricepernumber" + tmpindex);
-                                 if (item.unittext == null || item.unittext.trim().length == 0) {
-                                     $("#unittext" + tmpindex).html("");
-                                     $("#unittext" + tmpindex).hide();
-                                 }
-                                 else {
-                                     $("#unittext" + tmpindex).html(item.unittext);
-                                     $('#unittext' + tmpindex).attr('title', item.unittext);
-                                     $("#unittext" + tmpindex).show();
-                                 }
-                                 if (item.serialnoid != null && item.serialnoid > 0) {
-                                     $("#serialnoid" + tmpindex).val(item.serialnoid);
-                                     $('#serialnotext' + tmpindex).attr('title', item.serialname);
-                                     $("#serialnotext" + tmpindex).show();
-                                     $("#unittext" + tmpindex).html("");
-                                     $("#unittext" + tmpindex).hide();
-                                 }
-                                 else {
-                                     $("#serialnoid" + tmpindex).val(0);
-                                     $("#serialnotext" + tmpindex).hide();
-                                 }
-                                 $("#productcode" + tmpindex).val(item.code);
-                                 if (!linestatus)
-                                    gotoNext(tmpindex, 'productcode', 13);
-                             }
-                             else {
-                                 $("#productcode" + tmpindex).val("");
-                                 plusProduct(tmprow);
-                             }
+        // console.log('number ='+number+',pricepernumber ='+pricepernumber+'discountpernumber='+discountpernumber);
 
-                             return null;
-                         }
-                     }
-                     return data;
-                 },
-                 onResult: function (node, query, obj, objCount) {
+        // var number = toremoveComma($("#productnumber" + tmpindex).val());
+        // var pricepernumber = toremoveComma($("#productpricepernumber" + tmpindex).val());
+        // var discountpernumber = toremoveComma($("#discountpernumber" + tmpindex).val());
+        if (discountpernumber.indexOf("%") > -1) {
+            discountpernumber = discountpernumber.replace(/%/g, "");
+            discountpernumber = pricepernumber * discountpernumber / 100;
+        }
+        var totalprice = number * (pricepernumber-discountpernumber);
+        if(calculatetype==1)
+        {
+            totalprice = totalprice/(1+(percent/100));
+        }
 
-                 }
-             }
-         });
+        // console.log('totalprice ='+totalprice);
+
+
+        // $("#totalprice" + tmpindex).html(totalprice.formatMoney(4));
+        $("#totalprice" + tmpindex).html(totalprice);
+        $("#producttotalprice" + tmpindex).val(totalprice);
+
+    }
+    function updateTotalPrice(tmpindex)
+    {
+
+
+        updateTotalPriceNotUpdateTotal(tmpindex);
+        // changeShippingFee();
+        autocalculate();
 
     }
 
-        function autocalculate()
+    function autocalculate()
     {
         var stateshippingvat = document.getElementById("isshippingchk").checked;
         var isshippingvat = 0;
@@ -1512,14 +1289,14 @@ $(function(){
             while (!document.getElementById('productnumber' + i)) {
                 i++;
             }
-            isMoney("productnumber" + i);
-            isMoney("productpricepernumber" + i);
-            isPercent("discountpernumber" + i);
-            isMoney("producttotalprice" + i);
+            // isMoney("productnumber" + i);
+            // isMoney("productpricepernumber" + i);
+            // isPercent("discountpernumber" + i);
+            // isMoney("producttotalprice" + i);
         }
 
-        isMoney("shippingamount");
-        isPercent("discounttext");
+        // isMoney("shippingamount");
+        // isPercent("discounttext");
         i = 0;
         for (var j = 1; j < rCount; j++)
         {
@@ -1527,11 +1304,15 @@ $(function(){
             while (!document.getElementById('producttotalprice' + i)) {
                 i++;
             }
-            var tmp = toremoveComma($("#producttotalprice" + i).val());
+            // var tmp = toremoveComma($("#producttotalprice" + i).val());
+            var tmp = ($("#producttotalprice" + i).val());
             total += Number(tmp);
         }
-        var tmpshipping = toremoveComma($("#shippingamount").val());
-        var discounttext = toremoveComma($("#discounttext").val());
+        // var tmpshipping = toremoveComma($("#shippingamount").val());
+        // var discounttext = toremoveComma($("#discounttext").val());
+
+        var tmpshipping = ($("#shippingamount").val());
+        var discounttext = ($("#discounttext").val());
         if (discounttext.indexOf("%") > -1) {
             discounttext = discounttext.replace(/%/g, "");
             discounttext = total * discounttext / 100;
@@ -1594,12 +1375,12 @@ $(function(){
 
         //change text
 
-        isMoney2("vatamount");
-        isMoney2("amount");
-        isMoney2("amountbeforeshipping");
-        isMoney2("amount2");
-        isMoney2("whtamount");
-        isMoney2("paymentwhtamount");
+        // isMoney2("vatamount");
+        // isMoney2("amount");
+        // isMoney2("amountbeforeshipping");
+        // isMoney2("amount2");
+        // isMoney2("whtamount");
+        // isMoney2("paymentwhtamount");
         $("#amounttext").html($("#amount").val());
         $("#amountbeforeshippingtext").html($("#amountbeforeshipping").val());
         $("#amount2text").html($("#amount2").val());

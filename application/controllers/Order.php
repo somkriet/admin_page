@@ -86,6 +86,8 @@ class Order extends CI_Controller {
 
     public function add_new_order(){
 
+        // print_r($_POST); exit();
+
         $order_date = $this->input->post('order_date');
         $name_customer = $this->input->post('name_customer');
         $name_socail = $this->input->post('name_socail');
@@ -133,9 +135,7 @@ class Order extends CI_Controller {
                                               FROM order_table 
                                               WHERE SUBSTR(order_id,3,8) = '".$order_datecheck."'
                                               AND delete_flag = 1";
-            // $check_order = "SELECT SUBSTR(order_id,11,13) AS myorder_id 
-            //                                   FROM order_detail 
-            //                                   WHERE SUBSTR(order_id,3,8) = '".$order_datecheck."'";
+            
             $data['get_check_order'] = $this->order_model->show_all_order($check_order);
 
             $order_id = "OR".$order_datecheck.$this->add_index($data['get_check_order']);
@@ -177,31 +177,67 @@ class Order extends CI_Controller {
             $data['order_add'] = $this->order_model->add_new_order($insert);
 
 
-            $insert_detail = "INSERT INTO order_details (
-                                     order_id,
-                                     productID,
-                                     price,
-                                     quantity,
-                                     discount,
-                                     total,
-                                     IDSKU,
-                                     size,
-                                     color,
-                                     location
-                                    ) VALUES (
-                                    '".$order_id."',
-                                    '".$productcode1."',
-                                    '".$productpricepernumber1."',
-                                    '".$productnumber1."',
-                                    '".$discountpernumber1."',
-                                    '".$producttotalprice1."',
-                                    '1221',
-                                    'L',
-                                    'blue',
-                                    'A001'
-                                    )"; 
+             foreach($_POST['productcode'] as $key_data=>$value_data){// วนลูป จัดการกับค่า id หลัก
+                    // if($value_data==""){ // ถ้าไม่มีค่า แสดงว่า จะเป็นการเพิ่มข้อมูลใหม่
+
+
+                    // print_r($value_data); exit();
+                  
+                            $insert_detail = "INSERT INTO order_details (
+                                                 order_id,
+                                                 productID,
+                                                 price,
+                                                 quantity,
+                                                 discount,
+                                                 total,
+                                                 IDSKU,
+                                                 size,
+                                                 color,
+                                                 location
+                            )
+                            VALUES (
+                                                '".$order_id."',
+                                                '".$_POST['productcode'][$key_data]."',
+                                                '".$_POST['productpricepernumber'][$key_data]."',
+                                                '".$_POST['productnumber'][$key_data]."',
+                                                '".$_POST['discountpernumber'][$key_data]."',
+                                                '123',
+                                                '1221',
+                                                'L',
+                                                'blue',
+                                                'A001'
+                            )";
 
             $data['order_add_detail'] = $this->order_model->add_new_order($insert_detail);
+                
+            }
+
+
+            // $insert_detail = "INSERT INTO order_details (
+            //                          order_id,
+            //                          productID,
+            //                          price,
+            //                          quantity,
+            //                          discount,
+            //                          total,
+            //                          IDSKU,
+            //                          size,
+            //                          color,
+            //                          location
+            //                         ) VALUES (
+            //                         '".$order_id."',
+            //                         '".$productcode1."',
+            //                         '".$productpricepernumber1."',
+            //                         '".$productnumber1."',
+            //                         '".$discountpernumber1."',
+            //                         '".$producttotalprice1."',
+            //                         '1221',
+            //                         'L',
+            //                         'blue',
+            //                         'A001'
+            //                         )"; 
+
+            // $data['order_add_detail'] = $this->order_model->add_new_order($insert_detail);
 
             if($insert){ 
                 $data['status'] = 1; 
