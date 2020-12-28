@@ -332,7 +332,7 @@
                                             </td>
                                             <td class="text-right">
                                                 <p id="totalprice1" class="form-text--transparent font-lato">0.00</p>
-                                                <input type="hidden" class="total" id="producttotalprice1" name="producttotalprice[]" value="0.00">
+                                                <input type="hidden" id="producttotalprice1"  name="producttotalprice[]" value="0.00">
                                             </td>
                                             <td class="action text-center">
                                                 <a href="javascript:deleteRow(1);" class="d-inline-block btn-etc mt-2">
@@ -407,10 +407,12 @@
                                                 ค่าส่ง
                                                 <span class="help-text">(ที่เรียกเก็บจากลูกค้า)</span>
                                             </label>
-                                            <label class="d-block fs-sm"><input type="checkbox" onclick="autocalculate()" id="isshippingchk" disabled="disabled"> ภาษีมูลค่าเพิ่ม</label>
+                                            <!-- <label class="d-block fs-sm"><input type="checkbox" onclick="autocalculate()" id="isshippingchk"> ภาษีมูลค่าเพิ่ม</label> -->
+
+                                             <!-- disabled="disabled" -->
                                         </div>
                                         <div class="col-sm-6 text-right">
-                                            <input type="text" class="form-control form-text pull-right text-right font-lato" id="shippingamount" placeholder="0.00" onblur="autocalculate()" maxlength="32" >
+                                            <input type="text" class="form-control form-text pull-right text-right font-lato" id="shippingamount" name="shippingamount" placeholder="0.00" onblur="autocalculate()" maxlength="32" >
                                         </div>
                                     </div>
                                 </div>
@@ -421,7 +423,7 @@
                                     <div class="col-sm-6 text-right">
                                         <p>
                                             <span id="amount2text" class="font-lato"><?php echo $total_percent; ?></span>
-                                            <input type="hidden" id="amount2" value="0.00">
+                                            <input type="hidden" id="amount2" name="amount2" value="0.00">
                                         </p>
                                     </div>
                                 </div>
@@ -432,7 +434,7 @@
                                     <div class="col-sm-6 text-right">
                                         <p>
                                             <span id="vatamounttext" class="font-lato"><?php echo $total_percent; ?></span>
-                                            <input type="hidden" class="form-control form-text" id="vatamount" onblur="autocalculate()" maxlength="32" onfocus="removeComma(this.id);" value="0.00">
+                                            <input type="hidden" class="form-control form-text" id="vatamount" name="vatamount" onblur="autocalculate()" maxlength="32" onfocus="removeComma(this.id);" value="0.00">
                                         </p>
                                     </div>
                                 </div>
@@ -443,7 +445,7 @@
                                     <div class="col-sm-6 text-right">
                                         <p>
                                             <span id="amountbeforeshippingtext" class="font-lato" onblur="isMoney(this.id);"><?php echo $total_percent; ?></span>
-                                            <input type="hidden" class="form-control form-text" id="amountbeforeshipping" maxlength="32" value="0.00">
+                                            <input type="hidden" class="form-control form-text" id="amountbeforeshipping" name="amountbeforeshipping"  maxlength="32" value="0.00">
                                         </p>
                                     </div>
                                 </div>
@@ -452,9 +454,9 @@
                                         <p class="font-kanit fw-500 m-0" style="line-height:1.75rem;">มูลค่ารวมสุทธิ</p>
                                     </div>
                                     <div class="col-sm-6 text-right">
-                                        <p class="font-lato fw-600 fs-xmd m-0">
+                                        <p class="font-lato fw-600 fs-xmd m-0"><!-- id="amount" -->
                                             <span id="amounttext"><?php echo $total_percent; ?></span>
-                                            <input type="hidden" class="form-control form-text" id="amount" onfocus="removeComma(this.id);" onblur="isMoney(this.id);" maxlength="32" value="0.00">
+                                            <input type="hidden" class="form-control form-text" id="total_net"  name="total_net"  onblur="isMoney(this.id);" maxlength="32" value="0.00">
                                         </p>
                                     </div>
                                 </div>
@@ -912,7 +914,7 @@ $(function(){
 
         cell5.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato discount\" id=\"discountpernumber"+rowcount+"\" name=\"discountpernumber[]\" placeholder=\"จำนวนเงิน หรือ %\" maxlength='32' onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+");\" onkeydown='gotoNext("+rowcount+",\"discountpernumber\",event.keyCode);' /><span id='unittext"+rowcount+"' class='unittextspan spantruncatenoblock fs-xs grey-400 d-block text-right' style=\"display:none;\"></span><span id='serialnotext"+rowcount+"' style=\"display: none;\"><img src='/Content/themes/base/images/serialicon.png' width=20/></span><input type=\"hidden\" id='serialnoid"+rowcount+"' value='0' />";
 
-        cell6.innerHTML = "<p id='totalprice" + rowcount + "' class='form-text--transparent font-lato total'>0.00</p><input type='hidden' id='producttotalprice" + rowcount + "' value='0' />";
+        cell6.innerHTML = "<p id='totalprice" + rowcount + "' class='form-text--transparent font-lato total'>0.00</p><input type='hidden' id='producttotalprice" + rowcount + "' name=\"producttotalprice[]\" value='0' />";
         
         cell7.innerHTML = "<a href='javascript:deleteRow(" + rowcount + ");' class=\"d-inline-block btn-etc mt-2\" ><i class=\"fa fa-times-circle\" style=\"color: red;\"></i></a></a>";
 
@@ -1367,7 +1369,8 @@ $(function(){
         }
         paymentamount = netamount-whttotal;
         $("#vatamount").val(vattotal);
-        $("#amount").val(netamount);
+        // $("#amount").val(netamount);
+        $("#total_net").val(netamount);
         $("#amountbeforeshipping").val(tmpnetamount2);
         $("#amount2").val(beforetotal);
         $("#whtamount").val(whttotal);
@@ -1381,7 +1384,8 @@ $(function(){
         // isMoney2("amount2");
         // isMoney2("whtamount");
         // isMoney2("paymentwhtamount");
-        $("#amounttext").html($("#amount").val());
+        // $("#amounttext").html($("#amount").val());
+        $("#amounttext").html($("#total_net").val());
         $("#amountbeforeshippingtext").html($("#amountbeforeshipping").val());
         $("#amount2text").html($("#amount2").val());
         $("#paymentamounttext").html($("#paymentwhtamount").val());

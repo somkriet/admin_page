@@ -86,7 +86,7 @@ class Order extends CI_Controller {
 
     public function add_new_order(){
 
-        // print_r($_POST); exit();
+        print_r($_POST); exit();
 
         $order_date = $this->input->post('order_date');
         $name_customer = $this->input->post('name_customer');
@@ -116,6 +116,31 @@ class Order extends CI_Controller {
 
         $payment_channel = $this->input->post('payment_channel');
         $file = $this->input->post('file');
+
+
+
+        //         Array ( 
+        // [order_date] => 2020-12-28 
+        // [name_customer] => ทดสอย5ee 
+        // [name_socail] => 7979adadqwqw 
+        // [phone] => 0235896587 
+        // [email] => tttt@dfd.com 
+        // [customer_address] => asaS 
+        // [vat] => 1:0:1 
+        // [vat_number] => 
+        // [name_branch] => 
+        // [number_branch] => 
+        // [myTable_length] => 10 
+        // [productcode] => Array ( [0] => 1111111111 [1] => 222222222 ) 
+        // [productname] => Array ( [0] => กางเกงยีนส์ [1] => ยีนส์ ) 
+        // [productnumber] => Array ( [0] => 1 [1] => 1 ) 
+        // [productpricepernumber] => Array ( [0] => 250 [1] => 250 ) 
+        // [discountpernumber] => Array ( [0] => 5 [1] => 0 )
+        //  [producttotalprice] => Array ( [0] => 245 ) 
+        //  [myTable2_length] => 10 
+        //  [address_receiver] => asaS 
+        //  [shippingchannel] => เลือกช่องทางจัดส่ง 
+        //  [description] => )
 
 
 
