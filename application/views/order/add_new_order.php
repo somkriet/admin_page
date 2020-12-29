@@ -59,7 +59,7 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-10">
-                    <!-- <input type="text" class="form-control form-text" id="name_customer" name="name_customer" maxlength="128" placeholder="ชื่อ-สกุล"  onkeyup="setNormalTextbox(this.id);"> -->
+                    <input type="hidden" class="form-control form-text" id="id_customer" name="id_customer" maxlength="100">
 
                      <div class="input-group">
                       <input type="text" class="form-control" id="name_customer" name="name_customer" placeholder="ชื่อ-สกุล" aria-label="Search" aria-describedby="basic-addon2" >
@@ -395,7 +395,7 @@
                           <label for="discounttext">ส่วนลด</label>
                       </div>
                       <div class="col-sm-6">
-                          <input type="text" class="form-control form-text pull-right text-right font-lato" placeholder="จำนวนเงิน หรือ %" id="discounttext" onblur="autocalculate()" maxlength="32" value="">
+                          <input type="text" class="form-control form-text pull-right text-right font-lato" placeholder="จำนวนเงิน หรือ %" id="discounttext" onblur="autocalculate();" maxlength="32" value="">
                       </div>
                   </div>
               </div>
@@ -407,12 +407,12 @@
                                                 ค่าส่ง
                                                 <span class="help-text">(ที่เรียกเก็บจากลูกค้า)</span>
                                             </label>
-                                            <!-- <label class="d-block fs-sm"><input type="checkbox" onclick="autocalculate()" id="isshippingchk"> ภาษีมูลค่าเพิ่ม</label> -->
+                                            <label class="d-block fs-sm"><input type="checkbox" onclick="autocalculate()" id="isshippingchk" disabled="disabled"> ภาษีมูลค่าเพิ่ม</label>
 
-                                             <!-- disabled="disabled" -->
+                                             <!--  -->
                                         </div>
                                         <div class="col-sm-6 text-right">
-                                            <input type="text" class="form-control form-text pull-right text-right font-lato" id="shippingamount" name="shippingamount" placeholder="0.00" onblur="autocalculate()" maxlength="32" >
+                                            <input type="text" class="form-control form-text pull-right text-right font-lato" id="shippingamount" name="shippingamount" placeholder="0.00" onblur="autocalculate();" maxlength="32" >
                                         </div>
                                     </div>
                                 </div>
@@ -434,7 +434,7 @@
                                     <div class="col-sm-6 text-right">
                                         <p>
                                             <span id="vatamounttext" class="font-lato"><?php echo $total_percent; ?></span>
-                                            <input type="hidden" class="form-control form-text" id="vatamount" name="vatamount" onblur="autocalculate()" maxlength="32" onfocus="removeComma(this.id);" value="0.00">
+                                            <input type="hidden" class="form-control form-text" id="vatamount" name="vatamount" onblur="autocalculate();" maxlength="32"  value="0.00"> <!-- onfocus="removeComma(this.id);" -->
                                         </p>
                                     </div>
                                 </div>
@@ -476,8 +476,8 @@
                                             <option value="10">10%</option>
                                             <option value="15">15%</option>
                                         </select>
-                                        <input type="hidden" id="whtamount" onfocus="removeComma(this.id);" value="0.00">
-                                        <input type="hidden" id="paymentwhtamount" onfocus="removeComma(this.id);" value="0.00">
+                                        <input type="hidden" id="whtamount"  value="0.00"> <!-- onfocus="removeComma(this.id);" -->
+                                        <input type="hidden" id="paymentwhtamount"  value="0.00"> <!-- onfocus="removeComma(this.id);" -->
                                     </div>
                                 </div>
                                 <div class="row">
@@ -758,9 +758,25 @@
                 $('.submitBtn').attr("disabled","disabled");
                 $('#fupForm').css("opacity",".5");
             },
-            success: function(response){ 
-            console.log(response);
+            success: function(data){ 
+            console.log(data);
+                if (data['status'] == '1') {
+                    alert("success!!");
+                    // swal("Good job!", "You have successfully added the order!", "success");
+                    // swal("success!");
+                    // window.location="<?php echo base_url('order/add_new_order');?>";
 
+                    setTimeout(function(){ 
+                      // alert("Hello"); 
+                      window.location="<?php echo base_url('order/new_order');?>";
+                    }, 3000);
+
+                    return false;
+                }else{
+                  // swal("Error!");
+                   alert("Error!!");
+                  return false;
+                }
                 $('#fupForm').css("opacity","");
                 $(".submitBtn").removeAttr("disabled");
             }
@@ -826,7 +842,8 @@ $(function(){
       success: function(res){
 
         if(res['status'] == 'success'){
-         
+          
+          $('#id_customer').val(res['customer_data'][0]['cus_id']);
           $('#name_customer').val(res['customer_data'][0]['cus_name']);
           $('#name_socail').val(res['customer_data'][0]['cus_name_social']);
           $('#phone').val(res['customer_data'][0]['phone_number']);
@@ -908,11 +925,14 @@ $(function(){
 
         cell2.innerHTML = "<div class=\"typeahead__container\"><div class=\"typeahead__field\"><span class=\"typeahead__query\"><input class=\"form-control productname\" type=\"text\" id=\"productname"+rowcount+"\" name=\"productname[]\" maxlength=\"256\" value=\"\" onfocus=\"autocompleteshow=false;\" onkeyup=\"setNormalTextbox(this.id);setNormalTextbox('td'+this.id);hideUnittext(\""+rowcount+"\",event.keyCode);\" onkeydown=\"gotoNext("+rowcount+",'productname',event.keyCode);\" autofocus autocomplete=\"off\"></span></div></div>";
 
-        cell3.innerHTML = "<div class=\"input-group form-input-group spinner\"><input type=\"number\" placeholder='0.00' class=\"form-control amount\" id=\"productnumber"+rowcount+"\" name=\"productnumber[]\" maxlength=\"32\" onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+")\" value=\"\" onkeyup=\"setNormalTextbox(this.id);\" onkeydown=\"gotoNext("+rowcount+",'productnumber',event.keyCode);\"></div>";
+        cell3.innerHTML = "<div class=\"input-group form-input-group spinner\"><input type=\"number\" placeholder='0.00' class=\"form-control amount\" id=\"productnumber"+rowcount+"\" name=\"productnumber[]\" maxlength=\"32\"  onblur=\"updateTotalPrice("+rowcount+")\" value=\"\" onkeyup=\"setNormalTextbox(this.id);\" onkeydown=\"gotoNext("+rowcount+",'productnumber',event.keyCode);\"></div>"; 
+        // onfocus=\"removeComma(this.id);autocompleteshow=false;\"
 
-        cell4.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato value\" id=\"productpricepernumber"+rowcount+"\" name=\"productpricepernumber[]\" placeholder='0.00' maxlength='32' onfocus=\"removeComma(this.id);\" onblur=\"updateTotalPrice("+rowcount+");\" onkeyup='setNormalTextbox(this.id);' onkeydown='gotoNext("+rowcount+",\"productpricepernumber\",event.keyCode);' />";
+        cell4.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato value\" id=\"productpricepernumber"+rowcount+"\" name=\"productpricepernumber[]\" placeholder='0.00' maxlength='32'  onblur=\"updateTotalPrice("+rowcount+");\" onkeyup='setNormalTextbox(this.id);' onkeydown='gotoNext("+rowcount+",\"productpricepernumber\",event.keyCode);' />";
+        // onfocus=\"removeComma(this.id);\"
 
-        cell5.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato discount\" id=\"discountpernumber"+rowcount+"\" name=\"discountpernumber[]\" placeholder=\"จำนวนเงิน หรือ %\" maxlength='32' onfocus=\"removeComma(this.id);autocompleteshow=false;\" onblur=\"updateTotalPrice("+rowcount+");\" onkeydown='gotoNext("+rowcount+",\"discountpernumber\",event.keyCode);' /><span id='unittext"+rowcount+"' class='unittextspan spantruncatenoblock fs-xs grey-400 d-block text-right' style=\"display:none;\"></span><span id='serialnotext"+rowcount+"' style=\"display: none;\"><img src='/Content/themes/base/images/serialicon.png' width=20/></span><input type=\"hidden\" id='serialnoid"+rowcount+"' value='0' />";
+        cell5.innerHTML = "<input type=\"text\" class=\"form-control form-text text-right font-lato discount\" id=\"discountpernumber"+rowcount+"\" name=\"discountpernumber[]\" placeholder=\"จำนวนเงิน หรือ %\" maxlength='32'  onblur=\"updateTotalPrice("+rowcount+");\" onkeydown='gotoNext("+rowcount+",\"discountpernumber\",event.keyCode);' /><span id='unittext"+rowcount+"' class='unittextspan spantruncatenoblock fs-xs grey-400 d-block text-right' style=\"display:none;\"></span><span id='serialnotext"+rowcount+"' style=\"display: none;\"><img src='/Content/themes/base/images/serialicon.png' width=20/></span><input type=\"hidden\" id='serialnoid"+rowcount+"' value='0' />";
+        // onfocus=\"removeComma(this.id);autocompleteshow=false;\"
 
         cell6.innerHTML = "<p id='totalprice" + rowcount + "' class='form-text--transparent font-lato total'>0.00</p><input type='hidden' id='producttotalprice" + rowcount + "' name=\"producttotalprice[]\" value='0' />";
         
@@ -957,7 +977,7 @@ $(function(){
                 //a/lert('ptotalid : ' + ptotalid);
                 while (!document.getElementById('productcount' + idTmp)) {
                     idTmp++;
-                    //a/lert('ptotalTmp : ' + ptotalTmp);
+                    //alert('ptotalTmp : ' + ptotalTmp);
                 }
                 // document.getElementById('productcount' + idTmp).innerHTML = i;
             }

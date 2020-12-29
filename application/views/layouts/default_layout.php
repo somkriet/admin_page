@@ -635,18 +635,19 @@
   <script  src="<?php echo base_url();?>assets/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script  src="<?php echo base_url();?>assets/vendor/chart.js/Chart.min.js"></script>
+  <!-- <script  src="<?php echo base_url();?>assets/vendor/chart.js/Chart.min.js"></script> -->
 
   <!-- Page level custom scripts -->
-  <script  src="<?php echo base_url();?>assets/js/demo/chart-area-demo.js"></script>
-  <script  src="<?php echo base_url();?>assets/js/demo/chart-pie-demo.js"></script>
+  <!-- <script  src="<?php echo base_url();?>assets/js/demo/chart-area-demo.js"></script> -->
+  <!-- <script  src="<?php echo base_url();?>assets/js/demo/chart-pie-demo.js"></script> -->
 
 
   <!-- Page level plugins -->
   <script language="JavaScript" type="text/javascript" src="<?php echo base_url();?>assets/vendor/datatables/jquery.dataTables.min.js"></script>
   <script language="JavaScript" type="text/javascript" src="<?php echo base_url();?>assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-
+  <script src="<?php echo base_url();?>assets/js/sweetalert2-8.16.3/dist/sweetalert2.js"></script>
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/js/sweetalert2-8.16.3/dist/sweetalert2.css">
   <script src="<?php echo base_url();?>assets/js/sweetalert2-8.16.3/dist/sweetalert2.min.js"></script>
   <link rel="stylesheet" href="<?php echo base_url();?>assets/js/sweetalert2-8.16.3/dist/sweetalert2.min.css">
 

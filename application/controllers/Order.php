@@ -86,9 +86,10 @@ class Order extends CI_Controller {
 
     public function add_new_order(){
 
-        print_r($_POST); exit();
+        // print_r($_POST); exit();
 
         $order_date = $this->input->post('order_date');
+        $id_customer = $this->input->post('id_customer');
         $name_customer = $this->input->post('name_customer');
         $name_socail = $this->input->post('name_socail');
         $phone = $this->input->post('phone');
@@ -108,6 +109,7 @@ class Order extends CI_Controller {
         $description = $this->input->post('description');
         $discounttext = $this->input->post('discounttext');
         $shippingamount = $this->input->post('shippingamount');
+        $total_net = $this->input->post('total_net');
 
         $name_receiver = $this->input->post('name_receiver');
         $phone_receiver = $this->input->post('phone_receiver');
@@ -121,29 +123,33 @@ class Order extends CI_Controller {
 
 
 
-        //         Array ( 
-        // [order_date] => 2020-12-28 
-        // [name_customer] => ทดสอย5ee 
-        // [name_socail] => 7979adadqwqw 
-        // [phone] => 0235896587 
-        // [email] => tttt@dfd.com 
-        // [customer_address] => asaS 
-        // [vat] => 1:0:1 
-        // [vat_number] => 
-        // [name_branch] => 
-        // [number_branch] => 
-        // [myTable_length] => 10 
-        // [productcode] => Array ( [0] => 1111111111 [1] => 222222222 ) 
-        // [productname] => Array ( [0] => กางเกงยีนส์ [1] => ยีนส์ ) 
-        // [productnumber] => Array ( [0] => 1 [1] => 1 ) 
-        // [productpricepernumber] => Array ( [0] => 250 [1] => 250 ) 
-        // [discountpernumber] => Array ( [0] => 5 [1] => 0 )
-        //  [producttotalprice] => Array ( [0] => 245 ) 
-        //  [myTable2_length] => 10 
-        //  [address_receiver] => asaS 
-        //  [shippingchannel] => เลือกช่องทางจัดส่ง 
-        //  [description] => )
-
+        // Array ( [order_date] => 2020-12-29 
+        //     [name_customer] => นีรเนตร พึ่งรัตนา 
+        //     [name_socail] => baitong 
+        //     [phone] => 0923684949 
+        //     [email] => baitong@gmail.com 
+        //     [customer_address] => ดาวคะนอง 
+        //     [vat] => 1:0:1 
+        //     [vat_number] => 
+        //     [name_branch] => 
+        //     [number_branch] => 
+        //     [myTable_length] => 10 
+        //     [productcode] => Array ( [0] => 1111111111 [1] => 4546545 ) 
+        //     [productname] => Array ( [0] => กางเกงยีนส์ [1] => fyfyfyfy ) 
+        //     [productnumber] => Array ( [0] => 2 [1] => 1 ) 
+        //     [productpricepernumber] => Array ( [0] => 250 [1] => 300 ) 
+        //     [discountpernumber] => Array ( [0] => 5 [1] => )
+        //      [producttotalprice] => Array ( [0] => 490 [1] => 300 ) 
+        //      [salechannel] => facebook 
+        //      [shippingamount] => 100 
+        //      [amount2] => 790 
+        //      [vatamount] => 0 
+        //      [amountbeforeshipping] => 790 
+        //      [total_net] => 890 
+        //      [myTable2_length] => 10 
+        //      [address_receiver] => ดาวคะนอง 
+        //      [shippingchannel] => flash 
+        //      [description] => )
 
 
         $check_order_data = "SELECT cus_id FROM customer WHERE delete_flag = 1;";
@@ -171,9 +177,9 @@ class Order extends CI_Controller {
                                      order_id,
                                      cus_id,
                                      sales_channels,
-                                     link_img,
                                      status_order,
                                      transport,
+                                     shipping_cost,
                                      payment_chanels,
                                      total_price,
                                      status_payment,
@@ -185,11 +191,11 @@ class Order extends CI_Controller {
                                      delete_flag
                                     ) VALUES (
                                     '".$order_id."',
-                                    '".$name_customer."',
+                                    '".$id_customer."',
                                     '".$salechannel."',
-                                    'link_img',
                                     '1',
                                     '".$shippingchannel."',
+                                    '".$shippingamount."',
                                     '".$payment_channel."',
                                     '".$total_net."',
                                     '1',
@@ -266,10 +272,12 @@ class Order extends CI_Controller {
 
             // $data['order_add_detail'] = $this->order_model->add_new_order($insert_detail);
 
-            if($insert){ 
+            if($insert&&$insert_detail){ 
                 $data['status'] = 1; 
                 $data['message'] = 'Form data submitted successfully!'; 
                 // response
+            }else{
+
             } 
 
         }
