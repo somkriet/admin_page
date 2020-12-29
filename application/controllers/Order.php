@@ -102,6 +102,8 @@ class Order extends CI_Controller {
         $discountpernumber1 = $this->input->post('discountpernumber1');
         $producttotalprice1 = $this->input->post('producttotalprice1');
 
+        $salechannel = $this->input->post('salechannel');
+
         $shippingchannel = $this->input->post('shippingchannel');
         $description = $this->input->post('description');
         $discounttext = $this->input->post('discounttext');
@@ -184,12 +186,12 @@ class Order extends CI_Controller {
                                     ) VALUES (
                                     '".$order_id."',
                                     '".$name_customer."',
+                                    '".$salechannel."',
+                                    'link_img',
+                                    '1',
                                     '".$shippingchannel."',
-                                    '22222',
-                                    'on',
-                                    'ems',
                                     '".$payment_channel."',
-                                    '".$producttotalprice1."',
+                                    '".$total_net."',
                                     '1',
                                     '1111',
                                     'jay',

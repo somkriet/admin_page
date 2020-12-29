@@ -355,25 +355,25 @@
             <div class="col-sm">
 
 
-             <!--  <div class="form-group">
+              <div class="form-group">
                   <div class="row">
                       <div class="col-sm-4 text-left">
-                          <label for="discounttext">ช่องทางจัดส่ง</label>
+                          <label for="discounttext">ช่องทางการสั่งซื้อ</label>
                       </div>
                       <div class="col-sm-8">
-                          <select class="form-control form-text" id="shippingchannel" name="shippingchannel" placeholder="การจัดส่ง">
-                                                    <option>เลือกช่องทางจัดส่ง</option>
-                                                    <option>ไปรษณีย์ไทย ธรรมดา</option>
-                                                    <option>ไปรษณีย์ไทย EMS</option>
-                                                    <option>Flash</option>
-                                                    <option>Kerry</option>
-                                                    <option>J&T</option>
+                          <select class="form-control form-text" id="salechannel" name="salechannel" placeholder="การจัดส่ง" required>
+                                                    <option value="">เลือกช่องทางการสั่งซื้อ</option>
+                                                    <option value="facebook">Facebook</option>
+                                                    <option value="shopee">Shopee</option>
+                                                    <option value="line@">Line@</option>
+                                                    <option value="lazada">Lazada</option>
+                                                    <option value="website">Website</option>
                       </select>
                       </div>
                   </div>
               </div>
 
-               <div class="form-group">
+             <!--   <div class="form-group">
                   <div class="row">
                       <div class="col-sm-4 text-left">
                           <label for="discounttext">หมายเหตุ</label>
@@ -641,13 +641,13 @@
                   <label for="discounttext">ช่องทางจัดส่ง</label>
                     <div class="form-group">
                       <div class="col-sm-10">
-                          <select class="form-control form-text" id="shippingchannel" name="shippingchannel" placeholder="การจัดส่ง">
-                              <option>เลือกช่องทางจัดส่ง</option>
-                              <option>ไปรษณีย์ไทย ธรรมดา</option>
-                              <option>ไปรษณีย์ไทย EMS</option>
-                              <option>Flash</option>
-                              <option>Kerry</option>
-                              <option>J&T</option>
+                          <select class="form-control form-text" id="shippingchannel" name="shippingchannel" placeholder="การจัดส่ง" required>
+                              <option value="">เลือกช่องทางจัดส่ง</option>
+                              <option value="thaipost">ไปรษณีย์ไทย ธรรมดา</option>
+                              <option value="thaipostEMS">ไปรษณีย์ไทย EMS</option>
+                              <option value="flash">Flash</option>
+                              <option value="kerry">Kerry</option>
+                              <option value="j&t">J&T</option>
                           </select>
                       </div>
                     </div>
