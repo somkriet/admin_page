@@ -61,7 +61,7 @@
       <li class="nav-item ">
         <a class="nav-link" href="<?php echo base_url();?>home">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>แผงควบคุม</span></a>
+          <span>ภาพรวม</span></a>
       </li>
 
        <!-- Nav Item - Dashboard -->
@@ -132,7 +132,7 @@
 
        <!-- Nav Item - Dashboard -->
       <li class="nav-item ">
-        <a class="nav-link" href="<?php echo base_url();?>order">
+        <a class="nav-link" href="<?php echo base_url();?>sales_channels">
           <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
           <i class='far fa-file-alt'></i>
           <span>ช่องทางการขาย</span></a>
