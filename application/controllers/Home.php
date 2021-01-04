@@ -37,13 +37,41 @@ class Home extends CI_Controller {
         $date_pay1 = $date_pay.' 00:00:00';
         $date_pay2 = $date_pay.' 23:59:00';
 
-        $today_sales = "SELECT total_price 
+        $month = date('m');
+
+        $year = date('Y');
+
+        $today_sales = "SELECT sum(total_price) as 'today_sales'
                         FROM order_table 
                         WHERE date_pay  BETWEEN '".$date_pay1."' AND '".$date_pay2."'
                         AND delete_flag = 1;";
         $data['today_sales_data'] = $this->customer_model->show_all_customer($today_sales);
 
+
+
+        $monthly_sales = "SELECT sum(total_price) as 'monthly_sales'
+                        FROM order_table 
+                        WHERE month(date_pay) = '".$month."' 
+                        AND delete_flag = 1;";
+        $data['monthly_sales_data'] = $this->customer_model->show_all_customer($monthly_sales);
+
+
+        $year_sales = "SELECT sum(total_price) as 'year_sales'
+                        FROM order_table 
+                        WHERE year(date_pay) = '".$year."' 
+                        AND delete_flag = 1;";
+        $data['year_sales_data'] = $this->customer_model->show_all_customer($year_sales);
+
         // print_r($data); exit();
+
+
+        //          SELECT YEAR(date) as SalesYear,
+//          MONTH(date) as SalesMonth,
+//          SUM(Price) AS TotalSales
+//     FROM Sales
+// GROUP BY YEAR(date), MONTH(date)
+// ORDER BY YEAR(date), MONTH(date)
+// where month(soledate) = '12' and year(soledate) = '2009' อันนี้เดือน
 
         // 2020-08-26 13:49:49
 

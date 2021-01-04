@@ -1,14 +1,30 @@
 <?php
 
+  $date = date('d-m-Y');
 
+  $month_year = date('m-Y');
 // $data['today_sales_data']
 if(!empty($today_sales_data)): 
    foreach ($today_sales_data as $row) {
-    $today_sales = $row->total_price;
+    $today_sales = $row->today_sales;
+    }
+endif;
+
+
+if(!empty($monthly_sales_data)): 
+   foreach ($monthly_sales_data as $row) {
+    $monthly_sales = $row->monthly_sales;
+    }
+endif;
+
+
+if(!empty($year_sales_data)): 
+   foreach ($year_sales_data as $row) {
+    $year_sales = $row->year_sales;
     }
 endif;
     
-    $date = date('d-m-Y');
+    
 
 
 ?>
@@ -34,8 +50,8 @@ endif;
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><?= $this->lang->line('today_sales'); echo ' '.$date;?> </div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800"> <?php echo $today_sales;?> บาท </div><!--  $40,000 บาท -->
-                      <div class="small font-weight-bold text-gray-800">ใบเสร็จปกติ : 5 รายการ</div>
-                      <div class="small font-weight-bold text-gray-800">ยกเลิกใบเสร็จ : 0 รายการ</div>
+                     <!--  <div class="small font-weight-bold text-gray-800">ใบเสร็จปกติ : 5 รายการ</div>
+                      <div class="small font-weight-bold text-gray-800">ยกเลิกใบเสร็จ : 0 รายการ</div> -->
 
                     </div>
                     <div class="col-auto">
@@ -53,9 +69,10 @@ endif;
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">ยอดขายเดือนนี้ (ธ.ค./2562)</div>
-                      <div class="small font-weight-bold text-gray-800">ขายหน้าร้าน : 215,000 บาท</div>
-                      <div class="small font-weight-bold text-gray-800">ขายออนไลน์ : 215,000 บาท</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">ยอดขายเดือนนี้ (<?php echo $month_year;?>)</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"> <?php echo $monthly_sales;?> บาท </div>
+                      <!-- <div class="small font-weight-bold text-gray-800">ขายหน้าร้าน : 215,000 บาท</div>
+                      <div class="small font-weight-bold text-gray-800">ขายออนไลน์ : 215,000 บาท</div> -->
                       <!-- <div class="h10 mb-0 font-weight-bold text-gray-800">ขายออนไลน์ : 215,000 บาท</div> -->
                     </div>
                     <div class="col-auto">
@@ -75,9 +92,10 @@ endif;
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">ยอดขายรวมทั้งปี</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"> <?php echo $year_sales;?> บาท </div>
                           <!-- <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div> -->
-                          <div class="small font-weight-bold text-gray-800">เงินสด : 55,000 บาท</div>
-                          <div class="small font-weight-bold text-gray-800">โอนผ่านธนาคาร : 10,500 บาท</div>
+                         <!--  <div class="small font-weight-bold text-gray-800">เงินสด : 55,000 บาท</div>
+                          <div class="small font-weight-bold text-gray-800">โอนผ่านธนาคาร : 10,500 บาท</div> -->
                         </div>
                        <!--  <div class="col">
                           <div class="progress progress-sm mr-2">
@@ -138,7 +156,10 @@ endif;
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
+                    <!-- <canvas id="myAreaChart"></canvas> -->
+
+
+                    <div id="chart_div01" style="height:450px;"></div>
                   </div>
                 </div>
               </div>
@@ -304,4 +325,50 @@ endif;
           </div>
 
         </div>
-        <!-- /.container-fluid
+        <!-- /.container-fluid-->
+
+
+
+          <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<!--     <script type="text/javascript">
+      google.load(\'visualization\', \'1\', {packages: [\'corechart\']});</script> -->
+    <script type="text/javascript">
+
+
+      function drawVisualization()
+      {
+        var data = google.visualization.arrayToDataTable([
+        [\'เดือน\', \'รวมทั้งหมด\', \'คิดภาษี\', \'ไม่คิดภาษี\'],'.$data.']);
+
+        var options = {
+          title : \'สรุปมูลค่าการสั่งซื้อประจำปี '.($year+543).'\',
+          vAxis: {title: "จำนวนเงิน (บาท)"},
+          hAxis: {title: "เดือน"},
+          seriesType: "bars",
+          series: {0: {type: "line"}}
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById(\'chart_div01\'));
+          chart.draw(data, options);
+      }
+
+              
+      google.setOnLoadCallback(drawVisualization);
+      
+    </script>
+  <!--   <div style="width:990px;margin:0 auto;">
+      <div class="f-left pad" style="margin:0 0 0 630px;"><b>เลือกปีที่ต้องการดูข้อมุล : </b></div>
+      <div class="f-left">
+        <select class="styledselect_form_1" onchange="window.location.href=\''.urlwebsite.'\home/chart/\'+this.value+\'.html\'">'.$_year.'</select>
+      </div>
+      <div class="clr"></div>
+      <div id="chart_div01" style="height:450px;"></div>
+            <div id="chart_div06" style="height:450px;"></div>
+      <div id="chart_div02" style="height:450px;"></div>
+      <div id="chart_div07" style="height:450px;"></div> 
+      <div id="chart_div08" style="height:450px;"></div> 
+      <div id="chart_div03" style="height:450px;"></div>
+      <div id="chart_div04" style="height:450px;"></div> -->
+            <!-- div id="chart_div05" style="height:450px;"></div-->
+    <!-- </div> -->
+<!-- </script> -->
