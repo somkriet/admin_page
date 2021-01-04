@@ -33,8 +33,19 @@ class Home extends CI_Controller {
         
 		header("Access-Control-Allow-Origin: *");
 		$data = array();
+        $date_pay = date('Y-m-d');
+        $date_pay1 = $date_pay.' 00:00:00';
+        $date_pay2 = $date_pay.' 23:59:00';
 
+        $today_sales = "SELECT total_price 
+                        FROM order_table 
+                        WHERE date_pay  BETWEEN '".$date_pay1."' AND '".$date_pay2."'
+                        AND delete_flag = 1;";
+        $data['today_sales_data'] = $this->customer_model->show_all_customer($today_sales);
 
+        // print_r($data); exit();
+
+        // 2020-08-26 13:49:49
 
         // $test = date('Y-m-d', strtotime('-3 Days'));//2020-09-05
 

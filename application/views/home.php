@@ -1,3 +1,19 @@
+<?php
+
+
+// $data['today_sales_data']
+if(!empty($today_sales_data)): 
+   foreach ($today_sales_data as $row) {
+    $today_sales = $row->total_price;
+    }
+endif;
+    
+    $date = date('d-m-Y');
+
+
+?>
+
+
 <!--Begin Page Content -->
         <div class="container-fluid">
 
@@ -16,8 +32,8 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><?= $this->lang->line('today_sales'); ?></div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000 บาท</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><?= $this->lang->line('today_sales'); echo ' '.$date;?> </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"> <?php echo $today_sales;?> บาท </div><!--  $40,000 บาท -->
                       <div class="small font-weight-bold text-gray-800">ใบเสร็จปกติ : 5 รายการ</div>
                       <div class="small font-weight-bold text-gray-800">ยกเลิกใบเสร็จ : 0 รายการ</div>
 
