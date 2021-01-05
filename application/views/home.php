@@ -23,6 +23,47 @@ if(!empty($year_sales_data)):
     $year_sales = $row->year_sales;
     }
 endif;
+
+//for chart
+$datesave = array();
+$totol = array();
+
+ // $year_sales = $row->year_sales;
+      // $datesave[] = "\"".$rs->datesave."\""; 
+      // $totol[] = "\"".$rs->totol."\"";
+
+
+if(!empty($resultchart)): 
+   foreach ($resultchart as $row) {
+   
+      $month_1 = $row->a1;
+      $month_2 = $row->a2;
+      $month_3 = $row->a3;
+      $month_4 = $row->a4;
+      $month_5 = $row->a5;
+      $month_6 = $row->a6;
+      $month_7 = $row->a7;
+      $month_8 = $row->a8;
+      $month_9 = $row->a9;
+      $month_10 = $row->a10;
+      $month_11 = $row->a11;
+      $month_12 = $row->a12;
+    }
+endif;
+
+
+// while($rs = mysqli_fetch_array($resultchart)){ 
+//   $datesave[] = "\"".$rs['datesave']."\""; 
+//   $totol[] = "\"".$rs['totol']."\""; 
+// }
+// $datesave = implode(",", $datesave); 
+// $totol = implode(",", $totol); 
+
+
+
+
+
+print_r($month_1);
     
     
 
@@ -160,12 +201,13 @@ endif;
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="myAreaChart1"></canvas>
+                  <!-- <div class="chart-area"> -->
+                    <!-- <canvas id="myAreaChart"></canvas> -->
+                    <canvas id="myChart" width="800px" height="300px"></canvas>
 
 
                    
-                  </div>
+                  <!-- </div> -->
                 </div>
               </div>
             </div>
@@ -175,7 +217,7 @@ endif;
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">สินค้าขายดี</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -191,10 +233,12 @@ endif;
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myPieChart"></canvas>
-                  </div>
-                  <div class="mt-4 text-center small">
+                  <!-- <div class="chart-pie pt-6 pb-2"> -->
+                    <!-- <canvas id="myPieChart"></canvas> -->
+                    <canvas id="chart-area"  style="width:100px; height: 80px;"></canvas>
+
+                  <!-- </div> -->
+                 <!--  <div class="mt-4 text-center small">
                     <span class="mr-2">
                       <i class="fas fa-circle text-primary"></i> Direct
                     </span>
@@ -204,7 +248,7 @@ endif;
                     <span class="mr-2">
                       <i class="fas fa-circle text-info"></i> Referral
                     </span>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -332,123 +376,147 @@ endif;
         </div>
         <!-- /.container-fluid-->
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
 <script type="text/javascript">
-  
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    
+        ],
+        datasets: [{
+            label: 'รายงานยอดขาย แยกตามเดือน (บาท)',
+            data: [<?php echo $month_1 ;?>,<?php echo $month_2 ;?>,<?php echo $month_3 ;?>,<?php echo $month_4 ;?>,<?php echo $month_5 ;?>,<?php echo $month_6 ;?>,<?php echo $month_7 ;?>,<?php echo $month_8 ;?>,<?php echo $month_9 ;?>,<?php echo $month_10 ;?>,<?php echo $month_11 ;?>,<?php echo $month_12;?>
+            ],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(151, 226, 90, 0.2)',
+                'rgba(49, 6, 239, 0.2)',
+                'rgba(6, 239, 204, 0.2)',
+                'rgba(239, 196, 6, 0.2)',
+                'rgba(255, 49, 31, 0.2)',
+                'rgba(255, 31, 180, 0.2)'
 
-function number_format(number, decimals, dec_point, thousands_sep) {
-  // *     example: number_format(1234.56, 2, ',', ' ');
-  // *     return: '1 234,56'
-  number = (number + '').replace(',', '').replace(' ', '');
-  var n = !isFinite(+number) ? 0 : +number,
-    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-    s = '',
-    toFixedFix = function(n, prec) {
-      var k = Math.pow(10, prec);
-      return '' + Math.round(n * k) / k;
-    };
-  // Fix for IE parseFloat(0.55).toFixed(0) = 0;
-  s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
-  if (s[0].length > 3) {
-    s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
-  }
-  if ((s[1] || '').length < prec) {
-    s[1] = s[1] || '';
-    s[1] += new Array(prec - s[1].length + 1).join('0');
-  }
-  return s.join(dec);
-}
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(151, 226, 90, 1)',
+                'rgba(49, 6, 239, 1)',
+                'rgba(6, 239, 204, 1)',
+                'rgba(239, 196, 6, 1)',
+                'rgba(255, 49, 31, 1)',
+                'rgba(255, 31, 180, 1)'
 
-// Area Chart Example
-var ctx = document.getElementById("myAreaChart1");
-var myLineChart = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    datasets: [{
-      label: "ยอดขาย",
-      lineTension: 0.3,
-      backgroundColor: "rgba(78, 115, 223, 0.05)",
-      borderColor: "rgba(78, 115, 223, 1)",
-      pointRadius: 3,
-      pointBackgroundColor: "rgba(78, 115, 223, 1)",
-      pointBorderColor: "rgba(78, 115, 223, 1)",
-      pointHoverRadius: 3,
-      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-      pointHitRadius: 10,
-      pointBorderWidth: 2,
-      data: [2500, 1000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
-    }],
-  },
-  options: {
-    maintainAspectRatio: false,
-    layout: {
-      padding: {
-        left: 10,
-        right: 25,
-        top: 25,
-        bottom: 0
-      }
+            ],
+            borderWidth: 1
+        }]
     },
-    scales: {
-      xAxes: [{
-        time: {
-          unit: 'date'
-        },
-        gridLines: {
-          display: false,
-          drawBorder: false
-        },
-        ticks: {
-          maxTicksLimit: 7
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
         }
-      }],
-      yAxes: [{
-        ticks: {
-          maxTicksLimit: 5,
-          padding: 10,
-          // Include a dollar sign in the ticks
-          callback: function(value, index, values) {
-            return '$' + number_format(value);
-          }
-        },
-        gridLines: {
-          color: "rgb(234, 236, 244)",
-          zeroLineColor: "rgb(234, 236, 244)",
-          drawBorder: false,
-          borderDash: [2],
-          zeroLineBorderDash: [2]
-        }
-      }],
-    },
-    legend: {
-      display: false
-    },
-    tooltips: {
-      backgroundColor: "rgb(255,255,255)",
-      bodyFontColor: "#858796",
-      titleMarginBottom: 10,
-      titleFontColor: '#6e707e',
-      titleFontSize: 14,
-      borderColor: '#dddfeb',
-      borderWidth: 1,
-      xPadding: 15,
-      yPadding: 15,
-      displayColors: false,
-      intersect: false,
-      mode: 'index',
-      caretPadding: 10,
-      callbacks: {
-        label: function(tooltipItem, chart) {
-          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
-        }
-      }
     }
-  }
 });
 
+    var randomScalingFactor = function() {
+      return Math.round(Math.random() * 100);
+    };
 
-</script>
+    var config = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: [
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+          ],
+          backgroundColor: [
+            'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(151, 226, 90, 1)',
+                'rgba(49, 6, 239, 1)',
+                'rgba(6, 239, 204, 1)',
+                'rgba(239, 196, 6, 1)',
+                'rgba(255, 49, 31, 1)',
+                'rgba(255, 31, 180, 1)'
+          ],
+          label: 'Dataset 1'
+        }],
+        labels: [
+          'Red',
+          'Orange',
+          'Yellow',
+          'Green',
+          'Blue'
+        ]
+      },
+      options: {
+        responsive: true
+      }
+    };
+
+    window.onload = function() {
+      var ctx = document.getElementById('chart-area').getContext('2d');
+      window.myPie = new Chart(ctx, config);
+    };
+
+    // document.getElementById('randomizeData').addEventListener('click', function() {
+    //   config.data.datasets.forEach(function(dataset) {
+    //     dataset.data = dataset.data.map(function() {
+    //       return randomScalingFactor();
+    //     });
+    //   });
+
+    //   window.myPie.update();
+    // });
+
+    var colorNames = Object.keys(window.chartColors);
+    document.getElementById('addDataset').addEventListener('click', function() {
+      var newDataset = {
+        backgroundColor: [],
+        data: [],
+        label: 'New dataset ' + config.data.datasets.length,
+      };
+
+      for (var index = 0; index < config.data.labels.length; ++index) {
+        newDataset.data.push(randomScalingFactor());
+
+        var colorName = colorNames[index % colorNames.length];
+        var newColor = window.chartColors[colorName];
+        newDataset.backgroundColor.push(newColor);
+      }
+
+      config.data.datasets.push(newDataset);
+      window.myPie.update();
+    });
+
+    document.getElementById('removeDataset').addEventListener('click', function() {
+      config.data.datasets.splice(0, 1);
+      window.myPie.update();
+    });
+
+
+
+</script>  

@@ -62,6 +62,52 @@ class Home extends CI_Controller {
                         AND delete_flag = 1;";
         $data['year_sales_data'] = $this->customer_model->show_all_customer($year_sales);
 
+
+        //  $chart = "SELECT total_price as 'totol', date_pay as 'datesave'
+        //                 FROM order_table 
+        //                 WHERE delete_flag = 1;";
+        // $data['resultchart'] = $this->customer_model->show_all_customer($chart);
+
+
+
+         $chart = "SELECT 
+                    SUM(IF(MONTH(`date_pay`)=1,`total_price`,NULL)) AS `a1`,
+                    SUM(IF(MONTH(`date_pay`)=2,`total_price`,NULL)) AS `a2`,
+                    SUM(IF(MONTH(`date_pay`)=3,`total_price`,NULL)) AS `a3`,
+                    SUM(IF(MONTH(`date_pay`)=4,`total_price`,NULL)) AS `a4`,
+                    SUM(IF(MONTH(`date_pay`)=5,`total_price`,NULL)) AS `a5`,
+                    SUM(IF(MONTH(`date_pay`)=6,`total_price`,NULL)) AS `a6`,
+                    SUM(IF(MONTH(`date_pay`)=7,`total_price`,NULL)) AS `a7`,
+                    SUM(IF(MONTH(`date_pay`)=8,`total_price`,NULL)) AS `a8`,
+                    SUM(IF(MONTH(`date_pay`)=9,`total_price`,NULL)) AS `a9`,
+                    SUM(IF(MONTH(`date_pay`)=10,`total_price`,NULL)) AS `a10`,
+                    SUM(IF(MONTH(`date_pay`)=11,`total_price`,NULL)) AS `a11`,
+                    SUM(IF(MONTH(`date_pay`)=12,`total_price`,NULL)) AS `a12`
+                    FROM `order_table`
+                    WHERE year(date_pay) = '".$year."' 
+                    AND delete_flag = 1;";
+        $data['resultchart'] = $this->customer_model->show_all_customer($chart);
+ // WHERE year(date_pay) = '".$year."' 
+
+
+//SELECT
+// MONTH(`date_pay`) AS `month`,
+// SUM(IF(MONTH(`date_pay`)=1,`total_price`,NULL)) AS `1`,
+// SUM(IF(MONTH(`date_pay`)=2,`total_price`,NULL)) AS `2`,
+// SUM(IF(MONTH(`date_pay`)=3,`total_price`,NULL)) AS `3`,
+// SUM(IF(MONTH(`date_pay`)=4,`total_price`,NULL)) AS `4`,
+// SUM(IF(MONTH(`date_pay`)=5,`total_price`,NULL)) AS `5`,
+// SUM(IF(MONTH(`date_pay`)=6,`total_price`,NULL)) AS `6`,
+// SUM(IF(MONTH(`date_pay`)=7,`total_price`,NULL)) AS `7`,
+// SUM(IF(MONTH(`date_pay`)=8,`total_price`,NULL)) AS `8`,
+// SUM(IF(MONTH(`date_pay`)=9,`total_price`,NULL)) AS `9`,
+// SUM(IF(MONTH(`date_pay`)=10,`total_price`,NULL)) AS `10`,
+// SUM(IF(MONTH(`date_pay`)=11,`total_price`,NULL)) AS `11`,
+// SUM(IF(MONTH(`date_pay`)=12,`total_price`,NULL)) AS `12`
+// FROM `order_table`
+// WHERE year(date_pay) = '".$year."' 
+// AND delete_flag = 1;
+
         // print_r($data); exit();
 
 
