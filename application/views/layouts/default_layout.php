@@ -106,6 +106,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">รายการ:</h6>
             <a class="collapse-item" href="<?php echo base_url();?>product">รายการสินค้า</a>
+            <a class="collapse-item" href="<?php echo base_url();?>product/new_product">เพิ่มสินค้า</a>
             <a class="collapse-item" href="<?php echo base_url();?>product/new_product">คลังสินค้า/สาขา</a>
             <a class="collapse-item" href="cards.html">หมวดหมู่สินค้า</a>
             <a class="collapse-item" href="<?php echo base_url();?>buy">รายการซื้อสินค้าเข้า</a>

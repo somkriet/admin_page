@@ -10,22 +10,21 @@
               <div class="container">
                 <div class="row">  
 
+                  <form id="fupForm1" enctype="multipart/form-data">
                   <div class="col-sm-10 col-md-10"> 
                     <!-- <form> -->
                       <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ชื่อสินค้า</b></label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" id="product_name" placeholder="ชื่อสินค้า ...">
+                          <input type="text" class="form-control" id="product_name" name="product_name" placeholder="ชื่อสินค้า ...">
                         </div>
                       </div>
 
                        <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>หมวดหมู่สินค้า</b></label>
-                        <div class="col-sm-8">
+                        <div class="col-sm-4">
 
-
-
-                          <select class="form-control" id="product_category">
+                          <select class="form-control" id="product_category" name="product_category">
                             <option  value="">เลือกหมวดหมู่สินค้า</option>
                              <?php if(!empty($product_category_data)): 
                                foreach ($product_category_data as $row) {
@@ -56,14 +55,14 @@
                       <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ต้นทุน</b></label>
                         <div class="col-sm-8">
-                          <input type="number" class="form-control" id="product_cost" placeholder="ต้นทุน ...">
+                          <input type="number" class="form-control" id="product_cost" name="product_cost" placeholder="ต้นทุน ...">
                         </div>
                       </div>
 
                       <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ราคาขาย</b></label>
                         <div class="col-sm-8">
-                          <input type="number" class="form-control" id="product_price" placeholder="ราคาขาย ...">
+                          <input type="number" class="form-control" id="product_price" name="product_price" placeholder="ราคาขาย ...">
                         </div>
                       </div>
 
@@ -103,21 +102,15 @@
                           <!-- <input type="text" class="form-control" id="product_qty" placeholder="จำนวน ..." disabled> -->
 
                             <input type="hidden" name='size_total' id="product_total">
-                            <input type="number" id="product_total_show" class="form-control" value="0" disabled="disabled">
+                            <input type="number" id="product_total_show" name="product_total_show" class="form-control" value="0" disabled="disabled">
 
                         </div>
                       </div>
 
                       <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>หน่วยนับ</b></label>
-                        <div class="col-sm-8">
-                          <select class="form-control" id="product_unit">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </select>
+                        <div class="col-sm-3">
+                           <input type="text" class="form-control" id="unit_count" name="unit_count" placeholder="เช่น ตัว ชิ้น แพ็ค กล่อง...">
                         </div>
                       </div>
 
@@ -125,45 +118,61 @@
 
                        <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ที่เก็บสินค้า</b></label>
-                        <div class="col-sm-8">
-                          <select class="form-control" id="product_location">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <div class="col-sm-3">
+                          <select class="form-control" id="product_location" name="product_location">
+
+                             <option  value="">เลือกที่เก็บสินค้า</option>
+                             <?php if(!empty($storage_data)): 
+                               foreach ($storage_data as $row) {
+                                
+                                $storage_id = $row->storage_id;
+                                $storage_name = $row->storage_name;
+                                 
+                      
+                                echo '<option value="' . $storage_id . '">' . $storage_name . '</option>';
+
+                                }
+                            endif; 
+                          ?>
                           </select>
                         </div>
                       </div>
 
                       <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>สินค้าคงคลังขั้นต่ำ</b></label>
-                        <div class="col-sm-8">
-                          <input type="number" class="form-control" id="product_qty" placeholder="จำนวน ...">
+                        <div class="col-sm-3">
+                          <input type="number" class="form-control" id="product_minimum" name="product_minimum" placeholder="จำนวน ...">
                         </div>
                       </div>
 
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>อัพโหลดรูปภาพสินค้า</b></label>
                         <div class="col-sm-8">
+
+                        <input type="file" class="form-control" id="file" name="file" required />
+                  
                           <!-- <input type="file" class="form-control-file" id="product_img"> -->
 
-                          <div id="image_preview">
+                          <!-- <div id="image_preview">
                             <img id="product_img" src="" />
                           </div>
-                          <div id="selectImage">
+                          <div id="selectImage"> -->
                           <!-- <label>Select Your Image</label><br/> -->
-                          <input type="file" name="file" id="file" class="form-control" required />
+                          <!-- <input type="file" name="file" id="file" class="form-control" required /> -->
 
-                          <input type="gu" name="" id="" class="form-control" required>
+                          <!-- <input type="gu" name="" id="" class="form-control" required> -->
                           <!-- <input type="submit" value="Upload" class="submit" /> -->
                           </div> 
 
                         </div>
                     </div>
-
-                <center><button type="button" id="add_product" class="btn btn-primary">เพิ่มข้อมูล</button>  
-                <button type="button" id="cancal_product" class="btn btn-danger">ยกเลิก</button></center>
+                 
+                <center>
+                  <!-- <button type="button" id="add_product" class="btn btn-primary">เพิ่มข้อมูล</button> -->
+                <input type="submit" name="submit" class="btn btn-primary" value="เพิ่มข้อมูล"/>    
+                <button type="button" id="cancal_product" class="btn btn-danger">ยกเลิก</button>
+              </center>
+              </form>   
                 <br><br>
 
 
@@ -196,7 +205,7 @@
     </div>
   </div>
   </div>
-  </div>
+  <!-- </div> -->
 
 
 
@@ -206,9 +215,79 @@
         <!-- /.container-fluid -->
        <!--   -->
        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
-        <script type="text/javascript">
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
+<script type="text/javascript">
 
+  // File type validation
+$("#file").change(function() {
+    var file = this.files[0];
+    var fileType = file.type;
+    var match = ['application/pdf', 'application/msword', 'application/vnd.ms-office', 'image/jpeg', 'image/png', 'image/jpg'];
+    if(!((fileType == match[0]) || (fileType == match[1]) || (fileType == match[2]) || (fileType == match[3]) || (fileType == match[4]) || (fileType == match[5]))){
+        alert('Sorry, only PDF, DOC, JPG, JPEG, & PNG files are allowed to upload.');
+        $("#file").val('');
+        return false;
+    }
+});
+
+ $(document).ready(function(e){
+    // Submit form data via Ajax
+    $("#fupForm1").on('submit', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url('product/add_new_product');?>',
+            data: new FormData(this),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(data){ 
+            console.log(data);
+                if (data['status'] == '1') {
+                    alert("success!!");
+                    // swal("Good job!", "You have successfully added the order!", "success");
+                    // swal("success!");
+                    // window.location="<?php echo base_url('order/add_new_order');?>";
+
+                    setTimeout(function(){ 
+                      // alert("Hello"); 
+                      window.location="<?php echo base_url('order/new_product');?>";
+                    }, 3000);
+
+                    return false;
+                }else{
+                  // swal("Error!");
+                   alert("Error!!");
+                  return false;
+                }
+                $('#fupForm').css("opacity","");
+                $(".submitBtn").removeAttr("disabled");
+            }
+        });
+    });
+
+});  
+
+
+// $(function(){
+//   $('#myTable').dataTable({
+//     ordering: true,
+//     searching: true,
+//     lengthChange: true
+//   });
+
+//    $('#myTable2').dataTable({
+//     ordering: true,
+//     searching: true,
+//     lengthChange: true
+//   });
+
+// });
 
           var total = 0;
 
@@ -216,48 +295,12 @@
                   updateTotal();
               });
 
-          // function initQuotationalert() {
-          //     // loadContent();
-          //     $('.sizealert .size3XL,.sizealert .size2XL,.sizealert .sizeXL,.sizealert .sizeL,.sizealert .sizeM,.sizealert .sizeS,.sizealert .sizeXS').change(function (e) {
-          //         updateTotal();
-          //     });
-
-          //     $('input[type=number]').each(function () {
-          //         $(this).change(function (e) {
-          //             var val = $(this).val();
-          //             console.log(val);
-          //             if (!val) {
-          //                 $(this).val(0);
-          //             }
-          //         });
-          //     })
-
-          //     // $('.sizealert .spinner input').change(function (e) {
-          //     //     total = $(this).val();
-          //     // });
-
-          //     // $('input[name=image_list]').val(JSON.stringify(ImageTool.imageList));
-          // }
-
-
           function updateTotal() {
-
-            console.log(parseInt($('.sizealert .size3XL input').val()));
-            // if (Canvas.product_id == 1) {
+            // console.log(parseInt($('.sizealert .size3XL input').val()));
                 total =  parseInt($('.sizealert .size3XL input').val()) + parseInt($('.sizealert .size2XL input').val()) + parseInt($('.sizealert .sizeXL input').val()) + parseInt($('.sizealert .sizeL input').val()) + parseInt($('.sizealert .sizeM input').val()) + parseInt($('.sizealert .sizeS input').val()) + parseInt($('.sizealert .sizeXS input').val());
 
-                // $('.sizealert .spinner input').val(total);
-
                 $('#product_total_show').val(total);
-
-            // } else if (Canvas.product_id == 2) {
-            //     total = parseInt($('.quotationalert .spinner4XL input').val()) + parseInt($('.quotationalert .spinner3XL input').val()) + parseInt($('.quotationalert .spinner2XL input').val()) + parseInt($('.quotationalert .spinnerXL input').val()) + parseInt($('.quotationalert .spinnerL input').val()) + parseInt($('.quotationalert .spinnerM input').val()) + parseInt($('.quotationalert .spinnerS input').val()) + parseInt($('.quotationalert .spinnerXS input').val());
-            //     $('.quotationalert .spinner input').val(total);
-            // } else {
-            //     $('#size_total').val(total);
-            // }
-
-        }
+          }
 
           
           $('#add_product').on('click', function(){

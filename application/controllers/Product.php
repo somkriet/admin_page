@@ -53,7 +53,9 @@ class Product extends CI_Controller {
 		$sql = "SELECT * FROM product_category WHERE delete_flag = 1;";
 		$data['product_category_data'] = $this->product_model->show_all_product($sql);
 
-		
+		$sql = "SELECT * FROM storage WHERE delete_flag = 1;";
+		$data['storage_data'] = $this->product_model->show_all_product($sql);
+
 
 		// $data = array();
 		$this->template->set('title', 'product');
@@ -62,7 +64,166 @@ class Product extends CI_Controller {
 	}
 
 
-	public function add_product()
+	public function add_new_product()
+	{
+
+
+
+		$uploadDir = 'uploads/'; 
+		$response = array( 
+		    'status' => 0, 
+		    'message' => 'Form submission failed, please try again.' 
+		); 
+
+
+		// Array ( [product_name] => 
+		// 	[product_category] => 
+		// 	[product_detail] => 
+		// 	[product_cost] => 
+		// 	[product_price] => 
+		// 	[size_XS] => 0 
+		// 	[size_S] => 0 
+		// 	[size_M] => 0 
+		// 	[size_L] => 0 
+		// 	[size_XL] => 0 
+		// 	[size_2XL] => 0 
+		// 	[size_3XL] => 0 
+		// 	[size_total] => 
+		// 	[unit_count] => 
+		// 	[product_location] => 
+		// 	[product_minimum] => )
+
+
+		// print_r($_POST); exit();
+		 
+		// If form is submitted 
+		// if(isset($_POST['name']) || isset($_POST['email']) || isset($_POST['file'])){ 
+		    // Get the submitted form data 
+		    // $name = $_POST['name']; 
+		    // $email = $_POST['email']; 
+
+		$customername = $_POST['customer_name'];
+		$customername_socail = $_POST['customer_name_socail'];
+		$customerphone = $_POST['customer_phone'];
+		$customeremail = $_POST['customer_email'];
+		$customeraddress = $_POST['customer_address'];
+		$customerprovince = $_POST['province'];
+		$customeramphure = $_POST['amphure'];
+		$customerdistrict = $_POST['district'];
+		$customerchanel = $_POST['customer_chanel'];
+
+		// print_r($_POST); 
+		// exit();
+		     
+		    // Check whether submitted data is not empty 
+		    // if(!empty($name) && !empty($email)){ 
+		    if(!empty($customername)){ 
+		        // Validate email 
+		        // if(filter_var($email, FILTER_VALIDATE_EMAIL) === false){ 
+		        //     $response['message'] = 'Please enter a valid email.'; 
+		        // }else{ 
+		            $uploadStatus = 1; 
+		             
+		            // Upload file 
+		            $uploadedFile = ''; 
+		            if(!empty($_FILES["file"]["name"])){ 
+		                 
+		                // File path config 
+		                $fileName = basename($_FILES["file"]["name"]); 
+		                $targetFilePath = $uploadDir . $fileName; 
+		                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+		                 
+		                // Allow certain file formats 
+		                $allowTypes = array('pdf', 'doc', 'docx', 'jpg', 'png', 'jpeg'); 
+		                if(in_array($fileType, $allowTypes)){ 
+		                    // Upload file to the server 
+		                    if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){ 
+		                        $uploadedFile = $fileName; 
+		                    }else{ 
+		                        $uploadStatus = 0; 
+		                        $response['message'] = 'Sorry, there was an error uploading your file.'; 
+		                    } 
+		                }else{ 
+		                    $uploadStatus = 0; 
+		                    $response['message'] = 'Sorry, only PDF, DOC, JPG, JPEG, & PNG files are allowed to upload.'; 
+		                } 
+		            } 
+		             
+		            if($uploadStatus == 1){ 
+		                // Include the database config file 
+		                // include_once 'dbConfig.php'; 
+		                 
+		                // Insert form data in the database 
+		                // $insert = $db->query("INSERT INTO form_data (name,email,file_name) VALUES ('".$name."','".$email."','".$uploadedFile."')"); 
+
+
+		            	$check_customer_data = "SELECT product_id FROM product WHERE delete_flag = 1;";
+						$get_check_customer_data = $this->customer_model->show_all_customer($check_customer_data);
+
+						$customer_date = date('Ymd');
+
+						if ($check_customer_data == "") {
+
+							$customer_id = "PD".$customer_date."0001";
+
+						}else{
+
+							$check_product = "SELECT SUBSTR(product_id,11,13) AS mycus_id 
+											  FROM product 
+											  WHERE SUBSTR(product_id,3,8) = $customer_date  
+											  AND delete_flag = 1";
+							$data['get_check_customer'] = $this->customer_model->show_all_customer($check_product);
+
+							$customer_id = "PD".$customer_date.$this->add_index($data['get_check_customer']);
+
+							$insert = "INSERT INTO product 
+							(cus_id,
+							cus_name,
+							cus_name_social,
+							phone_number,
+							email,
+							sales_channels,
+							cus_address,
+							cus_provinces,
+							cus_amphures,
+							cus_districts,
+							link_img) VALUES (
+							'".$customer_id."',
+							'".$customername."',
+							'".$customername_socail."',
+							'".$customerphone."',
+							'".$customeremail."',
+							'".$customerchanel."',
+							'".$customeraddress."',
+							'".$customerprovince."',
+							'".$customeramphure."',
+							'".$customerdistrict."',
+							'".$uploadedFile."')"; 
+
+			                 $this->customer_model->add_new_customer($insert);
+			                 
+			                if($insert){ 
+			                    $response['status'] = 1; 
+			                    $response['message'] = 'Form data submitted successfully!'; 
+			                } 
+
+						}
+		              
+		            } 
+		        // } 
+		    }else{ 
+		    	 $response['status'] = 2; 
+		         $response['message'] = 'Please fill all the mandatory fields (name and email).'; 
+		    } 
+		// } 
+ 
+	// Return response 
+	echo json_encode($response);
+
+
+	}
+
+	public function add_product1()
 	{
 	
 		$product_name = $this->input->post('name');
