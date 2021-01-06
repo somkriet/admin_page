@@ -102,12 +102,12 @@ class Product extends CI_Controller {
 		    // $name = $_POST['name']; 
 		    // $email = $_POST['email']; 
 
-		$customername = $_POST['customer_name'];
-		$customername_socail = $_POST['customer_name_socail'];
-		$customerphone = $_POST['customer_phone'];
-		$customeremail = $_POST['customer_email'];
-		$customeraddress = $_POST['customer_address'];
-		$customerprovince = $_POST['province'];
+		$product_name = $_POST['customer_name'];
+		$product_category = $_POST['customer_name_socail'];
+		$product_detail = $_POST['customer_phone'];
+		$product_cost = $_POST['customer_email'];
+		$product_price = $_POST['customer_address'];
+		$size_XS = $_POST['province'];
 		$customeramphure = $_POST['amphure'];
 		$customerdistrict = $_POST['district'];
 		$customerchanel = $_POST['customer_chanel'];
