@@ -1,11 +1,8 @@
-
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">เพิ่มข้อมูลสินค้า</h1>
-        
-           <div class="card shadow mb-4">
+<!-- Begin Page Content -->
+    <div class="container-fluid sizealert">
+      <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">เพิ่มข้อมูลสินค้า</h1>
+          <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">เพิ่มสินค้า</h6>
             </div>
@@ -22,41 +19,92 @@
                         </div>
                       </div>
 
+                       <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>หมวดหมู่สินค้า</b></label>
+                        <div class="col-sm-8">
+
+
+
+                          <select class="form-control" id="product_category">
+                            <option  value="">เลือกหมวดหมู่สินค้า</option>
+                             <?php if(!empty($product_category_data)): 
+                               foreach ($product_category_data as $row) {
+                                
+                                $category_id = $row->product_category_id;
+                                $category_name = $row->product_category_name;
+                                 
+                      
+                                echo '<option value="' . $category_id . '">' . $category_name . '</option>';
+
+                                }
+                            endif; 
+                          ?>
+                          </select>
+
+                        </div>
+                      </div>
+
                       <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>รายละเอียดสินค้า</b></label>
                         <div class="col-sm-8">
-                           <textarea  id="product_detail" name="product_detail" rows="4" class="form-control" placeholder="รายละเอียดสินค้า ..." style="overflow: hidden; resize: none;"></textarea>
+                           <textarea  id="product_detail" name="product_detail" rows="8" class="form-control" placeholder="รายละเอียดสินค้า ..." style="overflow: hidden; resize: none;"></textarea>
+                        </div>
+                      </div>
+
+                      <hr>
+                     
+                      <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ต้นทุน</b></label>
+                        <div class="col-sm-8">
+                          <input type="number" class="form-control" id="product_cost" placeholder="ต้นทุน ...">
                         </div>
                       </div>
 
                       <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ราคาขาย</b></label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" id="product_price" placeholder="ราคาขาย ...">
+                          <input type="number" class="form-control" id="product_price" placeholder="ราคาขาย ...">
                         </div>
                       </div>
 
+                      <hr>
 
-                      <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ขนาดไซส์</b></label>
-                        <div class="col-sm-2">
-                          S :<input type="text" class="form-control" id="product_qty" placeholder="จำนวน ...">
+                      <div class="form-group row size">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>จำนวนสินค้า</b></label>
+                        <div class="col-sm-2 sizeXS">
+                          <b>XS</b> (เอว 24-25)<input type="number" name='size_XS' min="0" class="form-control"  value="0">
                         </div>
-                        <div class="col-sm-2">
-                          M :<input type="text" class="form-control" id="product_qty" placeholder="จำนวน ...">
+                        <div class="col-sm-2 sizeS">
+                          <b>S</b> (เอว 26-27)<input type="number" name='size_S' min="0" class="form-control" value="0" >
                         </div>
-                        <div class="col-sm-2">
-                          L :<input type="text" class="form-control" id="product_qty" placeholder="จำนวน ...">
+                        <div class="col-sm-2 sizeM">
+                          <b>M</b> (เอว 28-29)<input type="number" name='size_M' min="0" class="form-control" value="0" >
                         </div>
-                        <div class="col-sm-2">
-                          XL :<input type="text" class="form-control" id="product_qty" placeholder="จำนวน ...">
+                        <div class="col-sm-2 sizeL">
+                          <b>L</b> (เอว 30-31)<input type="number" name='size_L' min="0" class="form-control" value="0" >
                         </div>
+                        <br>
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b></b></label>
+                        <div class="col-sm-2 sizeXL">
+                          <b>XL</b> (เอว 32-33)<input type="number" name='size_XL' min="0" class="form-control" value="0" >
+                        </div>
+                        <div class="col-sm-2 size2XL">
+                          <b>2XL</b> (เอว 34-35)<input type="number" name='size_2XL' min="0" class="form-control " value="0">
+                        </div>
+                        <div class="col-sm-2 size3XL" >
+                          <b>3XL</b> (เอว 36-37)<input type="number" name='size_3XL' min="0" class="form-control" value="0">
+                        </div>
+                        
                       </div>
 
                       <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>จำนวน</b></label>
-                        <div class="col-sm-8">
-                          <input type="text" class="form-control" id="product_qty" placeholder="จำนวน ...">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>จำนวนสินค้ารวม</b></label>
+                        <div class="col-sm-3">
+                          <!-- <input type="text" class="form-control" id="product_qty" placeholder="จำนวน ..." disabled> -->
+
+                            <input type="hidden" name='size_total' id="product_total">
+                            <input type="number" id="product_total_show" class="form-control" value="0" disabled="disabled">
+
                         </div>
                       </div>
 
@@ -73,18 +121,7 @@
                         </div>
                       </div>
 
-                       <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ประเภทสินค้า</b></label>
-                        <div class="col-sm-8">
-                          <select class="form-control" id="product_category">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </select>
-                        </div>
-                      </div>
+                      
 
                        <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ที่เก็บสินค้า</b></label>
@@ -96,6 +133,13 @@
                             <option>4</option>
                             <option>5</option>
                           </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>สินค้าคงคลังขั้นต่ำ</b></label>
+                        <div class="col-sm-8">
+                          <input type="number" class="form-control" id="product_qty" placeholder="จำนวน ...">
                         </div>
                       </div>
 
@@ -148,6 +192,11 @@
 
 
         </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
 
 
 
@@ -159,6 +208,57 @@
        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
         <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
         <script type="text/javascript">
+
+
+          var total = 0;
+
+           $('.sizealert .size3XL,.sizealert .size2XL,.sizealert .sizeXL,.sizealert .sizeL,.sizealert .sizeM,.sizealert .sizeS,.sizealert .sizeXS').change(function (e) {
+                  updateTotal();
+              });
+
+          // function initQuotationalert() {
+          //     // loadContent();
+          //     $('.sizealert .size3XL,.sizealert .size2XL,.sizealert .sizeXL,.sizealert .sizeL,.sizealert .sizeM,.sizealert .sizeS,.sizealert .sizeXS').change(function (e) {
+          //         updateTotal();
+          //     });
+
+          //     $('input[type=number]').each(function () {
+          //         $(this).change(function (e) {
+          //             var val = $(this).val();
+          //             console.log(val);
+          //             if (!val) {
+          //                 $(this).val(0);
+          //             }
+          //         });
+          //     })
+
+          //     // $('.sizealert .spinner input').change(function (e) {
+          //     //     total = $(this).val();
+          //     // });
+
+          //     // $('input[name=image_list]').val(JSON.stringify(ImageTool.imageList));
+          // }
+
+
+          function updateTotal() {
+
+            console.log(parseInt($('.sizealert .size3XL input').val()));
+            // if (Canvas.product_id == 1) {
+                total =  parseInt($('.sizealert .size3XL input').val()) + parseInt($('.sizealert .size2XL input').val()) + parseInt($('.sizealert .sizeXL input').val()) + parseInt($('.sizealert .sizeL input').val()) + parseInt($('.sizealert .sizeM input').val()) + parseInt($('.sizealert .sizeS input').val()) + parseInt($('.sizealert .sizeXS input').val());
+
+                // $('.sizealert .spinner input').val(total);
+
+                $('#product_total_show').val(total);
+
+            // } else if (Canvas.product_id == 2) {
+            //     total = parseInt($('.quotationalert .spinner4XL input').val()) + parseInt($('.quotationalert .spinner3XL input').val()) + parseInt($('.quotationalert .spinner2XL input').val()) + parseInt($('.quotationalert .spinnerXL input').val()) + parseInt($('.quotationalert .spinnerL input').val()) + parseInt($('.quotationalert .spinnerM input').val()) + parseInt($('.quotationalert .spinnerS input').val()) + parseInt($('.quotationalert .spinnerXS input').val());
+            //     $('.quotationalert .spinner input').val(total);
+            // } else {
+            //     $('#size_total').val(total);
+            // }
+
+        }
+
           
           $('#add_product').on('click', function(){
         

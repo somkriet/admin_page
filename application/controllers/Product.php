@@ -48,9 +48,14 @@ class Product extends CI_Controller {
 	}
 
 	public function new_product()
-	{
+	{	
 
-		$data = array();
+		$sql = "SELECT * FROM product_category WHERE delete_flag = 1;";
+		$data['product_category_data'] = $this->product_model->show_all_product($sql);
+
+		
+
+		// $data = array();
 		$this->template->set('title', 'product');
 		$this->template->load('default_layout', 'contents' , 'product/add_product', $data);
 
