@@ -12,16 +12,27 @@
                   <h6 class="font-weight-bold text-primary">ตารางรายการสินค้า</h6>
                 </div>
 
-                <div class="col-sm-6" align="right">
+               <!--  <div class="col-sm-6" align="right">
                    <button  type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="call_add_product();">เพิ่มสินค้า<span class="glyphicon glyphicon-list-alt"></span>
                   </button>
-                </div>
+                </div> -->
+
+                
+
               <!-- </div> -->
             </div>
                           
             </div>
             <div class="card-body">
-              <table id="myTable" class="display table-responsive-sm" style="width:100%">
+
+
+              <div class="text-lg-left">                           
+                  <a href="<?php echo base_url();?>product/new_product" class="btn btn-primary btn-sm " role="button" aria-pressed="true"><i class='fas fa-user-plus'></i>เพิ่มสินค้า</a>
+              </div>
+               <br><br>
+            
+
+              <table id="myTable" class="table table-bordered" width="100%" cellspacing="0">
                 <thead>
                   <tr>
                       <th>No</th>
