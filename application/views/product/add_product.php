@@ -11,14 +11,19 @@
                 <div class="row">  
 
                   <form id="fupForm1" enctype="multipart/form-data">
-                  <div class="col-sm-10 col-md-10"> 
+                  <div class="col-sm-12 col-md-12"> 
                     <!-- <form> -->
+
+                      <hr>
+                      <b style="color: rgb(0,0,0);">รายละเอียดสินค้า</b>
+                      <hr>
                       <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ชื่อสินค้า</b></label>
                         <div class="col-sm-8">
                           <input type="text" class="form-control" id="product_name" name="product_name" placeholder="ชื่อสินค้า ...">
                         </div>
                       </div>
+                    
 
                        <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>หมวดหมู่สินค้า</b></label>
@@ -51,70 +56,90 @@
                       </div>
 
                       <hr>
-                     
+                      <b style="color: rgb(0,0,0);">รูปภาพสินค้า</b>
+                      <hr>
                       <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ต้นทุน</b></label>
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>อัพโหลดรูปภาพสินค้า</b></label>
                         <div class="col-sm-8">
-                          <input type="number" class="form-control" id="product_cost" name="product_cost" placeholder="ต้นทุน ...">
-                        </div>
-                      </div>
 
-                      <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ราคาขาย</b></label>
-                        <div class="col-sm-8">
-                          <input type="number" class="form-control" id="product_price" name="product_price" placeholder="ราคาขาย ...">
-                        </div>
+                        <input type="file" class="form-control" id="file" name="file"  />
+                       
+                         </div> 
+
                       </div>
 
                       <hr>
+                      <b style="color: rgb(0,0,0);">ตัวเลือกและสต็อคสินค้า</b><br><br>
+                      <!-- <hr> -->
 
-                      <div class="form-group row size">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>จำนวนสินค้า</b></label>
-                        <div class="col-sm-2 sizeXS">
-                          <b>XS</b> (เอว 24-25)<input type="number" name='size_XS' min="0" class="form-control"  value="0">
-                        </div>
-                        <div class="col-sm-2 sizeS">
-                          <b>S</b> (เอว 26-27)<input type="number" name='size_S' min="0" class="form-control" value="0" >
-                        </div>
-                        <div class="col-sm-2 sizeM">
-                          <b>M</b> (เอว 28-29)<input type="number" name='size_M' min="0" class="form-control" value="0" >
-                        </div>
-                        <div class="col-sm-2 sizeL">
-                          <b>L</b> (เอว 30-31)<input type="number" name='size_L' min="0" class="form-control" value="0" >
-                        </div>
-                        <br>
-                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b></b></label>
-                        <div class="col-sm-2 sizeXL">
-                          <b>XL</b> (เอว 32-33)<input type="number" name='size_XL' min="0" class="form-control" value="0" >
-                        </div>
-                        <div class="col-sm-2 size2XL">
-                          <b>2XL</b> (เอว 34-35)<input type="number" name='size_2XL' min="0" class="form-control " value="0">
-                        </div>
-                        <div class="col-sm-2 size3XL" >
-                          <b>3XL</b> (เอว 36-37)<input type="number" name='size_3XL' min="0" class="form-control" value="0">
-                        </div>
-                        
-                      </div>
 
+                      <div class="t-responsive">
+                         <!-- <table class="table-bordered" id="myTbl"> -->
+                          <table class="table" id="productrow">
+                          
+                            <thead>
+                                <tr>
+                                    
+                                    <!-- <th class="select"></th> -->
+                                    <!-- <th class="id">รหัส</th> -->
+                                    <th class="name">ชื่อตัวเลือกสินค้า<span class="required-field">*</span></th>
+                                    <th class="name">SKU<span class="required-field">*</span></th>
+                                    <th class="name">บาร์โค้ด<span class="required-field">*</span></th>
+                                    <th class="amount text-right"  style="width: 100px;">สต็อค<span class="required-field">*</span></th>
+                                    <th class="value text-right"  style="width: 100px;">ต้นทุน (฿)<span class="required-field">*</span></th>
+                                    <th class="discount text-right" style="width: 100px;">ราคาขาย (฿) *</th>
+                                    <!-- <th class="total text-right"  style="width: 150px;">รวม</th> -->
+                                    <th class="action text-center"  style="width: 50px;">ลบ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                        <tr class="firstTr">
+                                            <td>
+                                                <input class="form-control option" name="option[]" type="text" id="option1" maxlength="256" value="">
+                                                <span style=" font-size: 15px;">ตัวอย่าง: Size S, สีดำ</span>
+                                            </td>
+                                            <td>
+                                               <input class="form-control sku" name="sku[]" type="text" id="sku1" maxlength="256" value="">
+                                            </td>
+                                            <td>
+                                                <input class="form-control barcode" name="barcode[]" type="text" id="barcode1" maxlength="256" value="">
+                                            </td>
+                                            <td>
+                                              <input type="hidden" id="stock_total" name="stock_total" value="">
+                                                <input type="number" class="form-control form-text text-right" id="stock1" name="stock[]" placeholder="0.00" maxlength="32" value="">
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control form-text text-right" id="cost1" name="cost[]" placeholder="0.00" maxlength="32" value="">
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control form-text text-right" id="sale_price1" name="sale_price[]" placeholder="0.00"  maxlength="32" value="">
+                                            </td>
+                                            <td class="action text-center">
+                                                <a href="javascript:deleteRow(1);" class="btn btn-danger btn-sm">
+                                                  <i class="fa fa-times-circle" aria-hidden="true" ></i></a>
+                                            </td>
+                                        </tr>
+                          </tbody>
+                        </table>
+
+                    </div>
+                    <a href="javascript:addRow();" class="btn btn-primary btn-sm">
+                      <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                      <span>เพิ่มตัวเลือกสินค้า</span>
+                    </a>
+                    <br><br>
+                     
                       <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>จำนวนสินค้ารวม</b></label>
-                        <div class="col-sm-3">
-                          <!-- <input type="text" class="form-control" id="product_qty" placeholder="จำนวน ..." disabled> -->
-
-                            <input type="hidden" name='size_total' id="product_total">
-                            <input type="number" id="product_total_show" name="product_total_show" class="form-control" value="0" disabled="disabled">
-
-                        </div>
-                      </div>
-
-                      <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>หน่วยนับ</b></label>
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>หน่วยนับสินค้า</b></label>
                         <div class="col-sm-3">
                            <input type="text" class="form-control" id="unit_count" name="unit_count" placeholder="เช่น ตัว ชิ้น แพ็ค กล่อง...">
                         </div>
                       </div>
 
                       
+                       <hr>
+                      <b style="color: rgb(0,0,0);">คลังสินค้า</b>
+                      <hr>
 
                        <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ที่เก็บสินค้า</b></label>
@@ -145,26 +170,6 @@
                         </div>
                       </div>
 
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>อัพโหลดรูปภาพสินค้า</b></label>
-                        <div class="col-sm-8">
-
-                        <input type="file" class="form-control" id="file" name="file" required />
-                  
-                          <!-- <input type="file" class="form-control-file" id="product_img"> -->
-
-                          <!-- <div id="image_preview">
-                            <img id="product_img" src="" />
-                          </div>
-                          <div id="selectImage"> -->
-                          <!-- <label>Select Your Image</label><br/> -->
-                          <!-- <input type="file" name="file" id="file" class="form-control" required /> -->
-
-                          <!-- <input type="gu" name="" id="" class="form-control" required> -->
-                          <!-- <input type="submit" value="Upload" class="submit" /> -->
-                          </div> 
-
-                        </div>
                     </div>
                  
                 <center>
@@ -175,31 +180,6 @@
               </form>   
                 <br><br>
 
-
-
-
-
-               <!--  <div>
-                <form id="uploadimage" action="" method="post" enctype="multipart/form-data">
-                <div id="image_preview"><img id="previewing" src="noimage.png" /></div>
-                <hr id="line">
-                <div id="selectImage">
-                <label>Select Your Image</label><br/>
-                <input type="file" name="file" id="file" required />
-                <input type="submit" value="Upload" class="submit" />
-                </div>
-                </form>
-                
-                <h4 id='loading' >loading..</h4>
-                <div id="message"></div>
-
-
-
-                </div> -->
-                   
-          
-
-
         </div>
       </div>
     </div>
@@ -207,11 +187,6 @@
   </div>
   <!-- </div> -->
 
-
-
-
-
- 
         <!-- /.container-fluid -->
        <!--   -->
        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
@@ -222,9 +197,12 @@
 $("#file").change(function() {
     var file = this.files[0];
     var fileType = file.type;
-    var match = ['application/pdf', 'application/msword', 'application/vnd.ms-office', 'image/jpeg', 'image/png', 'image/jpg'];
-    if(!((fileType == match[0]) || (fileType == match[1]) || (fileType == match[2]) || (fileType == match[3]) || (fileType == match[4]) || (fileType == match[5]))){
-        alert('Sorry, only PDF, DOC, JPG, JPEG, & PNG files are allowed to upload.');
+    // var match = ['application/pdf', 'application/msword', 'application/vnd.ms-office', 'image/jpeg', 'image/png', 'image/jpg'];
+    var match = ['image/jpeg', 'image/png', 'image/jpg'];
+    // if(!((fileType == match[0]) || (fileType == match[1]) || (fileType == match[2]) || (fileType == match[3]) || (fileType == match[4]) || (fileType == match[5]))){
+     if(!((fileType == match[0]) || (fileType == match[1]) || (fileType == match[2]))){
+        // alert('Sorry, only PDF, DOC, JPG, JPEG, & PNG files are allowed to upload.');
+        alert('Sorry, only JPG, JPEG, & PNG files are allowed to upload.');
         $("#file").val('');
         return false;
     }
@@ -249,20 +227,22 @@ $("#file").change(function() {
             success: function(data){ 
             console.log(data);
                 if (data['status'] == '1') {
-                    alert("success!!");
+                    // alert("success!!");
+                    Swal.fire('เพิ่มข้อมูลสินค้าเรียบร้อย!!!');
                     // swal("Good job!", "You have successfully added the order!", "success");
                     // swal("success!");
                     // window.location="<?php echo base_url('order/add_new_order');?>";
 
                     setTimeout(function(){ 
                       // alert("Hello"); 
-                      window.location="<?php echo base_url('order/new_product');?>";
+                      window.location="<?php echo base_url('product/new_product');?>";
                     }, 3000);
 
                     return false;
                 }else{
                   // swal("Error!");
-                   alert("Error!!");
+                   // alert("Error!!");
+                   Swal.fire('เพิ่มข้อมูลสินค้าไม่สำเร็จ!!!');
                   return false;
                 }
                 $('#fupForm').css("opacity","");
@@ -274,33 +254,103 @@ $("#file").change(function() {
 });  
 
 
-// $(function(){
-//   $('#myTable').dataTable({
-//     ordering: true,
-//     searching: true,
-//     lengthChange: true
-//   });
+ var rowcount = 1;
+  
+   function addRow()
+    {
+        rowcount++;
+        var table = document.getElementById("productrow");
+        var length = table.rows.length;
+        var row = table.insertRow();
+        row.id = "prow" + rowcount;
+        var cell0 = row.insertCell(0);
+        var cell1 = row.insertCell(1);
+        var cell2 = row.insertCell(2);
+        var cell3 = row.insertCell(3);
+        var cell4 = row.insertCell(4);
+        var cell5 = row.insertCell(5);
+        var cell6 = row.insertCell(6);
+       
+        cell0.innerHTML = "<input class=\"form-control option\" type=\"text\" id=\"option"+rowcount+"\" name=\"option[]\" maxlength=\"256\" value=\"\"/><span style=\"font-size: 15px;\">ตัวอย่าง: Size S, สีดำ</span>";
 
-//    $('#myTable2').dataTable({
-//     ordering: true,
-//     searching: true,
-//     lengthChange: true
-//   });
+        cell1.innerHTML = "<input class=\"form-control sku\" type=\"search\" id=\"sku"+rowcount+"\" name=\"sku[]\" maxlength=\"256\" value=\"\"/>";
 
-// });
+        cell2.innerHTML = "<input class=\"form-control barcode\" type=\"text\" id=\"barcode"+rowcount+"\" name=\"barcode[]\" maxlength=\"256\" value=\"\" />";
 
-          var total = 0;
+        cell3.innerHTML = "<input type=\"number\" placeholder='0.00' class=\"form-control form-text text-right\" id=\"stock"+rowcount+"\" name=\"stock[]\"  maxlength=\"32\" value='0.00' />"; 
+      
+        cell4.innerHTML = "<input type=\"number\" class=\"form-control form-text text-right\" id=\"cost"+rowcount+"\" name=\"cost[]\" placeholder='0.00' maxlength='32' value='0.00' />";
 
-           $('.sizealert .size3XL,.sizealert .size2XL,.sizealert .sizeXL,.sizealert .sizeL,.sizealert .sizeM,.sizealert .sizeS,.sizealert .sizeXS').change(function (e) {
-                  updateTotal();
-              });
+        cell5.innerHTML = "<input type=\"number\" class=\"form-control form-text text-right\" id=\"sale_price"+rowcount+"\" name=\"sale_price[]\" placeholder=0.00 maxlength='32' value='0.00' />";
+       
+        cell6.innerHTML = "<a href='javascript:deleteRow(" + rowcount + ");' class=\"btn btn-danger btn-sm\" ><i class=\"fa fa-times-circle\" ></i></a></a>";
 
-          function updateTotal() {
-            // console.log(parseInt($('.sizealert .size3XL input').val()));
-                total =  parseInt($('.sizealert .size3XL input').val()) + parseInt($('.sizealert .size2XL input').val()) + parseInt($('.sizealert .sizeXL input').val()) + parseInt($('.sizealert .sizeL input').val()) + parseInt($('.sizealert .sizeM input').val()) + parseInt($('.sizealert .sizeS input').val()) + parseInt($('.sizealert .sizeXS input').val());
 
-                $('#product_total_show').val(total);
-          }
+        // updateTotalstock(rowcount);
+        // autocalculate();
+
+        $('#stock'+rowcount).change(function (e) {
+                  autocalculate();
+        });
+
+    }
+
+    function autocalculate()
+    {
+
+      // console.log('aa');
+        var table = document.getElementById("productrow");
+        var rCount = table.rows.length;
+        var total = 0;
+       
+        var i = 0;
+        for (var j = 1; j < rCount; j++) {
+            i++;
+            while (!document.getElementById('stock' + i)) {
+                i++;
+            }
+
+            var tmp = ($("#stock" + i).val());
+            total += Number(tmp);
+           
+        }
+
+        $("#stock_total").val(total);
+
+    }
+
+    function deleteRow(id) {
+
+
+        var table = document.getElementById("productrow");
+        var rowid = 'prow' + id;
+
+        console.log('rowid='+rowid);
+        //var row = document.getElementById(rowid);
+        //row.parentNode.removeChild(row);
+        var row = document.getElementById(rowid);
+        var count = table.rows.length;
+        if (count > 1) {
+            while (table && table.tagName != 'TABLE')
+                table = table.parentNode;
+            if (!table)
+                return;
+            table.deleteRow(row.rowIndex);
+
+            var idTmp=0;
+            for (var i = 1; i < (count - 1); i++) {
+                idTmp++;
+                //a/lert('ptotalid : ' + ptotalid);
+                while (!document.getElementById('productcount' + idTmp)) {
+                    idTmp++;
+                    alert('ptotalTmp : ' + ptotalTmp);
+                }
+                // document.getElementById('productcount' + idTmp).innerHTML = i;
+            }
+            // autocalculate();
+        }
+    }
+
 
           
           $('#add_product').on('click', function(){

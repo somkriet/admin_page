@@ -66,141 +66,118 @@ class Product extends CI_Controller {
 
 	public function add_new_product()
 	{
-
-
-
 		$uploadDir = 'uploads/'; 
 		$response = array( 
 		    'status' => 0, 
 		    'message' => 'Form submission failed, please try again.' 
 		); 
-
-
-		// Array ( [product_name] => 
-		// 	[product_category] => 
-		// 	[product_detail] => 
-		// 	[product_cost] => 
-		// 	[product_price] => 
-		// 	[size_XS] => 0 
-		// 	[size_S] => 0 
-		// 	[size_M] => 0 
-		// 	[size_L] => 0 
-		// 	[size_XL] => 0 
-		// 	[size_2XL] => 0 
-		// 	[size_3XL] => 0 
-		// 	[size_total] => 
-		// 	[unit_count] => 
-		// 	[product_location] => 
-		// 	[product_minimum] => )
-
-
-		// print_r($_POST); exit();
-		 
-		// If form is submitted 
-		// if(isset($_POST['name']) || isset($_POST['email']) || isset($_POST['file'])){ 
-		    // Get the submitted form data 
-		    // $name = $_POST['name']; 
-		    // $email = $_POST['email']; 
-
-		$product_name = $_POST['customer_name'];
-		$product_category = $_POST['customer_name_socail'];
-		$product_detail = $_POST['customer_phone'];
-		$product_cost = $_POST['customer_email'];
-		$product_price = $_POST['customer_address'];
-		$size_XS = $_POST['province'];
-		$customeramphure = $_POST['amphure'];
-		$customerdistrict = $_POST['district'];
-		$customerchanel = $_POST['customer_chanel'];
-
 		// print_r($_POST); 
 		// exit();
-		     
+
+		$product_name = $this->input->post('product_name');
+		$product_category = $this->input->post('product_category');
+		$product_detail = $this->input->post('product_detail');
+		$unit_count = $this->input->post('unit_count');
+		$product_location = $this->input->post('product_location');
+		$product_minimum = $this->input->post('product_minimum');
+		$stock_total = $this->input->post('stock_total');
+		
+		
 		    // Check whether submitted data is not empty 
-		    // if(!empty($name) && !empty($email)){ 
-		    if(!empty($customername)){ 
-		        // Validate email 
-		        // if(filter_var($email, FILTER_VALIDATE_EMAIL) === false){ 
-		        //     $response['message'] = 'Please enter a valid email.'; 
-		        // }else{ 
-		            $uploadStatus = 1; 
-		             
+		    if(!empty($product_name)){ 
+		     
+		        $uploadStatus = 1; 
 		            // Upload file 
-		            $uploadedFile = ''; 
-		            if(!empty($_FILES["file"]["name"])){ 
+		        $uploadedFile = ''; 
+		        if(!empty($_FILES["file"]["name"])){ 
 		                 
-		                // File path config 
-		                $fileName = basename($_FILES["file"]["name"]); 
-		                $targetFilePath = $uploadDir . $fileName; 
-		                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+		            // File path config 
+		            $fileName = basename($_FILES["file"]["name"]); 
+		            $targetFilePath = $uploadDir . $fileName; 
+		            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
 		                 
-		                // Allow certain file formats 
-		                $allowTypes = array('pdf', 'doc', 'docx', 'jpg', 'png', 'jpeg'); 
-		                if(in_array($fileType, $allowTypes)){ 
-		                    // Upload file to the server 
-		                    if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){ 
+		            // Allow certain file formats 
+		            $allowTypes = array('jpg', 'png', 'jpeg'); 
+		            if(in_array($fileType, $allowTypes)){ 
+		                // Upload file to the server 
+		                if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){ 
 		                        $uploadedFile = $fileName; 
-		                    }else{ 
+		                }else{ 
 		                        $uploadStatus = 0; 
 		                        $response['message'] = 'Sorry, there was an error uploading your file.'; 
-		                    } 
-		                }else{ 
-		                    $uploadStatus = 0; 
-		                    $response['message'] = 'Sorry, only PDF, DOC, JPG, JPEG, & PNG files are allowed to upload.'; 
 		                } 
-		            } 
+		           	}else{ 
+		                    $uploadStatus = 0; 
+		                    $response['message'] = 'Sorry, only JPG, JPEG, & PNG files are allowed to upload.'; 
+		                } 
+		        } 
 		             
-		            if($uploadStatus == 1){ 
-		                // Include the database config file 
-		                // include_once 'dbConfig.php'; 
-		                 
-		                // Insert form data in the database 
-		                // $insert = $db->query("INSERT INTO form_data (name,email,file_name) VALUES ('".$name."','".$email."','".$uploadedFile."')"); 
+		        if($uploadStatus == 1){ 
+		              
+		           	$check_product_data = "SELECT product_id FROM product WHERE delete_flag = 1;";
+					$get_check_product_data = $this->product_model->show_all_product($check_product_data);
 
+					$product_date = date('Ymd');
 
-		            	$check_customer_data = "SELECT product_id FROM product WHERE delete_flag = 1;";
-						$get_check_customer_data = $this->customer_model->show_all_customer($check_customer_data);
+					if ($get_check_product_data == "") {
 
-						$customer_date = date('Ymd');
+						$product_id = "PD".$customer_date."0001";
 
-						if ($check_customer_data == "") {
+					}else{
 
-							$customer_id = "PD".$customer_date."0001";
+						$gen_product_id = "SELECT SUBSTR(product_id,11,13) AS mypro_id 
+										FROM product 
+										WHERE SUBSTR(product_id,3,8) = '".$product_date."'
+										AND delete_flag = 1";
+						$data['get_gen_product'] = $this->customer_model->show_all_customer($gen_product_id);
 
-						}else{
+						$product_id = "PD".$product_date.$this->add_index($data['get_gen_product']);
 
-							$check_product = "SELECT SUBSTR(product_id,11,13) AS mycus_id 
-											  FROM product 
-											  WHERE SUBSTR(product_id,3,8) = $customer_date  
-											  AND delete_flag = 1";
-							$data['get_check_customer'] = $this->customer_model->show_all_customer($check_product);
+						$insert = "INSERT INTO product 
+							(product_id,
+							product_name,
+							product_img,
+							category,
+							productDiscription,
+							total_stock,
+							store,
+							unit_count,
+							product_minimum
+							) VALUES ('".$product_id."',
+							'".$product_name."',
+							'".$uploadedFile."',
+							'".$product_category."',
+							'".$product_detail."',
+							'".$stock_total."',
+							'".$product_location."',
+							'".$unit_count."',
+							'".$product_minimum."')"; 
 
-							$customer_id = "PD".$customer_date.$this->add_index($data['get_check_customer']);
+			                $this->product_model->add_new_product($insert);
 
-							$insert = "INSERT INTO product 
-							(cus_id,
-							cus_name,
-							cus_name_social,
-							phone_number,
-							email,
-							sales_channels,
-							cus_address,
-							cus_provinces,
-							cus_amphures,
-							cus_districts,
-							link_img) VALUES (
-							'".$customer_id."',
-							'".$customername."',
-							'".$customername_socail."',
-							'".$customerphone."',
-							'".$customeremail."',
-							'".$customerchanel."',
-							'".$customeraddress."',
-							'".$customerprovince."',
-							'".$customeramphure."',
-							'".$customerdistrict."',
-							'".$uploadedFile."')"; 
+			            foreach($_POST['option'] as $key_data=>$value_data){// วนลูป จัดการกับค่า id หลัก
+                    		// if($value_data==""){ // ถ้าไม่มีค่า แสดงว่า จะเป็นการเพิ่มข้อมูลใหม่
+                   			// print_r($value_data); exit();
+                            $insert_detail = "INSERT INTO product_option (
+                            					 product_id,
+                                                 option_product,
+                                                 sku,
+                                                 barcode,
+                                                 stock,
+                                                 cost,
+                                                 sale_price
+                                                )
+                            				VALUES ('".$product_id."',
+                                                '".$_POST['option'][$key_data]."',
+                                                '".$_POST['sku'][$key_data]."',
+                                                '".$_POST['barcode'][$key_data]."',
+                                                '".$_POST['stock'][$key_data]."',
+                                                '".$_POST['cost'][$key_data]."',
+                                                '".$_POST['sale_price'][$key_data]."')";
 
-			                 $this->customer_model->add_new_customer($insert);
+            				$this->product_model->add_new_product($insert_detail);
+                
+            			}
 			                 
 			                if($insert){ 
 			                    $response['status'] = 1; 
@@ -213,9 +190,8 @@ class Product extends CI_Controller {
 		        // } 
 		    }else{ 
 		    	 $response['status'] = 2; 
-		         $response['message'] = 'Please fill all the mandatory fields (name and email).'; 
+		         $response['message'] = 'Please fill all the mandatory fields (name).'; 
 		    } 
-		// } 
  
 	// Return response 
 	echo json_encode($response);
@@ -277,8 +253,8 @@ class Product extends CI_Controller {
 
 		}else{
 
-			$check_product = "SELECT SUBSTR(pro_id,11,13) AS mypro_id 
-							  FROM tb_product 
+			$check_product = "SELECT SUBSTR(product_id,11,13) AS mypro_id 
+							  FROM product 
 							  WHERE SUBSTR(pro_id,3,8) = $product_date  
 							  AND delete_flag = 1";
 			$data['get_check_product'] = $this->product_model->show_all_product($check_product);
