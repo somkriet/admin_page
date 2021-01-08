@@ -55,6 +55,42 @@ class Product extends CI_Controller {
 		$this->template->load('default_layout', 'contents' , 'product/show_product_all', $data);
 	}
 
+
+	public function storage()
+	{	
+
+		$sql = "SELECT * FROM product_category WHERE delete_flag = 1;";
+		$data['product_category_data'] = $this->product_model->show_all_product($sql);
+
+		$sql = "SELECT * FROM storage WHERE delete_flag = 1;";
+		$data['storage_data'] = $this->product_model->show_all_product($sql);
+
+
+		// $data = array();
+		$this->template->set('title', 'product');
+		$this->template->load('default_layout', 'contents' , 'product/add_product', $data);
+
+	}
+
+
+	public function product_category()
+	{	
+
+		$sql = "SELECT * FROM product_category WHERE delete_flag = 1;";
+		$data['product_category_data'] = $this->product_model->show_all_product($sql);
+
+		$sql = "SELECT * FROM storage WHERE delete_flag = 1;";
+		$data['storage_data'] = $this->product_model->show_all_product($sql);
+
+
+		// $data = array();
+		$this->template->set('title', 'product');
+		$this->template->load('default_layout', 'contents' , 'product/add_product', $data);
+
+	}
+
+	
+
 	public function new_product()
 	{	
 
@@ -220,36 +256,6 @@ class Product extends CI_Controller {
 		$product_location = $this->input->post('location');
 		$product_img = $this->input->post('img');
 
-
-		// if ($this->upload->do_upload('file_attach')) {
-  //                       $upload_data = $this->upload->data();
-  //                       $params['attach'] = $upload_data['full_path'];
-  //                       // for insert into db
-                    
-  //                       if ($upload_data['file_name'] != "") {
-  //                           $data['attach_file'] = $upload_data['file_name'];
-
-  //                           // $img_url = 'uploads/'.$data['attach_file'];
-  //                       }else{
-  //                           $data['attach_file'] = 'nodata';    
-  //                       }
-                       
-  //                   }else{
-  //                       $data['attach_file'] = 'nodata';
-  //                   }
-
-
-  //                   if ($data['attach_file'] == 'nodata') {
-                        
-  //                       $img_url = 'uploads/-';
-  //                   }else{
-  //                       $img_url = 'uploads/'.$data['attach_file'];
-  //                   }
-
-
-
-
-		// $product_id = '2';
 		$check_product_data = "SELECT pro_id FROM tb_product WHERE delete_flag = 1;";
 		$get_check_product_data = $this->product_model->show_all_product($check_product_data);
 
@@ -268,7 +274,6 @@ class Product extends CI_Controller {
 			$data['get_check_product'] = $this->product_model->show_all_product($check_product);
 
 			$product_id = "PD".$product_date.$this->add_index($data['get_check_product']);
-			// print_r($get_check_product);
 
 		}
 			
@@ -331,130 +336,8 @@ class Product extends CI_Controller {
 			$a = $num;
 		}
 
-		// print_r($a);
-		// exit();
 		return $a;
 
-	}
-
-// Congragulation You Have Successfuly Uploaded
-// file_name: 78952308_2536811219771671_5999549174792585216_n.jpg
-// file_type: image/jpeg
-// file_path: C:/xampp/htdocs/admin_system/uploads/
-// full_path: C:/xampp/htdocs/admin_system/uploads/78952308_2536811219771671_5999549174792585216_n.jpg
-// raw_name: 78952308_2536811219771671_5999549174792585216_n
-// orig_name: 78952308_2536811219771671_5999549174792585216_n.jpg
-// client_name: 78952308_2536811219771671_5999549174792585216_n.jpg
-// file_ext: .jpg
-// file_size: 60.98
-// is_image: 1
-// image_width: 720
-// image_height: 450
-// image_type: jpeg
-// image_size_str: width="720" height="450"
-	
-	public function do_upload(){
-			$config = array(
-				'upload_path' => "./uploads/",
-				'allowed_types' => "gif|jpg|png|jpeg|pdf",
-				'overwrite' => TRUE,
-				// 'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-				'max_height' => "1768",
-				'max_width' => "1024"
-			);
-			$this->load->library('upload', $config);
-
-		
-
-			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-			    $fileName = $_FILES['inputFile']['name'];
-			    //$fileExt = pathinfo($_FILES["inputFile"]["name"], PATHINFO_EXTENSION);
-			    $filePath = "./uploads/".$fileName;
-			    if (move_uploaded_file($_FILES["inputFile"]["tmp_name"], $filePath)) {
-			        $data = "Upload success";
-			    } else {
-			        $data = "Upload failed";
-			    }
-			}
-
-
-			// ตรวจสอบนามสกุลของภาพที่อัพโหลด 
-			// $valid_formats = array("jpg", "png", "gif", "bmp","jpeg");
-			// if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") 
-			// {
-			// 	$uploaddir = "./uploads/"; //โฟลเดอร์ที่เก็บภาพ อย่าลืมสร้างนะครับ!!
-			// 	foreach ($_FILES['inputFile']['name'] as $name => $value)
-			// 	{
-			// 		$filename = stripslashes($_FILES['inputFile']['name'][$name]);
-			// 		$size=filesize($_FILES['inputFile']['tmp_name'][$name]);
-			// 		//Convert extension into a lower case format
-			// 		$ext = $this->getExtension($filename);
-			// 		$ext = strtolower($ext);
-			// 	//File extension check
-			// 		if(in_array($ext,$valid_formats))
-			// 	{
-			// 	//ขนาดของภาพหน้ามเกิน 1mb
-			// 		if ($size < (MAX_SIZE*1024))
-			// 		{ 
-			// 		$image_name=time().$filename; 
-			// 		echo "<img src='".$uploaddir.$image_name."' class='imgList'>"; 
-			// 		$newname=$uploaddir.$image_name; 
-			// 		//อัพโหลดไฟล์ไปในโฟลเดอร์ที่กำหนด
-			// 			if (move_uploaded_file($_FILES['photos']['tmp_name'][$name], $newname)) 
-			// 			{ 
-			//  				$data = "Upload success";
-			// 			//เพิ่มเข้าฐานข้อมูล
-			// 			// mysql_query("INSERT INTO uploadimg(image_name)VALUES('$image_name')");
-			 
-			// 			}else{ 
-			// 				// echo '<span class="imgList">You have exceeded the size limit! so moving unsuccessful! </span>'; 
-			// 				$data = "You have exceeded the size limit! so moving unsuccessful!";
-			// 			} 
-			// 		}
-			 
-			// 		else{ 
-			// 		// echo '<span class="imgList">You have exceeded the size limit!</span>'; 
-			// 		$data = "You have exceeded the size limit!";
-			// 		} 
-			// 	}else{ 
-			// 		// echo '<span class="imgList">Unknown extension!</span>'; 
-			// 		$data = "Unknown extension!";
-			// 	} 
-			 
-			// 	} //foreach end
-			 
-			// } 
-
-
-			// if($this->upload->do_upload())
-			// {
-			// 	$data = array('upload_data' => $this->upload->data());
-			// 	// $this->load->view('product/upload_success',$data);
-
-			// 	 // foreach ($upload_data as $item => $value):
-   //  	// 			// echo $item; 
-   //  	// 			$data = $item['file_name'];
-   //  	// 			// echo $value;
-   //  	// 		endforeach;
-			// 	$data = 'success';
-			// }
-			// else
-			// {
-			// 	$data = 'error';
-			// }
-
-		echo json_encode($data);	
-			// print_r($data);
-    }
-
-
-	function getExtension($str)
-	{
-		$i = strrpos($str,".");
-		if (!$i) { return ""; }
-		$l = strlen($str) - $i;
-		$ext = substr($str,$i+1,$l);
-		return $ext;
 	}
 
 
