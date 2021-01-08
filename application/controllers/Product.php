@@ -43,6 +43,14 @@ class Product extends CI_Controller {
 		$sql = "SELECT * FROM product WHERE delete_flag = 1;";
 		$data['product_data'] = $this->product_model->show_all_product($sql);
 
+
+		// $sql = "SELECT * 
+		// 		FROM product 
+		// 		INNER JOIN product_option 
+		// 		ON product.product_id = product_option.product_id 
+		// 		WHERE product.delete_flag = 1;";
+		// $data['product_data'] = $this->product_model->show_all_product($sql);
+
 		$this->template->set('title', 'product');
 		$this->template->load('default_layout', 'contents' , 'product/show_product_all', $data);
 	}

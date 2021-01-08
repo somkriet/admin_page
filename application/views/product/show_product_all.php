@@ -39,24 +39,24 @@
                       <th>รหัสสินค้า</th>
                       <th>ชื่อสินค้า</th>
                       <!-- <th>ราคาซื้อ</th> -->
-                      <th>ราคาขาย</th>
-                      <th>คงเหลือ</th>
-                      <th>พร้อมขาย</th>
+                      <!-- <th>ราคาขาย</th> -->
+                      <th>จำนวนสินค้า</th>
+                      <!-- <th>พร้อมขาย</th> -->
                       <th>Action</th>
                   </tr>
                 </thead>
-                <tfoot>
+                <!-- <tfoot>
                   <tr>
                       <th>No</th>
                       <th>รหัสสินค้า</th>
                       <th>ชื่อสินค้า</th>
-                      <!-- <th>ราคาซื้อ</th> -->
+                      
                       <th>ราคาขาย</th>
                       <th>คงเหลือ</th>
                       <th>พร้อมขาย</th>
                       <th>Action</th>
                   </tr>
-                </tfoot>
+                </tfoot> -->
                 <tbody>
                   <?php if(!empty($product_data)): 
                           foreach($product_data as $idx => $val):?>
@@ -65,9 +65,9 @@
                             <td align="center"><?php echo $val->product_id;?></td>
                             <td align="center"><?php echo $val->product_name;?></td>
                             <!-- <td><?php echo $val->pro_purchase_price;?></td> -->
-                            <td><?php echo $val->sale_price;?></td>
-                            <td><?php echo $val->amount;?></td>
-                            <td><?php echo $val->discount;?></td>
+                            <!-- <td><?php echo $val->sale_price;?></td> -->
+                            <td><?php echo $val->total_stock;?></td>
+                            <!-- <td><?php echo $val->discount;?></td> -->
                             <td align="center">
                               <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->product_id;?>');">แก้ไข
                                 <span class="glyphicon glyphicon-list-alt"></span>
