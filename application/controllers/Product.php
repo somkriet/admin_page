@@ -129,7 +129,7 @@ class Product extends CI_Controller {
 
 					if ($get_check_product_data == "") {
 
-						$product_id = "PD".$customer_date."0001";
+						$product_id = "PD".$product_date."0001";
 
 					}else{
 

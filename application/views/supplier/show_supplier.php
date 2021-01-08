@@ -1,7 +1,7 @@
 <!-- Begin Page Content -->
   <div class="container-fluid">
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">ข้อมูลสินค้า</h1>
+          <h1 class="h3 mb-2 text-gray-800">ข้อมูลผู้ผลิต/ร้านค้าส่ง</h1>
           <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
            <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -9,7 +9,7 @@
                <div class="row">
               <!-- <div class="col-sm-6 col-md-12"> -->
                 <div class="col-sm-6">
-                  <h6 class="font-weight-bold text-primary">ตารางรายการสินค้า</h6>
+                  <h6 class="font-weight-bold text-primary">ตารางผู้ผลิต/ร้านค้าส่ง</h6>
                 </div>
 
                <!--  <div class="col-sm-6" align="right">
@@ -27,7 +27,7 @@
 
 
               <div class="text-lg-left">                           
-                  <a href="<?php echo base_url();?>product/new_product" class="btn btn-primary btn-sm " role="button" aria-pressed="true"><i class='fas fa-user-plus'></i>เพิ่มสินค้า</a>
+                  <a href="<?php echo base_url();?>supplier/new_supplier" class="btn btn-primary btn-sm " role="button" aria-pressed="true"><i class='fas fa-user-plus'></i>เพิ่มผู้ผลิต/ร้านค้าส่ง</a>
               </div>
                <br><br>
             
@@ -36,46 +36,33 @@
                 <thead>
                   <tr>
                       <th>No</th>
-                      <th>รูปสินค้า</th>
-                      <th>รหัสสินค้า</th>
-                      <th>ชื่อสินค้า</th>
-                      <!-- <th>ราคาซื้อ</th> -->
-                      <!-- <th>ราคาขาย</th> -->
-                      <th>จำนวนสินค้า</th>
-                      <!-- <th>พร้อมขาย</th> -->
+                      <th>ชื่อผู้ผลิต/ร้านค้าส่ง</th>
+                      <th>ที่อยู่</th>
+                      <th>เบอรโทร</th>
+                      <th>Line</th>
+                      <th>Facebook</th>
                       <th>Action</th>
                   </tr>
                 </thead>
-                <!-- <tfoot>
-                  <tr>
-                      <th>No</th>
-                      <th>รหัสสินค้า</th>
-                      <th>ชื่อสินค้า</th>
-                      
-                      <th>ราคาขาย</th>
-                      <th>คงเหลือ</th>
-                      <th>พร้อมขาย</th>
-                      <th>Action</th>
-                  </tr>
-                </tfoot> -->
                 <tbody>
-                  <?php if(!empty($product_data)): 
-                          foreach($product_data as $idx => $val):
-                            $img =  $val->product_img;
+                  <?php if(!empty($supplier_data)): 
+                          foreach($supplier_data as $idx => $val):
+                            $Line = $val->supplier_line;
                             ?>
                             
                           <tr>
                             <td align="center"><?php echo  $idx+1;?></td>
-                            <td align="center"><img src="<?php echo base_url('uploads/'.$img);?>" width="60" height="60"></td>
-                            <td align="center"><?php echo $val->product_id;?></td>
-                            <td align="center"><?php echo $val->product_name;?></td>
-                            <td align="center"><?php echo $val->total_stock;?></td>
+                            <td align="center"><?php echo $val->supplier_name;?></td>
+                            <td align="center"><?php echo $val->supplier_address;?></td>
+                            <td align="center"><?php echo $val->supplier_phone;?></td>
+                            <td align="center"><a href="<?php echo $val->supplier_line;?>" target="_blank">link Line </a></td>
+                            <td align="center"><a href="<?php echo $val->supplier_facebook;?>" target="_blank">link Facebook</a></td>
                             <td align="center">
-                              <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->product_id;?>');">แก้ไข
+                              <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->supplier_id;?>');">แก้ไข
                                 <span class="glyphicon glyphicon-list-alt"></span>
                               </button>
 
-                              <button type="button" class="btn-md btn-danger btn-sm btn-danger" onclick="delRow('<?php echo $val->product_id;?>');">ลบ
+                              <button type="button" class="btn-md btn-danger btn-sm btn-danger" onclick="delRow('<?php echo $val->supplier_id;?>');">ลบ
                                 <span class="glyphicon glyphicon-trash"></span>
                               </button>
 
