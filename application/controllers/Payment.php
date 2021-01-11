@@ -36,7 +36,10 @@ class Payment extends CI_Controller {
         // $sql = "SELECT * FROM payment ;";
         // $data['payment_data'] = $this->order_model->show_all_order($sql);
 
-        $sql = "SELECT * FROM order_table WHERE status_order = 2 AND delete_flag = 1;";
+        $sql = "SELECT * 
+                FROM order_table 
+                WHERE status_order IN (1, 2)
+                AND delete_flag = 1;";
         $data['payment_data'] = $this->order_model->show_all_order($sql);
 
         

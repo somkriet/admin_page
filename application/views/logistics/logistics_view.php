@@ -75,9 +75,110 @@
 }
 
 </style> 
+        
 
         <!-- Begin Page Content -->
         <div class="container-fluid" id="page-sumary">
+
+
+          <div class="row">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-l font-weight-bold text-primary text-uppercase mb-1"> ยืนยันคำสั่งซื้อ  </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"> 
+                        <!-- <?php if ($today_sales == 0) {
+                                  echo '0';
+                              }else{
+                                echo $today_sales;
+                              }?> บาท  -->
+
+                            </div>
+                              <!--  $40,000 บาท -->
+                     <!--  <div class="small font-weight-bold text-gray-800">ใบเสร็จปกติ : 5 รายการ</div>
+                      <div class="small font-weight-bold text-gray-800">ยกเลิกใบเสร็จ : 0 รายการ</div> -->
+
+                    </div>
+                    <div class="col-auto">
+                      <!-- <i class="fas fa-calendar fa-2x text-gray-300"></i> -->
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-l font-weight-bold text-success text-uppercase mb-1">กำลังแพ็คสินค้า</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"> 200 บาท </div>
+                      <!-- <div class="small font-weight-bold text-gray-800">ขายหน้าร้าน : 215,000 บาท</div>
+                      <div class="small font-weight-bold text-gray-800">ขายออนไลน์ : 215,000 บาท</div> -->
+                      <!-- <div class="h10 mb-0 font-weight-bold text-gray-800">ขายออนไลน์ : 215,000 บาท</div> -->
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-l font-weight-bold text-info text-uppercase mb-1">กำลังส่งสินค้า</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"> 200 บาท </div>
+                          <!-- <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div> -->
+                         <!--  <div class="small font-weight-bold text-gray-800">เงินสด : 55,000 บาท</div>
+                          <div class="small font-weight-bold text-gray-800">โอนผ่านธนาคาร : 10,500 บาท</div> -->
+                        </div>
+                       <!--  <div class="col">
+                          <div class="progress progress-sm mr-2">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div> -->
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-l font-weight-bold text-warning text-uppercase mb-1">ส่งแล้ว</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
 
           <!-- Page Heading -->
           <!-- <h1 class="h3 mb-2 text-gray-800"><?= $this->lang->line('list_order'); ?></h1> -->

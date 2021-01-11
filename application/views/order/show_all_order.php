@@ -1,39 +1,22 @@
 <style type="text/css">
-          .w3-button {
-              border: none;
-              display: inline-block;
-              padding: 8px 16px;
-              vertical-align: middle;
-              overflow: hidden;
-              text-decoration: none;
-              color: inherit;
-              background-color: inherit;
-              text-align: center;
-              cursor: pointer;
-              white-space: nowrap;
-          }
-
-          .w3-black, .w3-hover-black:hover {
-              color: #fff!important;
-              background-color: #000!important;
-          }
-
-
-   /*       .badge {
+  .w3-button {
+    border: none;
     display: inline-block;
-    padding: .25em .4em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
     text-align: center;
+    cursor: pointer;
     white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .25rem;
-    -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-}*/
+  }
+
+  .w3-black, .w3-hover-black:hover {
+    color: #fff!important;
+    background-color: #000!important;
+  }
 
 .badge-info-lighten {
     color: #39afd1;
@@ -44,12 +27,6 @@
     color: #0acf97;
     background-color: rgba(10,207,151,.18);
 }
-
-/*.badge-success-lighten {
-    color: #0acf97;
-    background-color: rgba(10,207,151,.18);
-}
-*/
 
 .badge{display:inline-block;padding:.25em .4em;font-size:75%;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}@media (prefers-reduced-motion:reduce){.badge{transition:none}}a.badge:focus,a.badge:hover{text-decoration:none}.badge:empty{display:none}.btn .badge{position:relative;top:-1px}.badge-pill{padding-right:.6em;padding-left:.6em;border-radius:10rem}.badge-primary{color:#fff;background-color:#007bff}a.badge-primary:focus,a.badge-primary:hover{color:#fff;background-color:#0062cc}a.badge-primary.focus,a.badge-primary:focus{outline:0;box-shadow:0 0 0 .2rem rgba(0,123,255,.5)}.badge-secondary{color:#fff;background-color:#6c757d}a.badge-secondary:focus,a.badge-secondary:hover{color:#fff;background-color:#545b62}a.badge-secondary.focus,a.badge-secondary:focus{outline:0;box-shadow:0 0 0 .2rem rgba(108,117,125,.5)}.badge-success{color:#fff;background-color:#28a745}a.badge-success:focus,a.badge-success:hover{color:#fff;background-color:#1e7e34}a.badge-success.focus,a.badge-success:focus{outline:0;box-shadow:0 0 0 .2rem rgba(40,167,69,.5)}.badge-info{color:#fff;background-color:#17a2b8}a.badge-info:focus,a.badge-info:hover{color:#fff;background-color:#117a8b}a.badge-info.focus,a.badge-info:focus{outline:0;box-shadow:0 0 0 .2rem rgba(23,162,184,.5)}.badge-warning{color:#212529;background-color:#ffc107}a.badge-warning:focus,a.badge-warning:hover{color:#212529;background-color:#d39e00}a.badge-warning.focus,a.badge-warning:focus{outline:0;box-shadow:0 0 0 .2rem rgba(255,193,7,.5)}.badge-danger{color:#fff;background-color:#dc3545}a.badge-danger:focus,a.badge-danger:hover{color:#fff;background-color:#bd2130}a.badge-danger.focus,a.badge-danger:focus{outline:0;box-shadow:0 0 0 .2rem rgba(220,53,69,.5)}.badge-light{color:#212529;background-color:#f8f9fa}a.badge-light:focus,a.badge-light:hover{color:#212529;background-color:#dae0e5}a.badge-light.focus,a.badge-light:focus{outline:0;box-shadow:0 0 0 .2rem rgba(248,249,250,.5)}.badge-dark{color:#fff;background-color:#343a40}a.badge-dark:focus,a.badge-dark:hover{color:#fff;background-color:#1d2124}a.badge-dark.focus,a.badge-dark:focus{outline:0;box-shadow:0 0 0 .2rem rgba(52,58,64,.5)}
 
@@ -76,8 +53,6 @@
     text-overflow: ellipsis;
     color: inherit;
 }
-
-
 
 /* Style the tab */
 .tab {
@@ -118,23 +93,123 @@
 </style>
 
  <!-- DataTales Example -->
-          <div class="card shadow mb-4">
 
-          
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">ตารางข้อมูลการชำระเงิน</h6>
-            </div>
-            <div class="card-body">
 
-                                              
-              <div class="row mt-4">
+  <div class="container-fluid" id="page-sumary">
 
-              <div class="text-lg-right">                           
-                  <a href="<?php echo base_url();?>order/new_order" class="btn btn-primary btn-sm " role="button" aria-pressed="true"><i class='fas fa-user-plus'></i>เพิ่มรายการสั่งซื้อ</a>
+    <div class="row">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-l font-weight-bold text-primary text-uppercase mb-1"> คำสั่งซื้อวันนี้ </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"> 15 ออเดอร์
+                        <!-- <?php if ($today_sales == 0) {
+                                  echo '0';
+                              }else{
+                                echo $today_sales;
+                              }?> บาท  -->
+
+                            </div>
+                              <!--  $40,000 บาท -->
+                     <!--  <div class="small font-weight-bold text-gray-800">ใบเสร็จปกติ : 5 รายการ</div>
+                      <div class="small font-weight-bold text-gray-800">ยกเลิกใบเสร็จ : 0 รายการ</div> -->
+
+                    </div>
+                    <div class="col-auto">
+                      <!-- <i class="fas fa-calendar fa-2x text-gray-300"></i> -->
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
               </div>
-                <br><br>
+            </div>
 
-            <nav class="w-100">
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-l font-weight-bold text-success text-uppercase mb-1">กำลังแพ็คสินค้า</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"> 200 บาท </div>
+                      <!-- <div class="small font-weight-bold text-gray-800">ขายหน้าร้าน : 215,000 บาท</div>
+                      <div class="small font-weight-bold text-gray-800">ขายออนไลน์ : 215,000 บาท</div> -->
+                      <!-- <div class="h10 mb-0 font-weight-bold text-gray-800">ขายออนไลน์ : 215,000 บาท</div> -->
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-l font-weight-bold text-info text-uppercase mb-1">กำลังส่งสินค้า</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"> 200 บาท </div>
+                          <!-- <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div> -->
+                         <!--  <div class="small font-weight-bold text-gray-800">เงินสด : 55,000 บาท</div>
+                          <div class="small font-weight-bold text-gray-800">โอนผ่านธนาคาร : 10,500 บาท</div> -->
+                        </div>
+                       <!--  <div class="col">
+                          <div class="progress progress-sm mr-2">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div> -->
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-l font-weight-bold text-warning text-uppercase mb-1">ส่งแล้ว</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">ตารางข้อมูลการชำระเงิน</h6>
+      </div>
+      <div class="card-body">
+
+        <div class="row ">
+
+          <div class="text-lg-right">                           
+            <a href="<?php echo base_url();?>order/new_order" class="btn btn-primary btn-sm " role="button" aria-pressed="true"><i class='fas fa-user-plus'></i>เพิ่มรายการสั่งซื้อ</a>
+          </div>
+          <br><br>
+
+          <!-- ทั้งหมด -->
+          <nav class="w-100">
               <div class="nav nav-tabs" id="product-tab" role="tablist">
                 <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">ทั้งหมด  
                 </a>
@@ -221,6 +296,8 @@
 
               </div>
             </nav>
+            <!-- ทั้งหมด -->
+
             <div class="tab-content p-3" id="nav-tabContent">
               <div class="tab-pane fade active show" id="product-desc" role="tabpanel" aria-labelledby="order-all"> 
 
@@ -233,27 +310,13 @@
                       <th>หมายเลขคำสั่งซื้อ</th>
                       <th>ลูกค้า</th>
                       <th>สถานะ</th>
-                      <!-- <th>การชำระเงิน</th> -->
                       <th>บริการขนส่ง</th>
                       <th>ยอดรวม</th>
                       <th>วันที่สั่งซื้อ</th>
                       <th>ดำเนินการ</th>
                     </tr>
                   </thead>
-                  <!-- <tfoot>
-                    <tr>
-                     <th>ลำดับ</th>
-                      <th>ช่องทางสั่งซื้อ</th>
-                      <th>หมายเลขคำสั่งซื้อ</th>
-                      <th>ลูกค้า</th>
-                      <th>สถานะ</th>
-                      <th>การชำระเงิน</th>
-                      <th>บริการขนส่ง</th>
-                      <th>ยอดรวม</th>
-                      <th>วันที่สั่งซื้อ</th>
-                      <th>ดำเนินการ</th>
-                    </tr>
-                  </tfoot> -->
+                 
                    <tbody>
                  <?php if(!empty($order_data)): 
                         foreach($order_data as $idx => $val):
@@ -304,42 +367,7 @@
                                   สำเร็จ
                                 </span>
                               <?php } ?>
-
-
-                         <!-- <span class="badge badge-info-lighten">
-                              <?php if ($val->status_order == '1') {
-                                  echo "ยังไม่จ่าย";
-                              }elseif ($val->status_order == '2') {
-                                  echo "จ่ายแล้ว";
-                              }elseif ($val->status_order == '3') {
-                                  echo "ยืนยันคำสั่งซื้อ";
-                              }elseif ($val->status_order == '4') {
-                                  echo "กำลังแพ็คสินค้า";
-                              }elseif ($val->status_order == '5') {
-                                  echo "กำลังจัดส่ง";
-                              }elseif ($val->status_order == '6') {
-                                  echo "สำเร็จ";
-                              } 
-                                                             
-                              ?>
-                          </span> -->
                       </td>
-                     <!--  <td>
-                          <?php if ($val->status_payment == '1') {?>
-                                <span class="badge badge-success-lighten">
-                                <i class="mdi mdi-coin"></i>
-                                  ชำระเงินแล้ว
-                                </span>
-                              <?php
-                              }elseif ($val->status_payment == '2') {?>
-                                <span class="badge badge-info-lighten">
-                                <i class="mdi mdi-coin"></i>
-                                  ยังไม่ชำระเงิน
-                                </span>
-                              <?php }                                 
-                            ?>
-                      </td> -->
-                                                        
                       <td>
                           <?php echo $val->transport;?>
                       </td>
@@ -380,7 +408,6 @@
                         </tbody>
                 </table>
               </div>
-
               </div>
 
               <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab"> 
@@ -401,20 +428,6 @@
                       <th>ดำเนินการ</th>
                     </tr>
                   </thead>
-                  <!-- <tfoot>
-                    <tr>
-                     <th>ลำดับ</th>
-                      <th>ช่องทางสั่งซื้อ</th>
-                      <th>หมายเลขคำสั่งซื้อ</th>
-                      <th>ลูกค้า</th>
-                      <th>สถานะ</th>
-                      <th>การชำระเงิน</th>
-                      <th>บริการขนส่ง</th>
-                      <th>ยอดรวม</th>
-                      <th>วันที่สั่งซื้อ</th>
-                      <th>ดำเนินการ</th>
-                    </tr>
-                  </tfoot> -->
                    <tbody>
                  <?php if(!empty($order_data_status1)): 
                         foreach($order_data_status1 as $idx => $val):
@@ -507,11 +520,9 @@
                         </tbody>
                 </table>
               </div>
-
               </div>
 
               <div class="tab-pane fade" id="product-rating1" role="tabpanel" aria-labelledby="product-rating-tab"> 
-
                 <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
                   <thead>
@@ -528,20 +539,6 @@
                       <th>ดำเนินการ</th>
                     </tr>
                   </thead>
-                  <!-- <tfoot>
-                    <tr>
-                     <th>ลำดับ</th>
-                      <th>ช่องทางสั่งซื้อ</th>
-                      <th>หมายเลขคำสั่งซื้อ</th>
-                      <th>ลูกค้า</th>
-                      <th>สถานะ</th>
-                      <th>การชำระเงิน</th>
-                      <th>บริการขนส่ง</th>
-                      <th>ยอดรวม</th>
-                      <th>วันที่สั่งซื้อ</th>
-                      <th>ดำเนินการ</th>
-                    </tr>
-                  </tfoot> -->
                    <tbody>
                  <?php if(!empty($order_data_status2)): 
                         foreach($order_data_status2 as $idx => $val):
@@ -634,11 +631,9 @@
                         </tbody>
                 </table>
               </div>
-
               </div>
 
               <div class="tab-pane fade" id="product-rating2" role="tabpanel" aria-labelledby="product-rating-tab"> 
-
                 <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
                   <thead>
@@ -655,20 +650,6 @@
                       <th>ดำเนินการ</th>
                     </tr>
                   </thead>
-                  <!-- <tfoot>
-                    <tr>
-                     <th>ลำดับ</th>
-                      <th>ช่องทางสั่งซื้อ</th>
-                      <th>หมายเลขคำสั่งซื้อ</th>
-                      <th>ลูกค้า</th>
-                      <th>สถานะ</th>
-                      <th>การชำระเงิน</th>
-                      <th>บริการขนส่ง</th>
-                      <th>ยอดรวม</th>
-                      <th>วันที่สั่งซื้อ</th>
-                      <th>ดำเนินการ</th>
-                    </tr>
-                  </tfoot> -->
                    <tbody>
                  <?php if(!empty($order_data_status3)): 
                         foreach($order_data_status3 as $idx => $val):
@@ -761,12 +742,9 @@
                         </tbody>
                 </table>
               </div>
-
-
               </div>
 
               <div class="tab-pane fade" id="product-rating3" role="tabpanel" aria-labelledby="product-rating-tab"> 
-
                 <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
                   <thead>
@@ -783,20 +761,6 @@
                       <th>ดำเนินการ</th>
                     </tr>
                   </thead>
-                  <!-- <tfoot>
-                    <tr>
-                     <th>ลำดับ</th>
-                      <th>ช่องทางสั่งซื้อ</th>
-                      <th>หมายเลขคำสั่งซื้อ</th>
-                      <th>ลูกค้า</th>
-                      <th>สถานะ</th>
-                      <th>การชำระเงิน</th>
-                      <th>บริการขนส่ง</th>
-                      <th>ยอดรวม</th>
-                      <th>วันที่สั่งซื้อ</th>
-                      <th>ดำเนินการ</th>
-                    </tr>
-                  </tfoot> -->
                    <tbody>
                  <?php if(!empty($order_data_status4)): 
                         foreach($order_data_status4 as $idx => $val):
@@ -889,9 +853,6 @@
                         </tbody>
                 </table>
               </div>
-
-
-
               </div>
 
               <div class="tab-pane fade" id="product-rating4" role="tabpanel" aria-labelledby="product-rating-tab"> 
@@ -912,20 +873,6 @@
                       <th>ดำเนินการ</th>
                     </tr>
                   </thead>
-                  <!-- <tfoot>
-                    <tr>
-                     <th>ลำดับ</th>
-                      <th>ช่องทางสั่งซื้อ</th>
-                      <th>หมายเลขคำสั่งซื้อ</th>
-                      <th>ลูกค้า</th>
-                      <th>สถานะ</th>
-                      <th>การชำระเงิน</th>
-                      <th>บริการขนส่ง</th>
-                      <th>ยอดรวม</th>
-                      <th>วันที่สั่งซื้อ</th>
-                      <th>ดำเนินการ</th>
-                    </tr>
-                  </tfoot> -->
                    <tbody>
                  <?php if(!empty($order_data_status5)): 
                         foreach($order_data_status5 as $idx => $val):
@@ -1018,12 +965,10 @@
                         </tbody>
                 </table>
               </div>
-
-
               </div>
 
-              <div class="tab-pane fade" id="product-rating5" role="tabpanel" aria-labelledby="product-rating-tab"> 
 
+              <div class="tab-pane fade" id="product-rating5" role="tabpanel" aria-labelledby="product-rating-tab"> 
                 <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
                   <thead>
@@ -1040,20 +985,6 @@
                       <th>ดำเนินการ</th>
                     </tr>
                   </thead>
-                  <!-- <tfoot>
-                    <tr>
-                     <th>ลำดับ</th>
-                      <th>ช่องทางสั่งซื้อ</th>
-                      <th>หมายเลขคำสั่งซื้อ</th>
-                      <th>ลูกค้า</th>
-                      <th>สถานะ</th>
-                      <th>การชำระเงิน</th>
-                      <th>บริการขนส่ง</th>
-                      <th>ยอดรวม</th>
-                      <th>วันที่สั่งซื้อ</th>
-                      <th>ดำเนินการ</th>
-                    </tr>
-                  </tfoot> -->
                    <tbody>
                  <?php if(!empty($order_data_status6)): 
                         foreach($order_data_status6 as $idx => $val):
@@ -1146,17 +1077,21 @@
                         </tbody>
                 </table>
               </div>
-
-
-
               </div>
+
+
+
+
+
             </div>
-          </div>
 
 
 
-            </div>
-          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
      
 
