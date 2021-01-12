@@ -81,9 +81,6 @@
       </li>
 
 
-      
-
-
       <li class="nav-item ">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuproduct" aria-expanded="true" aria-controls="menuproduct">
           <i class="fas fa-fw fa-cog"></i>
@@ -103,19 +100,6 @@
         </div>  
       </li>
 
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menustorage" aria-expanded="true" aria-controls="menuproduct">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>คลังสินค้า</span>
-        </a>
-        <div id="menustorage" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">รายการ:</h6>
-            <a class="collapse-item" href="<?php echo base_url();?>product/storage">คลังสินค้า/สาขา</a>
-          </div>
-        </div>  
-      </li>
 
        <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
@@ -143,73 +127,19 @@
       </li>
 
 
-      <!-- Nav Item - Pages Collapse Menu -->
-     <!--  <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menusell" aria-expanded="true" aria-controls="menusell">
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menustorage" aria-expanded="true" aria-controls="menuproduct">
           <i class="fas fa-fw fa-cog"></i>
-          <span><?= $this->lang->line('head_sell'); ?></span>
+          <span>คลังสินค้า</span>
         </a>
-        <div id="menusell" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            
-            <a class="collapse-item" href="<?php echo base_url();?>sell/sell_add">สร้างรายการขาย</a>
-            <a class="collapse-item" href="<?php echo base_url();?>sell/sell_list">ดูรายการขาย</a>
-          </div>
-        </div>
-      </li> -->
-
-
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuorder" aria-expanded="true" aria-controls="menuorder">
-          <i class="fas fa-fw fa-cog"></i>
-          <span><?= $this->lang->line('head_order'); ?></span>
-        </a>
-        <div id="menuorder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="<?php echo base_url();?>order/new_order">สร้างรายการสั่งซื้อใหม่</a>
-            <a class="collapse-item" href="<?php echo base_url();?>order/new_quotation">สร้างใบเสนอราคา</a>
-            <a class="collapse-item" href="<?php echo base_url();?>order">ข้อมูลการสั่งซื้อ</a>
-            <a class="collapse-item" href="cards.html">สมุดราคา</a>
-            <a class="collapse-item" href="cards.html">ซัพพลายเออร์</a>
-          </div>
-        </div>
-      </li> -->
-      <!-- Nav Item - Pages Collapse Menu -->
-
-      <!-- Nav Item - Pages Collapse Menu -->
-     <!--  <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuproduct" aria-expanded="true" aria-controls="menuproduct">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>สินค้า</span>
-        </a>
-        <div id="menuproduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="menustorage" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">รายการ:</h6>
-            <a class="collapse-item" href="<?php echo base_url();?>product">รายการสินค้า</a>
-            <a class="collapse-item" href="<?php echo base_url();?>product/new_product">คลังสินค้า/สาขา</a>
-            <a class="collapse-item" href="cards.html">หมวดหมู่สินค้า</a>
+            <a class="collapse-item" href="<?php echo base_url();?>product/storage">คลังสินค้า/สาขา</a>
           </div>
         </div>  
-      </li> -->
+      </li>
 
-
-        <!-- Nav Item - Pages Collapse Menu -->
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menucustomer" aria-expanded="true" aria-controls="menucustomer">
-          <i class='fas fa-user-tie'></i>
-          <span>ลูกค้า</span>
-        </a>
-        <div id="menucustomer" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="<?php echo base_url();?>customer">ข้อมูลลูกค้า</a>
-            <a class="collapse-item" href="<?php echo base_url();?>customer/new_customer">เพิ่มลูกค้า</a>
-          </div>
-        </div>
-      </li> -->
 
        <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
