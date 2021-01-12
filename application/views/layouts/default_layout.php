@@ -84,21 +84,21 @@
       
 
 
-      <li class="nav-item active">
+      <li class="nav-item ">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuproduct" aria-expanded="true" aria-controls="menuproduct">
           <i class="fas fa-fw fa-cog"></i>
           <span>สินค้า</span>
         </a>
-        <div id="menuproduct" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="menuproduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">รายการ:</h6>
-            <a class="collapse-item active" href="<?php echo base_url();?>product">รายการสินค้า</a>
+            <a class="collapse-item " href="<?php echo base_url();?>product">รายการสินค้า</a>
             <a class="collapse-item" href="<?php echo base_url();?>product/product_category">หมวดหมู่สินค้า</a>
             <!-- <a class="collapse-item" href="<?php echo base_url();?>product/new_product">เพิ่มสินค้า</a> -->
             <!-- <a class="collapse-item" href="<?php echo base_url();?>product/storage">คลังสินค้า/สาขา</a> -->
             <a class="collapse-item" href="<?php echo base_url();?>supplier">ผู้ผลิต/ร้านค้าส่ง</a>
             
-            <a class="collapse-item" href="<?php echo base_url();?>buy">รายการซื้อสินค้าเข้า</a>
+            <!-- <a class="collapse-item" href="<?php echo base_url();?>buy">รายการซื้อสินค้าเข้า</a> -->
           </div>
         </div>  
       </li>
