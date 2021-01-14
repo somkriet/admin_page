@@ -27,7 +27,7 @@
 
 
               <div class="text-lg-left">                           
-                  <a href="<?php echo base_url();?>product/new_product" class="btn btn-primary btn-sm " role="button" aria-pressed="true"><i class='fas fa-user-plus'></i>เพิ่มสินค้า</a>
+                  <a href="<?php echo base_url();?>cost/new_cost" class="btn btn-primary btn-sm " role="button" aria-pressed="true"><i class='fas fa-user-plus'></i>เพิ่มข้อมูลค่าใช้จ่าย</a>
               </div>
                <br>
             

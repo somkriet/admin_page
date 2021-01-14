@@ -72,7 +72,7 @@ class Cost extends CI_Controller {
 		$this->template->load('default_layout', 'contents' , 'cost/show_cost', $data);
 	}
 
-	public function new_order() 
+	public function new_cost() 
 	{
 		// $data = array();
 
@@ -84,7 +84,7 @@ class Cost extends CI_Controller {
         $data['product_data'] = $this->product_model->show_all_product($sql);
 
 		$this->template->set('title', 'about'); 
-		$this->template->load('default_layout', 'contents' , 'order/add_new_order', $data);
+		$this->template->load('default_layout', 'contents' , 'cost/add_cost', $data);
 	}
 
 
