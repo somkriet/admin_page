@@ -129,7 +129,7 @@
             </button>
           </div>
           <div class="modal-body">
-           <input type="text" class="form-control" id="supplier_name" name="supplier_name" placeholder="หมวดหมู่ค่าใช้จ่าย ...">
+           <input type="text" class="form-control" id="add_cost_category" name="add_cost_category" placeholder="หมวดหมู่ค่าใช้จ่าย ...">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
