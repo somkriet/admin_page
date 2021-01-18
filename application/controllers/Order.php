@@ -465,20 +465,27 @@ class Order extends CI_Controller {
     function add_index($data){
 
         $data_num = $data;
-    
-        $run_max = max($data_num);
-        $num = $run_max->myorder_id+1;
-        $max = strlen($num);
+        $n = 1;
 
-        if ($max == 1) {
-            $a = '000'.$num;
-        }elseif ($max == 2) {
-            $a = '00'.$num;
-        }elseif ($max == 3) {
-            $a = '0'.$num;
+        if ($data_num == '') {
+            $a = '000'.$n;
         }else{
-            $a = $num;
+            $run_max = max($data_num);
+            $num = $run_max->myorder_id+1;
+            $max = strlen($num);
+
+            if ($max == 1) {
+                $a = '000'.$num;
+            }elseif ($max == 2) {
+                $a = '00'.$num;
+            }elseif ($max == 3) {
+                $a = '0'.$num;
+            }else{
+                $a = $num;
+            }
         }
+    
+        
 
         // print_r($a);
         // exit();
