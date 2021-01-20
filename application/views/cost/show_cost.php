@@ -36,46 +36,34 @@
                 <thead>
                   <tr>
                       <th>No</th>
-                      <th>รูปสินค้า</th>
-                      <th>รหัสสินค้า</th>
-                      <th>ชื่อสินค้า</th>
-                      <!-- <th>ราคาซื้อ</th> -->
-                      <!-- <th>ราคาขาย</th> -->
-                      <th>จำนวนสินค้า</th>
-                      <!-- <th>พร้อมขาย</th> -->
+                      <th>วันที่</th>
+                      <th>ชื่อค่าใช้จ่าย</th>
+                      <th>ประเภทค่าใช้จ่าย</th>
+                      <!-- <th>รายละเอียดค่าใช้จ่าย</th> -->
+                      <th>ค่าใช้จ่าย(บาท)</th>
                       <th>Action</th>
                   </tr>
                 </thead>
-                <!-- <tfoot>
-                  <tr>
-                      <th>No</th>
-                      <th>รหัสสินค้า</th>
-                      <th>ชื่อสินค้า</th>
-                      
-                      <th>ราคาขาย</th>
-                      <th>คงเหลือ</th>
-                      <th>พร้อมขาย</th>
-                      <th>Action</th>
-                  </tr>
-                </tfoot> -->
                 <tbody>
-                  <?php if(!empty($product_data)): 
-                          foreach($product_data as $idx => $val):
-                            $img =  $val->product_img;
+                  <?php if(!empty($cost_data)): 
+                          foreach($cost_data as $idx => $val):
+                            $cost_id =  $val->cost_id;
                             ?>
                             
                           <tr>
                             <td align="center"><?php echo  $idx+1;?></td>
-                            <td align="center"><img src="<?php echo base_url('uploads/'.$img);?>" width="60" height="60"></td>
-                            <td align="center"><?php echo $val->product_id;?></td>
-                            <td align="center"><?php echo $val->product_name;?></td>
-                            <td align="center"><?php echo $val->total_stock;?></td>
+                            <td align="center"><?php echo $val->cost_date;?></td>
+                            <!-- <td align="center"><img src="<?php echo base_url('uploads/'.$img);?>" width="60" height="60"></td> -->
+                            <td align="center"><?php echo $val->cost_name;?></td>
+                            <td align="center"><?php echo $val->cost_category_name;?></td>
+                            <!-- <td align="center"><?php echo $val->cost_detail;?></td> -->
+                            <td align="center"><?php echo $val->cost_total;?></td>
                             <td align="center">
-                              <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->product_id;?>');">แก้ไข
+                              <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->cost_id;?>');">แก้ไข
                                 <span class="glyphicon glyphicon-list-alt"></span>
                               </button>
 
-                              <button type="button" class="btn-md btn-danger btn-sm btn-danger" onclick="delRow('<?php echo $val->product_id;?>');">ลบ
+                              <button type="button" class="btn-md btn-danger btn-sm btn-danger" onclick="delRow('<?php echo $val->cost_id;?>');">ลบ
                                 <span class="glyphicon glyphicon-trash"></span>
                               </button>
 

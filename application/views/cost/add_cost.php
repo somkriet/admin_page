@@ -9,7 +9,7 @@
             <div class="card-body">
               <div class="container">
 
-                  <form id="form_supplier" enctype="multipart/form-data">
+                  <form id="form_cost" enctype="multipart/form-data">
                   <div class="col-sm-12 col-md-12"> 
 
                      <div class="form-group row">
@@ -17,7 +17,7 @@
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>วันที่</b></label>
                      
                         <div class="col-sm-4">
-                          <input class="form-control" type="date" id="order_date" name="order_date" value="<?php echo date('Y-m-d'); ?>" >
+                          <input class="form-control" type="date" id="cost_date" name="cost_date" value="<?php echo date('Y-m-d'); ?>" >
                         </div>
                       </div>
 
@@ -27,7 +27,7 @@
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ชื่อค่าใช้จ่าย</b></label>
                      
                         <div class="col-sm-6">
-                          <input type="text" class="form-control" id="supplier_name" name="supplier_name" placeholder="ชื่อค่าใช้จ่าย ...">
+                          <input type="text" class="form-control" id="cost_name" name="cost_name" placeholder="ชื่อค่าใช้จ่าย ...">
                         </div>
                       </div>
 
@@ -35,13 +35,13 @@
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>หมวดหมู่ค่าใช้จ่าย</b></label>
                         <div class="col-sm-4">
 
-                          <select class="form-control" id="product_category" name="product_category">
+                          <select class="form-control" id="cost_category" name="cost_category">
                             <option  value="">หมวดหมู่ค่าใช้จ่าย</option>
-                             <?php if(!empty($product_category_data)): 
-                               foreach ($product_category_data as $row) {
+                             <?php if(!empty($cost_category_data)): 
+                               foreach ($cost_category_data as $row) {
                                 
-                                $category_id = $row->product_category_id;
-                                $category_name = $row->product_category_name;
+                                $category_id = $row->cost_category_id;
+                                $category_name = $row->cost_category_name;
                                  
                       
                                 echo '<option value="' . $category_id . '">' . $category_name . '</option>';
@@ -66,7 +66,7 @@
                       <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>รายละเอียดเพิ่มเติม</b></label>
                         <div class="col-sm-8">
-                           <textarea  id="supplier_address" name="supplier_address" rows="4" class="form-control" placeholder="รายละเอียดสินค้า ..." style="overflow: hidden; resize: none;"></textarea>
+                           <textarea  id="cost_detail" name="cost_detail" rows="4" class="form-control" placeholder="รายละเอียดสินค้า ..." style="overflow: hidden; resize: none;"></textarea>
                         </div>
                       </div>
 
@@ -77,7 +77,7 @@
                           <label for="inputEmail3" class="col-sm-3 col-form-label"><b>ค่าใช้จ่าย (บาท)</b></label>
                        
                         <div class="col-sm-2">
-                          <input type="text" class="form-control" id="supplier_phone" name="supplier_phone" placeholder="ค่าใช้จ่าย ..." maxlength="10">
+                          <input type="text" class="form-control" id="cost_total" name="cost_total" placeholder="ค่าใช้จ่าย ..." maxlength="10">
                         </div>
                       </div>
 
@@ -110,6 +110,8 @@
                 <a><b>ค่าใช้จ่ายในการขาย</b> คือค่าใช้จ่ายที่เกิดขึ้นอันเนื่องมาจากการขาย เช่น ค่าโฆษณา</a><br>
 
                 <a><b>ค่าใช้จ่ายในการบริหาร</b> คือค่าใช้จ่ายที่เกิดขึ้นในการบริหารกิจการ เช่น ค่าจ้างพนักงาน ค่าเช่าสำนักงาน ค่าสาธารณูปโภค</a><br>
+
+                <a><b>ค่าใช้จ่ายในการซื้อสินค้า</b> คือค่าใช้จ่ายที่เกิดขึ้นในการซื้อสินค้า เช่น ค่ากางเกงยีนส์ ค่าเสื้อ ค่าผ้า</a><br>
 
                 <a><b>ค่าใช้จ่ายอื่นๆ</b> คือค่าใช้จ่ายที่เกิดขึ้นนอกเหนือจากค่าใช้จ่ายข้างต้น</a>
       </div>
@@ -146,13 +148,13 @@
 
  $(document).ready(function(e){
     // Submit form data via Ajax
-    $("#form_supplier").on('submit', function(e){
+    $("#form_cost").on('submit', function(e){
 
       // console.log('aa');
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: '<?php echo base_url('supplier/add_new_supplier');?>',
+            url: '<?php echo base_url('cost/add_new_cost');?>',
             data: new FormData(this),
             dataType: 'json',
             contentType: false,
@@ -160,7 +162,7 @@
             processData:false,
             beforeSend: function(){
                 $('.submitBtn').attr("disabled","disabled");
-                $('#form_supplier').css("opacity",".5");
+                $('#form_cost').css("opacity",".5");
             },
             success: function(data){ 
             console.log(data);
@@ -170,7 +172,7 @@
                   
                     setTimeout(function(){ 
                       // alert("Hello"); 
-                      window.location="<?php echo base_url('supplier/add_supplier');?>";
+                      window.location="<?php echo base_url('cost/new_cost');?>";
                     }, 3000);
 
                     return false;
