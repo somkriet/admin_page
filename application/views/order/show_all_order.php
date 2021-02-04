@@ -218,11 +218,11 @@
                  <span class="badge badge-warning"><i class="mdi mdi-coin"></i>
 
                         <?php if(!empty($order_data_status1)): 
-                        foreach($order_data_status1 as $idx => $val):
-                        $num1 = $idx+1;  ?>
-                         <?php endforeach; 
-                    endif;?>
-                         <?php echo $num1 ?>
+                          foreach($order_data_status1 as $idx => $val):
+                            $num1 = $idx+1; 
+                          endforeach; 
+                         echo $num1;
+                        endif;?>
 
 
                   </span>
@@ -233,10 +233,12 @@
                 <span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> 
                   <?php if(!empty($order_data_status2)): 
                         foreach($order_data_status2 as $idx => $val):
-                        $num2 = $idx+1;  ?>
-                         <?php endforeach; 
-                    endif;?>
-                         <?php echo $num2 ?>
+                        $num2 = $idx+1;  
+                         endforeach; 
+             
+                         echo $num2; 
+
+                         endif;?>
 
                 </span>
                </a>
@@ -246,11 +248,10 @@
                <span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> 
                 <?php if(!empty($order_data_status3)): 
                         foreach($order_data_status3 as $idx => $val):
-                        $num3 = $idx+1;  ?>
-                         <?php endforeach; 
-                    endif;?>
-                         <?php echo $num3 ?>
-
+                          $num3 = $idx+1;  
+                        endforeach; 
+                          echo $num3;
+                      endif;?>
                </span>
                </a>
                 
@@ -259,11 +260,11 @@
                 <span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> 
                   <?php if(!empty($order_data_status4)): 
                         foreach($order_data_status4 as $idx => $val):
-                        $num4 = $idx+1;  ?>
-                         <?php endforeach; 
-                    endif;?>
-                         <?php echo $num4 ?>
-
+                          $num4 = $idx+1;  
+                        endforeach; 
+                    
+                         echo $num4;
+                      endif;?>
                 </span>
                 </a>
                 
@@ -272,10 +273,11 @@
                 <span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> 
                   <?php if(!empty($order_data_status5)): 
                         foreach($order_data_status5 as $idx => $val):
-                        $num5 = $idx+1;  ?>
-                         <?php endforeach; 
-                    endif;?>
-                         <?php echo $num5 ?>
+                        $num5 = $idx+1;
+                        endforeach; 
+                        echo $num5;
+                      endif;?>
+
 
                 </span>
                 </a>
@@ -285,11 +287,11 @@
                   <span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> 
                     <?php if(!empty($order_data_status6)): 
                         foreach($order_data_status6 as $idx => $val):
-                        $num6 = $idx+1;  ?>
-                         <?php endforeach; 
-                    endif;?>
-                         <?php echo $num6 ?>
-
+                        $num6 = $idx+1;  
+                        endforeach; 
+                    
+                        echo $num6;
+                        endif;?>
 
                   </span>
                 </a>
@@ -386,16 +388,23 @@
                       </td>
                                                                                    
                       <td style="width: 30%;">
-                        <div class="dropdown show">
-                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            </a>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="<?php echo base_url();?>order/call_order_detail/<?php echo $val->order_id;?>">ดูข้อมูล</a>
-                                    <!-- <a class="dropdown-item" href="<?php echo base_url();?>customer/show_order_detail/<?php echo $val->cus_id;?>">ดูข้อมูล</a> -->
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                  </div>
-                              </div>
+
+
+                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                          <!-- <button type="button" class="btn btn-secondary">1</button>
+                          <button type="button" class="btn btn-secondary">2</button> -->
+
+                          <div class="btn-group" role="group">
+                            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              จัดการออเดอร์
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                              <a class="dropdown-item" href="<?php echo base_url();?>order/call_order_detail/<?php echo $val->order_id;?>">ดูข้อมูล</a>
+                              <a class="dropdown-item" href="#">แก้ไข</a>
+                              <a class="dropdown-item" href="#">ลบ</a>
+                            </div>
+                          </div>
+                        </div>
                                                         
                         </td>
                     </tr>
@@ -443,23 +452,37 @@
                           <?php echo $val->cus_id;?>
                       </td>
                       <td>
-                         <span class="badge badge-info-lighten">
-                              <?php if ($val->status_order == '1') {
-                                  echo "ยังไม่จ่าย";
-                              }elseif ($val->status_order == '2') {
-                                  echo "จ่ายแล้ว";
-                              }elseif ($val->status_order == '3') {
-                                  echo "ยืนยันคำสั่งซื้อ";
-                              }elseif ($val->status_order == '4') {
-                                  echo "กำลังแพ็คสินค้า";
-                              }elseif ($val->status_order == '5') {
-                                  echo "กำลังจัดส่ง";
-                              }elseif ($val->status_order == '6') {
-                                  echo "สำเร็จ";
-                              } 
-                                                             
-                              ?>
-                          </span>
+                         <?php if ($val->status_order == '1') {?>
+                                <span class="badge badge-danger">
+                                <i class="mdi mdi-coin"></i>
+                                  ยังไม่จ่าย
+                                </span>
+                              <?php }elseif ($val->status_order == '2') {?>
+                                <span class="badge badge-success">
+                                <i class="mdi mdi-coin"></i>
+                                  จ่ายแล้ว
+                                </span>
+                              <?php }elseif ($val->status_order == '3') {?>
+                                <span class="badge badge-info">
+                                <i class="mdi mdi-coin"></i>
+                                  ยืนยันคำสั่งซื้อ
+                                </span>
+                              <?php }elseif ($val->status_order == '4') {?>
+                                <span class="badge badge-secondary">
+                                <i class="mdi mdi-coin"></i>
+                                  กำลังแพ็คสินค้า
+                                </span>
+                              <?php }elseif ($val->status_order == '5') {?>
+                                <span class="badge badge-warning">
+                                <i class="mdi mdi-coin"></i>
+                                  กำลังจัดส่ง
+                                </span>
+                              <?php }elseif ($val->status_order == '6') {?>
+                                <span class="badge badge-success-lighten">
+                                <i class="mdi mdi-coin"></i>
+                                  สำเร็จ
+                                </span>
+                              <?php } ?>
                       </td>
                       <td>
                           <?php if ($val->status_payment == '1') {?>
@@ -495,6 +518,8 @@
                       </td>
                                                                                    
                       <td style="width: 30%;">
+
+
                         <div class="dropdown show">
                             <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
@@ -508,6 +533,8 @@
                                     <a class="dropdown-item" href="#">Something else here</a>
                                   </div>
                               </div>
+
+
                                                         
                         </td>
                     </tr>
@@ -554,23 +581,37 @@
                           <?php echo $val->cus_id;?>
                       </td>
                       <td>
-                         <span class="badge badge-info-lighten">
-                              <?php if ($val->status_order == '1') {
-                                  echo "ยังไม่จ่าย";
-                              }elseif ($val->status_order == '2') {
-                                  echo "จ่ายแล้ว";
-                              }elseif ($val->status_order == '3') {
-                                  echo "ยืนยันคำสั่งซื้อ";
-                              }elseif ($val->status_order == '4') {
-                                  echo "กำลังแพ็คสินค้า";
-                              }elseif ($val->status_order == '5') {
-                                  echo "กำลังจัดส่ง";
-                              }elseif ($val->status_order == '6') {
-                                  echo "สำเร็จ";
-                              } 
-                                                             
-                              ?>
-                          </span>
+                         <?php if ($val->status_order == '1') {?>
+                                <span class="badge badge-danger">
+                                <i class="mdi mdi-coin"></i>
+                                  ยังไม่จ่าย
+                                </span>
+                              <?php }elseif ($val->status_order == '2') {?>
+                                <span class="badge badge-success">
+                                <i class="mdi mdi-coin"></i>
+                                  จ่ายแล้ว
+                                </span>
+                              <?php }elseif ($val->status_order == '3') {?>
+                                <span class="badge badge-info">
+                                <i class="mdi mdi-coin"></i>
+                                  ยืนยันคำสั่งซื้อ
+                                </span>
+                              <?php }elseif ($val->status_order == '4') {?>
+                                <span class="badge badge-secondary">
+                                <i class="mdi mdi-coin"></i>
+                                  กำลังแพ็คสินค้า
+                                </span>
+                              <?php }elseif ($val->status_order == '5') {?>
+                                <span class="badge badge-warning">
+                                <i class="mdi mdi-coin"></i>
+                                  กำลังจัดส่ง
+                                </span>
+                              <?php }elseif ($val->status_order == '6') {?>
+                                <span class="badge badge-success-lighten">
+                                <i class="mdi mdi-coin"></i>
+                                  สำเร็จ
+                                </span>
+                              <?php } ?>
                       </td>
                       <td>
                           <?php if ($val->status_payment == '1') {?>
@@ -665,23 +706,37 @@
                           <?php echo $val->cus_id;?>
                       </td>
                       <td>
-                         <span class="badge badge-info-lighten">
-                              <?php if ($val->status_order == '1') {
-                                  echo "ยังไม่จ่าย";
-                              }elseif ($val->status_order == '2') {
-                                  echo "จ่ายแล้ว";
-                              }elseif ($val->status_order == '3') {
-                                  echo "ยืนยันคำสั่งซื้อ";
-                              }elseif ($val->status_order == '4') {
-                                  echo "กำลังแพ็คสินค้า";
-                              }elseif ($val->status_order == '5') {
-                                  echo "กำลังจัดส่ง";
-                              }elseif ($val->status_order == '6') {
-                                  echo "สำเร็จ";
-                              } 
-                                                             
-                              ?>
-                          </span>
+                         <?php if ($val->status_order == '1') {?>
+                                <span class="badge badge-danger">
+                                <i class="mdi mdi-coin"></i>
+                                  ยังไม่จ่าย
+                                </span>
+                              <?php }elseif ($val->status_order == '2') {?>
+                                <span class="badge badge-success">
+                                <i class="mdi mdi-coin"></i>
+                                  จ่ายแล้ว
+                                </span>
+                              <?php }elseif ($val->status_order == '3') {?>
+                                <span class="badge badge-info">
+                                <i class="mdi mdi-coin"></i>
+                                  ยืนยันคำสั่งซื้อ
+                                </span>
+                              <?php }elseif ($val->status_order == '4') {?>
+                                <span class="badge badge-secondary">
+                                <i class="mdi mdi-coin"></i>
+                                  กำลังแพ็คสินค้า
+                                </span>
+                              <?php }elseif ($val->status_order == '5') {?>
+                                <span class="badge badge-warning">
+                                <i class="mdi mdi-coin"></i>
+                                  กำลังจัดส่ง
+                                </span>
+                              <?php }elseif ($val->status_order == '6') {?>
+                                <span class="badge badge-success-lighten">
+                                <i class="mdi mdi-coin"></i>
+                                  สำเร็จ
+                                </span>
+                              <?php } ?>
                       </td>
                       <td>
                           <?php if ($val->status_payment == '1') {?>
@@ -776,23 +831,37 @@
                           <?php echo $val->cus_id;?>
                       </td>
                       <td>
-                         <span class="badge badge-info-lighten">
-                              <?php if ($val->status_order == '1') {
-                                  echo "ยังไม่จ่าย";
-                              }elseif ($val->status_order == '2') {
-                                  echo "จ่ายแล้ว";
-                              }elseif ($val->status_order == '3') {
-                                  echo "ยืนยันคำสั่งซื้อ";
-                              }elseif ($val->status_order == '4') {
-                                  echo "กำลังแพ็คสินค้า";
-                              }elseif ($val->status_order == '5') {
-                                  echo "กำลังจัดส่ง";
-                              }elseif ($val->status_order == '6') {
-                                  echo "สำเร็จ";
-                              } 
-                                                             
-                              ?>
-                          </span>
+                        <?php if ($val->status_order == '1') {?>
+                                <span class="badge badge-danger">
+                                <i class="mdi mdi-coin"></i>
+                                  ยังไม่จ่าย
+                                </span>
+                              <?php }elseif ($val->status_order == '2') {?>
+                                <span class="badge badge-success">
+                                <i class="mdi mdi-coin"></i>
+                                  จ่ายแล้ว
+                                </span>
+                              <?php }elseif ($val->status_order == '3') {?>
+                                <span class="badge badge-info">
+                                <i class="mdi mdi-coin"></i>
+                                  ยืนยันคำสั่งซื้อ
+                                </span>
+                              <?php }elseif ($val->status_order == '4') {?>
+                                <span class="badge badge-secondary">
+                                <i class="mdi mdi-coin"></i>
+                                  กำลังแพ็คสินค้า
+                                </span>
+                              <?php }elseif ($val->status_order == '5') {?>
+                                <span class="badge badge-warning">
+                                <i class="mdi mdi-coin"></i>
+                                  กำลังจัดส่ง
+                                </span>
+                              <?php }elseif ($val->status_order == '6') {?>
+                                <span class="badge badge-success-lighten">
+                                <i class="mdi mdi-coin"></i>
+                                  สำเร็จ
+                                </span>
+                              <?php } ?>
                       </td>
                       <td>
                           <?php if ($val->status_payment == '1') {?>
@@ -888,23 +957,37 @@
                           <?php echo $val->cus_id;?>
                       </td>
                       <td>
-                         <span class="badge badge-info-lighten">
-                              <?php if ($val->status_order == '1') {
-                                  echo "ยังไม่จ่าย";
-                              }elseif ($val->status_order == '2') {
-                                  echo "จ่ายแล้ว";
-                              }elseif ($val->status_order == '3') {
-                                  echo "ยืนยันคำสั่งซื้อ";
-                              }elseif ($val->status_order == '4') {
-                                  echo "กำลังแพ็คสินค้า";
-                              }elseif ($val->status_order == '5') {
-                                  echo "กำลังจัดส่ง";
-                              }elseif ($val->status_order == '6') {
-                                  echo "สำเร็จ";
-                              } 
-                                                             
-                              ?>
-                          </span>
+                         <?php if ($val->status_order == '1') {?>
+                                <span class="badge badge-danger">
+                                <i class="mdi mdi-coin"></i>
+                                  ยังไม่จ่าย
+                                </span>
+                              <?php }elseif ($val->status_order == '2') {?>
+                                <span class="badge badge-success">
+                                <i class="mdi mdi-coin"></i>
+                                  จ่ายแล้ว
+                                </span>
+                              <?php }elseif ($val->status_order == '3') {?>
+                                <span class="badge badge-info">
+                                <i class="mdi mdi-coin"></i>
+                                  ยืนยันคำสั่งซื้อ
+                                </span>
+                              <?php }elseif ($val->status_order == '4') {?>
+                                <span class="badge badge-secondary">
+                                <i class="mdi mdi-coin"></i>
+                                  กำลังแพ็คสินค้า
+                                </span>
+                              <?php }elseif ($val->status_order == '5') {?>
+                                <span class="badge badge-warning">
+                                <i class="mdi mdi-coin"></i>
+                                  กำลังจัดส่ง
+                                </span>
+                              <?php }elseif ($val->status_order == '6') {?>
+                                <span class="badge badge-success-lighten">
+                                <i class="mdi mdi-coin"></i>
+                                  สำเร็จ
+                                </span>
+                              <?php } ?>
                       </td>
                       <td>
                           <?php if ($val->status_payment == '1') {?>
@@ -1000,23 +1083,37 @@
                           <?php echo $val->cus_id;?>
                       </td>
                       <td>
-                         <span class="badge badge-info-lighten">
-                              <?php if ($val->status_order == '1') {
-                                  echo "ยังไม่จ่าย";
-                              }elseif ($val->status_order == '2') {
-                                  echo "จ่ายแล้ว";
-                              }elseif ($val->status_order == '3') {
-                                  echo "ยืนยันคำสั่งซื้อ";
-                              }elseif ($val->status_order == '4') {
-                                  echo "กำลังแพ็คสินค้า";
-                              }elseif ($val->status_order == '5') {
-                                  echo "กำลังจัดส่ง";
-                              }elseif ($val->status_order == '6') {
-                                  echo "สำเร็จ";
-                              } 
-                                                             
-                              ?>
-                          </span>
+                         <?php if ($val->status_order == '1') {?>
+                                <span class="badge badge-danger">
+                                <i class="mdi mdi-coin"></i>
+                                  ยังไม่จ่าย
+                                </span>
+                              <?php }elseif ($val->status_order == '2') {?>
+                                <span class="badge badge-success">
+                                <i class="mdi mdi-coin"></i>
+                                  จ่ายแล้ว
+                                </span>
+                              <?php }elseif ($val->status_order == '3') {?>
+                                <span class="badge badge-info">
+                                <i class="mdi mdi-coin"></i>
+                                  ยืนยันคำสั่งซื้อ
+                                </span>
+                              <?php }elseif ($val->status_order == '4') {?>
+                                <span class="badge badge-secondary">
+                                <i class="mdi mdi-coin"></i>
+                                  กำลังแพ็คสินค้า
+                                </span>
+                              <?php }elseif ($val->status_order == '5') {?>
+                                <span class="badge badge-warning">
+                                <i class="mdi mdi-coin"></i>
+                                  กำลังจัดส่ง
+                                </span>
+                              <?php }elseif ($val->status_order == '6') {?>
+                                <span class="badge badge-success-lighten">
+                                <i class="mdi mdi-coin"></i>
+                                  สำเร็จ
+                                </span>
+                              <?php } ?>
                       </td>
                       <td>
                           <?php if ($val->status_payment == '1') {?>
