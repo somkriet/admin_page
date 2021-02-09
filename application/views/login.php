@@ -1,413 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<meta charset="utf-8" />
-		<title>Login Page - Ace Admin</title>
-
-		<meta name="description" content="User login page" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-		<!-- bootstrap & fontawesome -->
-		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
-
-		<!-- text fonts -->
-		<!-- <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" /> -->
-
-		<!-- ace styles -->
-		<link rel="stylesheet" href="assets/css/ace.min.css" />
-
-		<!--[if lte IE 9]>
-			<link rel="stylesheet" href="assets/css/ace-part2.min.css" />
-		<![endif]-->
-		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
-
-		<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
-		<![endif]-->
-
-		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
-		<!--[if lte IE 8]>
-		<script src="assets/js/html5shiv.min.js"></script>
-		<script src="assets/js/respond.min.js"></script>
-		<![endif]-->
-	</head>
-
-	<body class="login-layout blur-login">
-		<div class="main-container">
-			<div class="main-content">
-				<div class="row">
-					<div class="col-sm-10 col-sm-offset-1">
-						<div class="login-container">
-							<div class="center">
-								<h1>
-									<i class="ace-icon fa fa-leaf green"></i>
-									<span class="red">CRM</span>
-									<span class="white" id="id-text2">Wintage Shop</span>
-									<!-- $('#id-text2').attr('class', 'grey'); -->
-								</h1>
-								<h4 class="blue" id="id-company-text">&copy; Wintage clothes store</h4>
-							</div>
-
-							<div class="space-6"></div>
-
-						<!-- 	<form name="form1" method="post" action="<?php echo base_url();?>login/validation"> -->
-
-							<?php echo form_open('',array('id'=>'form_login','role'=>'login','autocomplete'=>'off'));?>
-
-							<div class="position-relative">
-								<div id="login-box" class="login-box visible widget-box no-border">
-									<div class="widget-body">
-										<div class="widget-main">
-											<h4 class="header blue lighter bigger">
-												<i class="ace-icon fa fa-coffee green"></i>
-												Please Enter Your Information
-											</h4>
-
-											<div class="space-6"></div>
-
-											<form>
-												<fieldset>
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" id="username" name="username"placeholder="email" />
-															<i class="ace-icon fa fa-user"></i>
-														</span>
-													</label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="password" id="password" name="password" class="form-control" placeholder="Password" />
-															<i class="ace-icon fa fa-lock"></i>
-														</span>
-													</label>
-
-													<div class="space"></div>
-
-													<div class="clearfix">
-														<label class="inline">
-															<input type="checkbox" class="ace" />
-															<span class="lbl"> Remember Me</span>
-														</label>
-
-														<button type="submit" id="login" class="width-35 pull-right btn btn-sm btn-primary">
-															<i class="ace-icon fa fa-key"></i>
-															<span class="bigger-110">Login</span>
-														</button>
-													</div>
-
-													<div class="pwstrength_viewport_progress" id="msg_login"></div>
-
-													<div class="space-4"></div>
-												</fieldset>
-											<!-- </form> -->
-										<?php echo form_close();?>
-
-											<!-- <div class="social-or-login center">
-												<span class="bigger-110">Or Login Using</span>
-											</div> -->
-
-											<div class="space-6"></div>
-
-											<!-- <div class="social-login center">
-												<a class="btn btn-primary">
-													<i class="ace-icon fa fa-facebook"></i>
-												</a>
-
-												<a class="btn btn-info">
-													<i class="ace-icon fa fa-twitter"></i>
-												</a>
-
-												<a class="btn btn-danger">
-													<i class="ace-icon fa fa-google-plus"></i>
-												</a>
-											</div> -->
-										</div><!-- /.widget-main -->
-
-										<div class="toolbar clearfix">
-											<div>
-												<a href="#" data-target="#forgot-box" class="forgot-password-link">
-													<i class="ace-icon fa fa-arrow-left"></i>
-													I forgot my password
-												</a>
-											</div>
-
-											<!-- <div>
-												<a href="#" data-target="#signup-box" class="user-signup-link">
-													I want to register
-													<i class="ace-icon fa fa-arrow-right"></i>
-												</a>
-											</div> -->
-										</div>
-									</div><!-- /.widget-body -->
-								</div><!-- /.login-box -->
-
-								<div id="forgot-box" class="forgot-box widget-box no-border">
-									<div class="widget-body">
-										<div class="widget-main">
-											<h4 class="header red lighter bigger">
-												<i class="ace-icon fa fa-key"></i>
-												Retrieve Password
-											</h4>
-
-											<div class="space-6"></div>
-											<p>
-												Enter your email and to receive instructions
-											</p>
-
-											<form>
-												<fieldset>
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
-															<i class="ace-icon fa fa-envelope"></i>
-														</span>
-													</label>
-
-													<div class="clearfix">
-														<button type="button" class="width-35 pull-right btn btn-sm btn-danger">
-															<i class="ace-icon fa fa-lightbulb-o"></i>
-															<span class="bigger-110">Send Me!</span>
-														</button>
-													</div>
-												</fieldset>
-											</form>
-										</div><!-- /.widget-main -->
-
-										<div class="toolbar center">
-											<a href="#" data-target="#login-box" class="back-to-login-link">
-												Back to login
-												<i class="ace-icon fa fa-arrow-right"></i>
-											</a>
-										</div>
-									</div><!-- /.widget-body -->
-								</div><!-- /.forgot-box -->
-
-								<div id="signup-box" class="signup-box widget-box no-border">
-									<div class="widget-body">
-										<div class="widget-main">
-											<h4 class="header green lighter bigger">
-												<i class="ace-icon fa fa-users blue"></i>
-												New User Registration
-											</h4>
-
-											<div class="space-6"></div>
-											<p> Enter your details to begin: </p>
-
-											<form>
-												<fieldset>
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
-															<i class="ace-icon fa fa-envelope"></i>
-														</span>
-													</label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" />
-															<i class="ace-icon fa fa-user"></i>
-														</span>
-													</label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Password" />
-															<i class="ace-icon fa fa-lock"></i>
-														</span>
-													</label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Repeat password" />
-															<i class="ace-icon fa fa-retweet"></i>
-														</span>
-													</label>
-
-													<label class="block">
-														<input type="checkbox" class="ace" />
-														<span class="lbl">
-															I accept the
-															<a href="#">User Agreement</a>
-														</span>
-													</label>
-
-													<div class="space-24"></div>
-
-													<div class="clearfix">
-														<button type="reset" class="width-30 pull-left btn btn-sm">
-															<i class="ace-icon fa fa-refresh"></i>
-															<span class="bigger-110">Reset</span>
-														</button>
-
-														<button type="button" class="width-65 pull-right btn btn-sm btn-success">
-															<span class="bigger-110">Register</span>
-
-															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
-														</button>
-													</div>
-												</fieldset>
-											</form>
-										</div>
-
-										<div class="toolbar center">
-											<a href="#" data-target="#login-box" class="back-to-login-link">
-												<i class="ace-icon fa fa-arrow-left"></i>
-												Back to login
-											</a>
-										</div>
-									</div><!-- /.widget-body -->
-								</div><!-- /.signup-box -->
-							</div><!-- /.position-relative -->
-
-
-
-						</form>
-
-							<!-- <div class="navbar-fixed-top align-right">
-								<br />
-								&nbsp;
-								<a id="btn-login-dark" href="#">Dark</a>
-								&nbsp;
-								<span class="blue">/</span>
-								&nbsp;
-								<a id="btn-login-blur" href="#">Blur</a>
-								&nbsp;
-								<span class="blue">/</span>
-								&nbsp;
-								<a id="btn-login-light" href="#">Light</a>
-								&nbsp; &nbsp; &nbsp;
-							</div> -->
-						</div>
-					</div><!-- /.col -->
-				</div><!-- /.row -->
-			</div><!-- /.main-content -->
-		</div><!-- /.main-container -->
-
-		<!-- basic scripts -->
-
-		<!--[if !IE]> -->
-		<script src="assets/js/jquery-2.1.4.min.js"></script>
-
-		<!-- <![endif]-->
-
-		<!--[if IE]>
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<![endif]-->
-		<script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-		</script>
-
-		<!-- inline scripts related to this page -->
-		<script type="text/javascript">
-			jQuery(function($) {
-			 $(document).on('click', '.toolbar a[data-target]', function(e) {
-				e.preventDefault();
-				var target = $(this).data('target');
-				$('.widget-box.visible').removeClass('visible');//hide others
-				$(target).addClass('visible');//show target
-			 });
-			});
-
-	// jQuery(function($) {
-	// 		$('#login').on('click',function(e){
-	// 			// alert('logintest');
-	// 			var username = $('#username').val();
-	// 			var password = $('#password').val();
-
-	// 		  $.ajax({
-	// 		      url: '<?php echo base_url('login/validation'); ?>',
-	// 		      type: 'POST',
-	// 		      data: {'username':username,
-	// 		             'password':password
-	// 		            },
-	// 		      dataType: 'json',
-	// 		      success: function (data) {
-	// 		        console.log(data);
-	// 		        // console.log("share fb");
-	// 		        // $('.share_facebook').modal('toggle');
-
-	// 		   //      // console.log(res);
-	// 					// if(data=='error'){
-	// 					// 	// $('#msg_login').html('<font color="red"><b>Invalid</b> Username or Password</font>');
-	// 					// 	// $('#txt_username').val("");
-	// 					// 	$('#password').val("");
-	// 					// 	$('#password').focus();
-
-	// 		   //      window.location.href="<?php echo base_url('login');?>";
-	// 					// }else{
-	// 					// 	window.location.href="<?php echo base_url('dashboard');?>";
-	// 					// }
-
-	// 		      }
-
-	// 		});
-	// 	});	  
-	// });
-
-
-	$(function(){
-		$('#username').focus();
-	});
-
-	$('#form_login').on('submit', function(){
-		var username = $('#username').val();
-		var password = $('#password').val();
-
-		$('#msg_login').empty();
-		$.ajax({
-			type: "POST",
-			dataType: "JSON",
-			url: "<?php echo base_url('login/validation');?>",
-			data: { 'username': username, 'password': password },
-			beforeSend: function(xls){
-				$('#msg_login').html('<img style="margin-bottom: 0px;" src="<?php echo base_url('assets/img/loading.gif')?>">');
-			},
-			success: function(res){
-				console.log(res);
-				if(res['return']=='error'){
-					$('#msg_login').html('<font color="red"><b>Invalid</b> Username or Password</font>');
-					// $('#txt_username').val("");
-					$('#password').val("");
-					$('#password').focus();
-				}else{
-					window.location.href="<?php echo base_url('home');?>";
-				}
-			}
-		});
-
-		return false;
-	});
-			
-			
-			
-			//you don't need this, just used for changing background
-			// jQuery(function($) {
-			//  $('#btn-login-dark').on('click', function(e) {
-			// 	$('body').attr('class', 'login-layout');
-			// 	$('#id-text2').attr('class', 'white');
-			// 	$('#id-company-text').attr('class', 'blue');
-				
-			// 	e.preventDefault();
-			//  });
-			//  $('#btn-login-light').on('click', function(e) {
-			// 	$('body').attr('class', 'login-layout light-login');
-			// 	$('#id-text2').attr('class', 'grey');
-			// 	$('#id-company-text').attr('class', 'blue');
-				
-			// 	e.preventDefault();
-			//  });
-			//  $('#btn-login-blur').on('click', function(e) {
-			// 	$('body').attr('class', 'login-layout blur-login');
-			// 	$('#id-text2').attr('class', 'white');
-			// 	$('#id-company-text').attr('class', 'light-blue');
-				
-			// 	e.preventDefault();
-			//  });
-			 
-			// });
-		</script>
-	</body>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Login</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="<?php echo base_url();?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="<?php echo base_url();?>assets/css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block "><!-- bg-login-image -->
+                                <img src="<?php echo base_url();?>assets/img/logowintage.png" alt="Girl in a jacket" width="400" height="400">
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <img src="<?php echo base_url();?>assets/img/wintage64px.ico"> <h1 class="h4 text-gray-900 mb-4">Wintage Backend</h1>
+                                    </div>
+                                    <!-- <form class="user"> -->
+                                        <form class="user" action="<?php echo base_url('login/validation');?>" method="post">
+
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user"
+                                                id="email" name="email" aria-describedby="emailHelp"
+                                                placeholder="Enter Email Address...">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user"
+                                                id="password" name="password" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">Remember
+                                                    Me</label>
+                                            </div>
+                                        </div>
+                                       <!--  <a href="" class="btn btn-primary btn-user btn-block">
+                                            Login
+                                        </a> -->
+
+                                        <button class="btn btn-primary btn-user btn-block" type="submit">Login</button>
+                                        <!-- <hr> -->
+                                       <!--  <a href="index.html" class="btn btn-google btn-user btn-block">
+                                            <i class="fab fa-google fa-fw"></i> Login with Google
+                                        </a> -->
+                                        <!-- <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                        </a> -->
+                                    </form>
+                                    <!-- <hr> -->
+                                    <div class="text-center">
+                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    </div>
+                                   <!--  <div class="text-center">
+                                        <a class="small" href="register.html">Create an Account!</a>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="<?php echo base_url();?>assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="<?php echo base_url();?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="<?php echo base_url();?>assets/js/sb-admin-2.min.js"></script>
+
+</body>
+
 </html>
+
+<script type="text/javascript">
+    
+</script>

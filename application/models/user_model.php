@@ -10,7 +10,7 @@ class User_model extends CI_Model
 		// $this->db->join('office o','d.office_ID=o.office_ID');
 		// $this->db->join('user_type ut','u.user_type_ID=ut.user_type_ID');
 		// $this->db->join('position p','p.position_ID=u.position_ID');
-		$this->db->where('u.user_email',$data['username']);
+		$this->db->where('u.user_email',$data['email']);
 		$this->db->where('u.user_password',$data['password']);
 		$this->db->where('u.delete_flag',1);
 		$query=$this->db->get();

@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Wintage Backend System</title>
+  <title>Wintage Backend</title>
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo base_url();?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -35,7 +35,7 @@
           <!-- <i class="fas fa-laugh-wink"></i> -->
           <img src="<?php echo base_url();?>assets/img/wintage64px.ico">
         </div>
-        <div class="sidebar-brand-text mx-1">Wintage Backend System<?= $this->lang->line('admin_page '); ?><sup></sup></div>
+        <div class="sidebar-brand-text mx-1">Wintage Backend <?= $this->lang->line('admin_page'); ?><sup></sup></div>
       </a>
 
       <!-- Divider -->
@@ -145,12 +145,12 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menupomotion" aria-expanded="true" aria-controls="menupomotion">
           <i class="fas fa-fw fa-cog"></i>
-          <span>โปรโมชัน</span>
+          <span>marketing center</span>
         </a>
         <div id="menupomotion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="<?php echo base_url();?>product">จัดการโปรโมชัน/ส่วนลด</a>
+            <a class="collapse-item" href="<?php echo base_url();?>marketing_center">จัดการโปรโมชัน/ส่วนลด</a>
          <!--    <a class="collapse-item" href="cards.html">เพิ่มสินค้า</a>
             <a class="collapse-item" href="cards.html">สมุดราคา</a>
             <a class="collapse-item" href="cards.html">ซัพพลายเออร์</a> -->
@@ -249,48 +249,6 @@
             <a class="collapse-item" href="utilities-other.html">Other</a>
           </div>
         </div> 
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Addons
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6> 
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>
-
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
       </li>
 
       <!-- Divider -->
@@ -555,7 +513,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="<?php echo base_url('login/logout');?>">Logout</a>
         </div>
       </div>
     </div>

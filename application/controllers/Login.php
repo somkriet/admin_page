@@ -22,10 +22,10 @@ class Login extends CI_Controller {
 	}
 	public function validation()
 	{
-		$username = $this->input->post('username');
+		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 	  	
-	  	$data['username']=$username;
+	  	$data['email']=$email;
 		$data['password']=md5($password);
 
 		$data['result']=$this->user_model->get_user_login($data);
@@ -33,7 +33,7 @@ class Login extends CI_Controller {
 		// print_r($data['result']); exit();
 		if(empty($data['result']))
 		{
-			// redirect('login','refresh');
+			redirect('login','refresh');
 			$res=array('return'=>'error');
 		}
 		else
@@ -48,11 +48,12 @@ class Login extends CI_Controller {
 					'email'=>$rows->user_email,
 					'phone'=>$rows->user_phone,
 					'position'=>$rows->position,
+					'userlevel'=>$rows->user_level,
 					'delete_flag'=>$rows->delete_flag
 					);
 				$this->session->set_userdata('login',$session_array);
 
-				// redirect('home','refresh');
+				redirect('home','refresh');
 				$res=array('return'=>'success');
 			
 			}
