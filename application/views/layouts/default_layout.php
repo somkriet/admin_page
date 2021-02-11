@@ -59,28 +59,14 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">คำสั่งซื้อ:</h6>
             <a class="collapse-item" href="<?php echo base_url();?>order">คำสั่งซื้อสินค้า</a>
+            <a class="collapse-item" href="<?php echo base_url();?>order/new_order">เพิ่มคำสั่งซื้อสินค้า</a>
             <a class="collapse-item" href="<?php echo base_url();?>order">การยกเลิก</a>
             <a class="collapse-item" href="<?php echo base_url();?>order">การคืนเงิน/คืนสินค้า</a>
           </div>
         </div>
       </li>
 
-       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menupayment" aria-expanded="true" aria-controls="menupayment">
-          <!-- <i class="fas fa-fw fa-cog"></i> -->
-          <i class='fas fa-user-tie'></i>
-          <span>การเงิน</span>
-        </a>
-        <div id="menupayment" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">การเงิน:</h6>
-            <a class="collapse-item"  href="<?php echo base_url();?>payment">การชำระเงิน</a>
-            <a class="collapse-item" href="<?php echo base_url();?>payment">การยกเลิก</a>
-            <a class="collapse-item" href="<?php echo base_url();?>payment">การคืนเงิน/คืนสินค้า</a>
-          </div>
-        </div>
-      </li>
+      
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
@@ -162,6 +148,24 @@
 
        <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menupayment" aria-expanded="true" aria-controls="menupayment">
+          <!-- <i class="fas fa-fw fa-cog"></i> -->
+          <i class='fas fa-user-tie'></i>
+          <span>การเงิน</span>
+        </a>
+        <div id="menupayment" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">การเงิน:</h6>
+            <a class="collapse-item"  href="<?php echo base_url();?>payment">การชำระเงิน</a>
+            <a class="collapse-item" href="<?php echo base_url();?>payment">การยกเลิก</a>
+            <a class="collapse-item" href="<?php echo base_url();?>payment">การคืนเงิน/คืนสินค้า</a>
+          </div>
+        </div>
+      </li>
+
+
+       <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menupomotion" aria-expanded="true" aria-controls="menupomotion">
           <i class="fas fa-fw fa-cog"></i>
           <span>marketing center</span>
@@ -206,6 +210,13 @@
           <span>ค่าใช้จ่าย</span></a>
       </li>
 
+        <!-- Nav Item - Dashboard -->
+      <li class="nav-item ">
+        <a class="nav-link" href="<?php echo base_url();?>order">
+          <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
+          <i class='far fa-file-alt'></i>
+          <span>ข้อมูลเชิงลึกทางธุรกิจ</span></a>
+      </li>
 
        <!-- Nav Item - Dashboard -->
       <li class="nav-item ">
@@ -224,21 +235,6 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-     <!--  <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo1" aria-expanded="true" aria-controls="collapseTwo1">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Product</span>
-        </a>
-        <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="<?php echo base_url();?>product">Product all</a>
-            <a class="collapse-item" href="cards.html">Add product</a>
-          </div>
-        </div>
-      </li> -->
-
-      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
@@ -246,15 +242,25 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"> 
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">เปลี่ยนภาพปกเว็บไซต์</a>
-            <a class="collapse-item" href="cards.html">ตั้งค่าการจัดส่ง</a>
-          </div> 
+            <h6 class="collapse-header">ข้อมูลบริษัท:</h6>
+            <a class="collapse-item" href="buttons.html">บริษัท/ร้านค้า</a>
+          </div>
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">ข้อมูลผู้ใช้งาน:</h6>
+            <a class="collapse-item" href="buttons.html">ข้อมูลส่วนตัว</a>
+          </div>
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">ตั้งค่าระบบ:</h6>
+            <a class="collapse-item" href="cards.html">ผู้ใช้งาน</a>
+            <a class="collapse-item" href="cards.html">สิทธิ์การใช้งาน</a>
+            <a class="collapse-item" href="cards.html">การแจ้งเตือน</a>
+            <a class="collapse-item" href="cards.html">การเชื่อมต่อบริการอื่น</a>
+          </div>    
         </div>
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
           <span>Utilities</span>
@@ -269,7 +275,7 @@
           </div>
         </div> 
       </li>
-
+ -->
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

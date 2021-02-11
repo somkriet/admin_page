@@ -66,7 +66,12 @@
                             
                           <tr>
                             <td align="center"><?php echo  $idx+1;?></td>
-                            <td align="center"><img src="<?php echo base_url('uploads/'.$img);?>" width="60" height="60"></td>
+                            <td align="center">
+                              <a target="_blank" href="<?php echo base_url('uploads/'.$img);?>">
+                                <img src="<?php echo base_url('uploads/'.$img);?>" width="60" height="60">
+                              </a>
+                              <!-- <img src="<?php echo base_url('uploads/'.$img);?>" width="60" height="60">-->
+                              </td> 
                             <td align="center"><?php echo $val->product_id;?></td>
                             <td align="center"><?php echo $val->product_name;?></td>
                             <td align="center"><?php echo $val->total_stock;?></td>
