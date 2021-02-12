@@ -26,8 +26,8 @@
             <div class="card-body">
 
 
-              <div class="text-lg-left">                           
-                  <a href="<?php echo base_url();?>product/new_product" class="btn btn-primary btn-sm " role="button" aria-pressed="true"><i class='fas fa-user-plus'></i>เพิ่มสินค้า</a>
+              <div class="text-lg-right">                           
+                  <a href="<?php echo base_url();?>product/new_product" class="btn btn-primary btn-lg " role="button" aria-pressed="true"><i class="fas fa-box"></i> เพิ่มสินค้าใหม่</a>
               </div>
                <br><br>
             
@@ -76,7 +76,12 @@
                             <td align="center"><?php echo $val->product_name;?></td>
                             <td align="center"><?php echo $val->total_stock;?></td>
                             <td align="center">
-                              <button type="button" class="btn-md btn-warning btn-sm btn-warning" onclick="callDetails('<?php echo $val->product_id;?>');">แก้ไข
+                              <!-- <button type="button" class="btn-md btn-info btn-sm btn-info" onclick="callDetails('<?php echo $val->product_id;?>');">ดูข้อมูล
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                              </button> -->
+
+                              <button type="button" class="btn-md btn-info btn-sm btn-info">
+                                <a href="<?php echo base_url();?>product/call_product_detail/<?php echo $val->product_id;?>">ดูข้อมูล</a>
                                 <span class="glyphicon glyphicon-list-alt"></span>
                               </button>
 

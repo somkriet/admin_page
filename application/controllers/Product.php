@@ -10,6 +10,8 @@ class Product extends CI_Controller {
         $this->load->model('customer_model');
         $this->load->model('product_model');
         $this->load->library("pagination");
+        $this->load->library('session');
+		$this->load->library('langlib');
         $this->load->helper(array('form', 'url'));
         // $this->load->library('upload');
 
@@ -338,6 +340,41 @@ class Product extends CI_Controller {
 
 		return $a;
 
+	}
+
+
+	public function call_product_detail($product_id){
+
+		// $product_id = $this->input->post('id');
+
+		$sql1 = "SELECT * FROM product WHERE product_id = '".$product_id."' AND delete_flag = 1;";
+
+		$data['product_detail_data'] = $this->product_model->show_all_product($sql1);
+
+		$sql1 = "SELECT * FROM product_option WHERE product_id = '".$product_id."' AND delete_flag = 1;";
+
+		$data['product_option_data'] = $this->product_model->show_all_product($sql1);
+
+		// print_r($data['product_detail_data']); exit();
+
+		$sql2 = "SELECT * FROM product_category WHERE delete_flag = 1;";
+		$data['product_category_data'] = $this->product_model->show_all_product($sql2);
+
+		$sql3 = "SELECT * FROM storage WHERE delete_flag = 1;";
+		$data['storage_data'] = $this->product_model->show_all_product($sql3);
+
+
+		// if ($product != "") {
+		// 	$data['status'] = 'success';
+		// 	$data['show_product'] = $product;
+		// }else{
+		// 	$data['status'] = 'notsuccess';
+		// 	$data['show_product'] = 'nodata';
+		// }
+
+		// echo json_encode($data);
+		$this->template->set('title', 'product');
+		$this->template->load('default_layout', 'contents' , 'product/show_product_detail', $data);
 	}
 
 
