@@ -33,19 +33,32 @@ class Payment extends CI_Controller {
 		header("Access-Control-Allow-Origin: *");
 		// $data = array();
 
-        // $sql = "SELECT * FROM payment ;";
-        // $data['payment_data'] = $this->order_model->show_all_order($sql);
 
-        $sql = "SELECT * 
+        if ($this->session->userdata('login') == TRUE) {
+                // $this->load->view('home', $data);
+            // echo "login";
+
+            $sql = "SELECT * 
                 FROM order_table 
                 WHERE status_order IN (1, 2)
                 AND delete_flag = 1;";
-        $data['payment_data'] = $this->order_model->show_all_order($sql);
+            $data['payment_data'] = $this->order_model->show_all_order($sql);
 
         
 
-		$this->template->set('title', 'order');
-		$this->template->load('default_layout', 'contents' , 'payment/show_payment_all', $data);
+            $this->template->set('title', 'order');
+            $this->template->load('default_layout', 'contents' , 'payment/show_payment_all', $data);
+            
+        } else {
+
+             // echo "No login";
+                $this->load->view('login');
+        }
+
+        // $sql = "SELECT * FROM payment ;";
+        // $data['payment_data'] = $this->order_model->show_all_order($sql);
+
+        
 	}
 
 	public function new_order() 

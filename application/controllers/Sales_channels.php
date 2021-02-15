@@ -36,11 +36,23 @@ class Sales_channels extends CI_Controller {
 		header("Access-Control-Allow-Origin: *");
 		// $data = array();
 
-        $sql = "SELECT * FROM sales_channels WHERE delete_flag = 1;";
-        $data['sales_channels_data'] = $this->order_model->show_all_order($sql);
 
-		// $this->template->set('title', 'order');
-		$this->template->load('default_layout', 'contents' , 'sales_channels/show', $data);
+        if ($this->session->userdata('login') == TRUE) {
+                // $this->load->view('home', $data);
+            // echo "login";
+             $sql = "SELECT * FROM sales_channels WHERE delete_flag = 1;";
+            $data['sales_channels_data'] = $this->order_model->show_all_order($sql);
+
+            // $this->template->set('title', 'order');
+            $this->template->load('default_layout', 'contents' , 'sales_channels/show', $data);
+            
+        } else {
+
+             echo "No login";
+                $this->load->view('login');
+        }
+
+       
 	}
 
 	 public function change($type)

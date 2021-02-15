@@ -32,14 +32,29 @@ class Supplier extends CI_Controller {
 		header("Access-Control-Allow-Origin: *");
 		// $data = array(); 
 
-		$sql = "SELECT * FROM product WHERE delete_flag = 1;";
-		$data['product_data'] = $this->product_model->show_all_product($sql);
+		if ($this->session->userdata('login') == TRUE) {
+                // $this->load->view('home', $data);
+            // echo "login";
 
-		$sql = "SELECT * FROM supplier WHERE delete_flag = 1;";
-		$data['supplier_data'] = $this->supplier_model->show_all_supplier($sql);
+            $sql = "SELECT * FROM product WHERE delete_flag = 1;";
+			$data['product_data'] = $this->product_model->show_all_product($sql);
 
-		$this->template->set('title', 'product');
-		$this->template->load('default_layout', 'contents' , 'supplier/show_supplier', $data);
+			$sql = "SELECT * FROM supplier WHERE delete_flag = 1;";
+			$data['supplier_data'] = $this->supplier_model->show_all_supplier($sql);
+
+			$this->template->set('title', 'product');
+			$this->template->load('default_layout', 'contents' , 'supplier/show_supplier', $data);
+            
+        } else {
+
+             // echo "No login";
+                $this->load->view('login');
+        }
+
+
+
+
+		
 	}
 
 	public function new_supplier()

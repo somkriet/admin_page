@@ -193,6 +193,15 @@
           <span>ค่าใช้จ่าย</span></a>
       </li>
 
+
+       <!-- Nav Item - Dashboard -->
+      <li class="nav-item ">
+        <a class="nav-link" href="<?php echo base_url();?>order">
+          <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
+          <i class='far fa-file-alt'></i>
+          <span>ระบบบัญชี</span></a>
+      </li>
+
         <!-- Nav Item - Dashboard -->
       <li class="nav-item ">
         <a class="nav-link" href="<?php echo base_url();?>order">

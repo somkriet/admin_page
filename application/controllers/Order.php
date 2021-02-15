@@ -36,51 +36,77 @@ class Order extends CI_Controller {
 		header("Access-Control-Allow-Origin: *");
 		// $data = array();
 
+
+        if ($this->session->userdata('login') == TRUE) {
+                // $this->load->view('home', $data);
+            // echo "login";
+
+
+             $sql = "SELECT * FROM order_table WHERE delete_flag = 1;";
+            $data['order_data'] = $this->order_model->show_all_order($sql);
+
+            $sql = "SELECT * FROM order_table WHERE status_order = 1 AND delete_flag = 1;";
+            $data['order_data_status1'] = $this->order_model->show_all_order($sql);
+
+            $sql = "SELECT * FROM order_table WHERE status_order = 2 AND delete_flag = 1;";
+            $data['order_data_status2'] = $this->order_model->show_all_order($sql);
+
+            $sql = "SELECT * FROM order_table WHERE status_order = 3 AND delete_flag = 1;";
+            $data['order_data_status3'] = $this->order_model->show_all_order($sql);
+
+            $sql = "SELECT * FROM order_table WHERE status_order = 4 AND delete_flag = 1;";
+            $data['order_data_status4'] = $this->order_model->show_all_order($sql);
+
+            $sql = "SELECT * FROM order_table WHERE status_order = 5 AND delete_flag = 1;";
+            $data['order_data_status5'] = $this->order_model->show_all_order($sql);
+
+            $sql = "SELECT * FROM order_table WHERE status_order = 6 AND delete_flag = 1;";
+            $data['order_data_status6'] = $this->order_model->show_all_order($sql);
+
+
+            $sql = "SELECT * FROM customer WHERE delete_flag = 1;";
+            $data['customer_data'] = $this->customer_model->show_all_customer($sql);
+
+            $this->template->set('title', 'order');
+            $this->template->load('default_layout', 'contents' , 'order/show_all_order', $data);
+            
+        } else {
+
+             // echo "No login";
+                $this->load->view('login');
+        }
+
         // $sql = "SELECT * FROM Order WHERE delete_flag = 1;";
         // $data['order_data'] = $this->order_model->show_all_order($sql);
 
-        $sql = "SELECT * FROM order_table WHERE delete_flag = 1;";
-        $data['order_data'] = $this->order_model->show_all_order($sql);
-
-        $sql = "SELECT * FROM order_table WHERE status_order = 1 AND delete_flag = 1;";
-        $data['order_data_status1'] = $this->order_model->show_all_order($sql);
-
-        $sql = "SELECT * FROM order_table WHERE status_order = 2 AND delete_flag = 1;";
-        $data['order_data_status2'] = $this->order_model->show_all_order($sql);
-
-        $sql = "SELECT * FROM order_table WHERE status_order = 3 AND delete_flag = 1;";
-        $data['order_data_status3'] = $this->order_model->show_all_order($sql);
-
-        $sql = "SELECT * FROM order_table WHERE status_order = 4 AND delete_flag = 1;";
-        $data['order_data_status4'] = $this->order_model->show_all_order($sql);
-
-        $sql = "SELECT * FROM order_table WHERE status_order = 5 AND delete_flag = 1;";
-        $data['order_data_status5'] = $this->order_model->show_all_order($sql);
-
-        $sql = "SELECT * FROM order_table WHERE status_order = 6 AND delete_flag = 1;";
-        $data['order_data_status6'] = $this->order_model->show_all_order($sql);
-
-
-        $sql = "SELECT * FROM customer WHERE delete_flag = 1;";
-        $data['customer_data'] = $this->customer_model->show_all_customer($sql);
-
-		$this->template->set('title', 'order');
-		$this->template->load('default_layout', 'contents' , 'order/show_all_order', $data);
+       
 	}
 
 	public function new_order() 
 	{
 		// $data = array();
 
-        $sql = "SELECT * FROM customer WHERE delete_flag = 1;";
-        $data['customer_data'] = $this->customer_model->show_all_customer($sql);
+        if ($this->session->userdata('login') == TRUE) {
+            // $this->load->view('home', $data);
+            // echo "login";
 
-        $sql = "SELECT * FROM product WHERE delete_flag = 1;";
+            $sql = "SELECT * FROM customer WHERE delete_flag = 1;";
+            $data['customer_data'] = $this->customer_model->show_all_customer($sql);
 
-        $data['product_data'] = $this->product_model->show_all_product($sql);
+            $sql = "SELECT * FROM product WHERE delete_flag = 1;";
 
-		$this->template->set('title', 'about'); 
-		$this->template->load('default_layout', 'contents' , 'order/add_new_order', $data);
+            $data['product_data'] = $this->product_model->show_all_product($sql);
+
+            $this->template->set('title', 'about'); 
+            $this->template->load('default_layout', 'contents' , 'order/add_new_order', $data);
+            
+        } else {
+
+             // echo "No login";
+                $this->load->view('login');
+        }
+
+        
 	}
 
 

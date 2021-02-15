@@ -32,8 +32,22 @@ class Setting extends CI_Controller {
 	{
 		header("Access-Control-Allow-Origin: *");
 		$data = array();
-		$this->template->set('title', 'setting');
-		$this->template->load('default_layout', 'contents' , 'setting/setting_system', $data);
+
+        if ($this->session->userdata('login') == TRUE) {
+                // $this->load->view('home', $data);
+            // echo "login";
+
+            $this->template->set('title', 'setting');
+        $this->template->load('default_layout', 'contents' , 'setting/setting_system', $data);
+            
+        } else {
+
+             // echo "No login";
+                $this->load->view('login');
+        }
+
+
+		
 	}
 	// public function about()
 	// {

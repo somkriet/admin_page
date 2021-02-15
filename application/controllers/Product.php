@@ -42,19 +42,25 @@ class Product extends CI_Controller {
 		header("Access-Control-Allow-Origin: *");
 		// $data = array(); 
 
-		$sql = "SELECT * FROM product WHERE delete_flag = 1;";
-		$data['product_data'] = $this->product_model->show_all_product($sql);
 
+		if ($this->session->userdata('login') == TRUE) {
+                // $this->load->view('home');
+            // echo "login";
 
-		// $sql = "SELECT * 
-		// 		FROM product 
-		// 		INNER JOIN product_option 
-		// 		ON product.product_id = product_option.product_id 
-		// 		WHERE product.delete_flag = 1;";
-		// $data['product_data'] = $this->product_model->show_all_product($sql);
+                $sql = "SELECT * FROM product WHERE delete_flag = 1;";
+				$data['product_data'] = $this->product_model->show_all_product($sql);
 
-		$this->template->set('title', 'product');
-		$this->template->load('default_layout', 'contents' , 'product/show_product_all', $data);
+				$this->template->set('title', 'product');
+				$this->template->load('default_layout', 'contents' , 'product/show_product_all', $data);
+
+            
+        } else {
+
+             // echo "No login";
+                $this->load->view('login');
+        }
+
+		
 	}
 
 

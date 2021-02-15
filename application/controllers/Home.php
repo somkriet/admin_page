@@ -30,37 +30,44 @@ class Home extends CI_Controller {
     
 	public function index()
 	{
+
+
         
 		header("Access-Control-Allow-Origin: *");
 		$data = array();
-        $date_pay = date('Y-m-d');
-        $date_pay1 = $date_pay.' 00:00:00';
-        $date_pay2 = $date_pay.' 23:59:00';
 
-        $month = date('m');
+        // print_r($this->session->userdata('login')); exit();
 
-        $year = date('Y');
+        if ($this->session->userdata('login') == TRUE) {
 
-        $today_sales = "SELECT sum(total_price) as 'today_sales'
+            $date_pay = date('Y-m-d');
+            $date_pay1 = $date_pay.' 00:00:00';
+            $date_pay2 = $date_pay.' 23:59:00';
+
+            $month = date('m');
+
+            $year = date('Y');
+
+            $today_sales = "SELECT sum(total_price) as 'today_sales'
                         FROM order_table 
                         WHERE date_pay  BETWEEN '".$date_pay1."' AND '".$date_pay2."'
                         AND delete_flag = 1;";
-        $data['today_sales_data'] = $this->customer_model->show_all_customer($today_sales);
+            $data['today_sales_data'] = $this->customer_model->show_all_customer($today_sales);
 
 
 
-        $monthly_sales = "SELECT sum(total_price) as 'monthly_sales'
+            $monthly_sales = "SELECT sum(total_price) as 'monthly_sales'
                         FROM order_table 
                         WHERE month(date_pay) = '".$month."' 
                         AND delete_flag = 1;";
-        $data['monthly_sales_data'] = $this->customer_model->show_all_customer($monthly_sales);
+            $data['monthly_sales_data'] = $this->customer_model->show_all_customer($monthly_sales);
 
 
-        $year_sales = "SELECT sum(total_price) as 'year_sales'
+            $year_sales = "SELECT sum(total_price) as 'year_sales'
                         FROM order_table 
                         WHERE year(date_pay) = '".$year."' 
                         AND delete_flag = 1;";
-        $data['year_sales_data'] = $this->customer_model->show_all_customer($year_sales);
+            $data['year_sales_data'] = $this->customer_model->show_all_customer($year_sales);
 
 
         //  $chart = "SELECT total_price as 'totol', date_pay as 'datesave'
@@ -70,7 +77,7 @@ class Home extends CI_Controller {
 
 
 
-         $chart = "SELECT 
+            $chart = "SELECT 
                     SUM(IF(MONTH(`date_pay`)=1,`total_price`,NULL)) AS `a1`,
                     SUM(IF(MONTH(`date_pay`)=2,`total_price`,NULL)) AS `a2`,
                     SUM(IF(MONTH(`date_pay`)=3,`total_price`,NULL)) AS `a3`,
@@ -86,50 +93,59 @@ class Home extends CI_Controller {
                     FROM `order_table`
                     WHERE year(date_pay) = '".$year."' 
                     AND delete_flag = 1;";
-        $data['resultchart'] = $this->customer_model->show_all_customer($chart);
- // WHERE year(date_pay) = '".$year."' 
+            $data['resultchart'] = $this->customer_model->show_all_customer($chart);
+            // WHERE year(date_pay) = '".$year."' 
 
 
-//SELECT
-// MONTH(`date_pay`) AS `month`,
-// SUM(IF(MONTH(`date_pay`)=1,`total_price`,NULL)) AS `1`,
-// SUM(IF(MONTH(`date_pay`)=2,`total_price`,NULL)) AS `2`,
-// SUM(IF(MONTH(`date_pay`)=3,`total_price`,NULL)) AS `3`,
-// SUM(IF(MONTH(`date_pay`)=4,`total_price`,NULL)) AS `4`,
-// SUM(IF(MONTH(`date_pay`)=5,`total_price`,NULL)) AS `5`,
-// SUM(IF(MONTH(`date_pay`)=6,`total_price`,NULL)) AS `6`,
-// SUM(IF(MONTH(`date_pay`)=7,`total_price`,NULL)) AS `7`,
-// SUM(IF(MONTH(`date_pay`)=8,`total_price`,NULL)) AS `8`,
-// SUM(IF(MONTH(`date_pay`)=9,`total_price`,NULL)) AS `9`,
-// SUM(IF(MONTH(`date_pay`)=10,`total_price`,NULL)) AS `10`,
-// SUM(IF(MONTH(`date_pay`)=11,`total_price`,NULL)) AS `11`,
-// SUM(IF(MONTH(`date_pay`)=12,`total_price`,NULL)) AS `12`
-// FROM `order_table`
-// WHERE year(date_pay) = '".$year."' 
-// AND delete_flag = 1;
+            //SELECT
+            // MONTH(`date_pay`) AS `month`,
+            // SUM(IF(MONTH(`date_pay`)=1,`total_price`,NULL)) AS `1`,
+            // SUM(IF(MONTH(`date_pay`)=2,`total_price`,NULL)) AS `2`,
+            // SUM(IF(MONTH(`date_pay`)=3,`total_price`,NULL)) AS `3`,
+            // SUM(IF(MONTH(`date_pay`)=4,`total_price`,NULL)) AS `4`,
+            // SUM(IF(MONTH(`date_pay`)=5,`total_price`,NULL)) AS `5`,
+            // SUM(IF(MONTH(`date_pay`)=6,`total_price`,NULL)) AS `6`,
+            // SUM(IF(MONTH(`date_pay`)=7,`total_price`,NULL)) AS `7`,
+            // SUM(IF(MONTH(`date_pay`)=8,`total_price`,NULL)) AS `8`,
+            // SUM(IF(MONTH(`date_pay`)=9,`total_price`,NULL)) AS `9`,
+            // SUM(IF(MONTH(`date_pay`)=10,`total_price`,NULL)) AS `10`,
+            // SUM(IF(MONTH(`date_pay`)=11,`total_price`,NULL)) AS `11`,
+            // SUM(IF(MONTH(`date_pay`)=12,`total_price`,NULL)) AS `12`
+            // FROM `order_table`
+            // WHERE year(date_pay) = '".$year."' 
+            // AND delete_flag = 1;
 
-        // print_r($data); exit();
-
-
-        //          SELECT YEAR(date) as SalesYear,
-//          MONTH(date) as SalesMonth,
-//          SUM(Price) AS TotalSales
-//     FROM Sales
-// GROUP BY YEAR(date), MONTH(date)
-// ORDER BY YEAR(date), MONTH(date)
-// where month(soledate) = '12' and year(soledate) = '2009' อันนี้เดือน
-
-        // 2020-08-26 13:49:49
-
-        // $test = date('Y-m-d', strtotime('-3 Days'));//2020-09-05
-
-        // $diff = date_diff(date_create(date('Y-m-d')), date_create($test));
-
-        // print_r($diff);
+                    // print_r($data); exit();
 
 
-		$this->template->set('title', 'Home');
-		$this->template->load('default_layout', 'contents' , 'home', $data);
+                    //          SELECT YEAR(date) as SalesYear,
+            //          MONTH(date) as SalesMonth,
+            //          SUM(Price) AS TotalSales
+            //     FROM Sales
+            // GROUP BY YEAR(date), MONTH(date)
+            // ORDER BY YEAR(date), MONTH(date)
+            // where month(soledate) = '12' and year(soledate) = '2009' อันนี้เดือน
+
+                    // 2020-08-26 13:49:49
+
+                    // $test = date('Y-m-d', strtotime('-3 Days'));//2020-09-05
+
+                    // $diff = date_diff(date_create(date('Y-m-d')), date_create($test));
+
+                    // print_r($diff);
+
+
+                $this->template->set('title', 'Home');
+                $this->template->load('default_layout', 'contents' , 'home', $data);
+            
+        } else {
+
+             // echo "No login";
+                $this->load->view('login');
+        }
+
+
+        
 
 	}  
 	public function about()

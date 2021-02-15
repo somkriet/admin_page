@@ -33,11 +33,22 @@ class Logistics extends CI_Controller {
 		header("Access-Control-Allow-Origin: *");
 		// $data = array();
 
-        $sql = "SELECT * FROM order_table WHERE status_order BETWEEN 3 AND 5 AND delete_flag = 1;";
-        $data['order_data'] = $this->order_model->show_all_order($sql);
 
-		$this->template->set('title', 'order');
-		$this->template->load('default_layout', 'contents' , 'logistics/logistics_view', $data);
+        if ($this->session->userdata('login') == TRUE) {
+
+            $sql = "SELECT * FROM order_table WHERE status_order BETWEEN 3 AND 5 AND delete_flag = 1;";
+            $data['order_data'] = $this->order_model->show_all_order($sql);
+
+            $this->template->set('title', 'order');
+            $this->template->load('default_layout', 'contents' , 'logistics/logistics_view', $data);
+            
+        } else {
+
+             // echo "No login";
+            $this->load->view('login');
+        }
+
+        
 	}
 
 	public function new_order() 

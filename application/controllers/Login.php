@@ -6,7 +6,9 @@ class Login extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->library('session');
 		$this->load->model('user_model');
+		$this->load->library('langlib');
 		// $this->load->model('annual_model');
 	}
 
@@ -15,13 +17,25 @@ class Login extends CI_Controller {
 		header("Access-Control-Allow-Origin: *");
 		// $data = array(0);
 		$data = 1;
-		// $this->template->set('title', 'L');
-		// $this->template->load('default_layout', 'contents' , 'home', $data);
-		// $this->template->load('default_layout', 'contents' , 'home', $data);
+
+		// print_r($this->session->userdata('login')); exit();
+
+		// if ($this->session->userdata('login') == TRUE) {
+  //               $this->load->view('home', $data);
+  //           // echo "login";
+            
+  //       } else {
+
+  //            // echo "No login";
+  //               $this->load->view('login', $data);
+  //       }
+
 		$this->load->view('login',$data);
 	}
 	public function validation()
 	{
+
+
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 	  	

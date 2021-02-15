@@ -32,8 +32,22 @@ class Sell extends CI_Controller {
     {
         header("Access-Control-Allow-Origin: *");
         $data = array();
-        $this->template->set('title', 'order');
+
+        if ($this->session->userdata('login') == TRUE) {
+                // $this->load->view('home', $data);
+            // echo "login";
+             $this->template->set('title', 'order');
         $this->template->load('default_layout', 'contents' , 'order/show_all_order', $data);
+            
+        } else {
+
+             // echo "No login";
+                $this->load->view('login');
+        }
+
+
+
+       
     }
 
     public function sell_add() 

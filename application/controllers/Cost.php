@@ -36,18 +36,32 @@ class Cost extends CI_Controller {
 		header("Access-Control-Allow-Origin: *");
 		// $data = array();
 
-        $sql = "SELECT cost_category.cost_category_name,cost.cost_id,cost.cost_name,cost.cost_detail,cost.cost_category_id,cost.cost_total,cost.cost_file,cost.cost_date 
+
+        if ($this->session->userdata('login') == TRUE) {
+                // $this->load->view('home', $data);
+            // echo "login";
+
+
+            $sql = "SELECT cost_category.cost_category_name,cost.cost_id,cost.cost_name,cost.cost_detail,cost.cost_category_id,cost.cost_total,cost.cost_file,cost.cost_date 
                 FROM cost
                 INNER JOIN cost_category 
                 ON cost.cost_category_id = cost_category.cost_category_id
                 WHERE cost.delete_flag = 1;";
-        $data['cost_data'] = $this->order_model->show_all_order($sql);
+            $data['cost_data'] = $this->order_model->show_all_order($sql);
 
-        $sql = "SELECT * FROM customer WHERE delete_flag = 1;";
-        $data['customer_data'] = $this->customer_model->show_all_customer($sql);
+            $sql = "SELECT * FROM customer WHERE delete_flag = 1;";
+            $data['customer_data'] = $this->customer_model->show_all_customer($sql);
 
-		$this->template->set('title', 'cost');
-		$this->template->load('default_layout', 'contents' , 'cost/show_cost', $data);
+            $this->template->set('title', 'cost');
+            $this->template->load('default_layout', 'contents' , 'cost/show_cost', $data);
+            
+        } else {
+
+             // echo "No login";
+                $this->load->view('login');
+        }
+
+        
 	}
 
 	public function new_cost() 
