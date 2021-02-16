@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Accounting extends CI_Controller {
 
 	public function __construct()
     {
@@ -136,13 +136,13 @@ class Home extends CI_Controller {
 
 
                 $this->template->set('title', 'Home');
-                $this->template->load('default_layout', 'contents' , 'home', $data);
+                $this->template->load('default_layout', 'contents' , 'accounting/accounting_view', $data);
             
         } else {
 
              // echo "No login";
                 // $this->load->view('login');
-            redirect('login','refresh');
+                redirect('login','refresh');
         }
 
 

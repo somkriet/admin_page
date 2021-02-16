@@ -67,6 +67,26 @@
         </div>
       </li>
 
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuorder" aria-expanded="true" aria-controls="menuorder">
+          <!-- <i class="fas fa-fw fa-cog"></i> -->
+          <i class="fas fa-cart-plus"></i>
+          <span>รายการซื้อ</span>
+        </a>
+        <div id="menuorder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">รายการขาย:</h6>
+            <a class="collapse-item" href="<?php echo base_url();?>order/new_order">สร้างรายการซื้อ</a>
+            <a class="collapse-item" href="<?php echo base_url();?>order">ดูรายการซื้อ</a>
+            <a class="collapse-item" href="<?php echo base_url();?>logistics">ดูรายการการจัดส่ง</a>
+            <a class="collapse-item" href="<?php echo base_url();?>order">รายการยกเลิก</a>
+            <a class="collapse-item" href="<?php echo base_url();?>order">การคืนเงิน/คืนสินค้า</a>
+          </div>
+        </div>
+      </li>
+
       
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -196,7 +216,7 @@
 
        <!-- Nav Item - Dashboard -->
       <li class="nav-item ">
-        <a class="nav-link" href="<?php echo base_url();?>order">
+        <a class="nav-link" href="<?php echo base_url();?>accounting">
           <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
           <i class='far fa-file-alt'></i>
           <span>ระบบบัญชี</span></a>

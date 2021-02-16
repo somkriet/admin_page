@@ -48,8 +48,9 @@ class Sales_channels extends CI_Controller {
             
         } else {
 
-             echo "No login";
-                $this->load->view('login');
+             // echo "No login";
+                // $this->load->view('login');
+                redirect('login','refresh');
         }
 
        

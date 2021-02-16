@@ -42,7 +42,8 @@ class Sell extends CI_Controller {
         } else {
 
              // echo "No login";
-                $this->load->view('login');
+                // $this->load->view('login');
+                redirect('login','refresh');
         }
 
 
