@@ -93,7 +93,7 @@
         </div>  
       </li>
 
-
+<!-- http://programmingtoweb.com/program/pos/cashier/lastbill/ -->
       <!-- Nav Item - Dashboard -->
       <li class="nav-item ">
         <a class="nav-link" href="<?php echo base_url();?>customer">
